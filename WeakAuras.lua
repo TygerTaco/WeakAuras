@@ -55,7 +55,7 @@ WeakAurasSaved = {
 		},
 	},
 	["editor_tab_spaces"] = 4,
-	["editor_font_size"] = 12,
+	["login_squelch_time"] = 10,
 	["talent_cache"] = {
 		["HUNTER"] = {
 		},
@@ -753,6 +753,16 @@ WeakAurasSaved = {
 		},
 	},
 	["editor_bracket_matching"] = true,
+	["editor_font_size"] = 12,
+	["lastArchiveClear"] = 1586636639,
+	["minimap"] = {
+		["hide"] = true,
+	},
+	["lastUpgrade"] = 1667851113,
+	["dbVersion"] = 59,
+	["clearOldHistory"] = 30,
+	["registered"] = {
+	},
 	["displays"] = {
 		["Fury Action Bar"] = {
 			["arcLength"] = 360,
@@ -809,7 +819,7 @@ WeakAurasSaved = {
 			["subRegions"] = {
 			},
 			["borderInset"] = 1,
-			["parent"] = "Fury",
+			["xOffset"] = 0,
 			["load"] = {
 				["talent"] = {
 					["multi"] = {
@@ -829,7 +839,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if enhancementActions[a.id] ~= nil \n    then \n        aData = enhancementActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if enhancementActions[b.id] ~= nil \n    then \n        bData = enhancementActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
+			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if myActions[a.id] ~= nil \n    then \n        aData = myActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if myActions[b.id] ~= nil \n    then \n        bData = myActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -838,40 +848,6 @@ WeakAurasSaved = {
 			},
 			["radius"] = 200,
 			["animate"] = false,
-			["yOffset"] = -125,
-			["scale"] = 1,
-			["gridType"] = "RD",
-			["border"] = false,
-			["borderEdge"] = "Square Full White",
-			["regionType"] = "dynamicgroup",
-			["borderSize"] = 2,
-			["sort"] = "none",
-			["rowSpace"] = 1,
-			["useLimit"] = false,
-			["constantFactor"] = "RADIUS",
-			["borderColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				1, -- [4]
-			},
-			["borderOffset"] = 4,
-			["config"] = {
-			},
-			["frameStrata"] = 1,
-			["id"] = "Fury Action Bar",
-			["limit"] = 1,
-			["gridWidth"] = 5,
-			["anchorFrameType"] = "SCREEN",
-			["stagger"] = 0,
-			["uid"] = "DjSJg(VAbSH",
-			["xOffset"] = 0,
-			["grow"] = "HORIZONTAL",
-			["conditions"] = {
-			},
-			["information"] = {
-				["forceEvents"] = true,
-			},
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -892,6 +868,40 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["scale"] = 1,
+			["gridType"] = "RD",
+			["border"] = false,
+			["borderEdge"] = "Square Full White",
+			["regionType"] = "dynamicgroup",
+			["borderSize"] = 2,
+			["sort"] = "none",
+			["yOffset"] = -125,
+			["grow"] = "HORIZONTAL",
+			["constantFactor"] = "RADIUS",
+			["borderColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				1, -- [4]
+			},
+			["borderOffset"] = 4,
+			["config"] = {
+			},
+			["frameStrata"] = 1,
+			["id"] = "Fury Action Bar",
+			["limit"] = 1,
+			["gridWidth"] = 5,
+			["anchorFrameType"] = "SCREEN",
+			["stagger"] = 0,
+			["uid"] = "DjSJg(VAbSH",
+			["useLimit"] = false,
+			["rowSpace"] = 1,
+			["conditions"] = {
+			},
+			["information"] = {
+				["forceEvents"] = true,
+			},
+			["parent"] = "Fury",
 		},
 		["In Group"] = {
 			["outline"] = "OUTLINE",
@@ -1228,11 +1238,6 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["authorOptions"] = {
-			},
-			["regionType"] = "icon",
-			["displayIcon"] = 2065634,
-			["xOffset"] = 0,
 			["actions"] = {
 				["start"] = {
 				},
@@ -1241,28 +1246,33 @@ WeakAurasSaved = {
 				["finish"] = {
 				},
 			},
+			["regionType"] = "icon",
+			["displayIcon"] = 2065634,
+			["authorOptions"] = {
+			},
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["cooldownTextDisabled"] = false,
 			["uid"] = "TR4V(ZUYTIW",
 			["zoom"] = 0.28,
 			["auto"] = false,
-			["frameStrata"] = 8,
+			["alpha"] = 1,
 			["id"] = "Wildfire Boom",
 			["anchorFrameType"] = "SCREEN",
-			["alpha"] = 1,
-			["width"] = 50,
 			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["frameStrata"] = 8,
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["parent"] = "Survival Actions Old",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["parent"] = "Survival Actions Old",
+			["xOffset"] = 0,
 		},
 		["Feral Bear Ironfur"] = {
 			["iconSource"] = 0,
@@ -1281,18 +1291,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["duration"] = "1",
 						["unevent"] = "auto",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["use_unit"] = true,
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Feral Bear Ironfur\"].coolDown.duration, feralActions[\"Feral Bear Ironfur\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Feral Bear Ironfur\"].coolDown.duration, myActions[\"Feral Bear Ironfur\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["custom_type"] = "status",
 						["debuffType"] = "HELPFUL",
 					},
@@ -1316,7 +1326,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    feralActions[\"Feral Bear Ironfur\"].coolDown.duration = 0\n    feralActions[\"Feral Bear Ironfur\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Ironfur\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        feralActions[\"Feral Bear Ironfur\"].coolDown.duration = coolDownDuration\n        feralActions[\"Feral Bear Ironfur\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    local ironfur = select(1,AuraUtil.FindAuraByName(\"Ironfur\", \"player\", \"HELPFUL|PLAYER\"))\n    local heartOfTheWild = select(1,AuraUtil.FindAuraByName(\"Heart of the Wild\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --priority \n    if GetShapeshiftForm() == 1 and UnitPower(\"player\",1) >=40 \n    and (ironfur == nil or heartOfTheWild ~= nil)\n    then\n        feralActions[\"Feral Bear Ironfur\"].priority = 101 \n    else\n        feralActions[\"Feral Bear Ironfur\"].priority = nil\n    end\n    \n    \n    return isAuraHighestPriority(\"Feral Bear Ironfur\", feralActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Feral Bear Ironfur\"].coolDown.duration = 0\n    myActions[\"Feral Bear Ironfur\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Ironfur\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Feral Bear Ironfur\"].coolDown.duration = coolDownDuration\n        myActions[\"Feral Bear Ironfur\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    local ironfur = select(1,AuraUtil.FindAuraByName(\"Ironfur\", \"player\", \"HELPFUL|PLAYER\"))\n    local heartOfTheWild = select(1,AuraUtil.FindAuraByName(\"Heart of the Wild\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --priority \n    if GetShapeshiftForm() == 1 and UnitPower(\"player\",1) >=40 \n    and (ironfur == nil or heartOfTheWild ~= nil)\n    then\n        myActions[\"Feral Bear Ironfur\"].priority = 101 \n    else\n        myActions[\"Feral Bear Ironfur\"].priority = nil\n    end\n    \n    \n    return isAuraHighestPriority(\"Feral Bear Ironfur\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -1327,7 +1337,7 @@ WeakAurasSaved = {
 					},
 				}, -- [3]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)            \n    if t[2] and t[3]\n    then\n        feralActions[\"Feral Bear Ironfur\"].show = true\n    else\n        feralActions[\"Feral Bear Ironfur\"].show = false\n    end    \n    return feralActions[\"Feral Bear Ironfur\"].show\nend",
+				["customTriggerLogic"] = "function(t)            \n    if t[2] and t[3]\n    then\n        myActions[\"Feral Bear Ironfur\"].show = true\n    else\n        myActions[\"Feral Bear Ironfur\"].show = false\n    end    \n    return myActions[\"Feral Bear Ironfur\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -1477,7 +1487,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Feral Bear Ironfur\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 101,\n    [\"inRange\"] = true,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Feral Bear Ironfur\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 101,\n    [\"inRange\"] = true,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["cooldown"] = true,
@@ -1686,7 +1696,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 				["finish"] = {
 				},
@@ -1967,12 +1977,11 @@ WeakAurasSaved = {
 			},
 			["align"] = "CENTER",
 			["stagger"] = 0,
-			["config"] = {
-			},
+			["uid"] = "0ARciyjgHPf",
 			["subRegions"] = {
 			},
-			["groupIcon"] = 1247264,
-			["useLimit"] = false,
+			["parent"] = "Havoc",
+			["gridType"] = "RD",
 			["load"] = {
 				["use_class"] = "true",
 				["talent"] = {
@@ -2001,18 +2010,19 @@ WeakAurasSaved = {
 				1, -- [3]
 				0.5, -- [4]
 			},
-			["fullCircle"] = true,
+			["groupIcon"] = 1247264,
 			["animate"] = false,
-			["parent"] = "Havoc",
+			["useLimit"] = false,
 			["scale"] = 1,
-			["gridType"] = "RD",
+			["fullCircle"] = true,
 			["border"] = false,
 			["borderEdge"] = "Square Full White",
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
+			["limit"] = 5,
 			["sort"] = "none",
-			["anchorPerUnit"] = "CUSTOM",
-			["borderInset"] = 1,
+			["config"] = {
+			},
 			["constantFactor"] = "RADIUS",
 			["gridWidth"] = 5,
 			["borderOffset"] = 4,
@@ -2023,17 +2033,17 @@ WeakAurasSaved = {
 			["useAnchorPerUnit"] = false,
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["limit"] = 5,
-			["uid"] = "0ARciyjgHPf",
+			["anchorPerUnit"] = "CUSTOM",
+			["borderInset"] = 1,
+			["radius"] = 200,
 			["rowSpace"] = 1,
-			["grow"] = "HORIZONTAL",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["radius"] = 200,
+			["grow"] = "HORIZONTAL",
 		},
 		["Primal Wrath"] = {
 			["iconSource"] = 0,
@@ -2051,18 +2061,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["use_absorbMode"] = true,
 						["custom_type"] = "status",
-						["use_unit"] = true,
+						["subeventPrefix"] = "SPELL",
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Primal Wrath\"].coolDown.duration, feralActions[\"Primal Wrath\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Primal Wrath\"].coolDown.duration, myActions[\"Primal Wrath\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["check"] = "update",
-						["names"] = {
-						},
+						["use_unit"] = true,
 						["subeventSuffix"] = "_CAST_START",
 						["debuffType"] = "HELPFUL",
 					},
@@ -2087,7 +2097,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown        \n    feralActions[\"Primal Wrath\"].coolDown.duration = 0\n    feralActions[\"Primal Wrath\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(20)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Primal Wrath\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Primal Wrath\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end\n    \n    --priority \n    if \n    (\n        (unitsInMelee.count >= 3 and attackMode ~= \"Focus\") \n        --or (unitsInMelee.count == 2 and attackMode == \"Cleave\")\n    )    \n    and UnitPower(\"player\",4) == 5 and GetShapeshiftForm() == 2\n    then\n        feralActions[\"Primal Wrath\"].priority = 4\n    else\n        feralActions[\"Primal Wrath\"].priority = nil\n    end   \n    \n    return isAuraHighestPriority(\"Primal Wrath\", feralActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown        \n    myActions[\"Primal Wrath\"].coolDown.duration = 0\n    myActions[\"Primal Wrath\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(20)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Primal Wrath\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Primal Wrath\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end\n    \n    --priority \n    if \n    (\n        (unitsInMelee.count >= 3 and attackMode ~= \"Focus\") \n        --or (unitsInMelee.count == 2 and attackMode == \"Cleave\")\n    )    \n    and UnitPower(\"player\",4) == 5 and GetShapeshiftForm() == 2\n    then\n        myActions[\"Primal Wrath\"].priority = 4\n    else\n        myActions[\"Primal Wrath\"].priority = nil\n    end   \n    \n    return isAuraHighestPriority(\"Primal Wrath\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -2103,16 +2113,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["range"] = "8",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "8",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -2121,7 +2131,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Primal Wrath\"].inRange = true\n    else\n        feralActions[\"Primal Wrath\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Primal Wrath\"].show = true\n    else\n        feralActions[\"Primal Wrath\"].show = false\n    end    \n    return feralActions[\"Primal Wrath\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Primal Wrath\"].inRange = true\n    else\n        myActions[\"Primal Wrath\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Primal Wrath\"].show = true\n    else\n        myActions[\"Primal Wrath\"].show = false\n    end    \n    return myActions[\"Primal Wrath\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -2269,15 +2279,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_PrimalWrath = true",
+					["custom"] = "myActions_PrimalWrath = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_PrimalWrath = false",
+					["custom"] = "myActions_PrimalWrath = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Primal Wrath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Primal Wrath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["cooldown"] = true,
@@ -2325,12 +2335,12 @@ WeakAurasSaved = {
 						["names"] = {
 						},
 						["unit"] = "player",
-						["spellIds"] = {
-						},
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "event",
-						["events"] = "cEvent_ValidTarget",
+						["spellIds"] = {
+						},
 						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "custom",
 					},
@@ -2558,20 +2568,13 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "bWm8cgnl2oF",
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
+			["stickyDuration"] = false,
 			["useTooltip"] = false,
 			["regionType"] = "icon",
-			["stickyDuration"] = false,
+			["parent"] = "Feral Bleed Bar",
 			["cooldown"] = true,
 			["displayIcon"] = 132152,
-			["parent"] = "Feral Bleed Bar",
+			["selfPoint"] = "CENTER",
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -2586,11 +2589,13 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
 			},
 			["conditions"] = {
 				{
@@ -2622,7 +2627,12 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 		},
 		["Raptor Strike"] = {
 			["iconSource"] = -1,
@@ -2646,7 +2656,7 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["event"] = "Global Cooldown",
 						["unevent"] = "auto",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(survivalActions[\"Raptor Strike\"].coolDown.duration, survivalActions[\"Raptor Strike\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Raptor Strike\"].coolDown.duration, myActions[\"Raptor Strike\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom_type"] = "status",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["names"] = {
@@ -2677,11 +2687,11 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["debuffType"] = "HELPFUL",
-						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
+						["debuffType"] = "HELPFUL",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["unevent"] = "auto",
 						["custom_hide"] = "custom",
 					},
@@ -2693,7 +2703,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown        \n    survivalActions[\"Raptor Strike\"].coolDown.duration = 0\n    survivalActions[\"Raptor Strike\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 30\n    --if unitsInMelee.count > 1 then req_energy = 65 end    \n    \n    local energy = UnitPower(\"player\",2)\n    if energy < req_energy\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end        \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        survivalActions[\"Raptor Strike\"].coolDown.duration = coolDownDuration + .5\n        survivalActions[\"Raptor Strike\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end   \n    \n    --priority\n    survivalActions[\"Raptor Strike\"].priority = 10\n    \n    return isAuraHighestPriority(\"Raptor Strike\", survivalActions)\n    \nend",
+						["custom"] = "function()\n    \n    --coolDown        \n    myActions[\"Raptor Strike\"].coolDown.duration = 0\n    myActions[\"Raptor Strike\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 30\n    --if unitsInMelee.count > 1 then req_energy = 65 end    \n    \n    local energy = UnitPower(\"player\",2)\n    if energy < req_energy\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end        \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Raptor Strike\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Raptor Strike\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end   \n    \n    --priority\n    myActions[\"Raptor Strike\"].priority = 10\n    \n    return isAuraHighestPriority(\"Raptor Strike\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -2734,7 +2744,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        survivalActions[\"Raptor Strike\"].inRange = true\n    else\n        survivalActions[\"Raptor Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        survivalActions[\"Raptor Strike\"].show = true\n    else\n        survivalActions[\"Raptor Strike\"].show = false\n    end\n    \n    return survivalActions[\"Raptor Strike\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        myActions[\"Raptor Strike\"].inRange = true\n    else\n        myActions[\"Raptor Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Raptor Strike\"].show = true\n    else\n        myActions[\"Raptor Strike\"].show = false\n    end\n    \n    return myActions[\"Raptor Strike\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -2955,7 +2965,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not survivalActions then\n    survivalActions = {}\nend\n\nsurvivalActions[\"Raptor Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Raptor Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 		},
@@ -3086,7 +3096,8 @@ WeakAurasSaved = {
 				"Enhancement Functions", -- [4]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["xOffset"] = 0,
+			["authorOptions"] = {
+			},
 			["groupIcon"] = "237581",
 			["border"] = false,
 			["yOffset"] = 0,
@@ -3099,7 +3110,7 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["scale"] = 1,
+			["xOffset"] = 0,
 			["actions"] = {
 				["start"] = {
 				},
@@ -3128,8 +3139,7 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["borderOffset"] = 4,
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["selfPoint"] = "CENTER",
 			["id"] = "Enhancement",
 			["internalVersion"] = 59,
@@ -3219,11 +3229,11 @@ WeakAurasSaved = {
 						["ownOnly"] = true,
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["custom_hide"] = "timed",
-						["group_count"] = "0",
 						["spellName"] = 45438,
+						["group_count"] = "0",
+						["group_countOperator"] = "==",
 						["type"] = "spell",
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -3236,8 +3246,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
 						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["useGroup_count"] = false,
@@ -3437,18 +3447,13 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "DuQG66V2ZrG",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Fire CD Bar",
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["parent"] = "Fire CD Bar",
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = 135841,
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -3463,7 +3468,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -3499,7 +3509,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["icon"] = true,
+			["selfPoint"] = "CENTER",
 		},
 		[" Feral Spirit CD"] = {
 			["iconSource"] = 0,
@@ -3535,11 +3545,11 @@ WeakAurasSaved = {
 						["useGroup_count"] = false,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
-						["match_count"] = "0",
 						["custom_hide"] = "timed",
+						["match_count"] = "0",
+						["buffShowOn"] = "showOnMissing",
 						["subeventSuffix"] = "_CAST_START",
-						["spellName"] = 51533,
+						["group_countOperator"] = "==",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -3552,8 +3562,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["buffShowOn"] = "showOnMissing",
 						["debuffType"] = "HELPFUL",
+						["spellName"] = 51533,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["matchesShowOn"] = "showOnMissing",
@@ -3754,10 +3764,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["icon"] = true,
+			["parent"] = "Enhancment CD Bar",
 			["stickyDuration"] = false,
 			["regionType"] = "icon",
-			["parent"] = "Enhancment CD Bar",
+			["useTooltip"] = false,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -3790,7 +3800,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["useTooltip"] = false,
+			["selfPoint"] = "CENTER",
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -3808,14 +3818,14 @@ WeakAurasSaved = {
 			},
 			["uid"] = "p9lW6MR4hPG",
 			["inverse"] = true,
-			["authorOptions"] = {
-			},
+			["icon"] = true,
 			["displayIcon"] = 237577,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["authorOptions"] = {
+			},
 		},
 		["Fury CD Bar"] = {
 			["grow"] = "HORIZONTAL",
@@ -3964,15 +3974,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = true",
+					["custom"] = "myActions_MindBlast = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = false",
+					["custom"] = "myActions_MindBlast = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not fireActions then\n    fireActions = {}\nend\n\nfireActions[\"Fireball\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Fireball\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -3984,7 +3994,7 @@ WeakAurasSaved = {
 						},
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()\n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(fireActions[\"Fireball\"].coolDown.duration, fireActions[\"Fireball\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n",
+						["customDuration"] = "function()\n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(myActions[\"Fireball\"].coolDown.duration, myActions[\"Fireball\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n",
 						["unit"] = "player",
 						["custom"] = "function()\n    return true\nend",
 						["customIcon"] = "function() \n    \n    if cFunction_HasTalent == nil or unitsInRange == nil then return false end\n    \n    --Scorch if moving, have searing touch tallent, or in combustion\n    if select(1,GetUnitSpeed(\"player\")) > 0\n    or (cFunction_HasTalent(\"Searing Touch\") and fireData.scorch.count > 0 and unitsInRange.count<=5)\n    or select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\"))\n    then\n        return 135827\n    else\n        return 135812        \n    end\nend\n\n\n",
@@ -4011,11 +4021,11 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["subeventSuffix"] = "_CAST_START",
 						["custom_type"] = "event",
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["use_absorbMode"] = true,
+						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["custom_hide"] = "custom",
 					},
@@ -4031,7 +4041,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    if coolDown.cast.name ~= nil and (coolDown.cast.name == \"Fireball\" or coolDown.cast.name == \"Scorch\")\n    then\n        fireActions[\"Fireball\"].casting.active = true\n        fireActions[\"Fireball\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        fireActions[\"Fireball\"].casting.active = false\n        fireActions[\"Fireball\"].casting.expirationTime = nil\n    end \n    \n    --priority    \n    fireActions[\"Fireball\"].priority = 11\n    \n    --Use any instant charges during Combustion first\n    if (fireActions[\"Fire Blast\"].charges > 0 or fireActions[\"Phoenix Flames\"].charges > 0)\n    and select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\"))     \n    then\n        fireActions[\"Fireball\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Fireball\", fireActions)\n    \nend\n\n\n\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    if coolDown.cast.name ~= nil and (coolDown.cast.name == \"Fireball\" or coolDown.cast.name == \"Scorch\")\n    then\n        myActions[\"Fireball\"].casting.active = true\n        myActions[\"Fireball\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        myActions[\"Fireball\"].casting.active = false\n        myActions[\"Fireball\"].casting.expirationTime = nil\n    end \n    \n    --priority    \n    myActions[\"Fireball\"].priority = 11\n    \n    --Use any instant charges during Combustion first\n    if (myActions[\"Fire Blast\"].charges > 0 or myActions[\"Phoenix Flames\"].charges > 0)\n    and select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\"))     \n    then\n        myActions[\"Fireball\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Fireball\", myActions)\n    \nend\n\n\n\n\n\n\n",
 						["unit"] = "player",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -4073,7 +4083,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    if t[5]\n    then\n        fireActions[\"Fireball\"].inRange = true  \n    else\n        fireActions[\"Fireball\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        fireActions[\"Fireball\"].show = true\n    else\n        fireActions[\"Fireball\"].show = false\n    end\n    \n    return fireActions[\"Fireball\"].show\nend\n\n\n\n",
+				["customTriggerLogic"] = "function(t)         \n    if t[5]\n    then\n        myActions[\"Fireball\"].inRange = true  \n    else\n        myActions[\"Fireball\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Fireball\"].show = true\n    else\n        myActions[\"Fireball\"].show = false\n    end\n    \n    return myActions[\"Fireball\"].show\nend\n\n\n\n",
 				["activeTriggerMode"] = -10,
 			},
 			["internalVersion"] = 59,
@@ -4212,11 +4222,30 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["icon"] = true,
+			["animation"] = {
+				["start"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+			},
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -4246,26 +4275,7 @@ WeakAurasSaved = {
 					},
 				}, -- [2]
 			},
-			["animation"] = {
-				["start"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["useTooltip"] = false,
 			["cooldownTextDisabled"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0.28,
@@ -4278,13 +4288,13 @@ WeakAurasSaved = {
 			["xOffset"] = 0,
 			["uid"] = "yTj2HrbrbNL",
 			["inverse"] = true,
-			["parent"] = "Fire Action Bar",
+			["stickyDuration"] = false,
 			["displayIcon"] = 135812,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["parent"] = "Fire Action Bar",
 		},
 		["Arcane Intellect"] = {
 			["iconSource"] = 0,
@@ -4561,14 +4571,14 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["spellName"] = 46585,
+						["buffShowOn"] = "showOnMissing",
 						["match_count"] = "0",
-						["group_countOperator"] = "==",
+						["debuffType"] = "HELPFUL",
 						["use_targetRequired"] = false,
-						["custom_hide"] = "timed",
+						["spellName"] = 46585,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -4581,7 +4591,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["subeventPrefix"] = "SPELL",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -4782,10 +4792,11 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["icon"] = true,
+			["parent"] = "Frost Knight CD Bar",
 			["useTooltip"] = false,
 			["regionType"] = "icon",
-			["parent"] = "Frost Knight CD Bar",
+			["authorOptions"] = {
+			},
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -4818,8 +4829,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["authorOptions"] = {
-			},
+			["selfPoint"] = "CENTER",
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -4832,13 +4842,13 @@ WeakAurasSaved = {
 			["xOffset"] = 0,
 			["uid"] = ")RDRZT05DUV",
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["displayIcon"] = 1100170,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["stickyDuration"] = false,
 		},
 		["Kill Command"] = {
 			["iconSource"] = 0,
@@ -4858,7 +4868,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not survivalActions then\n    survivalActions = {}\nend\n\nsurvivalActions[\"Kill Command\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Kill Command\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -4875,7 +4885,7 @@ WeakAurasSaved = {
 						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(survivalActions[\"Kill Command\"].coolDown.duration, survivalActions[\"Kill Command\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Kill Command\"].coolDown.duration, myActions[\"Kill Command\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -4899,13 +4909,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["spellIds"] = {
-						},
-						["event"] = "Action Usable",
 						["events"] = "cEvent_ValidTarget",
+						["event"] = "Action Usable",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["debuffType"] = "HELPFUL",
 						["custom_type"] = "event",
 						["use_unit"] = true,
@@ -4920,7 +4930,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    survivalActions[\"Kill Command\"].coolDown.duration = 0\n    survivalActions[\"Kill Command\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Kill Command\")\n    survivalActions[\"Kill Command\"].charges = currentCharges\n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000 \n    then\n        survivalActions[\"Kill Command\"].coolDown.duration = coolDownDuration\n        survivalActions[\"Kill Command\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    survivalActions[\"Kill Command\"].priority = nil\n    local focus = UnitPower(\"player\",2)    \n    if focus <= 80\n    then        \n        survivalActions[\"Kill Command\"].priority = 8       \n    else\n        survivalActions[\"Kill Command\"].priority = 20\n    end\n    \n    return isAuraHighestPriority(\"Kill Command\", survivalActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Kill Command\"].coolDown.duration = 0\n    myActions[\"Kill Command\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Kill Command\")\n    myActions[\"Kill Command\"].charges = currentCharges\n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000 \n    then\n        myActions[\"Kill Command\"].coolDown.duration = coolDownDuration\n        myActions[\"Kill Command\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    myActions[\"Kill Command\"].priority = nil\n    local focus = UnitPower(\"player\",2)    \n    if focus <= 80\n    then        \n        myActions[\"Kill Command\"].priority = 8       \n    else\n        myActions[\"Kill Command\"].priority = 20\n    end\n    \n    return isAuraHighestPriority(\"Kill Command\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -4962,7 +4972,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        survivalActions[\"Kill Command\"].inRange = true\n    else\n        survivalActions[\"Kill Command\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        survivalActions[\"Kill Command\"].show = true\n    else\n        survivalActions[\"Kill Command\"].show = false\n    end\n    \n    return survivalActions[\"Kill Command\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        myActions[\"Kill Command\"].inRange = true\n    else\n        myActions[\"Kill Command\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Kill Command\"].show = true\n    else\n        myActions[\"Kill Command\"].show = false\n    end\n    \n    return myActions[\"Kill Command\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -5185,15 +5195,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = true",
+					["custom"] = "myActions_MindBlast = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not fireActions then\n    fireActions = {}\nend\n\nfireActions[\"Fire Blast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,   \n    [\"inRange\"] = false,\n    [\"charges\"] = 0,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Fire Blast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,   \n    [\"inRange\"] = false,\n    [\"charges\"] = 0,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = false",
+					["custom"] = "myActions_MindBlast = false",
 				},
 			},
 			["triggers"] = {
@@ -5209,11 +5219,11 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["unit"] = "player",
 						["unevent"] = "auto",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["events"] = "cEvent_ValidTarget",
-						["duration"] = "1",
 						["spellIds"] = {
 						},
+						["duration"] = "1",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["names"] = {
 						},
 						["custom_type"] = "event",
@@ -5231,7 +5241,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["custom_type"] = "status",
-						["custom"] = "function() \n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    fireActions[\"Fire Blast\"].coolDown.duration = 0\n    fireActions[\"Fire Blast\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Fire Blast\")\n    fireActions[\"Fire Blast\"].charges = currentCharges\n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < 2 and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        fireActions[\"Fire Blast\"].coolDown.duration = coolDownDuration\n        fireActions[\"Fire Blast\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end   \n    \n    \n    --priority    \n    fireActions[\"Fire Blast\"].priority = nil\n    \n    local hostStreak = 0\n    if select(1,AuraUtil.FindAuraByName(\"Heating Up\", \"player\", \"HELPFUL|PLAYER\"))\n    then \n        hostStreak = 1\n    elseif select(1,AuraUtil.FindAuraByName(\"Hot Streak!\", \"player\", \"HELPFUL|PLAYER\")) \n    then \n        hostStreak = 2\n    end\n    \n    local combustion = select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\")) \n    \n    if currentCharges >= 1 and (hostStreak == 1 or (combustion and hostStreak ~= 2))     \n    then \n        return true\n        --fireActions[\"Fire Blast\"].priority = 7                         \n    end            \n    \n    --return isAuraHighestPriority(\"Fire Blast\", fireActions)\nend",
+						["custom"] = "function() \n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Fire Blast\"].coolDown.duration = 0\n    myActions[\"Fire Blast\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Fire Blast\")\n    myActions[\"Fire Blast\"].charges = currentCharges\n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < 2 and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        myActions[\"Fire Blast\"].coolDown.duration = coolDownDuration\n        myActions[\"Fire Blast\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end   \n    \n    \n    --priority    \n    myActions[\"Fire Blast\"].priority = nil\n    \n    local hostStreak = 0\n    if select(1,AuraUtil.FindAuraByName(\"Heating Up\", \"player\", \"HELPFUL|PLAYER\"))\n    then \n        hostStreak = 1\n    elseif select(1,AuraUtil.FindAuraByName(\"Hot Streak!\", \"player\", \"HELPFUL|PLAYER\")) \n    then \n        hostStreak = 2\n    end\n    \n    local combustion = select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\")) \n    \n    if currentCharges >= 1 and (hostStreak == 1 or (combustion and hostStreak ~= 2))     \n    then \n        return true\n        --myActions[\"Fire Blast\"].priority = 7                         \n    end            \n    \n    --return isAuraHighestPriority(\"Fire Blast\", myActions)\nend",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -5277,7 +5287,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    if t[3]\n    then\n        fireActions[\"Fire Blast\"].inRange = true  \n    else\n        fireActions[\"Fire Blast\"].inRange = false\n    end        \n    \n    if t[1] and t[2]\n    then\n        fireActions[\"Fire Blast\"].show = true\n    else\n        fireActions[\"Fire Blast\"].show = false\n    end\n    \n    return fireActions[\"Fire Blast\"].show\nend\n\n\n\n",
+				["customTriggerLogic"] = "function(t)         \n    if t[3]\n    then\n        myActions[\"Fire Blast\"].inRange = true  \n    else\n        myActions[\"Fire Blast\"].inRange = false\n    end        \n    \n    if t[1] and t[2]\n    then\n        myActions[\"Fire Blast\"].show = true\n    else\n        myActions[\"Fire Blast\"].show = false\n    end\n    \n    return myActions[\"Fire Blast\"].show\nend\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -5396,7 +5406,7 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "O19ixdtioJd",
-			["icon"] = true,
+			["xOffset"] = 0,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -5404,11 +5414,11 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["regionType"] = "icon",
-			["xOffset"] = 0,
-			["cooldown"] = false,
-			["displayIcon"] = 135807,
 			["authorOptions"] = {
 			},
+			["cooldown"] = false,
+			["displayIcon"] = 135807,
+			["useTooltip"] = false,
 			["zoom"] = 0.28,
 			["width"] = 50,
 			["cooldownTextDisabled"] = false,
@@ -5422,6 +5432,26 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
+			["icon"] = true,
+			["conditions"] = {
+				{
+					["check"] = {
+						["trigger"] = 3,
+						["variable"] = "show",
+						["value"] = 0,
+					},
+					["changes"] = {
+						{
+							["value"] = true,
+							["property"] = "desaturate",
+						}, -- [1]
+					},
+				}, -- [1]
+			},
+			["information"] = {
+				["forceEvents"] = true,
+				["ignoreOptionsEventErrors"] = true,
+			},
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -5442,26 +5472,6 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["conditions"] = {
-				{
-					["check"] = {
-						["trigger"] = 3,
-						["variable"] = "show",
-						["value"] = 0,
-					},
-					["changes"] = {
-						{
-							["value"] = true,
-							["property"] = "desaturate",
-						}, -- [1]
-					},
-				}, -- [1]
-			},
-			["information"] = {
-				["forceEvents"] = true,
-				["ignoreOptionsEventErrors"] = true,
-			},
-			["useTooltip"] = false,
 		},
 		["Feral Energy"] = {
 			["sparkWidth"] = 10,
@@ -5472,16 +5482,7 @@ WeakAurasSaved = {
 			["sparkRotation"] = 0,
 			["customTextUpdate"] = "update",
 			["zoom"] = 0,
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-					["do_custom"] = true,
-					["custom"] = "feral_energy = {}\n\n\ncFunction_GetEnergyCoolDowns = function(req_energey) \n    \n    local energy = UnitPower(\"player\",3)\n    \n    if energy >= req_energey\n    then\n        feral_energy[req_energey] = nil\n        \n        print(\"Bypass\")\n        \n        return 0,0\n    end\n    \n    if feral_energy[req_energey] ~= nil and feral_energy[req_energey].expirationTime < GetTime()\n    then\n        feral_energy[req_energey] = nil\n    end\n    \n    if feral_energy[req_energey] == nil\n    then\n        \n        local regen = GetPowerRegen()\n        local duration = req_energey / regen        \n        \n        local expirationTime = ((req_energey - energy) / regen) + GetTime()\n        \n        feral_energy[req_energey] = {\n            [\"duration\"] = duration,\n            [\"expirationTime\"] = expirationTime\n        }\n        \n    end  \n    \n    --print(\"Duration: \"..feral_energy[req_energey].duration..\" Expire: \"..feral_energy[req_energey].expirationTime)\n    \n    return feral_energy[req_energey].duration, feral_energy[req_energey].expirationTime\nend",
-				},
-				["finish"] = {
-				},
-			},
+			["icon"] = false,
 			["triggers"] = {
 				{
 					["trigger"] = {
@@ -5553,26 +5554,7 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["internalVersion"] = 59,
-			["animation"] = {
-				["start"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["selfPoint"] = "CENTER",
 			["backdropInFront"] = false,
 			["authorOptions"] = {
 			},
@@ -5582,14 +5564,18 @@ WeakAurasSaved = {
 				0.0862745098039216, -- [3]
 				1, -- [4]
 			},
+			["stickyDuration"] = false,
 			["desaturate"] = false,
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+					["do_custom"] = true,
+					["custom"] = "feral_energy = {}\n\n\ncFunction_GetEnergyCoolDowns = function(req_energey) \n    \n    local energy = UnitPower(\"player\",3)\n    \n    if energy >= req_energey\n    then\n        feral_energy[req_energey] = nil\n        \n        print(\"Bypass\")\n        \n        return 0,0\n    end\n    \n    if feral_energy[req_energey] ~= nil and feral_energy[req_energey].expirationTime < GetTime()\n    then\n        feral_energy[req_energey] = nil\n    end\n    \n    if feral_energy[req_energey] == nil\n    then\n        \n        local regen = GetPowerRegen()\n        local duration = req_energey / regen        \n        \n        local expirationTime = ((req_energey - energy) / regen) + GetTime()\n        \n        feral_energy[req_energey] = {\n            [\"duration\"] = duration,\n            [\"expirationTime\"] = expirationTime\n        }\n        \n    end  \n    \n    --print(\"Duration: \"..feral_energy[req_energey].duration..\" Expire: \"..feral_energy[req_energey].expirationTime)\n    \n    return feral_energy[req_energey].duration, feral_energy[req_energey].expirationTime\nend",
+				},
+				["finish"] = {
+				},
 			},
-			["borderBackdrop"] = "Blizzard Tooltip",
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -5671,7 +5657,7 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["fontFlags"] = "OUTLINE",
+			["iconSource"] = -1,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -5738,13 +5724,13 @@ WeakAurasSaved = {
 			},
 			["sparkBlendMode"] = "ADD",
 			["useAdjustededMax"] = false,
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
+			["sparkRotationMode"] = "AUTO",
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
 				0.5, -- [4]
 			},
-			["stickyDuration"] = false,
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -5766,12 +5752,17 @@ WeakAurasSaved = {
 			["spark"] = false,
 			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
 			["auto"] = true,
-			["iconSource"] = -1,
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
+			},
 			["id"] = "Feral Energy",
-			["icon"] = false,
+			["fontFlags"] = "OUTLINE",
 			["alpha"] = 1,
 			["width"] = 250,
-			["selfPoint"] = "CENTER",
+			["borderBackdrop"] = "Blizzard Tooltip",
 			["uid"] = "iVkwqTMITEI",
 			["inverse"] = false,
 			["sparkDesature"] = false,
@@ -5782,7 +5773,26 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["sparkRotationMode"] = "AUTO",
+			["animation"] = {
+				["start"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+			},
 		},
 		["Survival"] = {
 			["backdropColor"] = {
@@ -5798,7 +5808,8 @@ WeakAurasSaved = {
 				"Survival Functions", -- [4]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["scale"] = 1,
+			["authorOptions"] = {
+			},
 			["borderEdge"] = "Square Full White",
 			["border"] = false,
 			["groupIcon"] = "461113",
@@ -5811,8 +5822,7 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["actions"] = {
 				["start"] = {
 				},
@@ -5841,7 +5851,7 @@ WeakAurasSaved = {
 			},
 			["anchorPoint"] = "CENTER",
 			["internalVersion"] = 59,
-			["xOffset"] = 0,
+			["scale"] = 1,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -5913,18 +5923,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "status",
-						["use_unit"] = true,
-						["use_absorbMode"] = true,
-						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Feral Bear Mangle\"].coolDown.duration, feralActions[\"Feral Bear Mangle\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["use_absorbMode"] = true,
+						["event"] = "Global Cooldown",
+						["unit"] = "player",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Feral Bear Mangle\"].coolDown.duration, myActions[\"Feral Bear Mangle\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -5948,7 +5958,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    feralActions[\"Feral Bear Mangle\"].coolDown.duration = 0\n    feralActions[\"Feral Bear Mangle\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Mangle\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        feralActions[\"Feral Bear Mangle\"].coolDown.duration = coolDownDuration\n        feralActions[\"Feral Bear Mangle\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    if GetShapeshiftForm() == 1\n    then\n        feralActions[\"Feral Bear Mangle\"].priority = 102 \n    else\n        feralActions[\"Feral Bear Mangle\"].priority = nil\n    end\n    \n    \n    return isAuraHighestPriority(\"Feral Bear Mangle\", feralActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Feral Bear Mangle\"].coolDown.duration = 0\n    myActions[\"Feral Bear Mangle\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Mangle\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Feral Bear Mangle\"].coolDown.duration = coolDownDuration\n        myActions[\"Feral Bear Mangle\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    if GetShapeshiftForm() == 1\n    then\n        myActions[\"Feral Bear Mangle\"].priority = 102 \n    else\n        myActions[\"Feral Bear Mangle\"].priority = nil\n    end\n    \n    \n    return isAuraHighestPriority(\"Feral Bear Mangle\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -5964,16 +5974,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "3",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -5982,7 +5992,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Feral Bear Mangle\"].inRange = true\n    else\n        feralActions[\"Feral Bear Mangle\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Feral Bear Mangle\"].show = true\n    else\n        feralActions[\"Feral Bear Mangle\"].show = false\n    end    \n    return feralActions[\"Feral Bear Mangle\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Feral Bear Mangle\"].inRange = true\n    else\n        myActions[\"Feral Bear Mangle\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Feral Bear Mangle\"].show = true\n    else\n        myActions[\"Feral Bear Mangle\"].show = false\n    end    \n    return myActions[\"Feral Bear Mangle\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -6161,7 +6171,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Feral Bear Mangle\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 102,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Feral Bear Mangle\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 102,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -6185,15 +6195,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = true",
+					["custom"] = "myActions_MindBlast = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = false",
+					["custom"] = "myActions_MindBlast = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not fireActions then\n    fireActions = {}\nend\n\nfireActions[\"Phoenix Flames\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,   \n    [\"inRange\"] = false,\n    [\"charges\"] = 0,    \n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Phoenix Flames\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,   \n    [\"inRange\"] = false,\n    [\"charges\"] = 0,    \n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -6205,7 +6215,7 @@ WeakAurasSaved = {
 						},
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(fireActions[\"Pyroblast\"].coolDown.duration, fireActions[\"Pyroblast\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Pyroblast\"].coolDown.duration, myActions[\"Pyroblast\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n",
 						["unit"] = "player",
 						["spellIds"] = {
 						},
@@ -6230,10 +6240,10 @@ WeakAurasSaved = {
 						},
 						["event"] = "Conditions",
 						["subeventPrefix"] = "SPELL",
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["use_absorbMode"] = true,
 						["unevent"] = "auto",
 						["subeventSuffix"] = "_CAST_START",
@@ -6252,7 +6262,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    fireActions[\"Phoenix Flames\"].coolDown.duration = 0\n    fireActions[\"Phoenix Flames\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Phoenix Flames\")\n    fireActions[\"Phoenix Flames\"].charges = currentCharges\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        fireActions[\"Phoenix Flames\"].coolDown.duration = coolDownDuration\n        fireActions[\"Phoenix Flames\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end     \n    \n    --priority    \n    fireActions[\"Phoenix Flames\"].priority = nil    \n    local hostStreak = 0\n    if select(1,AuraUtil.FindAuraByName(\"Heating Up\", \"player\", \"HELPFUL|PLAYER\"))\n    then \n        hostStreak = 1\n    elseif select(1,AuraUtil.FindAuraByName(\"Hot Streak!\", \"player\", \"HELPFUL|PLAYER\")) \n    then \n        hostStreak = 2\n    end\n    \n    local combustion = select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\")) \n    local runeOfPower = select(1,AuraUtil.FindAuraByName(\"Rune of Power\", \"player\", \"HELPFUL|PLAYER\"))    \n    local fireBlastCharges = fireActions[\"Fire Blast\"].charges\n    local alexstraszasFury = cFunction_HasTalent(\"Alexstrasza's Fury\")\n    \n    if (currentCharges > 0 and fireBlastCharges == 0 and ((combustion and hostStreak ~= 2) or (alexstraszasFury and hostStreak == 1)))\n    or\n    (currentCharges == 3 and runeOfPower and not combustion)    \n    then       \n        return true\n        --fireActions[\"Phoenix Flames\"].priority = 5                         \n    end     \n    \n    --return isAuraHighestPriority(\"Phoenix Flames\", fireActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Phoenix Flames\"].coolDown.duration = 0\n    myActions[\"Phoenix Flames\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Phoenix Flames\")\n    myActions[\"Phoenix Flames\"].charges = currentCharges\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        myActions[\"Phoenix Flames\"].coolDown.duration = coolDownDuration\n        myActions[\"Phoenix Flames\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end     \n    \n    --priority    \n    myActions[\"Phoenix Flames\"].priority = nil    \n    local hostStreak = 0\n    if select(1,AuraUtil.FindAuraByName(\"Heating Up\", \"player\", \"HELPFUL|PLAYER\"))\n    then \n        hostStreak = 1\n    elseif select(1,AuraUtil.FindAuraByName(\"Hot Streak!\", \"player\", \"HELPFUL|PLAYER\")) \n    then \n        hostStreak = 2\n    end\n    \n    local combustion = select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\")) \n    local runeOfPower = select(1,AuraUtil.FindAuraByName(\"Rune of Power\", \"player\", \"HELPFUL|PLAYER\"))    \n    local fireBlastCharges = myActions[\"Fire Blast\"].charges\n    local alexstraszasFury = cFunction_HasTalent(\"Alexstrasza's Fury\")\n    \n    if (currentCharges > 0 and fireBlastCharges == 0 and ((combustion and hostStreak ~= 2) or (alexstraszasFury and hostStreak == 1)))\n    or\n    (currentCharges == 3 and runeOfPower and not combustion)    \n    then       \n        return true\n        --myActions[\"Phoenix Flames\"].priority = 5                         \n    end     \n    \n    --return isAuraHighestPriority(\"Phoenix Flames\", myActions)\n    \nend",
 						["unit"] = "player",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -6282,7 +6292,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t) \n    \n    if t[4]\n    then\n        fireActions[\"Phoenix Flames\"].inRange = true  \n    else\n        fireActions[\"Phoenix Flames\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        fireActions[\"Phoenix Flames\"].show = true\n    else\n        fireActions[\"Phoenix Flames\"].show = false\n    end\n    \n    return fireActions[\"Phoenix Flames\"].show\nend\n\n\n\n",
+				["customTriggerLogic"] = "function(t) \n    \n    if t[4]\n    then\n        myActions[\"Phoenix Flames\"].inRange = true  \n    else\n        myActions[\"Phoenix Flames\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Phoenix Flames\"].show = true\n    else\n        myActions[\"Phoenix Flames\"].show = false\n    end\n    \n    return myActions[\"Phoenix Flames\"].show\nend\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -6402,10 +6412,15 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["stickyDuration"] = false,
+			["parent"] = "Fire Action Bar",
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["parent"] = "Fire Action Bar",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -6422,12 +6437,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["useTooltip"] = false,
 			["cooldownTextDisabled"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0.28,
@@ -6459,13 +6469,13 @@ WeakAurasSaved = {
 			},
 			["uid"] = "hwst1nfN3oT",
 			["inverse"] = true,
-			["icon"] = true,
+			["stickyDuration"] = false,
 			["displayIcon"] = 1392549,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["icon"] = true,
 		},
 		["Debug Next Highest Priority"] = {
 			["outline"] = "OUTLINE",
@@ -6477,7 +6487,7 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["displayText"] = "%c",
-			["customText"] = "function() \n    \n    local myActions = furyActions\n    local mytext = \"\"\n    \n    local function getTableKeys(tab)\n        local keyset = {}\n        for k,v in pairs(tab) do            \n            \n            local p = \"nil\"\n            local r = \"nil\"\n            local cd = \"nil\" \n            local cdd = \"nil\"             \n            local cdov = \"nil\" \n            local cst = \"nil\"\n            if myActions[k].priority ~= nil then p = tostring(myActions[k].priority) end\n            if myActions[k].inRange ~= nil then r = tostring(myActions[k].inRange) end\n            if myActions[k].coolDown.expirationTime ~= nil then cd = tostring(myActions[k].coolDown.expirationTime) end\n            if myActions[k].coolDown.duration ~= nil then cdd = tostring(myActions[k].coolDown.duration) end            \n            --if myActions[k].coolDown.active ~= nil then cd = tostring(myActions[k].coolDown.active) end\n            --if myActions[k].coolDown.override ~= nil then cdov = tostring(myActions[k].coolDown.override) end\n            if myActions[k].casting.active ~= nil then cst = tostring(myActions[k].casting.active) end\n            \n            local mynext = tostring(isAuraHighestPriority(k, myActions))\n            \n            mytext = mytext..k..\"\\n                     Priority: \"..p..\" InRange: \"..r\n            --..\" CoolDownDuration:\"..cdd\n            --..\" Override:\"..cdov\n            ..\" Casting:\"..cst.. \" Next: \"..mynext..\" CoolDown: \"..cd\n            ..\"\\n\"            \n        end\n    end\n    \n    local mysort = function(a,b)\n        return a.priority < b.priority\n    end\n    \n    if myActions ~= nil\n    then\n        table.sort(myActions, mysort )\n        getTableKeys(myActions)\n        return mytext    \n    end    \nend\n\n\n\n\n\n\n",
+			["customText"] = "function() \n    \n    local myActions = myActions\n    local mytext = \"\"\n    \n    local function getTableKeys(tab)\n        local keyset = {}\n        for k,v in pairs(tab) do            \n            \n            local p = \"nil\"\n            local r = \"nil\"\n            local cd = \"nil\" \n            local cdd = \"nil\"             \n            local cdov = \"nil\" \n            local cst = \"nil\"\n            if myActions[k].priority ~= nil then p = tostring(myActions[k].priority) end\n            if myActions[k].inRange ~= nil then r = tostring(myActions[k].inRange) end\n            if myActions[k].coolDown.expirationTime ~= nil then cd = tostring(myActions[k].coolDown.expirationTime) end\n            if myActions[k].coolDown.duration ~= nil then cdd = tostring(myActions[k].coolDown.duration) end            \n            --if myActions[k].coolDown.active ~= nil then cd = tostring(myActions[k].coolDown.active) end\n            --if myActions[k].coolDown.override ~= nil then cdov = tostring(myActions[k].coolDown.override) end\n            if myActions[k].casting.active ~= nil then cst = tostring(myActions[k].casting.active) end\n            \n            local mynext = tostring(isAuraHighestPriority(k, myActions))\n            \n            mytext = mytext..k..\"\\n                     Priority: \"..p..\" InRange: \"..r\n            --..\" CoolDownDuration:\"..cdd\n            --..\" Override:\"..cdov\n            ..\" Casting:\"..cst.. \" Next: \"..mynext..\" CoolDown: \"..cd\n            ..\"\\n\"            \n        end\n    end\n    \n    local mysort = function(a,b)\n        return a.priority < b.priority\n    end\n    \n    if myActions ~= nil\n    then\n        table.sort(myActions, mysort )\n        getTableKeys(myActions)\n        return mytext    \n    end    \nend\n\n\n\n\n\n\n",
 			["shadowYOffset"] = -1,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -6541,7 +6551,7 @@ WeakAurasSaved = {
 			},
 			["desaturate"] = false,
 			["font"] = "Friz Quadrata TT",
-			["wordWrap"] = "WordWrap",
+			["alpha"] = 1,
 			["subRegions"] = {
 				{
 					["type"] = "subbackground",
@@ -6570,24 +6580,24 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["xOffset"] = 223.3333892822266,
+			["displayText_format_p_time_mod_rate"] = true,
 			["information"] = {
 				["forceEvents"] = true,
 			},
 			["fontSize"] = 12,
 			["conditions"] = {
 			},
-			["cooldownEdge"] = false,
+			["icon"] = true,
 			["shadowXOffset"] = 1,
-			["displayText_format_p_time_mod_rate"] = true,
-			["selfPoint"] = "BOTTOM",
+			["wordWrap"] = "WordWrap",
+			["displayText_format_c_format"] = "none",
 			["config"] = {
 			},
 			["regionType"] = "text",
-			["icon"] = true,
+			["cooldownEdge"] = false,
 			["anchorFrameType"] = "SCREEN",
-			["frameStrata"] = 1,
-			["yOffset"] = -327.3331604003906,
+			["useCooldownModRate"] = true,
+			["xOffset"] = 223.3333892822266,
 			["displayText_format_p_time_precision"] = 1,
 			["parent"] = "Usefull meta functions",
 			["cooldownTextDisabled"] = false,
@@ -6595,14 +6605,14 @@ WeakAurasSaved = {
 			["justify"] = "LEFT",
 			["displayText_format_p_time_legacy_floor"] = true,
 			["id"] = "Debug Next Highest Priority",
-			["useCooldownModRate"] = true,
-			["alpha"] = 1,
-			["width"] = 64,
-			["displayText_format_p_time_dynamic_threshold"] = 60,
-			["uid"] = "dT4Xx0lJvFl",
-			["inverse"] = false,
 			["authorOptions"] = {
 			},
+			["frameStrata"] = 1,
+			["width"] = 64,
+			["yOffset"] = -327.3331604003906,
+			["uid"] = "dT4Xx0lJvFl",
+			["inverse"] = false,
+			["displayText_format_p_time_dynamic_threshold"] = 60,
 			["shadowColor"] = {
 				0, -- [1]
 				0, -- [2]
@@ -6611,7 +6621,7 @@ WeakAurasSaved = {
 			},
 			["fixedWidth"] = 710,
 			["cooldown"] = true,
-			["displayText_format_c_format"] = "none",
+			["selfPoint"] = "BOTTOM",
 		},
 		["Void Eruption"] = {
 			["iconSource"] = 0,
@@ -6624,15 +6634,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = true",
+					["custom"] = "",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\n\nshadowActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\n\nmyActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = false",
+					["custom"] = "",
 				},
 			},
 			["triggers"] = {
@@ -6674,10 +6684,10 @@ WeakAurasSaved = {
 						["unevent"] = "auto",
 						["event"] = "Conditions",
 						["custom_hide"] = "custom",
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["duration"] = "1",
 						["names"] = {
 						},
@@ -6747,7 +6757,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    local name, text, texture, startTimeMS, endTimeMS, isTradeSkill, castID, notInterruptible, spellId = UnitCastingInfo(\"player\")\n    if name ~= nil and name == \"Void Eruption\"\n    then\n        shadowActions[\"Void Eruption\"].casting.active = true\n        --Supper Hack to deal with weird variable delay with casting spell aura\n        shadowActions[\"Void Eruption\"].casting.expirationTime = (endTimeMS / 1000) + .15        \n    elseif shadowActions[\"Void Eruption\"].casting.expirationTime ~= nil\n    and (shadowActions[\"Void Eruption\"].casting.expirationTime < GetTime() or shadowActions[\"Void Eruption\"].casting.expirationTime - .2 > GetTime())\n    then\n        shadowActions[\"Void Eruption\"].casting.active = false\n        shadowActions[\"Void Eruption\"].casting.expirationTime = nil\n    end \n    \n    return shadowActions[\"Void Eruption\"].casting.active\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    local name, text, texture, startTimeMS, endTimeMS, isTradeSkill, castID, notInterruptible, spellId = UnitCastingInfo(\"player\")\n    if name ~= nil and name == \"Void Eruption\"\n    then\n        myActions[\"Void Eruption\"].casting.active = true\n        --Supper Hack to deal with weird variable delay with casting spell aura\n        myActions[\"Void Eruption\"].casting.expirationTime = (endTimeMS / 1000) + .15        \n    elseif myActions[\"Void Eruption\"].casting.expirationTime ~= nil\n    and (myActions[\"Void Eruption\"].casting.expirationTime < GetTime() or myActions[\"Void Eruption\"].casting.expirationTime - .2 > GetTime())\n    then\n        myActions[\"Void Eruption\"].casting.active = false\n        myActions[\"Void Eruption\"].casting.expirationTime = nil\n    end \n    \n    return myActions[\"Void Eruption\"].casting.active\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -7224,18 +7234,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["custom_type"] = "status",
 						["unevent"] = "auto",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Starsurge\"].coolDown.duration, feralActions[\"Starsurge\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Starsurge\"].coolDown.duration, myActions[\"Starsurge\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -7274,7 +7284,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["unit"] = "player",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    feralActions[\"Starsurge\"].priority = nil\n    \n    --coolDown        \n    feralActions[\"Starsurge\"].coolDown.duration = 0\n    feralActions[\"Starsurge\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Starsurge\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        feralActions[\"Starsurge\"].coolDown.duration = coolDownDuration\n        feralActions[\"Starsurge\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    -- Not in Bear\n    if GetShapeshiftForm() ~= 1\n    then\n        feralActions[\"Starsurge\"].priority = 20\n    end\n    return isAuraHighestPriority(\"Starsurge\", feralActions)    \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    myActions[\"Starsurge\"].priority = nil\n    \n    --coolDown        \n    myActions[\"Starsurge\"].coolDown.duration = 0\n    myActions[\"Starsurge\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Starsurge\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Starsurge\"].coolDown.duration = coolDownDuration\n        myActions[\"Starsurge\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    -- Not in Bear\n    if GetShapeshiftForm() ~= 1\n    then\n        myActions[\"Starsurge\"].priority = 20\n    end\n    return isAuraHighestPriority(\"Starsurge\", myActions)    \nend\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -7290,16 +7300,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "40",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["range"] = "40",
+						["event"] = "Range Check",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -7308,7 +7318,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Starsurge\"].inRange = true\n    else\n        feralActions[\"Starsurge\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Starsurge\"].show = true\n    else\n        feralActions[\"Starsurge\"].show = false\n    end    \n    return feralActions[\"Starsurge\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Starsurge\"].inRange = true\n    else\n        myActions[\"Starsurge\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Starsurge\"].show = true\n    else\n        myActions[\"Starsurge\"].show = false\n    end    \n    return myActions[\"Starsurge\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -7451,7 +7461,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Starsurge\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 20,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Starsurge\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 20,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["authorOptions"] = {
@@ -7580,7 +7590,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Retribution",
+			["internalVersion"] = 59,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -7608,7 +7618,7 @@ WeakAurasSaved = {
 				},
 			},
 			["animate"] = false,
-			["rotation"] = 0,
+			["groupIcon"] = 135873,
 			["scale"] = 1,
 			["useLimit"] = false,
 			["border"] = false,
@@ -7616,8 +7626,8 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["fullCircle"] = true,
-			["rowSpace"] = 1,
+			["rotation"] = 0,
+			["arcLength"] = 360,
 			["constantFactor"] = "RADIUS",
 			["config"] = {
 			},
@@ -7631,14 +7641,14 @@ WeakAurasSaved = {
 			["authorOptions"] = {
 			},
 			["borderInset"] = 1,
-			["internalVersion"] = 59,
-			["arcLength"] = 360,
+			["rowSpace"] = 1,
+			["fullCircle"] = true,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["groupIcon"] = 135873,
+			["parent"] = "Retribution",
 		},
 		["header_mapzone"] = {
 			["outline"] = "OUTLINE",
@@ -7668,13 +7678,13 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["names"] = {
 						},
-						["spellIds"] = {
-						},
-						["event"] = "Health",
 						["events"] = "PLAYER_ENTERING_WORLD,SCENARIO_POI_UPDATE",
+						["event"] = "Health",
+						["custom"] = "function(...)\n    if IsInJailersTower() then \n        return true\n    end\nend",
 						["customDuration"] = "\n\n\n",
 						["customName"] = "function ()\n    local uiMapID = C_Map.GetBestMapForUnit(\"player\")\n    local uiMapDetails = C_Map.GetMapInfo(uiMapID)\n    local zoneName = uiMapDetails.name\n    \n    return zoneName\nend\n\n\n",
-						["custom"] = "function(...)\n    if IsInJailersTower() then \n        return true\n    end\nend",
+						["spellIds"] = {
+						},
 						["dynamicDuration"] = false,
 						["check"] = "event",
 						["subeventPrefix"] = "SPELL",
@@ -7710,7 +7720,7 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["semver"] = "1.0.9",
+			["justify"] = "LEFT",
 			["desaturate"] = false,
 			["color"] = {
 				1, -- [1]
@@ -7762,10 +7772,10 @@ WeakAurasSaved = {
 			["authorOptions"] = {
 			},
 			["displayText_format_p_time_precision"] = 1,
-			["auto"] = true,
+			["semver"] = "1.0.9",
 			["cooldownTextDisabled"] = false,
 			["zoom"] = 0,
-			["justify"] = "LEFT",
+			["auto"] = true,
 			["tocversion"] = 90001,
 			["id"] = "header_mapzone",
 			["selfPoint"] = "LEFT",
@@ -7810,7 +7820,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["unit"] = "player",
-						["customDuration"] = "function()  \n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(retActions[\"Crusader Strike\"].coolDown.duration, retActions[\"Crusader Strike\"].coolDown.expirationTime, \"cast_gcd\")          \n    \nend \n\n\n\n",
+						["customDuration"] = "function()  \n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(myActions[\"Crusader Strike\"].coolDown.duration, myActions[\"Crusader Strike\"].coolDown.expirationTime, \"cast_gcd\")          \n    \nend \n\n\n\n",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -7834,13 +7844,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["spellIds"] = {
-						},
-						["event"] = "Action Usable",
 						["events"] = "cEvent_ValidTarget",
+						["event"] = "Action Usable",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["debuffType"] = "HELPFUL",
 						["custom_type"] = "event",
 						["subeventPrefix"] = "SPELL",
@@ -7856,7 +7866,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    retActions[\"Crusader Strike\"].coolDown.duration = 0\n    retActions[\"Crusader Strike\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Crusader Strike\")\n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        retActions[\"Crusader Strike\"].coolDown.duration = coolDownDuration\n        retActions[\"Crusader Strike\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end \n    \n    --priority\n    if UnitPower(\"player\",9) <= 4 \n    then    \n        if currentCharges == 2\n        then\n            retActions[\"Crusader Strike\"].priority = 6                                              \n        else\n            retActions[\"Crusader Strike\"].priority = 9\n        end \n    else\n        retActions[\"Crusader Strike\"].priority = nil\n    end     \n    \n    return isAuraHighestPriority(\"Crusader Strike\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Crusader Strike\"].coolDown.duration = 0\n    myActions[\"Crusader Strike\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Crusader Strike\")\n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        myActions[\"Crusader Strike\"].coolDown.duration = coolDownDuration\n        myActions[\"Crusader Strike\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end \n    \n    --priority\n    if UnitPower(\"player\",9) <= 4 \n    then    \n        if currentCharges == 2\n        then\n            myActions[\"Crusader Strike\"].priority = 6                                              \n        else\n            myActions[\"Crusader Strike\"].priority = 9\n        end \n    else\n        myActions[\"Crusader Strike\"].priority = nil\n    end     \n    \n    return isAuraHighestPriority(\"Crusader Strike\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -7885,7 +7895,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        retActions[\"Crusader Strike\"].inRange = true\n    else\n        retActions[\"Crusader Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Crusader Strike\"].show = true\n    else\n        retActions[\"Crusader Strike\"].show = false\n    end\n    \n    return retActions[\"Crusader Strike\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Crusader Strike\"].inRange = true\n    else\n        myActions[\"Crusader Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Crusader Strike\"].show = true\n    else\n        myActions[\"Crusader Strike\"].show = false\n    end\n    \n    return myActions[\"Crusader Strike\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -8005,7 +8015,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Crusader Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Crusader Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -8090,7 +8100,7 @@ WeakAurasSaved = {
 				"Fire Functions", -- [4]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["xOffset"] = 0,
+			["scale"] = 1,
 			["borderEdge"] = "Square Full White",
 			["border"] = false,
 			["yOffset"] = 0,
@@ -8103,8 +8113,7 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["actions"] = {
 				["start"] = {
 				},
@@ -8133,7 +8142,8 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["internalVersion"] = 59,
-			["scale"] = 1,
+			["authorOptions"] = {
+			},
 			["selfPoint"] = "CENTER",
 			["id"] = "Fire Mage",
 			["borderOffset"] = 4,
@@ -8350,12 +8360,28 @@ WeakAurasSaved = {
 			},
 			["fontSize"] = 12,
 			["width"] = 40,
-			["parent"] = "Usefull meta functions",
-			["selfPoint"] = "CENTER",
-			["automaticWidth"] = "Auto",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+					["do_custom"] = true,
+					["custom"] = "if not coolDown then\n    coolDown = {\n        [\"gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },\n        [\"cast\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0,\n            [\"name\"] = nil,\n            [\"spellId\"] = nil,\n            [\"castID\"] = nil\n        },\n        [\"channel\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0,\n            [\"name\"] = nil,           \n            [\"spellId\"] = nil\n        },\n        [\"cast_channel\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },        \n        [\"cast_gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },\n        [\"channel_gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },\n        [\"cast_channel_gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },        \n        [\"longest\"] = nil\n    }\nend\n\n--Get the Duration and ExpirationTime for when the spell will be ready\ncFunction_SpellReadyTime = function(coolDownDuration, coolDownExpirationTime, level)        \n    \n    --gcd\n    if level == \"gcd\" and coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"gcd\" and coolDownExpirationTime <= coolDown.gcd.expirationTime\n    then\n        return coolDown.gcd.duration , coolDown.gcd.expirationTime\n    end\n    \n    --cast\n    if level == \"cast\" and coolDownExpirationTime > coolDown.cast.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast\" and coolDownExpirationTime <= coolDown.cast.expirationTime\n    then\n        return coolDown.cast.duration , coolDown.cast.expirationTime         \n    end \n    \n    --channel\n    if level == \"channel\" and coolDownExpirationTime > coolDown.channel.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"channel\" and coolDownExpirationTime <= coolDown.channel.expirationTime\n    then\n        return coolDown.channel.duration , coolDown.channel.expirationTime         \n    end  \n    \n    --cast_channel\n    if level == \"cast_channel\" and coolDownExpirationTime > coolDown.cast_channel.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast_channel\" and coolDownExpirationTime <= coolDown.cast_channel.expirationTime\n    then\n        return coolDown.cast_channel.duration , coolDown.cast_channel.expirationTime         \n    end \n    \n    --cast_gcd\n    if level == \"cast_gcd\" and coolDownExpirationTime > coolDown.cast_gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast_gcd\" and coolDownExpirationTime <= coolDown.cast_gcd.expirationTime\n    then        \n        return coolDown.cast_gcd.duration , coolDown.cast_gcd.expirationTime         \n    end \n    \n    --channel_gcd\n    if level == \"channel_gcd\" and coolDownExpirationTime > coolDown.channel_gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"channel_gcd\" and coolDownExpirationTime <= coolDown.channel_gcd.expirationTime\n    then\n        return coolDown.channel_gcd.duration , coolDown.channel_gcd.expirationTime         \n    end \n    \n    --cast_channel_gcd\n    if level == \"cast_channel_gcd\" and coolDownExpirationTime > coolDown.cast_channel_gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast_channel_gcd\" and coolDownExpirationTime <= coolDown.cast_channel_gcd.expirationTime\n    then      \n        return coolDown.cast_channel_gcd.duration , coolDown.cast_channel_gcd.expirationTime         \n    end \n    \nend\n\ncFunction_CalCoolDowns = function()\n    ----gcd legacy  \n    --local gcdState = WeakAuras.GetTriggerStateForTrigger(\"Cool Downs\", 1)\n    --\n    --if gcdState[\"\"] ~= nil and  gcdState[\"\"].show then\n    --    coolDown.gcd.duration = gcdState[\"\"].duration\n    --    coolDown.gcd.expirationTime = gcdState[\"\"].expirationTime\n    --end\n    --if coolDown.gcd.duration == nil then\n    --    coolDown.gcd.duration = 0       \n    --end\n    --if coolDown.gcd.expirationTime == nil then\n    --    coolDown.gcd.expirationTime = 0       \n    --end    \n    --\n    ----Cast legacy\n    --coolDown.cast.duration = 0\n    --coolDown.cast.expirationTime = 0    \n    --local castState = WeakAuras.GetTriggerStateForTrigger(\"Cool Downs\", 2)\n    --if castState[\"\"] ~= nil and castState[\"\"].show then\n    --    coolDown.cast.duration = castState[\"\"].duration\n    --    coolDown.cast.expirationTime = castState[\"\"].expirationTime\n    --end\n    --if coolDown.cast.duration == nil then\n    --    coolDown.cast.duration = 0       \n    --end\n    --if coolDown.cast.expirationTime == nil then\n    --    coolDown.cast.expirationTime = 0       \n    --end\n    --\n    ----Channel legacy\n    --coolDown.channel.duration = 0 \n    --coolDown.channel.expirationTime = 0\n    --local channelState = WeakAuras.GetTriggerStateForTrigger(\"Cool Downs\", 3)\n    --if channelState[\"\"] ~= nil and channelState[\"\"].show then\n    --    coolDown.channel.duration = channelState[\"\"].duration\n    --    coolDown.channel.expirationTime = channelState[\"\"].expirationTime\n    --end\n    --if coolDown.channel.duration == nil then\n    --    coolDown.channel.duration = 0       \n    --end\n    --if coolDown.channel.expirationTime == nil then\n    --    coolDown.channel.expirationTime = 0       \n    --end\n    \n    \n    --gcd \n    local start, duration, _, _ = GetSpellCooldown(61304)\n    coolDown.gcd.duration = duration\n    coolDown.gcd.expirationTime = start + duration   \n    \n    --Cast    \n    local name, _,_, startTimeMS, endTimeMS, _, castID, _, spellId = UnitCastingInfo(\"player\")\n    if coolDown.cast.name ~= nil and name == nil \n    and(GetTime() < coolDown.cast.expirationTime or coolDown.cast.expirationTime + .3 < GetTime())\n    then\n        coolDown.cast.duration = 0\n        coolDown.cast.expirationTime = 0\n        coolDown.cast.name = nil \n        coolDown.cast.spellId = nil \n    elseif name ~=nil and (name ~= coolDown.cast.name or castID ~= coolDown.cast.castID)\n    then        \n        coolDown.cast.duration = (endTimeMS - startTimeMS) / 1000\n        coolDown.cast.expirationTime = (endTimeMS / 1000) --- .2 -- This small adjustment fixes cooldown sweep jitter caused by server updates (I Think)\n        coolDown.cast.name = name\n        coolDown.cast.spellId = spellId\n    end\n    \n    --Channel    \n    local name, _,_, startTimeMS, endTimeMS, _,_,_, spellId = UnitChannelInfo(\"player\")\n    if coolDown.channel.name ~= nil and name == nil \n    and(GetTime() < coolDown.channel.expirationTime or coolDown.channel.expirationTime + .3 < GetTime())\n    then\n        coolDown.channel.duration = 0 \n        coolDown.channel.expirationTime = 0\n        coolDown.channel.name = nil\n        coolDown.channel.spellId = nil \n    elseif name ~=nil\n    then\n        coolDown.channel.duration = (endTimeMS - startTimeMS) / 1000\n        coolDown.channel.expirationTime = (endTimeMS / 1000) --- .2 -- This small adjustment fixes cooldown sweep jitter caused by server updates (I Think)\n        coolDown.cast.name = name\n        coolDown.channel.name = name\n        coolDown.channel.spellId = spellId\n    end\n    \n    --Cast + GCD\n    if coolDown.cast.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.cast_gcd.duration = coolDown.cast.duration\n        coolDown.cast_gcd.expirationTime = coolDown.cast.expirationTime    \n    end\n    if coolDown.cast.expirationTime <= coolDown.gcd.expirationTime then\n        coolDown.cast_gcd.duration = coolDown.gcd.duration\n        coolDown.cast_gcd.expirationTime = coolDown.gcd.expirationTime   \n    end\n    \n    --Channel + GCD\n    if coolDown.channel.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.channel_gcd.duration = coolDown.channel.duration\n        coolDown.channel_gcd.expirationTime = coolDown.channel.expirationTime    \n    end\n    if coolDown.channel.expirationTime <= coolDown.gcd.expirationTime then\n        coolDown.channel_gcd.duration = coolDown.gcd.duration\n        coolDown.channel_gcd.expirationTime = coolDown.gcd.expirationTime   \n    end\n    \n    --Channel + Cast + GCD, Which is longer?\n    coolDown.cast_channel_gcd.duration = 0\n    coolDown.cast_channel_gcd.expirationTime = 0        \n    if coolDown.cast.expirationTime > coolDown.channel.expirationTime and coolDown.cast.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.longest = \"cast\"\n        coolDown.cast_channel_gcd.duration = coolDown.cast.duration\n        coolDown.cast_channel_gcd.expirationTime = coolDown.cast.expirationTime \n    elseif coolDown.channel.expirationTime > coolDown.cast.expirationTime and coolDown.channel.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.longest = \"channel\"\n        coolDown.cast_channel_gcd.duration = coolDown.channel.duration\n        coolDown.cast_channel_gcd.expirationTime = coolDown.channel.expirationTime        \n    elseif coolDown.gcd.expirationTime ~= 0 \n    and coolDown.gcd.expirationTime >= coolDown.cast.expirationTime and coolDown.gcd.expirationTime >= coolDown.channel.expirationTime then\n        coolDown.longest = \"gcd\"\n        coolDown.cast_channel_gcd.duration = coolDown.gcd.duration\n        coolDown.cast_channel_gcd.expirationTime = coolDown.gcd.expirationTime\n    else\n        coolDown.longest = nil\n    end \n    \n    return coolDown.cast_channel_gcd.duration, coolDown.cast_channel_gcd.expirationTime    \nend",
+				},
+			},
+			["xOffset"] = 100,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0, -- [4]
+			},
 			["cooldown"] = false,
 			["regionType"] = "icon",
-			["fixedWidth"] = 200,
+			["conditions"] = {
+			},
+			["selfPoint"] = "CENTER",
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -8376,7 +8402,6 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["xOffset"] = 100,
 			["uid"] = "dQhJroF19D(",
 			["alpha"] = 1,
 			["auto"] = false,
@@ -8387,32 +8412,17 @@ WeakAurasSaved = {
 			["frameStrata"] = 1,
 			["useCooldownModRate"] = true,
 			["anchorFrameType"] = "SCREEN",
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-					["do_custom"] = true,
-					["custom"] = "if not coolDown then\n    coolDown = {\n        [\"gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },\n        [\"cast\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0,\n            [\"name\"] = nil,\n            [\"spellId\"] = nil,\n            [\"castID\"] = nil\n        },\n        [\"channel\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0,\n            [\"name\"] = nil,           \n            [\"spellId\"] = nil\n        },\n        [\"cast_channel\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },        \n        [\"cast_gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },\n        [\"channel_gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },\n        [\"cast_channel_gcd\"] = {\n            [\"duration\"] = 0,\n            [\"expirationTime\"] = 0\n        },        \n        [\"longest\"] = nil\n    }\nend\n\n--Get the Duration and ExpirationTime for when the spell will be ready\ncFunction_SpellReadyTime = function(coolDownDuration, coolDownExpirationTime, level)        \n    \n    --gcd\n    if level == \"gcd\" and coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"gcd\" and coolDownExpirationTime <= coolDown.gcd.expirationTime\n    then\n        return coolDown.gcd.duration , coolDown.gcd.expirationTime\n    end\n    \n    --cast\n    if level == \"cast\" and coolDownExpirationTime > coolDown.cast.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast\" and coolDownExpirationTime <= coolDown.cast.expirationTime\n    then\n        return coolDown.cast.duration , coolDown.cast.expirationTime         \n    end \n    \n    --channel\n    if level == \"channel\" and coolDownExpirationTime > coolDown.channel.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"channel\" and coolDownExpirationTime <= coolDown.channel.expirationTime\n    then\n        return coolDown.channel.duration , coolDown.channel.expirationTime         \n    end  \n    \n    --cast_channel\n    if level == \"cast_channel\" and coolDownExpirationTime > coolDown.cast_channel.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast_channel\" and coolDownExpirationTime <= coolDown.cast_channel.expirationTime\n    then\n        return coolDown.cast_channel.duration , coolDown.cast_channel.expirationTime         \n    end \n    \n    --cast_gcd\n    if level == \"cast_gcd\" and coolDownExpirationTime > coolDown.cast_gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast_gcd\" and coolDownExpirationTime <= coolDown.cast_gcd.expirationTime\n    then        \n        return coolDown.cast_gcd.duration , coolDown.cast_gcd.expirationTime         \n    end \n    \n    --channel_gcd\n    if level == \"channel_gcd\" and coolDownExpirationTime > coolDown.channel_gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"channel_gcd\" and coolDownExpirationTime <= coolDown.channel_gcd.expirationTime\n    then\n        return coolDown.channel_gcd.duration , coolDown.channel_gcd.expirationTime         \n    end \n    \n    --cast_channel_gcd\n    if level == \"cast_channel_gcd\" and coolDownExpirationTime > coolDown.cast_channel_gcd.expirationTime \n    then\n        return coolDownDuration, coolDownExpirationTime\n    elseif level == \"cast_channel_gcd\" and coolDownExpirationTime <= coolDown.cast_channel_gcd.expirationTime\n    then      \n        return coolDown.cast_channel_gcd.duration , coolDown.cast_channel_gcd.expirationTime         \n    end \n    \nend\n\ncFunction_CalCoolDowns = function()\n    ----gcd legacy  \n    --local gcdState = WeakAuras.GetTriggerStateForTrigger(\"Cool Downs\", 1)\n    --\n    --if gcdState[\"\"] ~= nil and  gcdState[\"\"].show then\n    --    coolDown.gcd.duration = gcdState[\"\"].duration\n    --    coolDown.gcd.expirationTime = gcdState[\"\"].expirationTime\n    --end\n    --if coolDown.gcd.duration == nil then\n    --    coolDown.gcd.duration = 0       \n    --end\n    --if coolDown.gcd.expirationTime == nil then\n    --    coolDown.gcd.expirationTime = 0       \n    --end    \n    --\n    ----Cast legacy\n    --coolDown.cast.duration = 0\n    --coolDown.cast.expirationTime = 0    \n    --local castState = WeakAuras.GetTriggerStateForTrigger(\"Cool Downs\", 2)\n    --if castState[\"\"] ~= nil and castState[\"\"].show then\n    --    coolDown.cast.duration = castState[\"\"].duration\n    --    coolDown.cast.expirationTime = castState[\"\"].expirationTime\n    --end\n    --if coolDown.cast.duration == nil then\n    --    coolDown.cast.duration = 0       \n    --end\n    --if coolDown.cast.expirationTime == nil then\n    --    coolDown.cast.expirationTime = 0       \n    --end\n    --\n    ----Channel legacy\n    --coolDown.channel.duration = 0 \n    --coolDown.channel.expirationTime = 0\n    --local channelState = WeakAuras.GetTriggerStateForTrigger(\"Cool Downs\", 3)\n    --if channelState[\"\"] ~= nil and channelState[\"\"].show then\n    --    coolDown.channel.duration = channelState[\"\"].duration\n    --    coolDown.channel.expirationTime = channelState[\"\"].expirationTime\n    --end\n    --if coolDown.channel.duration == nil then\n    --    coolDown.channel.duration = 0       \n    --end\n    --if coolDown.channel.expirationTime == nil then\n    --    coolDown.channel.expirationTime = 0       \n    --end\n    \n    \n    --gcd \n    local start, duration, _, _ = GetSpellCooldown(61304)\n    coolDown.gcd.duration = duration\n    coolDown.gcd.expirationTime = start + duration   \n    \n    --Cast    \n    local name, _,_, startTimeMS, endTimeMS, _, castID, _, spellId = UnitCastingInfo(\"player\")\n    if coolDown.cast.name ~= nil and name == nil \n    and(GetTime() < coolDown.cast.expirationTime or coolDown.cast.expirationTime + .3 < GetTime())\n    then\n        coolDown.cast.duration = 0\n        coolDown.cast.expirationTime = 0\n        coolDown.cast.name = nil \n        coolDown.cast.spellId = nil \n    elseif name ~=nil and (name ~= coolDown.cast.name or castID ~= coolDown.cast.castID)\n    then        \n        coolDown.cast.duration = (endTimeMS - startTimeMS) / 1000\n        coolDown.cast.expirationTime = (endTimeMS / 1000) --- .2 -- This small adjustment fixes cooldown sweep jitter caused by server updates (I Think)\n        coolDown.cast.name = name\n        coolDown.cast.spellId = spellId\n    end\n    \n    --Channel    \n    local name, _,_, startTimeMS, endTimeMS, _,_,_, spellId = UnitChannelInfo(\"player\")\n    if coolDown.channel.name ~= nil and name == nil \n    and(GetTime() < coolDown.channel.expirationTime or coolDown.channel.expirationTime + .3 < GetTime())\n    then\n        coolDown.channel.duration = 0 \n        coolDown.channel.expirationTime = 0\n        coolDown.channel.name = nil\n        coolDown.channel.spellId = nil \n    elseif name ~=nil\n    then\n        coolDown.channel.duration = (endTimeMS - startTimeMS) / 1000\n        coolDown.channel.expirationTime = (endTimeMS / 1000) --- .2 -- This small adjustment fixes cooldown sweep jitter caused by server updates (I Think)\n        coolDown.cast.name = name\n        coolDown.channel.name = name\n        coolDown.channel.spellId = spellId\n    end\n    \n    --Cast + GCD\n    if coolDown.cast.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.cast_gcd.duration = coolDown.cast.duration\n        coolDown.cast_gcd.expirationTime = coolDown.cast.expirationTime    \n    end\n    if coolDown.cast.expirationTime <= coolDown.gcd.expirationTime then\n        coolDown.cast_gcd.duration = coolDown.gcd.duration\n        coolDown.cast_gcd.expirationTime = coolDown.gcd.expirationTime   \n    end\n    \n    --Channel + GCD\n    if coolDown.channel.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.channel_gcd.duration = coolDown.channel.duration\n        coolDown.channel_gcd.expirationTime = coolDown.channel.expirationTime    \n    end\n    if coolDown.channel.expirationTime <= coolDown.gcd.expirationTime then\n        coolDown.channel_gcd.duration = coolDown.gcd.duration\n        coolDown.channel_gcd.expirationTime = coolDown.gcd.expirationTime   \n    end\n    \n    --Channel + Cast + GCD, Which is longer?\n    coolDown.cast_channel_gcd.duration = 0\n    coolDown.cast_channel_gcd.expirationTime = 0        \n    if coolDown.cast.expirationTime > coolDown.channel.expirationTime and coolDown.cast.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.longest = \"cast\"\n        coolDown.cast_channel_gcd.duration = coolDown.cast.duration\n        coolDown.cast_channel_gcd.expirationTime = coolDown.cast.expirationTime \n    elseif coolDown.channel.expirationTime > coolDown.cast.expirationTime and coolDown.channel.expirationTime > coolDown.gcd.expirationTime then\n        coolDown.longest = \"channel\"\n        coolDown.cast_channel_gcd.duration = coolDown.channel.duration\n        coolDown.cast_channel_gcd.expirationTime = coolDown.channel.expirationTime        \n    elseif coolDown.gcd.expirationTime ~= 0 \n    and coolDown.gcd.expirationTime >= coolDown.cast.expirationTime and coolDown.gcd.expirationTime >= coolDown.channel.expirationTime then\n        coolDown.longest = \"gcd\"\n        coolDown.cast_channel_gcd.duration = coolDown.gcd.duration\n        coolDown.cast_channel_gcd.expirationTime = coolDown.gcd.expirationTime\n    else\n        coolDown.longest = nil\n    end \n    \n    return coolDown.cast_channel_gcd.duration, coolDown.cast_channel_gcd.expirationTime    \nend",
-				},
-			},
+			["fixedWidth"] = 200,
 			["config"] = {
 			},
 			["inverse"] = true,
-			["conditions"] = {
-			},
+			["automaticWidth"] = "Auto",
 			["displayIcon"] = 237538,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0, -- [4]
-			},
+			["parent"] = "Usefull meta functions",
 		},
 		["Death and Decay"] = {
 			["iconSource"] = 0,
@@ -8436,7 +8446,7 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
 						["use_unit"] = true,
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(frostKnightActions[\"Death and Decay\"].coolDown.duration, frostKnightActions[\"Death and Decay\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Death and Decay\"].coolDown.duration, myActions[\"Death and Decay\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -8459,13 +8469,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "event",
-						["spellIds"] = {
-						},
-						["event"] = "Action Usable",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["event"] = "Action Usable",
+						["events"] = "cEvent_ValidTarget",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["events"] = "cEvent_ValidTarget",
+						["spellIds"] = {
+						},
 						["debuffType"] = "HELPFUL",
 						["subeventSuffix"] = "_CAST_START",
 						["names"] = {
@@ -8481,7 +8491,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    frostKnightActions[\"Death and Decay\"].coolDown.duration = 0\n    frostKnightActions[\"Death and Decay\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Death and Decay\")\n    local runes = cFunction_GetRunesCount()\n    local coolDownDuration_Runes = 0\n    local coolDownExpirationTime_Runes = 0\n    local runes = cFunction_GetRunesCount()\n    if runes == 0\n    then\n        coolDownDuration_Runes, coolDownExpirationTime_Runes = cFunction_GetRunesCoolDowns(1)\n    end           \n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart + coolDownDuration > coolDownExpirationTime_Runes\n    then\n        frostKnightActions[\"Death and Decay\"].coolDown.duration = coolDownDuration\n        frostKnightActions[\"Death and Decay\"].coolDown.expirationTime = coolDownStart + coolDownDuration \n    elseif coolDownExpirationTime_Runes > coolDown.gcd.expirationTime\n    then        \n        ----Add .5s to compensate for my tendency to press key early for spell queing\n        frostKnightActions[\"Death and Decay\"].coolDown.duration = coolDownDuration_Runes --+ .5\n        frostKnightActions[\"Death and Decay\"].coolDown.expirationTime = coolDownExpirationTime_Runes --+ .5\n    end  \n    \n    --priority   \n    if unitsInMelee.count > 1\n    then    \n        frostKnightActions[\"Death and Decay\"].priority = 3\n    else\n        frostKnightActions[\"Death and Decay\"].priority = 9\n    end     \n    \n    return isAuraHighestPriority(\"Death and Decay\", frostKnightActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Death and Decay\"].coolDown.duration = 0\n    myActions[\"Death and Decay\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Death and Decay\")\n    local runes = cFunction_GetRunesCount()\n    local coolDownDuration_Runes = 0\n    local coolDownExpirationTime_Runes = 0\n    local runes = cFunction_GetRunesCount()\n    if runes == 0\n    then\n        coolDownDuration_Runes, coolDownExpirationTime_Runes = cFunction_GetRunesCoolDowns(1)\n    end           \n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart + coolDownDuration > coolDownExpirationTime_Runes\n    then\n        myActions[\"Death and Decay\"].coolDown.duration = coolDownDuration\n        myActions[\"Death and Decay\"].coolDown.expirationTime = coolDownStart + coolDownDuration \n    elseif coolDownExpirationTime_Runes > coolDown.gcd.expirationTime\n    then        \n        ----Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Death and Decay\"].coolDown.duration = coolDownDuration_Runes --+ .5\n        myActions[\"Death and Decay\"].coolDown.expirationTime = coolDownExpirationTime_Runes --+ .5\n    end  \n    \n    --priority   \n    if unitsInMelee.count > 1\n    then    \n        myActions[\"Death and Decay\"].priority = 3\n    else\n        myActions[\"Death and Decay\"].priority = 9\n    end     \n    \n    return isAuraHighestPriority(\"Death and Decay\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -8510,7 +8520,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        frostKnightActions[\"Death and Decay\"].inRange = true\n    else\n        frostKnightActions[\"Death and Decay\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        frostKnightActions[\"Death and Decay\"].show = true\n    else\n        frostKnightActions[\"Death and Decay\"].show = false\n    end\n    \n    return frostKnightActions[\"Death and Decay\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Death and Decay\"].inRange = true\n    else\n        myActions[\"Death and Decay\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Death and Decay\"].show = true\n    else\n        myActions[\"Death and Decay\"].show = false\n    end\n    \n    return myActions[\"Death and Decay\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -8696,7 +8706,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not frostKnightActions then\n    frostKnightActions = {}\nend\n\nfrostKnightActions[\"Death and Decay\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Death and Decay\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -8719,18 +8729,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "status",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["use_unit"] = true,
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(survivalActions[\"Serpent Sting\"].coolDown.duration, survivalActions[\"Serpent Sting\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Serpent Sting\"].coolDown.duration, myActions[\"Serpent Sting\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -8754,7 +8764,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --Priority\n    survivalActions[\"Serpent Sting\"].priority = nil\n    \n    --Priorizize SS over bombs if target is out of combat\n    if not UnitAffectingCombat(\"target\")\n    then\n        survivalActions[\"Serpent Sting\"].priority = -9\n    elseif survivalData ~= nil and survivalData.serpentSting.missing + survivalData.serpentSting.expiring >=1\n    then\n        survivalActions[\"Serpent Sting\"].priority = 9\n    end                \n    \n    return isAuraHighestPriority(\"Serpent Sting\", survivalActions)\n    \nend",
+						["custom"] = "function()\n    \n    --Priority\n    myActions[\"Serpent Sting\"].priority = nil\n    \n    --Priorizize SS over bombs if target is out of combat\n    if not UnitAffectingCombat(\"target\")\n    then\n        myActions[\"Serpent Sting\"].priority = -9\n    elseif survivalData ~= nil and survivalData.serpentSting.missing + survivalData.serpentSting.expiring >=1\n    then\n        myActions[\"Serpent Sting\"].priority = 9\n    end                \n    \n    return isAuraHighestPriority(\"Serpent Sting\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -8773,12 +8783,12 @@ WeakAurasSaved = {
 						["unit"] = "target",
 						["use_absorbMode"] = true,
 						["debuffType"] = "HARMFUL",
-						["custom_type"] = "status",
+						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "timed",
 						["custom"] = "function()\n    -- If multiple targets should i switch targets to (re)apply missing/expiring\n    if survivalData.serpentSting.missing + survivalData.serpentSting.expiring > 0 \n    and survivalData.serpentSting.target.missing + survivalData.serpentSting.target.expiring == 0 \n    and attackMode ~= \"Focus\"\n    then\n        return true\n    end\n    \n    return false\nend",
 						["type"] = "custom",
 						["use_debuffClass"] = false,
-						["subeventSuffix"] = "_CAST_START",
+						["unevent"] = "auto",
 						["auraspellids"] = {
 							"155722", -- [1]
 						},
@@ -8790,7 +8800,7 @@ WeakAurasSaved = {
 						["spellIds"] = {
 							1822, -- [1]
 						},
-						["unevent"] = "auto",
+						["custom_type"] = "status",
 						["check"] = "update",
 						["combineMatches"] = "showLowest",
 						["auranames"] = {
@@ -8827,7 +8837,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        survivalActions[\"Serpent Sting\"].inRange = true\n    else\n        survivalActions[\"Serpent Sting\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        survivalActions[\"Serpent Sting\"].show = true\n    else\n        survivalActions[\"Serpent Sting\"].show = false\n    end\n    \n    return survivalActions[\"Serpent Sting\"].show\n    \nend\n\n\n\n",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        myActions[\"Serpent Sting\"].inRange = true\n    else\n        myActions[\"Serpent Sting\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Serpent Sting\"].show = true\n    else\n        myActions[\"Serpent Sting\"].show = false\n    end\n    \n    return myActions[\"Serpent Sting\"].show\n    \nend\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -9028,15 +9038,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VampiricTouch = true",
+					["custom"] = "myActions_VampiricTouch = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not survivalActions then\n    survivalActions = {}\nend\n\n\nsurvivalActions[\"Serpent Sting\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\n\nmyActions[\"Serpent Sting\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VampiricTouch = false",
+					["custom"] = "myActions_VampiricTouch = false",
 				},
 			},
 			["information"] = {
@@ -9105,15 +9115,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_LightningBolt = true",
+					["custom"] = "myActions_LightningBolt = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Healing Surge\"] = {\n    [\"priority\"] = 0,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true           \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Healing Surge\"] = {\n    [\"priority\"] = 0,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true           \n}",
 				},
 			},
 			["triggers"] = {
@@ -9306,7 +9316,7 @@ WeakAurasSaved = {
 					},
 				},
 				["use_class_and_spec"] = true,
-				["faction"] = {
+				["pvptalent"] = {
 					["multi"] = {
 					},
 				},
@@ -9315,11 +9325,11 @@ WeakAurasSaved = {
 					["multi"] = {
 					},
 				},
-				["use_vehicleUi"] = false,
-				["pvptalent"] = {
+				["faction"] = {
 					["multi"] = {
 					},
 				},
+				["use_vehicleUi"] = false,
 			},
 			["parent"] = "Windwalker Action Bar",
 			["color"] = {
@@ -9448,7 +9458,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Feral Functions",
+			["groupIcon"] = "1033474",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -9457,6 +9467,14 @@ WeakAurasSaved = {
 			},
 			["fullCircle"] = true,
 			["animate"] = false,
+			["arcLength"] = 360,
+			["scale"] = 1,
+			["rotation"] = 0,
+			["border"] = false,
+			["borderEdge"] = "Square Full White",
+			["regionType"] = "dynamicgroup",
+			["borderSize"] = 2,
+			["sort"] = "none",
 			["animation"] = {
 				["start"] = {
 					["easeStrength"] = 3,
@@ -9477,15 +9495,8 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["scale"] = 1,
-			["rotation"] = 0,
-			["border"] = false,
-			["borderEdge"] = "Square Full White",
-			["regionType"] = "dynamicgroup",
-			["borderSize"] = 2,
-			["sort"] = "none",
-			["useLimit"] = false,
-			["rowSpace"] = 1,
+			["authorOptions"] = {
+			},
 			["constantFactor"] = "RADIUS",
 			["config"] = {
 			},
@@ -9498,15 +9509,14 @@ WeakAurasSaved = {
 			["anchorFrameType"] = "SCREEN",
 			["internalVersion"] = 59,
 			["borderInset"] = 1,
-			["groupIcon"] = "1033474",
-			["authorOptions"] = {
-			},
+			["rowSpace"] = 1,
+			["useLimit"] = false,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["arcLength"] = 360,
+			["parent"] = "Feral Functions",
 		},
 		["Spinning Crane Kick"] = {
 			["iconSource"] = 0,
@@ -9530,7 +9540,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["use_unit"] = true,
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(windwalkerActions[\"Spinning Crane Kick\"].coolDown.duration, windwalkerActions[\"Spinning Crane Kick\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Spinning Crane Kick\"].coolDown.duration, myActions[\"Spinning Crane Kick\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -9559,11 +9569,11 @@ WeakAurasSaved = {
 						["unevent"] = "auto",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["events"] = "cEvent_ValidTarget",
-						["debuffType"] = "HELPFUL",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
+						["debuffType"] = "HELPFUL",
+						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["custom_type"] = "event",
 						["custom_hide"] = "custom",
 					},
@@ -9575,7 +9585,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown\n    windwalkerActions[\"Spinning Crane Kick\"].coolDown.duration = 0\n    windwalkerActions[\"Spinning Crane Kick\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Spinning Crane Kick\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        windwalkerActions[\"Spinning Crane Kick\"].coolDown.duration = coolDownDuration\n        windwalkerActions[\"Spinning Crane Kick\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end  \n    \n    local targets = 2\n    \n    --Tell lower priotiy abilites to not spend chi\n    if unitsInMelee.count >= targets\n    then\n        windwalkerActions[\"Spinning Crane Kick\"].poolpowerforme = true\n    else        \n        windwalkerActions[\"Spinning Crane Kick\"].poolpowerforme = nil\n    end\n    \n    --priority\n    windwalkerActions[\"Spinning Crane Kick\"].priority = nil\n    if select(1,AuraUtil.FindAuraByName(\"Dance of Chi-Ji\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n    then\n        windwalkerActions[\"Spinning Crane Kick\"].priority = 4\n    elseif UnitPower(\"player\",12) >= 2 and unitsInMelee.count >= 2 and not windwalkerActions[\"Fists of Fury\"].poolpowerforme\n    then\n        windwalkerActions[\"Spinning Crane Kick\"].priority = 7\n    end\n    \n    return isAuraHighestPriority(\"Spinning Crane Kick\", windwalkerActions)\n    \nend",
+						["custom"] = "function()\n    \n    --coolDown\n    myActions[\"Spinning Crane Kick\"].coolDown.duration = 0\n    myActions[\"Spinning Crane Kick\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Spinning Crane Kick\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Spinning Crane Kick\"].coolDown.duration = coolDownDuration\n        myActions[\"Spinning Crane Kick\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end  \n    \n    local targets = 2\n    \n    --Tell lower priotiy abilites to not spend chi\n    if unitsInMelee.count >= targets\n    then\n        myActions[\"Spinning Crane Kick\"].poolpowerforme = true\n    else        \n        myActions[\"Spinning Crane Kick\"].poolpowerforme = nil\n    end\n    \n    --priority\n    myActions[\"Spinning Crane Kick\"].priority = nil\n    if select(1,AuraUtil.FindAuraByName(\"Dance of Chi-Ji\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n    then\n        myActions[\"Spinning Crane Kick\"].priority = 4\n    elseif UnitPower(\"player\",12) >= 2 and unitsInMelee.count >= 2 and not myActions[\"Fists of Fury\"].poolpowerforme\n    then\n        myActions[\"Spinning Crane Kick\"].priority = 7\n    end\n    \n    return isAuraHighestPriority(\"Spinning Crane Kick\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -9604,7 +9614,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        windwalkerActions[\"Spinning Crane Kick\"].inRange = true\n    else\n        windwalkerActions[\"Spinning Crane Kick\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        windwalkerActions[\"Spinning Crane Kick\"].show = true\n    else\n        windwalkerActions[\"Spinning Crane Kick\"].show = false\n    end\n    \n    return windwalkerActions[\"Spinning Crane Kick\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Spinning Crane Kick\"].inRange = true\n    else\n        myActions[\"Spinning Crane Kick\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Spinning Crane Kick\"].show = true\n    else\n        myActions[\"Spinning Crane Kick\"].show = false\n    end\n    \n    return myActions[\"Spinning Crane Kick\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -9770,7 +9780,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not windwalkerActions then\n    windwalkerActions = {}\nend\n\nif not windwalkerActions[\"Fists of Fury\"] \nthen\n    windwalkerActions[\"Fists of Fury\"] = {[\"poolpowerforme\"] = nil}\nend\n\nwindwalkerActions[\"Spinning Crane Kick\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,   \n    [\"inRange\"] = false,\n    [\"poolpowerforme\"] = nil,    \n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nif not myActions[\"Fists of Fury\"] \nthen\n    myActions[\"Fists of Fury\"] = {[\"poolpowerforme\"] = nil}\nend\n\nmyActions[\"Spinning Crane Kick\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,   \n    [\"inRange\"] = false,\n    [\"poolpowerforme\"] = nil,    \n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["conditions"] = {
@@ -10030,44 +10040,31 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
+			["xOffset"] = 0,
+			["regionType"] = "icon",
+			["conditions"] = {
+			},
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
-			["regionType"] = "icon",
-			["conditions"] = {
-			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
-			},
-			["xOffset"] = 0,
+			["parent"] = "Survival Actions Old",
 			["cooldown"] = true,
 			["cooldownTextDisabled"] = false,
 			["config"] = {
 			},
 			["zoom"] = 0.28,
 			["auto"] = true,
-			["frameStrata"] = 7,
+			["alpha"] = 1,
 			["id"] = "Wildfire Infusion",
 			["anchorFrameType"] = "SCREEN",
-			["alpha"] = 1,
-			["width"] = 50,
 			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["frameStrata"] = 7,
 			["uid"] = "3KGNPiu875O",
 			["inverse"] = true,
-			["parent"] = "Survival Actions Old",
-			["displayIcon"] = 915852,
-			["information"] = {
-				["forceEvents"] = true,
-				["ignoreOptionsEventErrors"] = true,
-			},
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -10088,6 +10085,19 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["displayIcon"] = 915852,
+			["information"] = {
+				["forceEvents"] = true,
+				["ignoreOptionsEventErrors"] = true,
+			},
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
 		},
 		["Dark Ascension"] = {
 			["iconSource"] = 0,
@@ -10101,15 +10111,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = true",
+					["custom"] = "myActions_VoidEruption = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = false",
+					["custom"] = "myActions_VoidEruption = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\n\nshadowActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\n\nmyActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -10153,11 +10163,11 @@ WeakAurasSaved = {
 						["names"] = {
 						},
 						["unit"] = "player",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["events"] = "cEvent_ValidTarget",
-						["use_absorbMode"] = true,
 						["spellIds"] = {
 						},
+						["use_absorbMode"] = true,
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "custom",
 						["unevent"] = "auto",
@@ -10354,7 +10364,7 @@ WeakAurasSaved = {
 		["Frost Shock"] = {
 			["iconSource"] = 0,
 			["xOffset"] = 0,
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Frost Shock\", enhancementActions)\nend\n\n\n\n",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Frost Shock\", myActions)\nend\n\n\n\n",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -10381,7 +10391,7 @@ WeakAurasSaved = {
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["custom"] = "function()\n    return true\nend\n\n\n",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(enhancementActions[\"Frost Shock\"].coolDown.duration, enhancementActions[\"Frost Shock\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Frost Shock\"].coolDown.duration, myActions[\"Frost Shock\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
 						["use_track"] = true,
@@ -10407,7 +10417,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    --coolDown\n    enhancementActions[\"Frost Shock\"].coolDown.duration = 0\n    enhancementActions[\"Frost Shock\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Frost Shock\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Frost Shock\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Frost Shock\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    enhancementActions[\"Frost Shock\"].priority = nil            \n    if unitsInMelee.count <= 1 \n    then\n        if select(1,AuraUtil.FindAuraByName(\"Hailstorm\", \"player\", \"HELPFUL|PLAYER\")) ~= nil \n        then            \n            enhancementActions[\"Frost Shock\"].priority = 7        \n        else\n            enhancementActions[\"Frost Shock\"].priority = 16\n        end \n    elseif unitsInMelee.count > 1\n    then\n        if select(1,AuraUtil.FindAuraByName(\"Hailstorm\", \"player\", \"HELPFUL|PLAYER\")) ~= nil \n        then            \n            enhancementActions[\"Frost Shock\"].priority = 5        \n        else\n            enhancementActions[\"Frost Shock\"].priority = 15\n        end \n    end    \n    \n    return isAuraHighestPriority(\"Frost Shock\", enhancementActions)    \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    --coolDown\n    myActions[\"Frost Shock\"].coolDown.duration = 0\n    myActions[\"Frost Shock\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Frost Shock\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Frost Shock\"].coolDown.duration = coolDownDuration\n        myActions[\"Frost Shock\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    myActions[\"Frost Shock\"].priority = nil            \n    if unitsInMelee.count <= 1 \n    then\n        if select(1,AuraUtil.FindAuraByName(\"Hailstorm\", \"player\", \"HELPFUL|PLAYER\")) ~= nil \n        then            \n            myActions[\"Frost Shock\"].priority = 7        \n        else\n            myActions[\"Frost Shock\"].priority = 16\n        end \n    elseif unitsInMelee.count > 1\n    then\n        if select(1,AuraUtil.FindAuraByName(\"Hailstorm\", \"player\", \"HELPFUL|PLAYER\")) ~= nil \n        then            \n            myActions[\"Frost Shock\"].priority = 5        \n        else\n            myActions[\"Frost Shock\"].priority = 15\n        end \n    end    \n    \n    return isAuraHighestPriority(\"Frost Shock\", myActions)    \nend\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -10436,7 +10446,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        enhancementActions[\"Frost Shock\"].inRange = true\n    else\n        enhancementActions[\"Frost Shock\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Frost Shock\"].show = true\n    else\n        enhancementActions[\"Frost Shock\"].show = false\n    end    \n    return enhancementActions[\"Frost Shock\"].show\nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Frost Shock\"].inRange = true\n    else\n        myActions[\"Frost Shock\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Frost Shock\"].show = true\n    else\n        myActions[\"Frost Shock\"].show = false\n    end    \n    return myActions[\"Frost Shock\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -10557,15 +10567,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_FrostShock = true",
+					["custom"] = "myActions_FrostShock = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Frost Shock\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Frost Shock\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Frost Shock\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil     \n}",
+					["custom"] = "myActions[\"Frost Shock\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil     \n}",
 				},
 			},
 			["desaturate"] = false,
@@ -10654,7 +10664,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not frostKnightActions then\n    frostKnightActions = {}\nend\n\nfrostKnightActions[\"Obliterate\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Obliterate\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -10666,18 +10676,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["use_absorbMode"] = true,
 						["unevent"] = "auto",
-						["use_unit"] = true,
-						["duration"] = "1",
-						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(frostKnightActions[\"Obliterate\"].coolDown.duration,\n        frostKnightActions[\"Obliterate\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["duration"] = "1",
+						["event"] = "Global Cooldown",
+						["unit"] = "player",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Obliterate\"].coolDown.duration,\n        myActions[\"Obliterate\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["custom_type"] = "status",
 						["debuffType"] = "HELPFUL",
 					},
@@ -10701,7 +10711,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    frostKnightActions[\"Obliterate\"].coolDown.duration = 0\n    frostKnightActions[\"Obliterate\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetRunesCoolDowns(2)\n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        ----Add .5s to compensate for my tendency to press key early for spell queing\n        frostKnightActions[\"Obliterate\"].coolDown.duration = coolDownDuration --+ .5\n        frostKnightActions[\"Obliterate\"].coolDown.expirationTime = coolDownExpirationTime --+ .5\n    end\n    \n    \n    --priority \n    frostKnightActions[\"Obliterate\"].priority = nil\n    local killingMachine = select(1,AuraUtil.FindAuraByName(\"Killing Machine\", \"player\", \"HELPFUL|PLAYER\"))\n    local runes = cFunction_GetRunesCount()\n    if unitsInMelee.count <= 1 \n    then\n        if killingMachine\n        then\n            frostKnightActions[\"Obliterate\"].priority = 2\n        elseif runes >= 4\n        then\n            frostKnightActions[\"Obliterate\"].priority = 5\n        else\n            frostKnightActions[\"Obliterate\"].priority = 7\n        end\n    elseif unitsInMelee.count > 1 \n    then        \n        if killingMachine\n        then\n            frostKnightActions[\"Obliterate\"].priority = 4            \n        else\n            frostKnightActions[\"Obliterate\"].priority = 5\n        end\n    end\n    \n    \n    return isAuraHighestPriority(\"Obliterate\", frostKnightActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Obliterate\"].coolDown.duration = 0\n    myActions[\"Obliterate\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetRunesCoolDowns(2)\n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        ----Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Obliterate\"].coolDown.duration = coolDownDuration --+ .5\n        myActions[\"Obliterate\"].coolDown.expirationTime = coolDownExpirationTime --+ .5\n    end\n    \n    \n    --priority \n    myActions[\"Obliterate\"].priority = nil\n    local killingMachine = select(1,AuraUtil.FindAuraByName(\"Killing Machine\", \"player\", \"HELPFUL|PLAYER\"))\n    local runes = cFunction_GetRunesCount()\n    if unitsInMelee.count <= 1 \n    then\n        if killingMachine\n        then\n            myActions[\"Obliterate\"].priority = 2\n        elseif runes >= 4\n        then\n            myActions[\"Obliterate\"].priority = 5\n        else\n            myActions[\"Obliterate\"].priority = 7\n        end\n    elseif unitsInMelee.count > 1 \n    then        \n        if killingMachine\n        then\n            myActions[\"Obliterate\"].priority = 4            \n        else\n            myActions[\"Obliterate\"].priority = 5\n        end\n    end\n    \n    \n    return isAuraHighestPriority(\"Obliterate\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -10717,16 +10727,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "5",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -10735,7 +10745,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        frostKnightActions[\"Obliterate\"].inRange = true\n    else\n        frostKnightActions[\"Obliterate\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        frostKnightActions[\"Obliterate\"].show = true\n    else\n        frostKnightActions[\"Obliterate\"].show = false\n    end    \n    return frostKnightActions[\"Obliterate\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Obliterate\"].inRange = true\n    else\n        myActions[\"Obliterate\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Obliterate\"].show = true\n    else\n        myActions[\"Obliterate\"].show = false\n    end    \n    return myActions[\"Obliterate\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -10954,11 +10964,11 @@ WeakAurasSaved = {
 						["ownOnly"] = true,
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["spellName"] = 633,
-						["group_count"] = "0",
 						["group_countOperator"] = "==",
+						["group_count"] = "0",
+						["debuffType"] = "HELPFUL",
 						["type"] = "spell",
-						["buffShowOn"] = "showOnMissing",
+						["spellName"] = 633,
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -10971,8 +10981,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
 						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["useGroup_count"] = false,
@@ -11173,18 +11183,13 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "lyTl4L1YlOd",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Retribution CD Bar",
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["parent"] = "Retribution CD Bar",
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = 135928,
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -11199,7 +11204,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -11235,7 +11245,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["icon"] = true,
+			["selfPoint"] = "CENTER",
 		},
 		["Frost Strike"] = {
 			["iconSource"] = 0,
@@ -11257,7 +11267,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not frostKnightActions then\n    frostKnightActions = {}\nend\n\nfrostKnightActions[\"Frost Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Frost Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -11267,18 +11277,18 @@ WeakAurasSaved = {
 						["type"] = "spell",
 						["custom_type"] = "status",
 						["unevent"] = "auto",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["use_unit"] = true,
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(frostKnightActions[\"Howling Blast\"].coolDown.duration,\n        frostKnightActions[\"Howling Blast\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Howling Blast\"].coolDown.duration,\n        myActions[\"Howling Blast\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -11302,7 +11312,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    frostKnightActions[\"Frost Strike\"].priority = nil\n    \n    local rp = UnitPower(\"player\", 6)\n    local name, _, _, _, _, expirationTime, _, _, _, _, _, _, _, _, _ = AuraUtil.FindAuraByName(\"Unleashed Frenzy\", \"player\", \"HELPFUL\")\n    \n    if name ~= nil and expirationTime - GetTime() < 2 and rp >= 25\n    then\n        -- Don't want to lose Unleashed Frenzy\n        frostKnightActions[\"Frost Strike\"].priority = -1       \n    elseif unitsInMelee.count <= 1\n    then\n        \n        if rp >= 70\n        then\n            frostKnightActions[\"Frost Strike\"].priority = 6\n        elseif rp >= 25\n        then\n            frostKnightActions[\"Frost Strike\"].priority = 8\n        end\n    elseif unitsInMelee.count > 1 and rp >= 25\n    then\n        frostKnightActions[\"Frost Strike\"].priority = 6 \n    end    \n    \n    return isAuraHighestPriority(\"Frost Strike\", frostKnightActions)    \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    myActions[\"Frost Strike\"].priority = nil\n    \n    local rp = UnitPower(\"player\", 6)\n    local name, _, _, _, _, expirationTime, _, _, _, _, _, _, _, _, _ = AuraUtil.FindAuraByName(\"Unleashed Frenzy\", \"player\", \"HELPFUL\")\n    \n    if name ~= nil and expirationTime - GetTime() < 2 and rp >= 25\n    then\n        -- Don't want to lose Unleashed Frenzy\n        myActions[\"Frost Strike\"].priority = -1       \n    elseif unitsInMelee.count <= 1\n    then\n        \n        if rp >= 70\n        then\n            myActions[\"Frost Strike\"].priority = 6\n        elseif rp >= 25\n        then\n            myActions[\"Frost Strike\"].priority = 8\n        end\n    elseif unitsInMelee.count > 1 and rp >= 25\n    then\n        myActions[\"Frost Strike\"].priority = 6 \n    end    \n    \n    return isAuraHighestPriority(\"Frost Strike\", myActions)    \nend\n\n\n",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -11318,16 +11328,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "5",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["range"] = "5",
+						["event"] = "Range Check",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -11336,7 +11346,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        frostKnightActions[\"Frost Strike\"].inRange = true\n    else\n        frostKnightActions[\"Frost Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        frostKnightActions[\"Frost Strike\"].show = true\n    else\n        frostKnightActions[\"Frost Strike\"].show = false\n    end    \n    return frostKnightActions[\"Frost Strike\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Frost Strike\"].inRange = true\n    else\n        myActions[\"Frost Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Frost Strike\"].show = true\n    else\n        myActions[\"Frost Strike\"].show = false\n    end    \n    return myActions[\"Frost Strike\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -11520,7 +11530,7 @@ WeakAurasSaved = {
 			["iconSource"] = 0,
 			["authorOptions"] = {
 			},
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Sundering\", enhancementActions)\nend",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Sundering\", myActions)\nend",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -11529,15 +11539,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_Sundering = true",
+					["custom"] = "myActions_Sundering = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Sundering\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Sundering\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Sundering\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Sundering\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}\n\n\n",
 				},
 			},
 			["triggers"] = {
@@ -11547,7 +11557,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(enhancementActions[\"Sundering\"].coolDown.duration, \n        enhancementActions[\"Sundering\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Sundering\"].coolDown.duration, \n        myActions[\"Sundering\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["names"] = {
 						},
 						["spellIds"] = {
@@ -11578,7 +11588,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    enhancementActions[\"Sundering\"].coolDown.duration = 0\n    enhancementActions[\"Sundering\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Sundering\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Sundering\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Sundering\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    enhancementActions[\"Sundering\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        enhancementActions[\"Sundering\"].priority = 15\n    elseif unitsInMelee.count > 1 \n    then\n        enhancementActions[\"Sundering\"].priority = 9\n    end\n    return isAuraHighestPriority(\"Sundering\", enhancementActions)    \nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Sundering\"].coolDown.duration = 0\n    myActions[\"Sundering\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Sundering\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Sundering\"].coolDown.duration = coolDownDuration\n        myActions[\"Sundering\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    myActions[\"Sundering\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        myActions[\"Sundering\"].priority = 15\n    elseif unitsInMelee.count > 1 \n    then\n        myActions[\"Sundering\"].priority = 9\n    end\n    return isAuraHighestPriority(\"Sundering\", myActions)    \nend\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -11607,7 +11617,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        enhancementActions[\"Sundering\"].inRange = true\n    else\n        enhancementActions[\"Sundering\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Sundering\"].show = true\n    else\n        enhancementActions[\"Sundering\"].show = false\n    end    \n    return enhancementActions[\"Sundering\"].show\nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Sundering\"].inRange = true\n    else\n        myActions[\"Sundering\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Sundering\"].show = true\n    else\n        myActions[\"Sundering\"].show = false\n    end    \n    return myActions[\"Sundering\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -12177,20 +12187,20 @@ WeakAurasSaved = {
 						["subeventPrefix"] = "SPELL",
 						["ownOnly"] = true,
 						["useGroup_count"] = false,
-						["buffShowOn"] = "showOnMissing",
+						["spellName"] = 22842,
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["debuffType"] = "HELPFUL",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["custom_hide"] = "timed",
+						["debuffType"] = "HELPFUL",
 						["match_count"] = "0",
-						["spellName"] = 22842,
-						["useName"] = true,
 						["group_countOperator"] = "==",
+						["useName"] = true,
+						["custom_hide"] = "timed",
 						["unevent"] = "auto",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -12407,13 +12417,13 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = ")0jnPfyGREc",
-			["xOffset"] = 0,
+			["icon"] = true,
 			["parent"] = "Feral CD Bar",
 			["regionType"] = "icon",
-			["icon"] = true,
+			["desaturate"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = "132091",
-			["desaturate"] = false,
+			["useTooltip"] = false,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -12427,12 +12437,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["xOffset"] = 0,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -12467,12 +12472,17 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 		},
 		["Crash Lightning"] = {
 			["iconSource"] = 0,
 			["parent"] = "Enhancment Action Bar",
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Crash Lightning\", enhancementActions)\nend",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Crash Lightning\", myActions)\nend",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -12481,15 +12491,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_Sundering = true",
+					["custom"] = "myActions_Sundering = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Crash Lightning\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 12,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }         \n}\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Crash Lightning\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 12,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }         \n}\n\n\n",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Crash Lightning\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Crash Lightning\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 			},
 			["triggers"] = {
@@ -12499,7 +12509,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(enhancementActions[\"Crash Lightning\"].coolDown.duration, \n        enhancementActions[\"Crash Lightning\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Crash Lightning\"].coolDown.duration, \n        myActions[\"Crash Lightning\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["names"] = {
 						},
 						["spellIds"] = {
@@ -12530,7 +12540,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    enhancementActions[\"Crash Lightning\"].coolDown.duration = 0\n    enhancementActions[\"Crash Lightning\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Crash Lightning\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Crash Lightning\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Crash Lightning\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    enhancementActions[\"Crash Lightning\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        enhancementActions[\"Crash Lightning\"].priority = 17\n    elseif unitsInMelee.count > 1 \n    then\n        \n        local crashLightningFound = false\n        local i = 1\n        local name, duration, expirationTime, spellId    \n        repeat\n            name, _, _, _, duration, expirationTime, _, _, _, spellId, _, _, _, _, _ = UnitAura(\"player\",i, \"HELPFUL|PLAYER\")         \n            crashLightningFound = (spellId == 187878)\n            i = i + 1\n        until crashLightningFound or i == 100 or not name\n        \n        local chainLightningFound = false\n        local i = 1\n        local name, duration, expirationTime, spellId \n        repeat\n            name, _, _, _, duration, expirationTime, _, _, _, spellId, _, _, _, _, _ = UnitAura(\"player\",i, \"HELPFUL|PLAYER\")         \n            chainLightningFound = (spellId == 333964)\n            i = i + 1\n        until chainLightningFound or i == 100 or not name\n        \n        --print(\"crashLightningFound: \"..tostring(crashLightningFound)..\" chainLightningFound: \"..tostring(chainLightningFound))\n        \n        if not crashLightningFound\n        then\n            enhancementActions[\"Crash Lightning\"].priority = 6\n        elseif chainLightningFound\n        then\n            enhancementActions[\"Crash Lightning\"].priority = 8\n        else\n            enhancementActions[\"Crash Lightning\"].priority = 13\n        end        \n    end\n    \n    return isAuraHighestPriority(\"Crash Lightning\", enhancementActions)    \nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Crash Lightning\"].coolDown.duration = 0\n    myActions[\"Crash Lightning\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Crash Lightning\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Crash Lightning\"].coolDown.duration = coolDownDuration\n        myActions[\"Crash Lightning\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    myActions[\"Crash Lightning\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        myActions[\"Crash Lightning\"].priority = 17\n    elseif unitsInMelee.count > 1 \n    then\n        \n        local crashLightningFound = false\n        local i = 1\n        local name, duration, expirationTime, spellId    \n        repeat\n            name, _, _, _, duration, expirationTime, _, _, _, spellId, _, _, _, _, _ = UnitAura(\"player\",i, \"HELPFUL|PLAYER\")         \n            crashLightningFound = (spellId == 187878)\n            i = i + 1\n        until crashLightningFound or i == 100 or not name\n        \n        local chainLightningFound = false\n        local i = 1\n        local name, duration, expirationTime, spellId \n        repeat\n            name, _, _, _, duration, expirationTime, _, _, _, spellId, _, _, _, _, _ = UnitAura(\"player\",i, \"HELPFUL|PLAYER\")         \n            chainLightningFound = (spellId == 333964)\n            i = i + 1\n        until chainLightningFound or i == 100 or not name\n        \n        --print(\"crashLightningFound: \"..tostring(crashLightningFound)..\" chainLightningFound: \"..tostring(chainLightningFound))\n        \n        if not crashLightningFound\n        then\n            myActions[\"Crash Lightning\"].priority = 6\n        elseif chainLightningFound\n        then\n            myActions[\"Crash Lightning\"].priority = 8\n        else\n            myActions[\"Crash Lightning\"].priority = 13\n        end        \n    end\n    \n    return isAuraHighestPriority(\"Crash Lightning\", myActions)    \nend\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -12559,7 +12569,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        enhancementActions[\"Crash Lightning\"].inRange = true\n    else\n        enhancementActions[\"Crash Lightning\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Crash Lightning\"].show = true\n    else\n        enhancementActions[\"Crash Lightning\"].show = false\n    end    \n    return enhancementActions[\"Crash Lightning\"].show\nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Crash Lightning\"].inRange = true\n    else\n        myActions[\"Crash Lightning\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Crash Lightning\"].show = true\n    else\n        myActions[\"Crash Lightning\"].show = false\n    end    \n    return myActions[\"Crash Lightning\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -12891,6 +12901,9 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
+			["xOffset"] = -698.8000335693359,
+			["regionType"] = "icon",
+			["displayIcon"] = 135873,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -12911,32 +12924,29 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["regionType"] = "icon",
-			["displayIcon"] = 135873,
-			["icon"] = true,
-			["xOffset"] = -698.8000335693359,
+			["authorOptions"] = {
+			},
 			["cooldown"] = false,
 			["zoom"] = 0,
 			["uid"] = "7AQAhWmKoWH",
 			["cooldownTextDisabled"] = false,
 			["auto"] = false,
-			["frameStrata"] = 1,
+			["alpha"] = 1,
 			["id"] = "Retribution Multi Target Tracker",
 			["width"] = 64,
-			["alpha"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["frameStrata"] = 1,
 			["config"] = {
 			},
 			["inverse"] = false,
-			["authorOptions"] = {
-			},
+			["parent"] = "Retribution Functions",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["parent"] = "Retribution Functions",
+			["icon"] = true,
 		},
 		["Metamorphosis"] = {
 			["iconSource"] = 0,
@@ -12963,14 +12973,14 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["group_countOperator"] = "==",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["group_countOperator"] = "==",
 						["group_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
+						["custom_hide"] = "timed",
 						["type"] = "spell",
-						["spellName"] = 191427,
+						["debuffType"] = "HELPFUL",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -12983,7 +12993,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
+						["spellName"] = 191427,
 						["unit"] = "player",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -13179,12 +13189,7 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "Jr2uM)cA7Rd",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["selfPoint"] = "CENTER",
 			["actions"] = {
 				["start"] = {
 				},
@@ -13194,10 +13199,10 @@ WeakAurasSaved = {
 				},
 			},
 			["regionType"] = "icon",
-			["selfPoint"] = "CENTER",
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = "1247262",
-			["stickyDuration"] = false,
+			["xOffset"] = 0,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -13211,7 +13216,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Havoc CD Bar",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -13247,7 +13257,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["xOffset"] = 0,
+			["parent"] = "Havoc CD Bar",
 		},
 		["Fire Health L"] = {
 			["sparkWidth"] = 10,
@@ -13688,14 +13698,6 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "X)lyssk8ytq",
-			["parent"] = "Enhancment Action Bar",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
-			["regionType"] = "icon",
 			["actions"] = {
 				["start"] = {
 				},
@@ -13704,6 +13706,14 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
+			["regionType"] = "icon",
+			["useTooltip"] = false,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -13723,7 +13733,8 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["useTooltip"] = false,
+			["authorOptions"] = {
+			},
 			["stickyDuration"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -13737,6 +13748,9 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
+			["parent"] = "Enhancment Action Bar",
+			["displayIcon"] = 237577,
+			["cooldown"] = true,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -13757,16 +13771,12 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["displayIcon"] = 237577,
-			["cooldown"] = true,
-			["authorOptions"] = {
-			},
 		},
 		["Is Aura Next Highest Priority"] = {
 			["iconSource"] = 0,
 			["authorOptions"] = {
 			},
-			["customText"] = "function()\n    \n    local voidFormState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 5)\n    local powerState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 6)\n    \n    if ((voidFormState[\"\"] ~= nil and voidFormState[\"\"].show) or shadowActions[\"Void Eruption\"].casting.active)\n    --and (powerState[\"\"] ~= nil and powerState[\"\"].show)\n    then\n        print(tostring(shadowActions[\"Void Bolt\"].coolDown.active)..\" \"..tostring(shadowActions[\"Void Bolt\"].coolDown.override)\n            ..\" \"..tostring(shadowActions[\"Mind Blast\"].coolDown.active)..\" \"..tostring(shadowActions[\"Mind Blast\"].coolDown.override))\n    end \n    \nend",
+			["customText"] = "function()\n    \n    local voidFormState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 5)\n    local powerState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 6)\n    \n    if ((voidFormState[\"\"] ~= nil and voidFormState[\"\"].show) or myActions[\"Void Eruption\"].casting.active)\n    --and (powerState[\"\"] ~= nil and powerState[\"\"].show)\n    then\n        print(tostring(myActions[\"Void Bolt\"].coolDown.active)..\" \"..tostring(myActions[\"Void Bolt\"].coolDown.override)\n            ..\" \"..tostring(myActions[\"Mind Blast\"].coolDown.active)..\" \"..tostring(myActions[\"Mind Blast\"].coolDown.override))\n    end \n    \nend",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -13779,7 +13789,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "--Checks to see if the given auraName is the Highest Priorty ability vrs all the other abilitys in the given actionTable\n--The action table must look like the following where the top level key is the aura name that set the other values\n--enhancementActions[\"Frost Shock\"] = {\n--    [\"priority\"] = nil,\n--    [\"onCoolDown\"] = false,\n--    [\"expirationTime\"] = nil,\n--    [\"inRange\"] = nil     \n--}\n\nfunction isAuraHighestPriority(auraName, actionTable) \n    \n    if actionTable == nil or actionTable[auraName] == nil then return false end\n    \n    local auraData = actionTable[auraName]\n    if auraData.priority == nil\n    then\n        return false\n    end        \n    \n    for iAuraName, iAuraData in pairs(actionTable) do\n        if iAuraName ~= auraName and iAuraData.priority ~= nil\n        then\n            --print(auraName..\" \"..iAuraName)                        \n            local isNext = isAuraHighestPriority_Comparator(auraData, iAuraData, auraName, iAuraName)                        \n            if not isNext\n            then  \n                return false\n            end                                    \n        end        \n    end\n    \n    return true\nend\n\nfunction isAuraHighestPriority_Comparator(auraData, iAuraData, auraName, iAuraName)\n    -- Sort Order: inRange, expirationTime, priority \n    -- For inRange if Target is within 8m skip range sorting\n    if auraData.inRange and not iAuraData.inRange and WeakAuras.CheckRange(\"target\", 8, \">\")\n    then\n        return true\n    elseif not auraData.inRange and iAuraData.inRange and WeakAuras.CheckRange(\"target\", 8, \">\")\n    then\n        return false\n    else\n        if auraData.coolDown.expirationTime == iAuraData.coolDown.expirationTime \n        then\n            return auraData.priority < iAuraData.priority\n        end                \n        return auraData.coolDown.expirationTime < iAuraData.coolDown.expirationTime\n    end\nend        \n\nfunction dump(o)\n    if type(o) == 'table' then\n        local s = '{ '\n        for k,v in pairs(o) do\n            if type(k) ~= 'number' then k = '\"'..k..'\"' end\n            s = s .. '['..k..'] = ' .. dump(v) .. ','\n        end\n        return s .. '} '\n    else\n        return tostring(o)\n    end\nend",
+					["custom"] = "--Checks to see if the given auraName is the Highest Priorty ability vrs all the other abilitys in the given actionTable\n--The action table must look like the following where the top level key is the aura name that set the other values\n--myActions[\"Frost Shock\"] = {\n--    [\"priority\"] = nil,\n--    [\"onCoolDown\"] = false,\n--    [\"expirationTime\"] = nil,\n--    [\"inRange\"] = nil     \n--}\n\nfunction isAuraHighestPriority(auraName, actionTable) \n    \n    if actionTable == nil or actionTable[auraName] == nil then return false end\n    \n    local auraData = actionTable[auraName]\n    if auraData.priority == nil\n    then\n        return false\n    end        \n    \n    for iAuraName, iAuraData in pairs(actionTable) do\n        if iAuraName ~= auraName and iAuraData.priority ~= nil\n        then\n            --print(auraName..\" \"..iAuraName)                        \n            local isNext = isAuraHighestPriority_Comparator(auraData, iAuraData, auraName, iAuraName)                        \n            if not isNext\n            then  \n                return false\n            end                                    \n        end        \n    end\n    \n    return true\nend\n\nfunction isAuraHighestPriority_Comparator(auraData, iAuraData, auraName, iAuraName)\n    -- Sort Order: inRange, expirationTime, priority \n    -- For inRange if Target is within 8m skip range sorting\n    if auraData.inRange and not iAuraData.inRange and WeakAuras.CheckRange(\"target\", 8, \">\")\n    then\n        return true\n    elseif not auraData.inRange and iAuraData.inRange and WeakAuras.CheckRange(\"target\", 8, \">\")\n    then\n        return false\n    else\n        if auraData.coolDown.expirationTime == iAuraData.coolDown.expirationTime \n        then\n            return auraData.priority < iAuraData.priority\n        end                \n        return auraData.coolDown.expirationTime < iAuraData.coolDown.expirationTime\n    end\nend        \n\nfunction dump(o)\n    if type(o) == 'table' then\n        local s = '{ '\n        for k,v in pairs(o) do\n            if type(k) ~= 'number' then k = '\"'..k..'\"' end\n            s = s .. '['..k..'] = ' .. dump(v) .. ','\n        end\n        return s .. '} '\n    else\n        return tostring(o)\n    end\nend",
 				},
 			},
 			["triggers"] = {
@@ -13908,43 +13918,43 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Usefull meta functions",
-			["regionType"] = "icon",
-			["conditions"] = {
-			},
-			["icon"] = true,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0, -- [4]
 			},
+			["regionType"] = "icon",
+			["conditions"] = {
+			},
+			["parent"] = "Usefull meta functions",
+			["xOffset"] = 0,
 			["cooldown"] = false,
 			["cooldownTextDisabled"] = false,
 			["config"] = {
 			},
 			["zoom"] = 0.28,
 			["auto"] = false,
-			["frameStrata"] = 1,
+			["alpha"] = 1,
 			["id"] = "Is Aura Next Highest Priority",
 			["width"] = 40,
-			["alpha"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["frameStrata"] = 1,
 			["uid"] = "3)MSfUMl5)m",
 			["inverse"] = false,
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 			["displayIcon"] = 450908,
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
 		},
 		["Lightning Bolt/Chain Lighting"] = {
 			["iconSource"] = -1,
 			["authorOptions"] = {
 			},
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Lightning Bolt/Chain Lighting\", enhancementActions)\nend\n",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Lightning Bolt/Chain Lighting\", myActions)\nend\n",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -13995,7 +14005,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    --priority\n    enhancementActions[\"Lightning Bolt/Chain Lighting\"].priority = nil\n    \n    local maelstromWeapon_stacks = select(3,AuraUtil.FindAuraByName(\"Maelstrom Weapon\", \"player\", \"HELPFUL|PLAYER\"))     \n    \n    --Lightning Bolt for one target Chain Lightning for multi targets\n    if maelstromWeapon_stacks ~= nil\n    then\n        if unitsInMelee.count == 1\n        then\n            aura_env.icon = 136048      \n            if maelstromWeapon_stacks == 10  \n            then\n                enhancementActions[\"Lightning Bolt/Chain Lighting\"].priority = 10\n            elseif maelstromWeapon_stacks >= 5 \n            then\n                enhancementActions[\"Lightning Bolt/Chain Lighting\"].priority = 14\n            end              \n        elseif unitsInMelee.count > 1\n        then\n            aura_env.icon = 136015\n            if maelstromWeapon_stacks == 10\n            then\n                enhancementActions[\"Lightning Bolt/Chain Lighting\"].priority = 3       \n            else if maelstromWeapon_stacks >= 5\n                then\n                    enhancementActions[\"Lightning Bolt/Chain Lighting\"].priority = 14       \n                    \n                end                \n            end        \n        end\n    end    \n    return isAuraHighestPriority(\"Lightning Bolt/Chain Lighting\", enhancementActions)    \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    --priority\n    myActions[\"Lightning Bolt/Chain Lighting\"].priority = nil\n    \n    local maelstromWeapon_stacks = select(3,AuraUtil.FindAuraByName(\"Maelstrom Weapon\", \"player\", \"HELPFUL|PLAYER\"))     \n    \n    --Lightning Bolt for one target Chain Lightning for multi targets\n    if maelstromWeapon_stacks ~= nil\n    then\n        if unitsInMelee.count == 1\n        then\n            aura_env.icon = 136048      \n            if maelstromWeapon_stacks == 10  \n            then\n                myActions[\"Lightning Bolt/Chain Lighting\"].priority = 10\n            elseif maelstromWeapon_stacks >= 5 \n            then\n                myActions[\"Lightning Bolt/Chain Lighting\"].priority = 14\n            end              \n        elseif unitsInMelee.count > 1\n        then\n            aura_env.icon = 136015\n            if maelstromWeapon_stacks == 10\n            then\n                myActions[\"Lightning Bolt/Chain Lighting\"].priority = 3       \n            else if maelstromWeapon_stacks >= 5\n                then\n                    myActions[\"Lightning Bolt/Chain Lighting\"].priority = 14       \n                    \n                end                \n            end        \n        end\n    end    \n    return isAuraHighestPriority(\"Lightning Bolt/Chain Lighting\", myActions)    \nend\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -14024,7 +14034,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)\n    \n    if t[5] then\n        enhancementActions[\"Lightning Bolt/Chain Lighting\"].inRange = true\n    else\n        enhancementActions[\"Lightning Bolt/Chain Lighting\"].inRange = false\n    end\n    \n    if t[2] and t[3] and t[4]\n    then\n        enhancementActions[\"Lightning Bolt/Chain Lighting\"].show = true\n    else\n        enhancementActions[\"Lightning Bolt/Chain Lighting\"].show = false\n    end    \n    return enhancementActions[\"Lightning Bolt/Chain Lighting\"].show\nend",
+				["customTriggerLogic"] = "function(t)\n    \n    if t[5] then\n        myActions[\"Lightning Bolt/Chain Lighting\"].inRange = true\n    else\n        myActions[\"Lightning Bolt/Chain Lighting\"].inRange = false\n    end\n    \n    if t[2] and t[3] and t[4]\n    then\n        myActions[\"Lightning Bolt/Chain Lighting\"].show = true\n    else\n        myActions[\"Lightning Bolt/Chain Lighting\"].show = false\n    end    \n    return myActions[\"Lightning Bolt/Chain Lighting\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -14208,15 +14218,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_LightningBolt = true",
+					["custom"] = "myActions_LightningBolt = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 13,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 13,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}",
 				},
 			},
 		},
@@ -14237,18 +14247,18 @@ WeakAurasSaved = {
 						["subeventPrefix"] = "SPELL",
 						["ownOnly"] = true,
 						["useGroup_count"] = false,
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["spellName"] = 1719,
+						["custom_hide"] = "timed",
 						["group_count"] = "0",
-						["debuffType"] = "HELPFUL",
-						["use_targetRequired"] = false,
 						["group_countOperator"] = "==",
+						["use_targetRequired"] = false,
+						["spellName"] = 1719,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -14449,9 +14459,6 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["stickyDuration"] = false,
-			["xOffset"] = 0,
-			["regionType"] = "icon",
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -14472,6 +14479,9 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["xOffset"] = 0,
+			["regionType"] = "icon",
+			["useTooltip"] = false,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -14507,7 +14517,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["useTooltip"] = false,
+			["parent"] = "Fury CD Bar",
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -14525,6 +14535,9 @@ WeakAurasSaved = {
 			["zoom"] = 0.28,
 			["uid"] = "GffG9ElyECG",
 			["inverse"] = true,
+			["stickyDuration"] = false,
+			["displayIcon"] = 458972,
+			["cooldown"] = true,
 			["actions"] = {
 				["start"] = {
 				},
@@ -14533,9 +14546,6 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
-			["displayIcon"] = 458972,
-			["cooldown"] = true,
-			["parent"] = "Fury CD Bar",
 		},
 		["header_floor"] = {
 			["outline"] = "OUTLINE",
@@ -14565,13 +14575,13 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["custom_type"] = "status",
 						["custom_hide"] = "custom",
-						["spellIds"] = {
-						},
-						["event"] = "Health",
 						["events"] = "PLAYER_ENTERING_WORLD,SCENARIO_POI_UPDATE",
+						["event"] = "Health",
+						["custom"] = "function(...)\n    if IsInJailersTower() then \n        return true\n    end\nend",
 						["customDuration"] = "\n\n\n",
 						["customName"] = "function ()  \n    return JAILERS_TOWER_SCENARIO_FLOOR:format(GetJailersTowerLevel())\nend\n\n\n",
-						["custom"] = "function(...)\n    if IsInJailersTower() then \n        return true\n    end\nend",
+						["spellIds"] = {
+						},
 						["unit"] = "player",
 						["check"] = "event",
 						["subeventSuffix"] = "_CAST_START",
@@ -14588,7 +14598,7 @@ WeakAurasSaved = {
 			["internalVersion"] = 59,
 			["keepAspectRatio"] = false,
 			["selfPoint"] = "LEFT",
-			["auto"] = true,
+			["semver"] = "1.0.9",
 			["desaturate"] = false,
 			["url"] = "https://wago.io/g9G7WgoRX/10",
 			["font"] = "SourceHanSans-Bold",
@@ -14659,10 +14669,10 @@ WeakAurasSaved = {
 			},
 			["icon"] = true,
 			["displayText_format_p_time_precision"] = 1,
-			["justify"] = "LEFT",
+			["auto"] = true,
 			["zoom"] = 0,
 			["cooldownTextDisabled"] = false,
-			["semver"] = "1.0.9",
+			["justify"] = "LEFT",
 			["tocversion"] = 90001,
 			["id"] = "header_floor",
 			["wordWrap"] = "WordWrap",
@@ -14739,48 +14749,14 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["desaturate"] = false,
-			["iconSource"] = -1,
-			["triggers"] = {
-				{
-					["trigger"] = {
-						["type"] = "unit",
-						["custom_hide"] = "timed",
-						["subeventSuffix"] = "_CAST_START",
-						["use_unit"] = true,
-						["duration"] = "1",
-						["genericShowOn"] = "showOnActive",
-						["unit"] = "player",
-						["names"] = {
-						},
-						["powertype"] = 6,
-						["spellIds"] = {
-						},
-						["event"] = "Power",
-						["subeventPrefix"] = "SPELL",
-						["unevent"] = "auto",
-						["use_powertype"] = true,
-						["debuffType"] = "HELPFUL",
-					},
-					["untrigger"] = {
-					},
-				}, -- [1]
-				{
-					["trigger"] = {
-						["custom_hide"] = "custom",
-						["type"] = "custom",
-						["events"] = "cEvent_ValidTarget",
-						["custom_type"] = "event",
-						["check"] = "update",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["unit"] = "player",
-						["debuffType"] = "HELPFUL",
-					},
-					["untrigger"] = {
-						["custom"] = "function(event, show)\n    if not show then return true end\nend",
-					},
-				}, -- [2]
-				["disjunctive"] = "all",
-				["activeTriggerMode"] = 1,
+			["borderBackdrop"] = "Blizzard Tooltip",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
 			},
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
@@ -14863,7 +14839,7 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["xOffset"] = 0,
+			["iconSource"] = -1,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -14930,10 +14906,55 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["sparkBlendMode"] = "ADD",
-			["useAdjustededMax"] = false,
-			["customTextUpdate"] = "update",
-			["authorOptions"] = {
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
 			},
+			["triggers"] = {
+				{
+					["trigger"] = {
+						["type"] = "unit",
+						["custom_hide"] = "timed",
+						["subeventSuffix"] = "_CAST_START",
+						["use_unit"] = true,
+						["duration"] = "1",
+						["genericShowOn"] = "showOnActive",
+						["unit"] = "player",
+						["names"] = {
+						},
+						["powertype"] = 6,
+						["spellIds"] = {
+						},
+						["event"] = "Power",
+						["subeventPrefix"] = "SPELL",
+						["unevent"] = "auto",
+						["use_powertype"] = true,
+						["debuffType"] = "HELPFUL",
+					},
+					["untrigger"] = {
+					},
+				}, -- [1]
+				{
+					["trigger"] = {
+						["custom_hide"] = "custom",
+						["type"] = "custom",
+						["events"] = "cEvent_ValidTarget",
+						["custom_type"] = "event",
+						["check"] = "update",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["unit"] = "player",
+						["debuffType"] = "HELPFUL",
+					},
+					["untrigger"] = {
+						["custom"] = "function(event, show)\n    if not show then return true end\nend",
+					},
+				}, -- [2]
+				["disjunctive"] = "all",
+				["activeTriggerMode"] = 1,
+			},
+			["xOffset"] = 0,
 			["config"] = {
 			},
 			["icon"] = false,
@@ -14950,23 +14971,18 @@ WeakAurasSaved = {
 			["auto"] = true,
 			["zoom"] = 0,
 			["spark"] = false,
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
-			},
+			["customTextUpdate"] = "update",
 			["sparkHidden"] = "NEVER",
-			["borderBackdrop"] = "Blizzard Tooltip",
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
-			["uid"] = "LU4k5x0GGFX",
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["frameStrata"] = 1,
+			["anchorFrameType"] = "SCREEN",
+			["useAdjustededMax"] = false,
+			["uid"] = "LU4k5x0GGFX",
 			["inverse"] = false,
 			["sparkDesature"] = false,
 			["orientation"] = "HORIZONTAL",
@@ -14976,13 +14992,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
+			["authorOptions"] = {
 			},
 		},
 		["Remorseless Winter"] = {
@@ -15001,18 +15011,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["duration"] = "1",
 						["subeventSuffix"] = "_CAST_START",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["use_unit"] = true,
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(frostKnightActions[\"Remorseless Winter\"].coolDown.duration, frostKnightActions[\"Remorseless Winter\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Remorseless Winter\"].coolDown.duration, myActions[\"Remorseless Winter\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["custom_type"] = "status",
 						["debuffType"] = "HELPFUL",
 					},
@@ -15036,7 +15046,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    frostKnightActions[\"Remorseless Winter\"].coolDown.duration = 0\n    frostKnightActions[\"Remorseless Winter\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Remorseless Winter\")\n    local runes = cFunction_GetRunesCount()\n    local coolDownDuration_Runes = 0\n    local coolDownExpirationTime_Runes = 0\n    local runes = cFunction_GetRunesCount()\n    if runes == 0\n    then\n        coolDownDuration_Runes, coolDownExpirationTime_Runes = cFunction_GetRunesCoolDowns(1)\n    end           \n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart + coolDownDuration > coolDownExpirationTime_Runes\n    then\n        frostKnightActions[\"Remorseless Winter\"].coolDown.duration = coolDownDuration\n        frostKnightActions[\"Remorseless Winter\"].coolDown.expirationTime = coolDownStart + coolDownDuration \n    elseif coolDownExpirationTime_Runes > coolDown.gcd.expirationTime\n    then        \n        ----Add .5s to compensate for my tendency to press key early for spell queing\n        frostKnightActions[\"Remorseless Winter\"].coolDown.duration = coolDownDuration_Runes --+ .5\n        frostKnightActions[\"Remorseless Winter\"].coolDown.expirationTime = coolDownExpirationTime_Runes --+ .5\n    end    \n    \n    --priority \n    frostKnightActions[\"Remorseless Winter\"].priority = nil\n    \n    if unitsInMelee.count <= 1\n    then\n        frostKnightActions[\"Remorseless Winter\"].priority = 3\n    elseif unitsInMelee.count > 1 \n    then\n        frostKnightActions[\"Remorseless Winter\"].priority = 1\n    end\n    \n    return isAuraHighestPriority(\"Remorseless Winter\", frostKnightActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Remorseless Winter\"].coolDown.duration = 0\n    myActions[\"Remorseless Winter\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Remorseless Winter\")\n    local runes = cFunction_GetRunesCount()\n    local coolDownDuration_Runes = 0\n    local coolDownExpirationTime_Runes = 0\n    local runes = cFunction_GetRunesCount()\n    if runes == 0\n    then\n        coolDownDuration_Runes, coolDownExpirationTime_Runes = cFunction_GetRunesCoolDowns(1)\n    end           \n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart + coolDownDuration > coolDownExpirationTime_Runes\n    then\n        myActions[\"Remorseless Winter\"].coolDown.duration = coolDownDuration\n        myActions[\"Remorseless Winter\"].coolDown.expirationTime = coolDownStart + coolDownDuration \n    elseif coolDownExpirationTime_Runes > coolDown.gcd.expirationTime\n    then        \n        ----Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Remorseless Winter\"].coolDown.duration = coolDownDuration_Runes --+ .5\n        myActions[\"Remorseless Winter\"].coolDown.expirationTime = coolDownExpirationTime_Runes --+ .5\n    end    \n    \n    --priority \n    myActions[\"Remorseless Winter\"].priority = nil\n    \n    if unitsInMelee.count <= 1\n    then\n        myActions[\"Remorseless Winter\"].priority = 3\n    elseif unitsInMelee.count > 1 \n    then\n        myActions[\"Remorseless Winter\"].priority = 1\n    end\n    \n    return isAuraHighestPriority(\"Remorseless Winter\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -15052,16 +15062,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "8",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["range"] = "8",
+						["event"] = "Range Check",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -15070,7 +15080,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        frostKnightActions[\"Remorseless Winter\"].inRange = true\n    else\n        frostKnightActions[\"Remorseless Winter\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        frostKnightActions[\"Remorseless Winter\"].show = true\n    else\n        frostKnightActions[\"Remorseless Winter\"].show = false\n    end    \n    return frostKnightActions[\"Remorseless Winter\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Remorseless Winter\"].inRange = true\n    else\n        myActions[\"Remorseless Winter\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Remorseless Winter\"].show = true\n    else\n        myActions[\"Remorseless Winter\"].show = false\n    end    \n    return myActions[\"Remorseless Winter\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -15245,7 +15255,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not frostKnightActions then\n    frostKnightActions = {}\nend\n\nfrostKnightActions[\"Remorseless Winter\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Remorseless Winter\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
 				},
 				["finish"] = {
 				},
@@ -15262,13 +15272,14 @@ WeakAurasSaved = {
 				"Fire Multi Target Tracker", -- [1]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["scale"] = 1,
-			["groupIcon"] = 135812,
-			["border"] = false,
+			["xOffset"] = 11.19989013671875,
 			["borderEdge"] = "Square Full White",
+			["border"] = false,
+			["yOffset"] = 111.2002868652344,
 			["regionType"] = "group",
 			["borderSize"] = 2,
-			["xOffset"] = 11.19989013671875,
+			["authorOptions"] = {
+			},
 			["borderColor"] = {
 				0, -- [1]
 				0, -- [2]
@@ -15279,7 +15290,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["groupOffset"] = true,
 			},
-			["yOffset"] = 111.2002868652344,
+			["groupIcon"] = 135812,
 			["actions"] = {
 				["start"] = {
 				},
@@ -15308,8 +15319,7 @@ WeakAurasSaved = {
 			},
 			["anchorPoint"] = "CENTER",
 			["internalVersion"] = 59,
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -15378,7 +15388,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 				["finish"] = {
 				},
@@ -15630,12 +15640,7 @@ WeakAurasSaved = {
 			["selfPoint"] = "CENTER",
 		},
 		["BT Thrash"] = {
-			["color"] = {
-				0.984313725490196, -- [1]
-				0.0509803921568627, -- [2]
-				0, -- [3]
-				1, -- [4]
-			},
+			["xOffset"] = 0,
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["actions"] = {
@@ -15813,10 +15818,15 @@ WeakAurasSaved = {
 			["alpha"] = 1,
 			["width"] = 60,
 			["id"] = "BT Thrash",
-			["parent"] = "Feral Bloodtalon Tracker",
+			["color"] = {
+				0.984313725490196, -- [1]
+				0.0509803921568627, -- [2]
+				0, -- [3]
+				1, -- [4]
+			},
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["xOffset"] = 0,
+			["parent"] = "Feral Bloodtalon Tracker",
 			["config"] = {
 			},
 			["animation"] = {
@@ -15893,7 +15903,7 @@ WeakAurasSaved = {
 						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(windwalkerActions[\"Blackout Kick\"].coolDown.duration, windwalkerActions[\"Blackout Kick\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Blackout Kick\"].coolDown.duration, myActions[\"Blackout Kick\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -15922,11 +15932,11 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["debuffType"] = "HELPFUL",
-						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
+						["debuffType"] = "HELPFUL",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["unevent"] = "auto",
 						["custom_hide"] = "custom",
 					},
@@ -15938,7 +15948,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown\n    windwalkerActions[\"Blackout Kick\"].coolDown.duration = 0\n    windwalkerActions[\"Blackout Kick\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Blackout Kick\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        windwalkerActions[\"Blackout Kick\"].coolDown.duration = coolDownDuration\n        windwalkerActions[\"Blackout Kick\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end  \n    \n    -- Don't use this ability if one of the higher priority abilites is ready but needs chi\n    local pool = false\n    if windwalkerActions[\"Fists of Fury\"].poolpowerforme or windwalkerActions[\"Spinning Crane Kick\"].poolpowerforme or windwalkerActions[\"Rising Sun Kick\"].poolpowerforme\n    then\n        pool = true\n    end\n    \n    --priority\n    windwalkerActions[\"Blackout Kick\"].priority = nil\n    if UnitPower(\"player\",12) >= 1 and not pool\n    then\n        windwalkerActions[\"Blackout Kick\"].priority = 8\n    end\n    \n    return isAuraHighestPriority(\"Blackout Kick\", windwalkerActions)\n    \nend",
+						["custom"] = "function()\n    \n    --coolDown\n    myActions[\"Blackout Kick\"].coolDown.duration = 0\n    myActions[\"Blackout Kick\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Blackout Kick\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Blackout Kick\"].coolDown.duration = coolDownDuration\n        myActions[\"Blackout Kick\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end  \n    \n    -- Don't use this ability if one of the higher priority abilites is ready but needs chi\n    local pool = false\n    if myActions[\"Fists of Fury\"].poolpowerforme or myActions[\"Spinning Crane Kick\"].poolpowerforme or myActions[\"Rising Sun Kick\"].poolpowerforme\n    then\n        pool = true\n    end\n    \n    --priority\n    myActions[\"Blackout Kick\"].priority = nil\n    if UnitPower(\"player\",12) >= 1 and not pool\n    then\n        myActions[\"Blackout Kick\"].priority = 8\n    end\n    \n    return isAuraHighestPriority(\"Blackout Kick\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -15967,7 +15977,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        windwalkerActions[\"Blackout Kick\"].inRange = true\n    else\n        windwalkerActions[\"Blackout Kick\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        windwalkerActions[\"Blackout Kick\"].show = true\n    else\n        windwalkerActions[\"Blackout Kick\"].show = false\n    end\n    \n    return windwalkerActions[\"Blackout Kick\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Blackout Kick\"].inRange = true\n    else\n        myActions[\"Blackout Kick\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Blackout Kick\"].show = true\n    else\n        myActions[\"Blackout Kick\"].show = false\n    end\n    \n    return myActions[\"Blackout Kick\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -16149,7 +16159,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not windwalkerActions then\n    windwalkerActions = {}\nend\n\nwindwalkerActions[\"Blackout Kick\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Blackout Kick\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 		},
@@ -16172,22 +16182,24 @@ WeakAurasSaved = {
 			["triggers"] = {
 				{
 					["trigger"] = {
-						["use_unit"] = true,
 						["subeventPrefix"] = "SPELL",
+						["names"] = {
+							"Lightning Shield", -- [1]
+						},
 						["duration"] = "1",
 						["useGroup_count"] = false,
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["ownOnly"] = true,
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["group_countOperator"] = "==",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["spellName"] = 116011,
+						["group_countOperator"] = "==",
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
-						["use_targetRequired"] = false,
 						["custom_hide"] = "timed",
+						["use_targetRequired"] = false,
+						["spellName"] = 116011,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -16201,9 +16213,7 @@ WeakAurasSaved = {
 						["spellIds"] = {
 						},
 						["matchesShowOn"] = "showOnMissing",
-						["names"] = {
-							"Lightning Shield", -- [1]
-						},
+						["use_unit"] = true,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["auranames"] = {
@@ -16407,10 +16417,15 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["useTooltip"] = false,
+			["xOffset"] = 0,
 			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
-			["xOffset"] = 0,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -16446,11 +16461,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
+			["authorOptions"] = {
 			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
@@ -16464,11 +16475,10 @@ WeakAurasSaved = {
 			["icon"] = true,
 			["uid"] = "spCNznbgAVF",
 			["inverse"] = true,
-			["desaturate"] = false,
+			["useTooltip"] = false,
 			["displayIcon"] = 609815,
 			["cooldown"] = true,
-			["authorOptions"] = {
-			},
+			["desaturate"] = false,
 		},
 		["Enhancement Multi Target Tracker"] = {
 			["iconSource"] = 0,
@@ -16609,6 +16619,9 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
+			["xOffset"] = -731.4668121337891,
+			["regionType"] = "icon",
+			["displayIcon"] = 237581,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -16629,32 +16642,29 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["regionType"] = "icon",
-			["displayIcon"] = 237581,
-			["icon"] = true,
-			["xOffset"] = -731.4668121337891,
+			["authorOptions"] = {
+			},
 			["cooldown"] = false,
 			["zoom"] = 0,
 			["uid"] = "TOJTZU(w(zi",
 			["cooldownTextDisabled"] = false,
 			["auto"] = false,
-			["frameStrata"] = 1,
+			["alpha"] = 1,
 			["id"] = "Enhancement Multi Target Tracker",
 			["width"] = 64,
-			["alpha"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["frameStrata"] = 1,
 			["config"] = {
 			},
 			["inverse"] = false,
-			["authorOptions"] = {
-			},
+			["parent"] = "Enhancement Functions",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["parent"] = "Enhancement Functions",
+			["icon"] = true,
 		},
 		["Charge"] = {
 			["iconSource"] = 0,
@@ -16667,15 +16677,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = true",
+					["custom"] = "myActions_ShadowWordDeath = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = false",
+					["custom"] = "myActions_ShadowWordDeath = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not furyActions then\n    furyActions = {}\nend\n\nfuryActions[\"Charge\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = -10,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Charge\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = -10,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -16685,7 +16695,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()  \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(furyActions[\"Charge\"].coolDown.duration, furyActions[\"Charge\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()  \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(myActions[\"Charge\"].coolDown.duration, myActions[\"Charge\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["names"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
@@ -16713,11 +16723,11 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["custom_type"] = "event",
 						["subeventSuffix"] = "_CAST_START",
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["use_absorbMode"] = true,
+						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["custom_hide"] = "custom",
 					},
@@ -16733,7 +16743,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    furyActions[\"Charge\"].coolDown.duration = 0\n    furyActions[\"Charge\"].coolDown.expirationTime = 0        \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Charge\")\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        furyActions[\"Charge\"].coolDown.duration = coolDownDuration\n        furyActions[\"Charge\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end\n    \n    --Priority\n    \n    if WeakAuras.CheckRange(\"target\", 8, \">\")\n    then\n        furyActions[\"Charge\"].priority = -10  \n    else\n        furyActions[\"Charge\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Charge\", furyActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Charge\"].coolDown.duration = 0\n    myActions[\"Charge\"].coolDown.expirationTime = 0        \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Charge\")\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        myActions[\"Charge\"].coolDown.duration = coolDownDuration\n        myActions[\"Charge\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end\n    \n    --Priority\n    \n    if WeakAuras.CheckRange(\"target\", 8, \">\")\n    then\n        myActions[\"Charge\"].priority = -10  \n    else\n        myActions[\"Charge\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Charge\", myActions)\nend",
 						["unit"] = "player",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -16782,7 +16792,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        furyActions[\"Charge\"].inRange = true\n    else\n        furyActions[\"Charge\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        furyActions[\"Charge\"].show = true\n    else\n        furyActions[\"Charge\"].show = false\n    end    \n    return furyActions[\"Charge\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Charge\"].inRange = true\n    else\n        myActions[\"Charge\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Charge\"].show = true\n    else\n        myActions[\"Charge\"].show = false\n    end    \n    return myActions[\"Charge\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["useTooltip"] = false,
@@ -16940,10 +16950,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["selfPoint"] = "CENTER",
+			["desaturate"] = false,
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["desaturate"] = false,
+			["icon"] = true,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -16973,7 +16983,12 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["icon"] = true,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -16987,18 +17002,13 @@ WeakAurasSaved = {
 			},
 			["uid"] = "E1EQkrY8KIN",
 			["inverse"] = true,
-			["parent"] = "Fury Action Bar",
+			["selfPoint"] = "CENTER",
 			["displayIcon"] = 132337,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Fury Action Bar",
 		},
 		["Final Reckoning CD"] = {
 			["iconSource"] = 0,
@@ -17052,12 +17062,12 @@ WeakAurasSaved = {
 						["names"] = {
 						},
 						["subeventSuffix"] = "_CAST_START",
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["unit"] = "player",
 						["debuffType"] = "HELPFUL",
 					},
@@ -17241,18 +17251,13 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "hrOJm647uab",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Retribution CD Bar",
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["parent"] = "Retribution CD Bar",
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = 135878,
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -17267,7 +17272,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -17298,12 +17308,12 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["icon"] = true,
+			["selfPoint"] = "CENTER",
 		},
 		["Lava Lash"] = {
 			["iconSource"] = 0,
 			["parent"] = "Enhancment Action Bar",
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Lava Lash\", enhancementActions)\nend",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Lava Lash\", myActions)\nend",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -17317,7 +17327,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(enhancementActions[\"Lava Lash\"].coolDown.duration, \n        enhancementActions[\"Lava Lash\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Lava Lash\"].coolDown.duration, \n        myActions[\"Lava Lash\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["names"] = {
 						},
 						["spellIds"] = {
@@ -17348,7 +17358,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    enhancementActions[\"Lava Lash\"].coolDown.duration = 0\n    enhancementActions[\"Lava Lash\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Lava Lash\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Lava Lash\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Lava Lash\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    enhancementActions[\"Lava Lash\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        local hotHands = select(1,AuraUtil.FindAuraByName(\"Hot Hand\", \"player\", \"HELPFUL|PLAYER\")) \n        local ashenCatalyst_Stacks = select(3,AuraUtil.FindAuraByName(\"Ashen Catalyst\", \"player\", \"HELPFUL|PLAYER\"))\n        if hotHands ~=nil or (ashenCatalyst_Stacks ~=nil and ashenCatalyst_Stacks >=5)\n        then\n            enhancementActions[\"Lava Lash\"].priority = 3\n        elseif enhancementData.flameShock.target.expiring == 1\n        then\n            enhancementActions[\"Lava Lash\"].priority = 8\n        else\n            enhancementActions[\"Lava Lash\"].priority = 12\n        end        \n    elseif unitsInMelee.count > 1 \n    then\n        --If target has flame shock spead it to all targets in range\n        if enhancementData.flameShock.target.missing == 0\n        and enhancementData.flameShock.missing + enhancementData.flameShock.expiring > 0\n        then   \n            enhancementActions[\"Lava Lash\"].priority = 2\n        else\n            enhancementActions[\"Lava Lash\"].priority = 10\n        end  \n    end\n    \n    return isAuraHighestPriority(\"Lava Lash\", enhancementActions)    \nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Lava Lash\"].coolDown.duration = 0\n    myActions[\"Lava Lash\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Lava Lash\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Lava Lash\"].coolDown.duration = coolDownDuration\n        myActions[\"Lava Lash\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    myActions[\"Lava Lash\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        local hotHands = select(1,AuraUtil.FindAuraByName(\"Hot Hand\", \"player\", \"HELPFUL|PLAYER\")) \n        local ashenCatalyst_Stacks = select(3,AuraUtil.FindAuraByName(\"Ashen Catalyst\", \"player\", \"HELPFUL|PLAYER\"))\n        if hotHands ~=nil or (ashenCatalyst_Stacks ~=nil and ashenCatalyst_Stacks >=5)\n        then\n            myActions[\"Lava Lash\"].priority = 3\n        elseif enhancementData.flameShock.target.expiring == 1\n        then\n            myActions[\"Lava Lash\"].priority = 8\n        else\n            myActions[\"Lava Lash\"].priority = 12\n        end        \n    elseif unitsInMelee.count > 1 \n    then\n        --If target has flame shock spead it to all targets in range\n        if enhancementData.flameShock.target.missing == 0\n        and enhancementData.flameShock.missing + enhancementData.flameShock.expiring > 0\n        then   \n            myActions[\"Lava Lash\"].priority = 2\n        else\n            myActions[\"Lava Lash\"].priority = 10\n        end  \n    end\n    \n    return isAuraHighestPriority(\"Lava Lash\", myActions)    \nend\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -17377,7 +17387,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)   \n    \n    if t[4] then\n        enhancementActions[\"Lava Lash\"].inRange = true\n    else\n        enhancementActions[\"Lava Lash\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Lava Lash\"].show = true\n    else\n        enhancementActions[\"Lava Lash\"].show = false\n    end    \n    return enhancementActions[\"Lava Lash\"].show\nend",
+				["customTriggerLogic"] = "function(t)   \n    \n    if t[4] then\n        myActions[\"Lava Lash\"].inRange = true\n    else\n        myActions[\"Lava Lash\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Lava Lash\"].show = true\n    else\n        myActions[\"Lava Lash\"].show = false\n    end    \n    return myActions[\"Lava Lash\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -17508,15 +17518,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_Sundering = true",
+					["custom"] = "myActions_Sundering = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Lava Lash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Lava Lash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}\n\n\n",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Lava Lash\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Lava Lash\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 			},
 			["cooldown"] = true,
@@ -17739,17 +17749,17 @@ WeakAurasSaved = {
 					},
 				},
 			},
+			["parent"] = "Survival Functions",
+			["regionType"] = "icon",
+			["conditions"] = {
+			},
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0, -- [4]
 			},
-			["regionType"] = "icon",
-			["conditions"] = {
-			},
-			["selfPoint"] = "CENTER",
-			["parent"] = "Survival Functions",
+			["icon"] = true,
 			["information"] = {
 				["forceEvents"] = true,
 			},
@@ -17758,18 +17768,18 @@ WeakAurasSaved = {
 			},
 			["cooldownTextDisabled"] = false,
 			["auto"] = false,
-			["useCooldownModRate"] = true,
+			["alpha"] = 1,
 			["id"] = "Survival  Multi Target Tracker",
 			["anchorFrameType"] = "SCREEN",
-			["alpha"] = 1,
-			["width"] = 64.00001525878906,
 			["frameStrata"] = 1,
+			["width"] = 64.00001525878906,
+			["useCooldownModRate"] = true,
 			["uid"] = "Q0FiXp43jBO",
 			["inverse"] = false,
-			["icon"] = true,
+			["xOffset"] = -688.1333312988281,
 			["displayIcon"] = "461113",
 			["cooldown"] = false,
-			["xOffset"] = -688.1333312988281,
+			["selfPoint"] = "CENTER",
 		},
 		["GetActionBar"] = {
 			["outline"] = "OUTLINE",
@@ -17808,10 +17818,10 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["custom_hide"] = "timed",
 						["unevent"] = "auto",
-						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["events"] = "AOE",
+						["custom"] = "function()\n    return true\nend",
 						["check"] = "update",
 						["unit"] = "player",
 						["duration"] = "1",
@@ -17964,15 +17974,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_DevouringPlaque = true",
+					["custom"] = "myActions_DevouringPlaque = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Devouring Plague\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Devouring Plague\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_DevouringPlaque = false",
+					["custom"] = "myActions_DevouringPlaque = false",
 				},
 			},
 			["triggers"] = {
@@ -17982,18 +17992,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["custom_type"] = "status",
 						["subeventSuffix"] = "_CAST_START",
-						["names"] = {
-						},
+						["subeventPrefix"] = "SPELL",
 						["use_absorbMode"] = true,
 						["event"] = "BigWigs Timer",
-						["subeventPrefix"] = "SPELL",
+						["use_unit"] = true,
 						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return coolDown.channel_gcd.duration, coolDown.channel_gcd.expirationTime\n    else\n        return coolDown.cast_gcd.duration, coolDown.cast_gcd.expirationTime\n    end\nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["unit"] = "player",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -18017,7 +18027,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Priority\n    shadowActions[\"Devouring Plague\"].priority = nil\n    \n    \n    if select(1,IsUsableSpell(\"Devouring Plague\"))\n    then\n        if (unitsInRange.count <=2 or attackMode == \"Focus\") and unitsInRange.count > shadowData.devouringPlague.skip\n        then\n            shadowActions[\"Devouring Plague\"].priority = 9\n        elseif unitsInRange.count > 2 and cFunction_HasTalent(\"Mind Sear\") == nil and unitsInRange.count > shadowData.devouringPlague.skip\n        and attackMode ~= \"Focus\"\n        then\n            shadowActions[\"Devouring Plague\"].priority = 9\n        end\n    end    \n    \n    return isAuraHighestPriority(\"Devouring Plague\", shadowActions)\nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Priority\n    myActions[\"Devouring Plague\"].priority = nil\n    \n    \n    if select(1,IsUsableSpell(\"Devouring Plague\"))\n    then\n        if (unitsInRange.count <=2 or attackMode == \"Focus\") and unitsInRange.count > shadowData.devouringPlague.skip\n        then\n            myActions[\"Devouring Plague\"].priority = 9\n        elseif unitsInRange.count > 2 and cFunction_HasTalent(\"Mind Sear\") == nil and unitsInRange.count > shadowData.devouringPlague.skip\n        and attackMode ~= \"Focus\"\n        then\n            myActions[\"Devouring Plague\"].priority = 9\n        end\n    end    \n    \n    return isAuraHighestPriority(\"Devouring Plague\", myActions)\nend\n\n\n",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -18037,12 +18047,12 @@ WeakAurasSaved = {
 						["unit"] = "target",
 						["use_absorbMode"] = true,
 						["debuffType"] = "HARMFUL",
-						["unevent"] = "auto",
+						["custom_type"] = "status",
 						["custom_hide"] = "timed",
 						["custom"] = "function()\n    -- If multiple targets(<=5) apply devouring plague to target with greatest health    \n    if unitsInRange.count <= 5 and shadowData.devouringPlague.target == 0 and attackMode ~= \"Focus\"\n    then        \n        return true      \n    end\n    return false\nend\n\n\n\n\n",
 						["type"] = "custom",
 						["use_debuffClass"] = false,
-						["custom_type"] = "status",
+						["subeventSuffix"] = "_CAST_START",
 						["auraspellids"] = {
 							"155722", -- [1]
 						},
@@ -18054,7 +18064,7 @@ WeakAurasSaved = {
 						["spellIds"] = {
 							1822, -- [1]
 						},
-						["subeventSuffix"] = "_CAST_START",
+						["unevent"] = "auto",
 						["check"] = "update",
 						["combineMatches"] = "showLowest",
 						["auranames"] = {
@@ -18091,7 +18101,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)\n    \n    if t[5]\n    then\n        shadowActions[\"Devouring Plague\"].inRange = true  \n    else\n        shadowActions[\"Devouring Plague\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Devouring Plague\"].show = true\n    else\n        shadowActions[\"Devouring Plague\"].show = false\n    end\n    \n    return shadowActions[\"Devouring Plague\"].show\n    \nend\n\n\n",
+				["customTriggerLogic"] = "function(t)\n    \n    if t[5]\n    then\n        myActions[\"Devouring Plague\"].inRange = true  \n    else\n        myActions[\"Devouring Plague\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Devouring Plague\"].show = true\n    else\n        myActions[\"Devouring Plague\"].show = false\n    end\n    \n    return myActions[\"Devouring Plague\"].show\n    \nend\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -18700,18 +18710,18 @@ WeakAurasSaved = {
 						["subeventPrefix"] = "SPELL",
 						["duration"] = "1",
 						["useGroup_count"] = false,
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["ownOnly"] = true,
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["spellName"] = 51271,
+						["custom_hide"] = "timed",
 						["group_count"] = "0",
-						["debuffType"] = "HELPFUL",
-						["use_targetRequired"] = false,
 						["group_countOperator"] = "==",
+						["use_targetRequired"] = false,
+						["spellName"] = 51271,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -18910,9 +18920,6 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["xOffset"] = 0,
-			["stickyDuration"] = false,
-			["regionType"] = "icon",
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -18931,6 +18938,16 @@ WeakAurasSaved = {
 					["type"] = "none",
 					["easeStrength"] = 3,
 					["easeType"] = "none",
+				},
+			},
+			["stickyDuration"] = false,
+			["regionType"] = "icon",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
 				},
 			},
 			["information"] = {
@@ -18968,14 +18985,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
-			},
+			["useTooltip"] = false,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -18993,11 +19003,11 @@ WeakAurasSaved = {
 			["zoom"] = 0.28,
 			["uid"] = "unXuAsWi46u",
 			["inverse"] = true,
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["displayIcon"] = 458718,
 			["cooldown"] = true,
-			["useTooltip"] = false,
+			["authorOptions"] = {
+			},
 		},
 		["Mindgames"] = {
 			["iconSource"] = 0,
@@ -19010,15 +19020,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = true",
+					["custom"] = "myActions_ShadowWordDeath = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = false",
+					["custom"] = "myActions_ShadowWordDeath = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Mindgames\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Mindgames\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -19028,7 +19038,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(shadowActions[\"Mindgames\"].coolDown.duration, \n            shadowActions[\"Mindgames\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(shadowActions[\"Mindgames\"].coolDown.duration, \n            shadowActions[\"Mindgames\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
+						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(myActions[\"Mindgames\"].coolDown.duration, \n            myActions[\"Mindgames\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(myActions[\"Mindgames\"].coolDown.duration, \n            myActions[\"Mindgames\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
 						["names"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
@@ -19056,11 +19066,11 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["custom_type"] = "event",
 						["subeventSuffix"] = "_CAST_START",
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["use_absorbMode"] = true,
+						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["custom_hide"] = "custom",
 					},
@@ -19076,7 +19086,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    shadowActions[\"Mindgames\"].coolDown.duration = 0\n    shadowActions[\"Mindgames\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Mindgames\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        shadowActions[\"Mindgames\"].coolDown.duration = coolDownDuration\n        shadowActions[\"Mindgames\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Mindgames\"\n    then\n        shadowActions[\"Mindgames\"].casting.active = true\n        shadowActions[\"Mindgames\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        shadowActions[\"Mindgames\"].casting.active = false\n        shadowActions[\"Mindgames\"].casting.expirationTime = nil\n    end     \n    \n    --Priority\n    shadowActions[\"Mindgames\"].priority = nil\n    \n    if (unitsInRange.count <= 4 or attackMode == \"Focus\") and not shadowActions[\"Mindgames\"].casting.active\n    then        \n        \n        shadowActions[\"Mindgames\"].priority = 15    \n    end        \n    \n    return isAuraHighestPriority(\"Mindgames\", shadowActions)\nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Mindgames\"].coolDown.duration = 0\n    myActions[\"Mindgames\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Mindgames\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Mindgames\"].coolDown.duration = coolDownDuration\n        myActions[\"Mindgames\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Mindgames\"\n    then\n        myActions[\"Mindgames\"].casting.active = true\n        myActions[\"Mindgames\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        myActions[\"Mindgames\"].casting.active = false\n        myActions[\"Mindgames\"].casting.expirationTime = nil\n    end     \n    \n    --Priority\n    myActions[\"Mindgames\"].priority = nil\n    \n    if (unitsInRange.count <= 4 or attackMode == \"Focus\") and not myActions[\"Mindgames\"].casting.active\n    then        \n        \n        myActions[\"Mindgames\"].priority = 15    \n    end        \n    \n    return isAuraHighestPriority(\"Mindgames\", myActions)\nend\n\n\n",
 						["unit"] = "player",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -19106,7 +19116,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        shadowActions[\"Mindgames\"].inRange = true  \n    else\n        shadowActions[\"Mindgames\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Mindgames\"].show = true\n    else\n        shadowActions[\"Mindgames\"].show = false\n    end\n    \n    return shadowActions[\"Mindgames\"].show\nend",
+				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        myActions[\"Mindgames\"].inRange = true  \n    else\n        myActions[\"Mindgames\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Mindgames\"].show = true\n    else\n        myActions[\"Mindgames\"].show = false\n    end\n    \n    return myActions[\"Mindgames\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -19246,6 +19256,45 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
+			["authorOptions"] = {
+			},
+			["regionType"] = "icon",
+			["stickyDuration"] = false,
+			["cooldown"] = true,
+			["conditions"] = {
+				{
+					["check"] = {
+						["trigger"] = 4,
+						["variable"] = "show",
+						["value"] = 0,
+					},
+					["changes"] = {
+						{
+							["value"] = true,
+							["property"] = "desaturate",
+						}, -- [1]
+					},
+				}, -- [1]
+			},
+			["useTooltip"] = false,
+			["icon"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["cooldownTextDisabled"] = false,
+			["auto"] = false,
+			["frameStrata"] = 1,
+			["id"] = "Mindgames",
+			["zoom"] = 0.28,
+			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["alpha"] = 1,
+			["uid"] = "G9RefZSOWJH",
+			["inverse"] = true,
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -19266,51 +19315,12 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["authorOptions"] = {
-			},
-			["regionType"] = "icon",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
-			["cooldown"] = true,
-			["conditions"] = {
-				{
-					["check"] = {
-						["trigger"] = 4,
-						["variable"] = "show",
-						["value"] = 0,
-					},
-					["changes"] = {
-						{
-							["value"] = true,
-							["property"] = "desaturate",
-						}, -- [1]
-					},
-				}, -- [1]
-			},
-			["stickyDuration"] = false,
-			["icon"] = true,
-			["anchorFrameType"] = "SCREEN",
-			["cooldownTextDisabled"] = false,
-			["auto"] = false,
-			["frameStrata"] = 1,
-			["id"] = "Mindgames",
-			["zoom"] = 0.28,
-			["useCooldownModRate"] = true,
-			["width"] = 50,
-			["alpha"] = 1,
-			["uid"] = "G9RefZSOWJH",
-			["inverse"] = true,
-			["parent"] = "Shadow Action Bar",
 			["displayIcon"] = 3565723,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["parent"] = "Shadow Action Bar",
 		},
 		["Mind Spike"] = {
 			["iconSource"] = -1,
@@ -19356,10 +19366,10 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["names"] = {
 						},
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["duration"] = "1",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
@@ -19378,7 +19388,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["subeventSuffix"] = "_CAST_START",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    local name, _,_,_, endTimeMS, _,_,_,_ = UnitCastingInfo(\"player\")\n    if name ~= nil and name == \"Mind Spike\"\n    then\n        shadowActions[\"Mind Spike\"].casting.active = true\n        --Supper Hack to deal with weird variable delay with casting spell aura\n        shadowActions[\"Mind Spike\"].casting.expirationTime = (endTimeMS / 1000) + .15        \n    else\n        shadowActions[\"Mind Spike\"].casting.active = false\n        shadowActions[\"Mind Spike\"].casting.expirationTime = nil\n    end      \n    \n    return isAuraHighestPriority(\"Mind Spike\", shadowActions)\n    \nend\n\n\n\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    local name, _,_,_, endTimeMS, _,_,_,_ = UnitCastingInfo(\"player\")\n    if name ~= nil and name == \"Mind Spike\"\n    then\n        myActions[\"Mind Spike\"].casting.active = true\n        --Supper Hack to deal with weird variable delay with casting spell aura\n        myActions[\"Mind Spike\"].casting.expirationTime = (endTimeMS / 1000) + .15        \n    else\n        myActions[\"Mind Spike\"].casting.active = false\n        myActions[\"Mind Spike\"].casting.expirationTime = nil\n    end      \n    \n    return isAuraHighestPriority(\"Mind Spike\", myActions)\n    \nend\n\n\n\n\n\n\n",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -19408,7 +19418,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    if t[4]\n    then\n        shadowActions[\"Mind Spike\"].inRange = true  \n    else\n        shadowActions[\"Mind Spike\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Mind Spike\"].show = true\n    else\n        shadowActions[\"Mind Spike\"].show = false\n    end\n    \n    return shadowActions[\"Mind Spike\"].show\nend\n\n\n\n",
+				["customTriggerLogic"] = "function(t)         \n    if t[4]\n    then\n        myActions[\"Mind Spike\"].inRange = true  \n    else\n        myActions[\"Mind Spike\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Mind Spike\"].show = true\n    else\n        myActions[\"Mind Spike\"].show = false\n    end\n    \n    return myActions[\"Mind Spike\"].show\nend\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -19567,7 +19577,7 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "D0qmp0oWh5N",
-			["xOffset"] = 0,
+			["parent"] = "Shadow Action Bar",
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -19575,26 +19585,26 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["regionType"] = "icon",
-			["parent"] = "Shadow Action Bar",
+			["actions"] = {
+				["start"] = {
+					["do_custom"] = false,
+					["custom"] = "myActions_MindBlast = true",
+				},
+				["init"] = {
+					["do_custom"] = true,
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Mind Spike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 20,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+				},
+				["finish"] = {
+					["do_custom"] = false,
+					["custom"] = "myActions_MindBlast = false",
+				},
+			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
 			["displayIcon"] = 457655,
-			["actions"] = {
-				["start"] = {
-					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = true",
-				},
-				["init"] = {
-					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Mind Spike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 20,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
-				},
-				["finish"] = {
-					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = false",
-				},
-			},
+			["stickyDuration"] = false,
 			["useTooltip"] = false,
 			["width"] = 50,
 			["cooldownTextDisabled"] = false,
@@ -19608,7 +19618,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["xOffset"] = 0,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -19637,7 +19647,7 @@ WeakAurasSaved = {
 				}, -- [2]
 			},
 			["cooldown"] = true,
-			["stickyDuration"] = false,
+			["selfPoint"] = "CENTER",
 		},
 		["Survival Power Bar"] = {
 			["grow"] = "DOWN",
@@ -19862,7 +19872,7 @@ WeakAurasSaved = {
 						["unit"] = "player",
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --CoolDown and Casting\n    if coolDown.channel.name ~= nil and coolDown.channel.name == \"Mind Flay\"\n    then\n        shadowActions[\"Mind Flay\"].casting.active = true\n        shadowActions[\"Mind Flay\"].casting.expirationTime = coolDown.channel.expirationTime\n        shadowActions[\"Mind Flay\"].coolDown.duration = coolDown.channel.duration\n        shadowActions[\"Mind Flay\"].coolDown.expirationTime = coolDown.channel.expirationTime\n    else\n        shadowActions[\"Mind Flay\"].casting.active = false\n        shadowActions[\"Mind Flay\"].casting.expirationTime = 0\n        shadowActions[\"Mind Flay\"].casting.duration = 0\n        shadowActions[\"Mind Flay\"].coolDown.duration = 0\n        shadowActions[\"Mind Flay\"].coolDown.expirationTime = 0\n    end \n    \n    --Priority\n    return isAuraHighestPriority(\"Mind Flay\", shadowActions)\nend\n\n\n\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --CoolDown and Casting\n    if coolDown.channel.name ~= nil and coolDown.channel.name == \"Mind Flay\"\n    then\n        myActions[\"Mind Flay\"].casting.active = true\n        myActions[\"Mind Flay\"].casting.expirationTime = coolDown.channel.expirationTime\n        myActions[\"Mind Flay\"].coolDown.duration = coolDown.channel.duration\n        myActions[\"Mind Flay\"].coolDown.expirationTime = coolDown.channel.expirationTime\n    else\n        myActions[\"Mind Flay\"].casting.active = false\n        myActions[\"Mind Flay\"].casting.expirationTime = 0\n        myActions[\"Mind Flay\"].casting.duration = 0\n        myActions[\"Mind Flay\"].coolDown.duration = 0\n        myActions[\"Mind Flay\"].coolDown.expirationTime = 0\n    end \n    \n    --Priority\n    return isAuraHighestPriority(\"Mind Flay\", myActions)\nend\n\n\n\n\n\n\n",
 						["genericShowOn"] = "showOnCooldown",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -19892,7 +19902,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    if t[4]\n    then\n        shadowActions[\"Mind Flay\"].inRange = true  \n    else\n        shadowActions[\"Mind Flay\"].inRange = false\n    end  \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Mind Flay\"].show = true\n    else\n        shadowActions[\"Mind Flay\"].show = false\n    end\n    \n    return shadowActions[\"Mind Flay\"].show\nend",
+				["customTriggerLogic"] = "function(t)    \n    if t[4]\n    then\n        myActions[\"Mind Flay\"].inRange = true  \n    else\n        myActions[\"Mind Flay\"].inRange = false\n    end  \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Mind Flay\"].show = true\n    else\n        myActions[\"Mind Flay\"].show = false\n    end\n    \n    return myActions[\"Mind Flay\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["useTooltip"] = false,
@@ -20031,23 +20041,24 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["xOffset"] = 0,
+			["internalVersion"] = 59,
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindFlay = true",
+					["custom"] = "myActions_MindFlay = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindFlay = false",
+					["custom"] = "myActions_MindFlay = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Mind Flay\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 21,\n    [\"onCoolDown\"] = false,    \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Mind Flay\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 21,\n    [\"onCoolDown\"] = false,    \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n\n\n",
 				},
 			},
 			["regionType"] = "icon",
-			["internalVersion"] = 59,
+			["authorOptions"] = {
+			},
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -20064,8 +20075,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["authorOptions"] = {
-			},
+			["selfPoint"] = "CENTER",
 			["cooldownTextDisabled"] = false,
 			["width"] = 50,
 			["zoom"] = 0.32,
@@ -20083,13 +20093,13 @@ WeakAurasSaved = {
 			},
 			["uid"] = "XeEPLW3UnHK",
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["xOffset"] = 0,
 			["displayIcon"] = "136208",
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["stickyDuration"] = false,
 		},
 		["Coordinated Assault"] = {
 			["iconSource"] = 0,
@@ -20116,11 +20126,11 @@ WeakAurasSaved = {
 						["matchesShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["custom_hide"] = "timed",
-						["match_count"] = "0",
 						["buffShowOn"] = "showOnMissing",
+						["match_count"] = "0",
+						["debuffType"] = "HELPFUL",
 						["subeventSuffix"] = "_CAST_START",
-						["spellName"] = 266779,
+						["custom_hide"] = "timed",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -20133,8 +20143,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
 						["group_countOperator"] = "==",
+						["spellName"] = 266779,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["auranames"] = {
@@ -20338,7 +20348,7 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["xOffset"] = 0,
+			["stickyDuration"] = false,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -20346,7 +20356,7 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["regionType"] = "icon",
-			["stickyDuration"] = false,
+			["selfPoint"] = "CENTER",
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -20382,7 +20392,8 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["selfPoint"] = "CENTER",
+			["authorOptions"] = {
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -20402,11 +20413,10 @@ WeakAurasSaved = {
 			["alpha"] = 1,
 			["uid"] = "Sce2lVWbXP6",
 			["inverse"] = true,
-			["useTooltip"] = false,
+			["xOffset"] = 0,
 			["displayIcon"] = 2065565,
 			["cooldown"] = true,
-			["authorOptions"] = {
-			},
+			["useTooltip"] = false,
 		},
 		["Fury Power Bar"] = {
 			["arcLength"] = 360,
@@ -20585,15 +20595,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = true",
+					["custom"] = "myActions_ShadowWordDeath = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Shadow Crash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Shadow Crash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = false",
+					["custom"] = "myActions_ShadowWordDeath = false",
 				},
 			},
 			["triggers"] = {
@@ -20603,7 +20613,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(shadowActions[\"Shadow Crash\"].coolDown.duration, \n            shadowActions[\"Shadow Crash\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(shadowActions[\"Shadow Crash\"].coolDown.duration, \n            shadowActions[\"Shadow Crash\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend\n\n\n\n\n\n",
+						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(myActions[\"Shadow Crash\"].coolDown.duration, \n            myActions[\"Shadow Crash\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(myActions[\"Shadow Crash\"].coolDown.duration, \n            myActions[\"Shadow Crash\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend\n\n\n\n\n\n",
 						["names"] = {
 						},
 						["spellIds"] = {
@@ -20629,10 +20639,10 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["names"] = {
 						},
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["duration"] = "1",
 						["unevent"] = "auto",
 						["subeventSuffix"] = "_CAST_START",
@@ -20651,7 +20661,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["subeventSuffix"] = "_CAST_START",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or shadowActions == nil then return false end\n    \n    --coolDown\n    shadowActions[\"Shadow Crash\"].coolDown.duration = 0\n    shadowActions[\"Shadow Crash\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Shadow Crash\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        shadowActions[\"Shadow Crash\"].coolDown.duration = coolDownDuration\n        shadowActions[\"Shadow Crash\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    shadowActions[\"Shadow Crash\"].priority = nil\n    \n    local travel_State = WeakAuras.GetTriggerStateForTrigger(\"Shadow Crash\", 4)    \n    if not travel_State[\"\"] and not travel_State.show\n    then\n        if unitsInRange.count <= 2 or attackMode == \"Focus\"\n        then        \n            if isAuraHighestPriority(\"Vampiric Touch\", shadowActions) and shadowActions[\"Shadow Crash\"].coolDown.expirationTime <= GetTime() \n            then\n                return true\n            else\n                shadowActions[\"Shadow Crash\"].priority = 16 \n            end    \n            \n        elseif unitsInRange.count > 2 \n        then\n            shadowActions[\"Shadow Crash\"].priority = 1\n        end \n    end    \n    \n    return isAuraHighestPriority(\"Shadow Crash\", shadowActions)\nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or myActions == nil then return false end\n    \n    --coolDown\n    myActions[\"Shadow Crash\"].coolDown.duration = 0\n    myActions[\"Shadow Crash\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Shadow Crash\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Shadow Crash\"].coolDown.duration = coolDownDuration\n        myActions[\"Shadow Crash\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    myActions[\"Shadow Crash\"].priority = nil\n    \n    local travel_State = WeakAuras.GetTriggerStateForTrigger(\"Shadow Crash\", 4)    \n    if not travel_State[\"\"] and not travel_State.show\n    then\n        if unitsInRange.count <= 2 or attackMode == \"Focus\"\n        then        \n            if isAuraHighestPriority(\"Vampiric Touch\", myActions) and myActions[\"Shadow Crash\"].coolDown.expirationTime <= GetTime() \n            then\n                return true\n            else\n                myActions[\"Shadow Crash\"].priority = 16 \n            end    \n            \n        elseif unitsInRange.count > 2 \n        then\n            myActions[\"Shadow Crash\"].priority = 1\n        end \n    end    \n    \n    return isAuraHighestPriority(\"Shadow Crash\", myActions)\nend\n\n\n",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -20698,7 +20708,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    \n    if t[5]\n    then\n        shadowActions[\"Shadow Crash\"].inRange = true  \n    else\n        shadowActions[\"Shadow Crash\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Shadow Crash\"].show = true\n    else\n        shadowActions[\"Shadow Crash\"].show = false\n    end\n    \n    return shadowActions[\"Shadow Crash\"].show\nend",
+				["customTriggerLogic"] = "function(t)         \n    \n    if t[5]\n    then\n        myActions[\"Shadow Crash\"].inRange = true  \n    else\n        myActions[\"Shadow Crash\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Shadow Crash\"].show = true\n    else\n        myActions[\"Shadow Crash\"].show = false\n    end\n    \n    return myActions[\"Shadow Crash\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -20856,16 +20866,21 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "DeynNYMQUiR",
-			["desaturate"] = false,
+			["useTooltip"] = false,
 			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
-			["useTooltip"] = false,
+			["parent"] = "Shadow Action Bar",
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
 			["displayIcon"] = "136201",
-			["parent"] = "Shadow Action Bar",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["useCooldownModRate"] = true,
 			["width"] = 50,
 			["cooldownTextDisabled"] = false,
@@ -20879,7 +20894,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["xOffset"] = 0,
+			["desaturate"] = false,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -20896,12 +20911,7 @@ WeakAurasSaved = {
 				}, -- [1]
 			},
 			["cooldown"] = true,
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["xOffset"] = 0,
 		},
 		["Power Word: Fortitude"] = {
 			["iconSource"] = 0,
@@ -21162,7 +21172,7 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(windwalkerActions[\"Rising Sun Kick\"].coolDown.duration, windwalkerActions[\"Rising Sun Kick\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Rising Sun Kick\"].coolDown.duration, myActions[\"Rising Sun Kick\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -21186,13 +21196,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "event",
-						["events"] = "cEvent_ValidTarget",
-						["event"] = "Action Usable",
 						["spellIds"] = {
 						},
+						["event"] = "Action Usable",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["debuffType"] = "HELPFUL",
 						["subeventSuffix"] = "_CAST_START",
 						["unit"] = "player",
@@ -21208,7 +21218,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown    \n    windwalkerActions[\"Rising Sun Kick\"].coolDown.duration = 0    \n    windwalkerActions[\"Rising Sun Kick\"].coolDown.expirationTime = 0         \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Rising Sun Kick\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime\n    then\n        windwalkerActions[\"Rising Sun Kick\"].coolDown.duration = coolDownDuration\n        windwalkerActions[\"Rising Sun Kick\"].coolDown.expirationTime = coolDownStart + coolDownDuration\n    end\n    \n    --Tell lower priotiy abilites to not spend chi\n    local coolDownTreshhold = 3\n    if coolDownStart + coolDownDuration - GetTime() <= coolDownTreshhold\n    then\n        windwalkerActions[\"Rising Sun Kick\"].poolpowerforme = true\n    else\n        windwalkerActions[\"Rising Sun Kick\"].poolpowerforme = nil\n    end\n    \n    --priority\n    windwalkerActions[\"Rising Sun Kick\"].priority = nil\n    if UnitPower(\"player\",12) >= 2\n    then\n        if unitsInMelee.count == 1\n        then\n            windwalkerActions[\"Rising Sun Kick\"].priority = 5\n        elseif unitsInMelee.count == 2\n        then            \n            windwalkerActions[\"Rising Sun Kick\"].priority = 6\n        end\n    end\n    return isAuraHighestPriority(\"Rising Sun Kick\", windwalkerActions)\nend",
+						["custom"] = "function()\n    \n    --coolDown    \n    myActions[\"Rising Sun Kick\"].coolDown.duration = 0    \n    myActions[\"Rising Sun Kick\"].coolDown.expirationTime = 0         \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Rising Sun Kick\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime\n    then\n        myActions[\"Rising Sun Kick\"].coolDown.duration = coolDownDuration\n        myActions[\"Rising Sun Kick\"].coolDown.expirationTime = coolDownStart + coolDownDuration\n    end\n    \n    --Tell lower priotiy abilites to not spend chi\n    local coolDownTreshhold = 3\n    if coolDownStart + coolDownDuration - GetTime() <= coolDownTreshhold\n    then\n        myActions[\"Rising Sun Kick\"].poolpowerforme = true\n    else\n        myActions[\"Rising Sun Kick\"].poolpowerforme = nil\n    end\n    \n    --priority\n    myActions[\"Rising Sun Kick\"].priority = nil\n    if UnitPower(\"player\",12) >= 2\n    then\n        if unitsInMelee.count == 1\n        then\n            myActions[\"Rising Sun Kick\"].priority = 5\n        elseif unitsInMelee.count == 2\n        then            \n            myActions[\"Rising Sun Kick\"].priority = 6\n        end\n    end\n    return isAuraHighestPriority(\"Rising Sun Kick\", myActions)\nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -21237,7 +21247,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        windwalkerActions[\"Rising Sun Kick\"].inRange = true\n    else\n        windwalkerActions[\"Rising Sun Kick\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        windwalkerActions[\"Rising Sun Kick\"].show = true\n    else\n        windwalkerActions[\"Rising Sun Kick\"].show = false\n    end\n    \n    return windwalkerActions[\"Rising Sun Kick\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Rising Sun Kick\"].inRange = true\n    else\n        myActions[\"Rising Sun Kick\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Rising Sun Kick\"].show = true\n    else\n        myActions[\"Rising Sun Kick\"].show = false\n    end\n    \n    return myActions[\"Rising Sun Kick\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -21357,7 +21367,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not windwalkerActions then\n    windwalkerActions = {}\nend\n\nif not windwalkerActions[\"Fists of Fury\"] \nthen\n    windwalkerActions[\"Fists of Fury\"] = {[\"poolpowerforme\"] = nil}\nend\n\nwindwalkerActions[\"Rising Sun Kick\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"poolpowerforme\"] = nil,    \n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nif not myActions[\"Fists of Fury\"] \nthen\n    myActions[\"Fists of Fury\"] = {[\"poolpowerforme\"] = nil}\nend\n\nmyActions[\"Rising Sun Kick\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"poolpowerforme\"] = nil,    \n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -21552,7 +21562,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Shadow",
+			["selfPoint"] = "TOP",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -21561,7 +21571,7 @@ WeakAurasSaved = {
 			},
 			["anchorPoint"] = "CENTER",
 			["animate"] = false,
-			["rowSpace"] = 1,
+			["rotation"] = 0,
 			["scale"] = 1,
 			["useLimit"] = false,
 			["border"] = false,
@@ -21569,8 +21579,8 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["groupIcon"] = "136207",
-			["xOffset"] = 0,
+			["rowSpace"] = 1,
+			["internalVersion"] = 59,
 			["constantFactor"] = "RADIUS",
 			["borderInset"] = 0,
 			["borderOffset"] = 16,
@@ -21583,15 +21593,15 @@ WeakAurasSaved = {
 			["fullCircle"] = true,
 			["config"] = {
 			},
-			["selfPoint"] = "TOP",
-			["internalVersion"] = 59,
+			["xOffset"] = 0,
+			["groupIcon"] = "136207",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["rotation"] = 0,
+			["parent"] = "Shadow",
 		},
 		["Blur"] = {
 			["iconSource"] = 0,
@@ -21620,11 +21630,11 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["debuffType"] = "HELPFUL",
-						["match_count"] = "0",
 						["buffShowOn"] = "showOnMissing",
+						["match_count"] = "0",
+						["custom_hide"] = "timed",
 						["type"] = "spell",
-						["group_countOperator"] = "==",
+						["debuffType"] = "HELPFUL",
 						["match_countOperator"] = "==",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -21637,8 +21647,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
 						["spellName"] = 198589,
+						["group_countOperator"] = "==",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["matchesShowOn"] = "showOnMissing",
@@ -21834,11 +21844,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -21871,7 +21880,14 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["selfPoint"] = "CENTER",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -21889,20 +21905,14 @@ WeakAurasSaved = {
 			},
 			["uid"] = "Xdo)M(YEyTE",
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["authorOptions"] = {
+			},
 			["displayIcon"] = 1305150,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
-			},
+			["stickyDuration"] = false,
 		},
 		["Pillar of Frost"] = {
 			["iconSource"] = 0,
@@ -22063,13 +22073,9 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "taS8ae9pxw(",
-			["internalVersion"] = 59,
+			["icon"] = true,
 			["parent"] = "Frost Knight Action Bar",
 			["regionType"] = "icon",
-			["icon"] = true,
-			["cooldown"] = true,
-			["conditions"] = {
-			},
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -22090,6 +22096,10 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["cooldown"] = true,
+			["conditions"] = {
+			},
+			["stickyDuration"] = false,
 			["cooldownTextDisabled"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0.28,
@@ -22108,13 +22118,13 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["xOffset"] = 0,
+			["internalVersion"] = 59,
 			["displayIcon"] = 458718,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["stickyDuration"] = false,
+			["xOffset"] = 0,
 		},
 		["Frost Knight CD Bar"] = {
 			["grow"] = "HORIZONTAL",
@@ -22190,37 +22200,6 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Frost Knight",
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
-			},
-			["yOffset"] = -208,
-			["animate"] = false,
-			["space"] = 2,
-			["scale"] = 1,
-			["gridType"] = "RD",
-			["border"] = false,
-			["borderEdge"] = "Square Full White",
-			["regionType"] = "dynamicgroup",
-			["borderSize"] = 2,
-			["sort"] = "none",
-			["internalVersion"] = 59,
-			["arcLength"] = 360,
-			["constantFactor"] = "RADIUS",
-			["rotation"] = 0,
-			["borderOffset"] = 4,
-			["config"] = {
-			},
-			["frameStrata"] = 1,
-			["id"] = "Frost Knight CD Bar",
-			["limit"] = 5,
-			["gridWidth"] = 5,
-			["anchorFrameType"] = "SCREEN",
-			["selfPoint"] = "CENTER",
-			["uid"] = "F7Luj(S9r1k",
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -22241,14 +22220,45 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
+			},
+			["yOffset"] = -208,
+			["animate"] = false,
+			["fullCircle"] = true,
+			["scale"] = 1,
+			["gridType"] = "RD",
+			["border"] = false,
+			["borderEdge"] = "Square Full White",
+			["regionType"] = "dynamicgroup",
+			["borderSize"] = 2,
+			["sort"] = "none",
+			["space"] = 2,
 			["authorOptions"] = {
 			},
+			["constantFactor"] = "RADIUS",
+			["rotation"] = 0,
+			["borderOffset"] = 4,
+			["config"] = {
+			},
+			["frameStrata"] = 1,
+			["id"] = "Frost Knight CD Bar",
+			["limit"] = 5,
+			["gridWidth"] = 5,
+			["anchorFrameType"] = "SCREEN",
+			["selfPoint"] = "CENTER",
+			["uid"] = "F7Luj(S9r1k",
+			["arcLength"] = 360,
+			["internalVersion"] = 59,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["fullCircle"] = true,
+			["parent"] = "Frost Knight",
 		},
 		["Hammer of Wrath"] = {
 			["iconSource"] = 0,
@@ -22271,7 +22281,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["use_unit"] = true,
-						["customDuration"] = "function()\n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(retActions[\"Hammer of Wrath\"].coolDown.duration, retActions[\"Hammer of Wrath\"].coolDown.expirationTime, \"cast_gcd\")          \n    \nend",
+						["customDuration"] = "function()\n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(myActions[\"Hammer of Wrath\"].coolDown.duration, myActions[\"Hammer of Wrath\"].coolDown.expirationTime, \"cast_gcd\")          \n    \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -22294,13 +22304,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["spellIds"] = {
-						},
-						["event"] = "Action Usable",
 						["events"] = "cEvent_ValidTarget",
+						["event"] = "Action Usable",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["debuffType"] = "HELPFUL",
 						["custom_type"] = "event",
 						["subeventPrefix"] = "SPELL",
@@ -22316,7 +22326,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    retActions[\"Hammer of Wrath\"].coolDown.duration = 0\n    retActions[\"Hammer of Wrath\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Hammer of Wrath\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        retActions[\"Hammer of Wrath\"].coolDown.duration = coolDownDuration\n        retActions[\"Hammer of Wrath\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    retActions[\"Hammer of Wrath\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 4  and select(1,IsUsableSpell(\"Hammer of Wrath\"))\n    and (( unitsInRange.count <= 5 and retributionData.hammerOfWrath.count >= 1) or retributionData.hammerOfWrath.target == 1)    \n    then    \n        retActions[\"Hammer of Wrath\"].priority = 4                                      \n    end \n    \n    return isAuraHighestPriority(\"Hammer of Wrath\", retActions)\n    \nend\n\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Hammer of Wrath\"].coolDown.duration = 0\n    myActions[\"Hammer of Wrath\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Hammer of Wrath\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Hammer of Wrath\"].coolDown.duration = coolDownDuration\n        myActions[\"Hammer of Wrath\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    myActions[\"Hammer of Wrath\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 4  and select(1,IsUsableSpell(\"Hammer of Wrath\"))\n    and (( unitsInRange.count <= 5 and retributionData.hammerOfWrath.count >= 1) or retributionData.hammerOfWrath.target == 1)    \n    then    \n        myActions[\"Hammer of Wrath\"].priority = 4                                      \n    end \n    \n    return isAuraHighestPriority(\"Hammer of Wrath\", myActions)\n    \nend\n\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -22366,7 +22376,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        retActions[\"Hammer of Wrath\"].inRange = true\n    else\n        retActions[\"Hammer of Wrath\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Hammer of Wrath\"].show = true\n    else\n        retActions[\"Hammer of Wrath\"].show = false\n    end\n    \n    return retActions[\"Hammer of Wrath\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        myActions[\"Hammer of Wrath\"].inRange = true\n    else\n        myActions[\"Hammer of Wrath\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Hammer of Wrath\"].show = true\n    else\n        myActions[\"Hammer of Wrath\"].show = false\n    end\n    \n    return myActions[\"Hammer of Wrath\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -22575,7 +22585,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Hammer of Wrath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Hammer of Wrath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -22606,7 +22616,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not furyActions then\n    furyActions = {}\nend\n\nfuryActions[\"Bloodthirst\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Bloodthirst\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -22618,18 +22628,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["use_absorbMode"] = true,
 						["unevent"] = "auto",
-						["use_unit"] = true,
-						["duration"] = "1",
-						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()        \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(furyActions[\"Bloodthirst\"].coolDown.duration, furyActions[\"Bloodthirst\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["duration"] = "1",
+						["event"] = "Global Cooldown",
+						["unit"] = "player",
+						["customDuration"] = "function()        \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(myActions[\"Bloodthirst\"].coolDown.duration, myActions[\"Bloodthirst\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["custom_type"] = "status",
 						["debuffType"] = "HELPFUL",
 					},
@@ -22653,7 +22663,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    furyActions[\"Bloodthirst\"].coolDown.duration = 0\n    furyActions[\"Bloodthirst\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Bloodthirst\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        furyActions[\"Bloodthirst\"].coolDown.duration = coolDownDuration\n        furyActions[\"Bloodthirst\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority     \n    if not select(1,AuraUtil.FindAuraByName(\"Enrage\", \"player\", \"HELPFUL|PLAYER\"))\n    then \n        furyActions[\"Bloodthirst\"].priority = 4\n    else\n        furyActions[\"Bloodthirst\"].priority = 6\n    end    \n    \n    return isAuraHighestPriority(\"Bloodthirst\", furyActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Bloodthirst\"].coolDown.duration = 0\n    myActions[\"Bloodthirst\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Bloodthirst\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Bloodthirst\"].coolDown.duration = coolDownDuration\n        myActions[\"Bloodthirst\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority     \n    if not select(1,AuraUtil.FindAuraByName(\"Enrage\", \"player\", \"HELPFUL|PLAYER\"))\n    then \n        myActions[\"Bloodthirst\"].priority = 4\n    else\n        myActions[\"Bloodthirst\"].priority = 6\n    end    \n    \n    return isAuraHighestPriority(\"Bloodthirst\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -22669,16 +22679,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "3",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -22687,7 +22697,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        furyActions[\"Bloodthirst\"].inRange = true\n    else\n        furyActions[\"Bloodthirst\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        furyActions[\"Bloodthirst\"].show = true\n    else\n        furyActions[\"Bloodthirst\"].show = false\n    end    \n    return furyActions[\"Bloodthirst\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Bloodthirst\"].inRange = true\n    else\n        myActions[\"Bloodthirst\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Bloodthirst\"].show = true\n    else\n        myActions[\"Bloodthirst\"].show = false\n    end    \n    return myActions[\"Bloodthirst\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -22887,15 +22897,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = true",
+					["custom"] = "myActions_VoidEruption = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = false",
+					["custom"] = "myActions_VoidEruption = false",
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\n\nshadowActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\n\nmyActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -22940,11 +22950,11 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["unevent"] = "auto",
 						["custom_type"] = "event",
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["use_absorbMode"] = true,
+						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["custom_hide"] = "custom",
 					},
@@ -23528,7 +23538,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 				["finish"] = {
 				},
@@ -23631,15 +23641,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Rake = true",
+					["custom"] = "myActions_Rake = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Rake\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Rake\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Rake = false",
+					["custom"] = "myActions_Rake = false",
 				},
 			},
 			["triggers"] = {
@@ -23649,18 +23659,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["custom_type"] = "status",
 						["subeventSuffix"] = "_CAST_START",
-						["use_unit"] = true,
-						["use_absorbMode"] = true,
-						["event"] = "DBM Timer",
 						["names"] = {
 						},
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Rake\"].coolDown.duration, feralActions[\"Rake\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["use_absorbMode"] = true,
+						["event"] = "DBM Timer",
+						["subeventPrefix"] = "SPELL",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Rake\"].coolDown.duration, myActions[\"Rake\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["check"] = "update",
-						["subeventPrefix"] = "SPELL",
+						["use_unit"] = true,
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -23684,7 +23694,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or feralData == nil then return false end\n    \n    --coolDown        \n    feralActions[\"Rake\"].coolDown.duration = 0\n    feralActions[\"Rake\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(35)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Rake\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Rake\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end                         \n    \n    --priority  \n    rakeTotal = feralData.rake.missing + feralData.rake.expiring\n    if UnitPower(\"player\",4) <= 4 and GetShapeshiftForm() == 2\n    and \n    (\n        -- Only spread rakes around if attck Mode is AOE else only rake target\n        -- Also limit rake spreaking to max 5 targets else i lose too much time tabing around to find the target\n        (feralData.rake.missing + feralData.rake.expiring > 0 and unitsInMelee.count <= 5 and attackMode == \"AOE\")\n        or\n        (feralData.rake.target.missing + feralData.rake.target.expiring > 0 )\n    )\n    then\n        if select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            feralActions[\"Rake\"].priority = 6\n        else\n            feralActions[\"Rake\"].priority = 11\n        end        \n    else\n        feralActions[\"Rake\"].priority = nil\n    end   \n    \n    return isAuraHighestPriority(\"Rake\", feralActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or feralData == nil then return false end\n    \n    --coolDown        \n    myActions[\"Rake\"].coolDown.duration = 0\n    myActions[\"Rake\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(35)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Rake\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Rake\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end                         \n    \n    --priority  \n    rakeTotal = feralData.rake.missing + feralData.rake.expiring\n    if UnitPower(\"player\",4) <= 4 and GetShapeshiftForm() == 2\n    and \n    (\n        -- Only spread rakes around if attck Mode is AOE else only rake target\n        -- Also limit rake spreaking to max 5 targets else i lose too much time tabing around to find the target\n        (feralData.rake.missing + feralData.rake.expiring > 0 and unitsInMelee.count <= 5 and attackMode == \"AOE\")\n        or\n        (feralData.rake.target.missing + feralData.rake.target.expiring > 0 )\n    )\n    then\n        if select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            myActions[\"Rake\"].priority = 6\n        else\n            myActions[\"Rake\"].priority = 11\n        end        \n    else\n        myActions[\"Rake\"].priority = nil\n    end   \n    \n    return isAuraHighestPriority(\"Rake\", myActions)\nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -23704,12 +23714,12 @@ WeakAurasSaved = {
 						["unit"] = "target",
 						["matchesShowOn"] = "showOnMissing",
 						["debuffType"] = "HARMFUL",
-						["custom_type"] = "status",
+						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "timed",
 						["custom"] = "function()\n    -- If multiple targets should i switch targets to (re)apply missing/expiring rakes\n    if feralData ~= nil and feralData.rake.missing + feralData.rake.expiring > 0 \n    and feralData.rake.target.missing + feralData.rake.target.expiring == 0 \n    then\n        return true\n    end\n    \n    return false\nend",
 						["type"] = "custom",
 						["use_debuffClass"] = false,
-						["subeventSuffix"] = "_CAST_START",
+						["unevent"] = "auto",
 						["auraspellids"] = {
 							"155722", -- [1]
 						},
@@ -23721,7 +23731,7 @@ WeakAurasSaved = {
 						["spellIds"] = {
 							1822, -- [1]
 						},
-						["unevent"] = "auto",
+						["custom_type"] = "status",
 						["check"] = "update",
 						["combineMatches"] = "showLowest",
 						["auranames"] = {
@@ -23740,16 +23750,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "5",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -23758,7 +23768,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        feralActions[\"Rake\"].inRange = true\n    else\n        feralActions[\"Rake\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Rake\"].show = true\n    else\n        feralActions[\"Rake\"].show = false\n    end    \n    return feralActions[\"Rake\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        myActions[\"Rake\"].inRange = true\n    else\n        myActions[\"Rake\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Rake\"].show = true\n    else\n        myActions[\"Rake\"].show = false\n    end    \n    return myActions[\"Rake\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -23982,15 +23992,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Rip = true",
+					["custom"] = "myActions_Rip = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Rip\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Rip\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Rip = false",
+					["custom"] = "myActions_Rip = false",
 				},
 			},
 			["triggers"] = {
@@ -24007,7 +24017,7 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["event"] = "Item Equipped",
 						["duration"] = "1",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Rip\"].coolDown.duration, feralActions[\"Rip\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Rip\"].coolDown.duration, myActions[\"Rip\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -24055,7 +24065,7 @@ WeakAurasSaved = {
 						["unit"] = "player",
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or feralData == nil then return false end\n    \n    --coolDown        \n    feralActions[\"Rip\"].coolDown.duration = 0\n    feralActions[\"Rip\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(20)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Rip\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Rip\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end  \n    \n    --priority  \n    -- If Primal Wrath talent taken only rip on two or less targets\n    local primalWrath = cFunction_HasTalent(\"Primal Wrath\")\n    if ((primalWrath and unitsInMelee.count <= 2) or not primalWrath)\n    and \n    (\n        -- Only rip on multi targets if attack Mode is AOE else only rip target\n        (feralData.rip.missing + feralData.rip.expiring > 0 and attackMode == \"AOE\")\n        or\n        (feralData.rip.target.missing + feralData.rip.target.expiring > 0 )\n    )\n    \n    and GetShapeshiftForm() == 2\n    then\n        feralActions[\"Rip\"].priority = 4\n    else\n        feralActions[\"Rip\"].priority = nil\n    end\n    \n    return isAuraHighestPriority(\"Rip\", feralActions) \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or feralData == nil then return false end\n    \n    --coolDown        \n    myActions[\"Rip\"].coolDown.duration = 0\n    myActions[\"Rip\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(20)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Rip\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Rip\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end  \n    \n    --priority  \n    -- If Primal Wrath talent taken only rip on two or less targets\n    local primalWrath = cFunction_HasTalent(\"Primal Wrath\")\n    if ((primalWrath and unitsInMelee.count <= 2) or not primalWrath)\n    and \n    (\n        -- Only rip on multi targets if attack Mode is AOE else only rip target\n        (feralData.rip.missing + feralData.rip.expiring > 0 and attackMode == \"AOE\")\n        or\n        (feralData.rip.target.missing + feralData.rip.target.expiring > 0 )\n    )\n    \n    and GetShapeshiftForm() == 2\n    then\n        myActions[\"Rip\"].priority = 4\n    else\n        myActions[\"Rip\"].priority = nil\n    end\n    \n    return isAuraHighestPriority(\"Rip\", myActions) \nend",
 						["unevent"] = "auto",
 						["check"] = "update",
 						["genericShowOn"] = "showOnCooldown",
@@ -24103,16 +24113,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "8",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["range"] = "8",
+						["event"] = "Range Check",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -24121,7 +24131,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        feralActions[\"Rip\"].inRange = true\n    else\n        feralActions[\"Rip\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Rip\"].show = true\n    else\n        feralActions[\"Rip\"].show = false\n    end    \n    return feralActions[\"Rip\"].show\nend\n\n\n",
+				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        myActions[\"Rip\"].inRange = true\n    else\n        myActions[\"Rip\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Rip\"].show = true\n    else\n        myActions[\"Rip\"].show = false\n    end    \n    return myActions[\"Rip\"].show\nend\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -24343,7 +24353,7 @@ WeakAurasSaved = {
 						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()\n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(retActions[\"Blade of Justice\"].coolDown.duration, retActions[\"Blade of Justice\"].coolDown.expirationTime, \"cast_gcd\")      \n    \n    \n    \nend",
+						["customDuration"] = "function()\n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(myActions[\"Blade of Justice\"].coolDown.duration, myActions[\"Blade of Justice\"].coolDown.expirationTime, \"cast_gcd\")      \n    \n    \n    \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -24372,11 +24382,11 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["debuffType"] = "HELPFUL",
-						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
+						["debuffType"] = "HELPFUL",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["unevent"] = "auto",
 						["custom_hide"] = "custom",
 					},
@@ -24388,7 +24398,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or coolDown == nil then return false end    \n    \n    --coolDown\n    retActions[\"Blade of Justice\"].coolDown.duration = 0\n    retActions[\"Blade of Justice\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Blade of Justice\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        retActions[\"Blade of Justice\"].coolDown.duration = coolDownDuration\n        retActions[\"Blade of Justice\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    retActions[\"Blade of Justice\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 3\n    then    \n        retActions[\"Blade of Justice\"].priority = 3                                      \n    end \n    \n    return isAuraHighestPriority(\"Blade of Justice\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or coolDown == nil then return false end    \n    \n    --coolDown\n    myActions[\"Blade of Justice\"].coolDown.duration = 0\n    myActions[\"Blade of Justice\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Blade of Justice\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Blade of Justice\"].coolDown.duration = coolDownDuration\n        myActions[\"Blade of Justice\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    myActions[\"Blade of Justice\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 3\n    then    \n        myActions[\"Blade of Justice\"].priority = 3                                      \n    end \n    \n    return isAuraHighestPriority(\"Blade of Justice\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -24417,7 +24427,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        retActions[\"Blade of Justice\"].inRange = true\n    else\n        retActions[\"Blade of Justice\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Blade of Justice\"].show = true\n    else\n        retActions[\"Blade of Justice\"].show = false\n    end\n    \n    return retActions[\"Blade of Justice\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Blade of Justice\"].inRange = true\n    else\n        myActions[\"Blade of Justice\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Blade of Justice\"].show = true\n    else\n        myActions[\"Blade of Justice\"].show = false\n    end\n    \n    return myActions[\"Blade of Justice\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -24564,7 +24574,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Blade of Justice\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Blade of Justice\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["cooldown"] = true,
@@ -24676,7 +24686,7 @@ WeakAurasSaved = {
 			["sort"] = "none",
 			["subRegions"] = {
 			},
-			["rowSpace"] = 1,
+			["rotation"] = 0,
 			["selfPoint"] = "CENTER",
 			["load"] = {
 				["use_class"] = "true",
@@ -24699,7 +24709,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["limit"] = 5,
+			["yOffset"] = -208,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -24708,15 +24718,19 @@ WeakAurasSaved = {
 			},
 			["grow"] = "HORIZONTAL",
 			["animate"] = false,
-			["yOffset"] = -208,
+			["internalVersion"] = 59,
 			["scale"] = 1,
-			["useLimit"] = false,
+			["parent"] = "Feral Duid",
 			["border"] = false,
 			["borderEdge"] = "Square Full White",
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["anchorPerUnit"] = "CUSTOM",
-			["authorOptions"] = {
+			["borderColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				1, -- [4]
 			},
 			["uid"] = "c6udVbD79Ao",
 			["constantFactor"] = "RADIUS",
@@ -24729,22 +24743,18 @@ WeakAurasSaved = {
 			["useAnchorPerUnit"] = false,
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["borderColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				1, -- [4]
-			},
+			["rowSpace"] = 1,
 			["borderInset"] = 1,
-			["parent"] = "Feral Duid",
-			["internalVersion"] = 59,
+			["authorOptions"] = {
+			},
+			["useLimit"] = false,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["rotation"] = 0,
+			["limit"] = 5,
 		},
 		["Exhilaration"] = {
 			["iconSource"] = 0,
@@ -24768,14 +24778,14 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["genericShowOn"] = "showOnCooldown",
 						["subeventPrefix"] = "SPELL",
-						["group_countOperator"] = "==",
+						["spellName"] = 109304,
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["group_count"] = "0",
-						["spellName"] = 109304,
+						["custom_hide"] = "timed",
 						["useName"] = true,
-						["debuffType"] = "HELPFUL",
+						["buffShowOn"] = "showOnMissing",
 						["unevent"] = "auto",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -24788,7 +24798,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
+						["debuffType"] = "HELPFUL",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
@@ -24992,13 +25002,10 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "PWSZ2oveYEz",
-			["internalVersion"] = 59,
+			["parent"] = "Survival CD Bar",
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["parent"] = "Survival CD Bar",
-			["cooldown"] = true,
-			["displayIcon"] = 461117,
 			["actions"] = {
 				["start"] = {
 				},
@@ -25007,6 +25014,9 @@ WeakAurasSaved = {
 				["finish"] = {
 				},
 			},
+			["cooldown"] = true,
+			["displayIcon"] = 461117,
+			["stickyDuration"] = false,
 			["frameStrata"] = 1,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -25025,7 +25035,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["internalVersion"] = 59,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -25061,7 +25071,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["stickyDuration"] = false,
+			["selfPoint"] = "CENTER",
 		},
 		["aura_env.states"] = {
 			["outline"] = "OUTLINE",
@@ -25211,7 +25221,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Feral Swipe\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 14,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Feral Swipe\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 14,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -25221,18 +25231,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["use_absorbMode"] = true,
 						["subeventSuffix"] = "_CAST_START",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Feral Swipe\"].coolDown.duration, feralActions[\"Feral Swipe\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Feral Swipe\"].coolDown.duration, myActions[\"Feral Swipe\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 					},
@@ -25271,7 +25281,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["unit"] = "player",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown        \n    feralActions[\"Feral Swipe\"].coolDown.duration = 0\n    feralActions[\"Feral Swipe\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 35\n    -- Energy Pool when i have bloodtalons and not berserking\n    if cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 75       \n    end \n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end                 \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Feral Swipe\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Feral Swipe\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end \n    \n    --priority\n    if unitsInMelee.count >= 2 and not select(4,GetTalentInfo(6,2,1))\n    and UnitPower(\"player\",4) <= 4    \n    and GetShapeshiftForm() == 2\n    and attackMode ~= \"Focus\"\n    then\n        feralActions[\"Feral Swipe\"].priority = 14\n    else\n        feralActions[\"Feral Swipe\"].priority = nil\n    end\n    return isAuraHighestPriority(\"Feral Swipe\", feralActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown        \n    myActions[\"Feral Swipe\"].coolDown.duration = 0\n    myActions[\"Feral Swipe\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 35\n    -- Energy Pool when i have bloodtalons and not berserking\n    if cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 75       \n    end \n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end                 \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Feral Swipe\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Feral Swipe\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end \n    \n    --priority\n    if unitsInMelee.count >= 2 and not select(4,GetTalentInfo(6,2,1))\n    and UnitPower(\"player\",4) <= 4    \n    and GetShapeshiftForm() == 2\n    and attackMode ~= \"Focus\"\n    then\n        myActions[\"Feral Swipe\"].priority = 14\n    else\n        myActions[\"Feral Swipe\"].priority = nil\n    end\n    return isAuraHighestPriority(\"Feral Swipe\", myActions)\nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -25287,16 +25297,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "8",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["range"] = "8",
+						["event"] = "Range Check",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -25305,7 +25315,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Feral Swipe\"].inRange = true\n    else\n        feralActions[\"Feral Swipe\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Feral Swipe\"].show = true\n    else\n        feralActions[\"Feral Swipe\"].show = false\n    end    \n    return feralActions[\"Feral Swipe\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Feral Swipe\"].inRange = true\n    else\n        myActions[\"Feral Swipe\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Feral Swipe\"].show = true\n    else\n        myActions[\"Feral Swipe\"].show = false\n    end    \n    return myActions[\"Feral Swipe\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -25463,7 +25473,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not furyActions then\n    furyActions = {}\nend\n\nfuryActions[\"Whirlwind\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Whirlwind\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -25475,18 +25485,18 @@ WeakAurasSaved = {
 						["type"] = "spell",
 						["use_absorbMode"] = true,
 						["subeventSuffix"] = "_CAST_START",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(frostKnightActions[\"Frostscythe\"].coolDown.duration,\n        frostKnightActions[\"Frostscythe\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Frostscythe\"].coolDown.duration,\n        myActions[\"Frostscythe\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 					},
@@ -25510,7 +25520,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    furyActions[\"Whirlwind\"].priority = nil\n    if unitsInMelee.count >= 2 and not select(1,AuraUtil.FindAuraByName(\"Whirlwind\", \"player\", \"HELPFUL|PLAYER\"))\n    then\n        furyActions[\"Whirlwind\"].priority = -1\n    else\n        furyActions[\"Whirlwind\"].priority = 8\n    end   \n    \n    return isAuraHighestPriority(\"Whirlwind\", furyActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    myActions[\"Whirlwind\"].priority = nil\n    if unitsInMelee.count >= 2 and not select(1,AuraUtil.FindAuraByName(\"Whirlwind\", \"player\", \"HELPFUL|PLAYER\"))\n    then\n        myActions[\"Whirlwind\"].priority = -1\n    else\n        myActions[\"Whirlwind\"].priority = 8\n    end   \n    \n    return isAuraHighestPriority(\"Whirlwind\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -25526,16 +25536,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["range"] = "8",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "8",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -25544,7 +25554,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        furyActions[\"Whirlwind\"].inRange = true\n    else\n        furyActions[\"Whirlwind\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        furyActions[\"Whirlwind\"].show = true\n    else\n        furyActions[\"Whirlwind\"].show = false\n    end    \n    return furyActions[\"Whirlwind\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Whirlwind\"].inRange = true\n    else\n        myActions[\"Whirlwind\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Whirlwind\"].show = true\n    else\n        myActions[\"Whirlwind\"].show = false\n    end    \n    return myActions[\"Whirlwind\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -25825,7 +25835,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if enhancementActions[a.id] ~= nil \n    then \n        aData = enhancementActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if enhancementActions[b.id] ~= nil \n    then \n        bData = enhancementActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
+			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if myActions[a.id] ~= nil \n    then \n        aData = myActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if myActions[b.id] ~= nil \n    then \n        bData = myActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -25959,8 +25969,8 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["desaturate"] = false,
+			["customTextUpdate"] = "update",
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["icon"] = false,
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -26042,7 +26052,7 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["fontFlags"] = "OUTLINE",
+			["icon"] = false,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -26109,14 +26119,14 @@ WeakAurasSaved = {
 				},
 			},
 			["sparkBlendMode"] = "ADD",
+			["useAdjustededMax"] = false,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0.5, -- [4]
 			},
-			["xOffset"] = 0,
-			["selfPoint"] = "CENTER",
+			["fontFlags"] = "OUTLINE",
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -26146,13 +26156,13 @@ WeakAurasSaved = {
 			["spark"] = false,
 			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
 			["auto"] = true,
-			["config"] = {
-			},
+			["selfPoint"] = "CENTER",
 			["id"] = "Focus",
-			["sparkOffsetX"] = 0,
+			["xOffset"] = 0,
 			["frameStrata"] = 1,
 			["width"] = 250,
-			["useAdjustededMax"] = false,
+			["config"] = {
+			},
 			["uid"] = "veamx3eXevj",
 			["inverse"] = false,
 			["sparkDesature"] = false,
@@ -26163,7 +26173,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["customTextUpdate"] = "update",
+			["sparkOffsetX"] = 0,
 		},
 		["Units in Range"] = {
 			["outline"] = "OUTLINE",
@@ -26296,13 +26306,14 @@ WeakAurasSaved = {
 				"Fury Multi Target Tracker", -- [1]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["scale"] = 1,
-			["borderEdge"] = "Square Full White",
-			["border"] = false,
+			["xOffset"] = 11.19989013671875,
 			["yOffset"] = 111.2002868652344,
+			["border"] = false,
+			["groupIcon"] = "132347",
 			["anchorPoint"] = "CENTER",
 			["borderSize"] = 2,
-			["xOffset"] = 11.19989013671875,
+			["authorOptions"] = {
+			},
 			["borderColor"] = {
 				0, -- [1]
 				0, -- [2]
@@ -26328,7 +26339,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["groupIcon"] = "132347",
+			["borderEdge"] = "Square Full White",
 			["actions"] = {
 				["start"] = {
 				},
@@ -26357,8 +26368,7 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["borderOffset"] = 4,
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["selfPoint"] = "BOTTOMLEFT",
 			["id"] = "Fury Functions",
 			["parent"] = "Fury",
@@ -26668,7 +26678,12 @@ WeakAurasSaved = {
 			["sparkRotation"] = 0,
 			["customTextUpdate"] = "update",
 			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
-			["icon"] = false,
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.5, -- [4]
+			},
 			["triggers"] = {
 				{
 					["trigger"] = {
@@ -26679,16 +26694,16 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["use_absorbMode"] = true,
 						["event"] = "Health",
-						["unit"] = "player",
+						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()\n    \n    local stacksState = WeakAuras.GetTriggerStateForTrigger(\"Maelstrom Weapon\", 3)\n    if stacksState[\"\"] ~= nil then  \n        s = stacksState[\"\"].stacks\n        if not s then\n            s = 0\n        end\n        return s,10, function() return s,10 end\n    end\nend\n\n\n",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["use_unit"] = true,
 						["check"] = "update",
+						["unit"] = "player",
 						["names"] = {
 						},
-						["subeventPrefix"] = "SPELL",
 						["debuffType"] = "HELPFUL",
 					},
 					["untrigger"] = {
@@ -26791,8 +26806,8 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["stickyDuration"] = false,
-			["selfPoint"] = "CENTER",
-			["xOffset"] = 0,
+			["borderBackdrop"] = "Blizzard Tooltip",
+			["icon"] = false,
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -26918,8 +26933,7 @@ WeakAurasSaved = {
 				}, -- [6]
 			},
 			["height"] = 15,
-			["authorOptions"] = {
-			},
+			["fontFlags"] = "OUTLINE",
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -26994,8 +27008,8 @@ WeakAurasSaved = {
 				1, -- [3]
 				0.5, -- [4]
 			},
-			["iconSource"] = -1,
-			["sparkRotationMode"] = "AUTO",
+			["selfPoint"] = "CENTER",
+			["xOffset"] = 0,
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -27016,19 +27030,15 @@ WeakAurasSaved = {
 			["auto"] = true,
 			["zoom"] = 0,
 			["spark"] = false,
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
-			},
+			["iconSource"] = -1,
 			["id"] = "Maelstrom Weapon",
-			["borderBackdrop"] = "Blizzard Tooltip",
-			["alpha"] = 1,
-			["width"] = 250,
-			["uid"] = "MqyUNL(fR0C",
 			["config"] = {
 			},
+			["alpha"] = 1,
+			["width"] = 250,
+			["authorOptions"] = {
+			},
+			["uid"] = "MqyUNL(fR0C",
 			["inverse"] = false,
 			["sparkDesature"] = false,
 			["orientation"] = "HORIZONTAL",
@@ -27038,7 +27048,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["fontFlags"] = "OUTLINE",
+			["sparkRotationMode"] = "AUTO",
 		},
 		["Survival CD Bar"] = {
 			["arcLength"] = 360,
@@ -27244,7 +27254,7 @@ WeakAurasSaved = {
 			["limit"] = 5,
 			["subRegions"] = {
 			},
-			["useAnchorPerUnit"] = false,
+			["parent"] = "Havoc",
 			["authorOptions"] = {
 			},
 			["load"] = {
@@ -27268,7 +27278,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["anchorPoint"] = "CENTER",
+			["rotation"] = 0,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -27277,15 +27287,15 @@ WeakAurasSaved = {
 			},
 			["radius"] = 200,
 			["animate"] = false,
-			["rotation"] = 0,
+			["groupIcon"] = 1247264,
 			["scale"] = 1,
-			["space"] = 2,
+			["fullCircle"] = true,
 			["border"] = false,
 			["borderEdge"] = "Square Full White",
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["useLimit"] = false,
+			["arcLength"] = 360,
 			["borderInset"] = 1,
 			["constantFactor"] = "RADIUS",
 			["frameStrata"] = 1,
@@ -27297,17 +27307,17 @@ WeakAurasSaved = {
 			["anchorPerUnit"] = "CUSTOM",
 			["gridWidth"] = 5,
 			["anchorFrameType"] = "SCREEN",
-			["arcLength"] = 360,
+			["useAnchorPerUnit"] = false,
 			["uid"] = "OB1QGXThW7u",
-			["fullCircle"] = true,
-			["groupIcon"] = 1247264,
+			["useLimit"] = false,
+			["space"] = 2,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["parent"] = "Havoc",
+			["anchorPoint"] = "CENTER",
 		},
 		["Fel Rush"] = {
 			["iconSource"] = 0,
@@ -27569,13 +27579,20 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "OOz5gF11COB",
-			["selfPoint"] = "CENTER",
+			["desaturate"] = false,
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["desaturate"] = false,
+			["authorOptions"] = {
+			},
 			["cooldown"] = true,
 			["displayIcon"] = 1247261,
-			["authorOptions"] = {
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
 			},
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
@@ -27590,7 +27607,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Havoc CD Bar",
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 				{
 					["check"] = {
@@ -27617,14 +27634,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
+			["parent"] = "Havoc CD Bar",
 		},
 		["Windwalker Health R"] = {
 			["sparkWidth"] = 10,
@@ -27781,7 +27791,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
 				},
 			},
 			["authorOptions"] = {
@@ -27946,8 +27956,7 @@ WeakAurasSaved = {
 			["subRegions"] = {
 			},
 			["uid"] = "AAcZjnccCs7",
-			["authorOptions"] = {
-			},
+			["useLimit"] = false,
 			["load"] = {
 				["talent"] = {
 					["multi"] = {
@@ -27967,7 +27976,7 @@ WeakAurasSaved = {
 					},
 				},
 			},
-			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if enhancementActions[a.id] ~= nil \n    then \n        aData = enhancementActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if enhancementActions[b.id] ~= nil \n    then \n        bData = enhancementActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
+			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if myActions[a.id] ~= nil \n    then \n        aData = myActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if myActions[b.id] ~= nil \n    then \n        bData = myActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -27976,6 +27985,14 @@ WeakAurasSaved = {
 			},
 			["anchorPoint"] = "CENTER",
 			["animate"] = false,
+			["arcLength"] = 360,
+			["scale"] = 1,
+			["rowSpace"] = 1,
+			["border"] = false,
+			["borderEdge"] = "Square Full White",
+			["regionType"] = "dynamicgroup",
+			["borderSize"] = 2,
+			["sort"] = "none",
 			["animation"] = {
 				["start"] = {
 					["easeStrength"] = 3,
@@ -27996,15 +28013,7 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["scale"] = 1,
-			["rowSpace"] = 1,
-			["border"] = false,
-			["borderEdge"] = "Square Full White",
-			["regionType"] = "dynamicgroup",
-			["borderSize"] = 2,
-			["sort"] = "none",
-			["yOffset"] = -125,
-			["internalVersion"] = 59,
+			["parent"] = "Survival",
 			["constantFactor"] = "RADIUS",
 			["stagger"] = 0,
 			["borderOffset"] = 4,
@@ -28022,14 +28031,15 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["borderInset"] = 1,
-			["useLimit"] = false,
-			["parent"] = "Survival",
+			["internalVersion"] = 59,
+			["yOffset"] = -125,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["arcLength"] = 360,
+			["authorOptions"] = {
+			},
 		},
 		["Carve"] = {
 			["iconSource"] = -1,
@@ -28057,7 +28067,7 @@ WeakAurasSaved = {
 						["unit"] = "player",
 						["event"] = "Global Cooldown",
 						["duration"] = "1",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(survivalActions[\"Carve\"].coolDown.duration, survivalActions[\"Carve\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Carve\"].coolDown.duration, myActions[\"Carve\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -28083,13 +28093,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["spellIds"] = {
-						},
-						["event"] = "Action Usable",
 						["events"] = "cEvent_ValidTarget",
+						["event"] = "Action Usable",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["debuffType"] = "HELPFUL",
 						["custom_type"] = "event",
 						["use_unit"] = true,
@@ -28104,7 +28114,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    local Carve_or_Butchery = cFunction_HasTalent(\"Carve\") \n    \n    --coolDown        \n    survivalActions[\"Carve\"].coolDown.duration = 0\n    survivalActions[\"Carve\"].coolDown.expirationTime = 0 \n    survivalActions[\"Carve\"].charges = nil\n    \n    local req_energy = 30\n    if Carve_or_Butchery then req_energy = 35 end    \n    \n    local coolDownDuration_Focus = 0 \n    local coolDownExpirationTime_Focus = 0\n    local energy = UnitPower(\"player\",2)\n    if energy < req_energy\n    then \n        coolDownDuration_Focus, coolDownExpirationTime_Focus = cFunction_GetEnergyCoolDowns(req_energy)        \n    end      \n    \n    local coolDownStart, coolDownDuration, coolDownExpirationTime, currentCharges, maxCharges\n    if Carve_or_Butchery\n    then\n        coolDownStart, coolDownDuration, _, _ = GetSpellCooldown(\"Carve\")\n        coolDownExpirationTime = coolDownStart + coolDownDuration\n    else\n        currentCharges, maxCharges, coolDownStart, coolDownDuration, _ = GetSpellCharges(\"Butchery\")                     \n        \n        --If cool down is going to recover before gcd does count as full charges\n        if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime and coolDownStart < 4290000\n        then\n            currentCharges  = currentCharges + 1 \n        end\n        \n        if coolDownStart < 4290000  then coolDownExpirationTime = coolDownStart + coolDownDuration else coolDownExpirationTime = 0 end  \n        \n        survivalActions[\"Carve\"].charges = currentCharges\n    end\n    \n    if (currentCharges == nil or currentCharges == 0)\n    and (coolDownExpirationTime > coolDownExpirationTime_Focus and coolDownExpirationTime > coolDown.gcd.expirationTime)\n    then\n        survivalActions[\"Carve\"].coolDown.duration = coolDownDuration\n        survivalActions[\"Carve\"].coolDown.expirationTime = coolDownExpirationTime\n    elseif coolDownExpirationTime_Focus > coolDown.gcd.expirationTime\n    then\n        survivalActions[\"Carve\"].coolDown.duration = coolDownDuration_Focus\n        survivalActions[\"Carve\"].coolDown.expirationTime = coolDownExpirationTime_Focus\n    end        \n    \n    --priority\n    survivalActions[\"Carve\"].priority = nil\n    \n    if unitsInMelee.count > 1 \n    then\n        -- If i have talent Frenzy Strikes i want to make sure i don't waste the cd reduction for bombs unless i'm have maxCharges of Butchery\n        if not cFunction_HasTalent(\"Frenzy Strikes\") \n        then\n            survivalActions[\"Carve\"].priority = 7\n        elseif currentCharges == nil or currentCharges == maxCharges\n        then\n            survivalActions[\"Carve\"].priority = 7\n        else            \n            local frenzyStrikes_Reduction\n            if unitsInMelee.count <= 5 then frenzyStrikes_Reduction = unitsInMelee.count else frenzyStrikes_Reduction = 5 end\n            if frenzyStrikes_Reduction < survivalActions[\"Wildfire Bomb\"].coolDown.remaining\n            then\n                survivalActions[\"Carve\"].priority = 7\n            end\n        end    \n    end    \n    \n    return isAuraHighestPriority(\"Carve\", survivalActions)\n    \nend",
+						["custom"] = "function()\n    \n    local Carve_or_Butchery = cFunction_HasTalent(\"Carve\") \n    \n    --coolDown        \n    myActions[\"Carve\"].coolDown.duration = 0\n    myActions[\"Carve\"].coolDown.expirationTime = 0 \n    myActions[\"Carve\"].charges = nil\n    \n    local req_energy = 30\n    if Carve_or_Butchery then req_energy = 35 end    \n    \n    local coolDownDuration_Focus = 0 \n    local coolDownExpirationTime_Focus = 0\n    local energy = UnitPower(\"player\",2)\n    if energy < req_energy\n    then \n        coolDownDuration_Focus, coolDownExpirationTime_Focus = cFunction_GetEnergyCoolDowns(req_energy)        \n    end      \n    \n    local coolDownStart, coolDownDuration, coolDownExpirationTime, currentCharges, maxCharges\n    if Carve_or_Butchery\n    then\n        coolDownStart, coolDownDuration, _, _ = GetSpellCooldown(\"Carve\")\n        coolDownExpirationTime = coolDownStart + coolDownDuration\n    else\n        currentCharges, maxCharges, coolDownStart, coolDownDuration, _ = GetSpellCharges(\"Butchery\")                     \n        \n        --If cool down is going to recover before gcd does count as full charges\n        if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime and coolDownStart < 4290000\n        then\n            currentCharges  = currentCharges + 1 \n        end\n        \n        if coolDownStart < 4290000  then coolDownExpirationTime = coolDownStart + coolDownDuration else coolDownExpirationTime = 0 end  \n        \n        myActions[\"Carve\"].charges = currentCharges\n    end\n    \n    if (currentCharges == nil or currentCharges == 0)\n    and (coolDownExpirationTime > coolDownExpirationTime_Focus and coolDownExpirationTime > coolDown.gcd.expirationTime)\n    then\n        myActions[\"Carve\"].coolDown.duration = coolDownDuration\n        myActions[\"Carve\"].coolDown.expirationTime = coolDownExpirationTime\n    elseif coolDownExpirationTime_Focus > coolDown.gcd.expirationTime\n    then\n        myActions[\"Carve\"].coolDown.duration = coolDownDuration_Focus\n        myActions[\"Carve\"].coolDown.expirationTime = coolDownExpirationTime_Focus\n    end        \n    \n    --priority\n    myActions[\"Carve\"].priority = nil\n    \n    if unitsInMelee.count > 1 \n    then\n        -- If i have talent Frenzy Strikes i want to make sure i don't waste the cd reduction for bombs unless i'm have maxCharges of Butchery\n        if not cFunction_HasTalent(\"Frenzy Strikes\") \n        then\n            myActions[\"Carve\"].priority = 7\n        elseif currentCharges == nil or currentCharges == maxCharges\n        then\n            myActions[\"Carve\"].priority = 7\n        else            \n            local frenzyStrikes_Reduction\n            if unitsInMelee.count <= 5 then frenzyStrikes_Reduction = unitsInMelee.count else frenzyStrikes_Reduction = 5 end\n            if frenzyStrikes_Reduction < myActions[\"Wildfire Bomb\"].coolDown.remaining\n            then\n                myActions[\"Carve\"].priority = 7\n            end\n        end    \n    end    \n    \n    return isAuraHighestPriority(\"Carve\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -28134,7 +28144,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        survivalActions[\"Carve\"].inRange = true\n    else\n        survivalActions[\"Carve\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        survivalActions[\"Carve\"].show = true\n    else\n        survivalActions[\"Carve\"].show = false\n    end\n    \n    return survivalActions[\"Carve\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Carve\"].inRange = true\n    else\n        myActions[\"Carve\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Carve\"].show = true\n    else\n        myActions[\"Carve\"].show = false\n    end\n    \n    return myActions[\"Carve\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -28318,7 +28328,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not survivalActions then\n    survivalActions = {}\nend\n\nsurvivalActions[\"Carve\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Carve\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -28455,14 +28465,14 @@ WeakAurasSaved = {
 				"Retribution Multi Target Tracker", -- [1]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["xOffset"] = 11.19989013671875,
-			["borderEdge"] = "Square Full White",
-			["border"] = false,
-			["yOffset"] = 111.2002868652344,
-			["anchorPoint"] = "CENTER",
-			["borderSize"] = 2,
 			["authorOptions"] = {
 			},
+			["yOffset"] = 111.2002868652344,
+			["border"] = false,
+			["groupIcon"] = 135873,
+			["anchorPoint"] = "CENTER",
+			["borderSize"] = 2,
+			["scale"] = 1,
 			["borderColor"] = {
 				0, -- [1]
 				0, -- [2]
@@ -28488,7 +28498,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["groupIcon"] = 135873,
+			["borderEdge"] = "Square Full White",
 			["actions"] = {
 				["start"] = {
 				},
@@ -28517,7 +28527,7 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["internalVersion"] = 59,
-			["scale"] = 1,
+			["xOffset"] = 11.19989013671875,
 			["selfPoint"] = "BOTTOMLEFT",
 			["id"] = "Retribution Functions",
 			["parent"] = "Retribution",
@@ -28626,7 +28636,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Havoc",
+			["rowSpace"] = 1,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -28635,7 +28645,8 @@ WeakAurasSaved = {
 			},
 			["fullCircle"] = true,
 			["animate"] = false,
-			["groupIcon"] = 1247264,
+			["authorOptions"] = {
+			},
 			["scale"] = 1,
 			["gridType"] = "RD",
 			["border"] = false,
@@ -28643,6 +28654,21 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
+			["groupIcon"] = 1247264,
+			["arcLength"] = 360,
+			["constantFactor"] = "RADIUS",
+			["internalVersion"] = 59,
+			["borderOffset"] = 4,
+			["config"] = {
+			},
+			["frameStrata"] = 1,
+			["id"] = "Havoc Power Bar",
+			["limit"] = 5,
+			["gridWidth"] = 5,
+			["anchorFrameType"] = "SCREEN",
+			["rotation"] = 0,
+			["uid"] = "ADKd7xWufy6",
+			["useLimit"] = false,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -28663,28 +28689,12 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["useLimit"] = false,
-			["constantFactor"] = "RADIUS",
-			["internalVersion"] = 59,
-			["borderOffset"] = 4,
-			["config"] = {
-			},
-			["frameStrata"] = 1,
-			["id"] = "Havoc Power Bar",
-			["limit"] = 5,
-			["gridWidth"] = 5,
-			["anchorFrameType"] = "SCREEN",
-			["rotation"] = 0,
-			["uid"] = "ADKd7xWufy6",
-			["rowSpace"] = 1,
-			["arcLength"] = 360,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["authorOptions"] = {
-			},
+			["parent"] = "Havoc",
 		},
 		["Tiger's Fury CD"] = {
 			["iconSource"] = 0,
@@ -28709,14 +28719,14 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["group_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
+						["spellName"] = 5217,
 						["subeventSuffix"] = "_CAST_START",
-						["group_countOperator"] = "==",
+						["debuffType"] = "HELPFUL",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -28729,7 +28739,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["spellName"] = 5217,
+						["group_countOperator"] = "==",
 						["unit"] = "player",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -28934,24 +28944,14 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "V10PAcmiDrh",
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
-			["parent"] = "Feral CD Bar",
-			["regionType"] = "icon",
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
-			["cooldown"] = true,
-			["displayIcon"] = 132242,
+			["parent"] = "Feral CD Bar",
+			["regionType"] = "icon",
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -28972,6 +28972,9 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["cooldown"] = true,
+			["displayIcon"] = 132242,
+			["xOffset"] = 0,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -28985,7 +28988,14 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -29021,7 +29031,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["xOffset"] = 0,
+			["stickyDuration"] = false,
 		},
 		["Feral Barkskin"] = {
 			["iconSource"] = 0,
@@ -29042,20 +29052,20 @@ WeakAurasSaved = {
 						["auranames"] = {
 							"Lightning Shield", -- [1]
 						},
-						["subeventPrefix"] = "SPELL",
-						["matchesShowOn"] = "showOnMissing",
-						["genericShowOn"] = "showOnCooldown",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["spellName"] = 22812,
+						["matchesShowOn"] = "showOnMissing",
+						["genericShowOn"] = "showOnCooldown",
+						["use_unit"] = true,
+						["debuffType"] = "HELPFUL",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["custom_hide"] = "timed",
+						["spellName"] = 22812,
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["group_countOperator"] = "==",
 						["subeventSuffix"] = "_CAST_START",
-						["buffShowOn"] = "showOnMissing",
+						["custom_hide"] = "timed",
 						["use_targetRequired"] = false,
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -29068,8 +29078,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
-						["use_unit"] = true,
+						["buffShowOn"] = "showOnMissing",
+						["subeventPrefix"] = "SPELL",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["ownOnly"] = true,
@@ -29249,18 +29259,25 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "f47pn9FFWzo",
-			["xOffset"] = 0,
-			["parent"] = "Feral CD Bar",
-			["regionType"] = "icon",
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["parent"] = "Feral CD Bar",
+			["regionType"] = "icon",
+			["desaturate"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = 136097,
-			["desaturate"] = false,
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
+			},
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -29274,7 +29291,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["xOffset"] = 0,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -29305,14 +29322,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
+			["selfPoint"] = "CENTER",
 		},
 		["Unit Name"] = {
 			["outline"] = "OUTLINE",
@@ -29345,10 +29355,10 @@ WeakAurasSaved = {
 						["event"] = "Chat Message",
 						["subeventPrefix"] = "SPELL",
 						["custom_type"] = "status",
-						["events"] = "AOE",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
+						["events"] = "AOE",
 						["check"] = "update",
 						["subeventSuffix"] = "_CAST_START",
 						["duration"] = "1",
@@ -29508,7 +29518,7 @@ WeakAurasSaved = {
 						["subeventPrefix"] = "SPELL",
 						["spellIds"] = {
 						},
-						["custom"] = "function() \n    \n    if cFunction_HasTalent == nil or cFunction_UnitStrength == nil then return false end\n    \n    --Min Enemey Health to make dot worthwhile, uses player health to simplify scaling\n    local spellPower = GetSpellBonusDamage(6)\n    local playerMaxHealth = UnitHealthMax(\"player\")                             \n    local healthTreshhold_devouringPlague = playerMaxHealth / 6                 \n    local healthTreshhold_shadowWordPain = playerMaxHealth / 6                  \n    local healthTreshhold_vampiricTouch = playerMaxHealth / 6                   \n    \n    if GetNumSubgroupMembers() > 0\n    then\n        healthTreshhold_devouringPlague = healthTreshhold_devouringPlague * 4        \n        healthTreshhold_shadowWordPain = healthTreshhold_shadowWordPain * 4     \n        healthTreshhold_vampiricTouch = healthTreshhold_vampiricTouch * 4       \n    end \n    \n    --DevouringPlaque\n    local countDevouringPlague_Skip = 0    \n    local unitsDevouringPlague_Health = {}\n    --ShadowWordPain\n    local countShadowWordDeath = 0\n    local targetShadowWordDeath = 0    \n    --ShadowWordPain\n    local countShadowWordPain_Missing = 0\n    local countShadowWordPain_Expiring = 0\n    local targetShadowWordPain_Missing = 0\n    local targetShadowWordPain_Expiring = 0\n    --VampiricTouch\n    local countVampiricTouch_Missing = 0\n    local countVampiricTouch_Expiring = 0\n    local targetVampiricTouch_Missing = 0\n    local targetVampiricTouch_Expiring = 0\n    \n    --pandemic\n    local devouringPlague_duration = 6\n    local shadowWordPain_duration = 16\n    local vampiricTouch_duration = 21\n    \n    if cFunction_HasTalent(\"Misery\")\n    then\n        shadowWordPain_duration = shadowWordPain_duration + 5\n    end    \n    \n    local devouringPlague_pandemic = devouringPlague_duration *.3\n    local shadowWordPain_pandemic = shadowWordPain_duration *.3\n    local vampiricTouch_pandemic = vampiricTouch_duration *.3    \n    \n    local checkTarget = function(unit)\n        local target = false\n        if UnitExists(\"target\") and UnitGUID(\"target\") == UnitGUID(unit)\n        then\n            target = true\n        end                \n        local health = UnitHealth(unit)\n        local max_health = UnitHealthMax(unit)\n        local strength = cFunction_UnitStrength(unit)\n        \n        --Devouring Plague--\n        do            \n            if strength ~= \"Weak\" and health > healthTreshhold_devouringPlague then\n                unitsDevouringPlague_Health[UnitGUID(unit)] = health\n            else\n                countDevouringPlague_Skip = countDevouringPlague_Skip + 1\n            end\n        end\n        \n        --Shadow Word Death--\n        if health < (max_health / 5) \n        -- .85 * Intell * hidden 10% damage buff\n        or health < spellPower * .85 * 1.1\n        then\n            countShadowWordDeath = countShadowWordDeath + 1\n            if target then targetShadowWordDeath = 1 end                       \n        end                \n        \n        --Shadow Word Pain--\n        if health >= healthTreshhold_shadowWordPain -- and strength ~= \"Weak\" --Can't Cleave without vt\n        then\n            do             \n                local name, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, nameplateShowPersonal, spellId, canApplyAura, isBossDebuff, isCastByPlayer, nameplateShowAll, timeMod = AuraUtil.FindAuraByName(\"Shadow Word: Pain\", unit, \"HARMFUL|PLAYER\")\n                if not name\n                then                \n                    countShadowWordPain_Missing = countShadowWordPain_Missing + 1                           \n                    if target then targetShadowWordPain_Missing = 1 end                    \n                elseif expirationTime ~= nil and expirationTime - GetTime() <= shadowWordPain_pandemic\n                then\n                    countShadowWordPain_Expiring = countShadowWordPain_Expiring + 1                                           \n                    if target then targetShadowWordPain_Expiring = 1 end\n                end\n            end        \n        end\n        \n        --VampiricTouch--\n        if strength ~= \"Weak\" and health >= healthTreshhold_shadowWordPain\n        then\n            do             \n                local name, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, nameplateShowPersonal, spellId, canApplyAura, isBossDebuff, isCastByPlayer, nameplateShowAll, timeMod = AuraUtil.FindAuraByName(\"Vampiric Touch\", unit, \"HARMFUL|PLAYER\")\n                if not name\n                then                \n                    countVampiricTouch_Missing = countVampiricTouch_Missing + 1                           \n                    if target then targetVampiricTouch_Missing = 1 end                    \n                elseif expirationTime ~= nil and expirationTime - GetTime() <= vampiricTouch_pandemic\n                and (unitsInRange.count <= 2 or expirationTime < shadowActions[\"Shadow Crash\"].coolDown.expirationTime + 1.5)\n                then\n                    countVampiricTouch_Expiring = countVampiricTouch_Expiring + 1                                           \n                    if target then targetVampiricTouch_Expiring = 1 end\n                end\n            end        \n        end                 \n    end   \n    \n    --Always check target and then scan for others\n    if UnitExists(\"target\") and UnitCanAttack(\"player\", \"target\") and not UnitIsDead(\"target\")     \n    --and select(4,UnitDetailedThreatSituation(\"player\", \"target\")) ~= nil    \n    then\n        checkTarget(\"target\")\n    end\n    \n    --Use Targets identified in unitsInMelee aura instead of repeating code here\n    for unit,_ in pairs(unitsInRange.units) do\n        if UnitGUID(\"target\") ~= UnitGUID(unit)\n        then            \n            checkTarget(unit)\n        end\n    end\n    \n    --legacy will remove\n    --for i = 1, 40 do\n    --    local unit = \"nameplate\"..i            \n    --    if WeakAuras.CheckRange(unit, range, \"<=\")\n    --    and UnitCanAttack(\"player\", unit) and not UnitIsDead(unit)\n    --    and (select(4,UnitDetailedThreatSituation(\"player\", unit)) ~= nil and (UnitGUID(\"target\") ~= UnitGUID(unit)))\n    --    and not string.match(select(1,UnitName(unit), \"Totem\")) and not string.match(select(1,UnitName(unit), \"totem\"))        \n    --    then\n    --        checkTarget(unit)\n    --    end                \n    --end        \n    \n    \n    --DevouringPlaque\n    shadowData.devouringPlague.skip = countDevouringPlague_Skip\n    \n    local target_MostHealth = 0\n    --Find Target with most health to make sure we get as much self healing out of Devouring Plaque as possible\n    if countDevouringPlaque_Skip ~= unitsInRange.count\n    then\n        --print(\"Begin\")\n        local unit\n        local health\n        for k,v in pairs(unitsDevouringPlague_Health) do\n            --print(k..\" \"..v)\n            if unit == nil\n            then\n                unit = k\n                health = v                \n            elseif v > health\n            then\n                unit = k\n                health = v\n            elseif v == health\n            then\n                unit = nil\n                health = nill                \n            end    \n        end\n        if unit ~= nil and unit == UnitGUID(\"target\") \n        then\n            target_MostHealth = 1\n        else\n            target_MostHealth = 0\n        end        \n    end    \n    shadowData.devouringPlague.target = target_MostHealth\n    \n    --ShadowWordDeath\n    shadowData.shadowWordDeath.count = countShadowWordDeath\n    shadowData.shadowWordDeath.target = targetShadowWordDeath\n    \n    --ShadowWordPain\n    shadowData.shadowWordPain.missing = countShadowWordPain_Missing   \n    shadowData.shadowWordPain.expiring = countShadowWordPain_Expiring\n    shadowData.shadowWordPain.target.missing = targetShadowWordPain_Missing\n    shadowData.shadowWordPain.target.expiring = targetShadowWordPain_Expiring\n    \n    --VampiricTouch\n    shadowData.vampiricTouch.missing = countVampiricTouch_Missing        \n    shadowData.vampiricTouch.expiring = countVampiricTouch_Expiring    \n    shadowData.vampiricTouch.target.missing = targetVampiricTouch_Missing\n    shadowData.vampiricTouch.target.expiring = targetVampiricTouch_Expiring\n    \n    return true\n    \nend\n\n\n\n",
+						["custom"] = "function() \n    \n    if cFunction_HasTalent == nil or cFunction_UnitStrength == nil then return false end\n    \n    --Min Enemey Health to make dot worthwhile, uses player health to simplify scaling\n    local spellPower = GetSpellBonusDamage(6)\n    local playerMaxHealth = UnitHealthMax(\"player\")                             \n    local healthTreshhold_devouringPlague = playerMaxHealth / 6                 \n    local healthTreshhold_shadowWordPain = playerMaxHealth / 6                  \n    local healthTreshhold_vampiricTouch = playerMaxHealth / 6                   \n    \n    if GetNumSubgroupMembers() > 0\n    then\n        healthTreshhold_devouringPlague = healthTreshhold_devouringPlague * 4        \n        healthTreshhold_shadowWordPain = healthTreshhold_shadowWordPain * 4     \n        healthTreshhold_vampiricTouch = healthTreshhold_vampiricTouch * 4       \n    end \n    \n    --DevouringPlaque\n    local countDevouringPlague_Skip = 0    \n    local unitsDevouringPlague_Health = {}\n    --ShadowWordPain\n    local countShadowWordDeath = 0\n    local targetShadowWordDeath = 0    \n    --ShadowWordPain\n    local countShadowWordPain_Missing = 0\n    local countShadowWordPain_Expiring = 0\n    local targetShadowWordPain_Missing = 0\n    local targetShadowWordPain_Expiring = 0\n    --VampiricTouch\n    local countVampiricTouch_Missing = 0\n    local countVampiricTouch_Expiring = 0\n    local targetVampiricTouch_Missing = 0\n    local targetVampiricTouch_Expiring = 0\n    \n    --pandemic\n    local devouringPlague_duration = 6\n    local shadowWordPain_duration = 16\n    local vampiricTouch_duration = 21\n    \n    if cFunction_HasTalent(\"Misery\")\n    then\n        shadowWordPain_duration = shadowWordPain_duration + 5\n    end    \n    \n    local devouringPlague_pandemic = devouringPlague_duration *.3\n    local shadowWordPain_pandemic = shadowWordPain_duration *.3\n    local vampiricTouch_pandemic = vampiricTouch_duration *.3    \n    \n    local checkTarget = function(unit)\n        local target = false\n        if UnitExists(\"target\") and UnitGUID(\"target\") == UnitGUID(unit)\n        then\n            target = true\n        end                \n        local health = UnitHealth(unit)\n        local max_health = UnitHealthMax(unit)\n        local strength = cFunction_UnitStrength(unit)\n        \n        --Devouring Plague--\n        do            \n            if strength ~= \"Weak\" and health > healthTreshhold_devouringPlague then\n                unitsDevouringPlague_Health[UnitGUID(unit)] = health\n            else\n                countDevouringPlague_Skip = countDevouringPlague_Skip + 1\n            end\n        end\n        \n        --Shadow Word Death--\n        if health < (max_health / 5) \n        -- .85 * Intell * hidden 10% damage buff\n        or health < spellPower * .85 * 1.1\n        then\n            countShadowWordDeath = countShadowWordDeath + 1\n            if target then targetShadowWordDeath = 1 end                       \n        end                \n        \n        --Shadow Word Pain--\n        if health >= healthTreshhold_shadowWordPain -- and strength ~= \"Weak\" --Can't Cleave without vt\n        then\n            do             \n                local name, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, nameplateShowPersonal, spellId, canApplyAura, isBossDebuff, isCastByPlayer, nameplateShowAll, timeMod = AuraUtil.FindAuraByName(\"Shadow Word: Pain\", unit, \"HARMFUL|PLAYER\")\n                if not name\n                then                \n                    countShadowWordPain_Missing = countShadowWordPain_Missing + 1                           \n                    if target then targetShadowWordPain_Missing = 1 end                    \n                elseif expirationTime ~= nil and expirationTime - GetTime() <= shadowWordPain_pandemic\n                then\n                    countShadowWordPain_Expiring = countShadowWordPain_Expiring + 1                                           \n                    if target then targetShadowWordPain_Expiring = 1 end\n                end\n            end        \n        end\n        \n        --VampiricTouch--\n        if strength ~= \"Weak\" and health >= healthTreshhold_shadowWordPain\n        then\n            do             \n                local name, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, nameplateShowPersonal, spellId, canApplyAura, isBossDebuff, isCastByPlayer, nameplateShowAll, timeMod = AuraUtil.FindAuraByName(\"Vampiric Touch\", unit, \"HARMFUL|PLAYER\")\n                if not name\n                then                \n                    countVampiricTouch_Missing = countVampiricTouch_Missing + 1                           \n                    if target then targetVampiricTouch_Missing = 1 end                    \n                elseif expirationTime ~= nil and expirationTime - GetTime() <= vampiricTouch_pandemic\n                and (unitsInRange.count <= 2 or expirationTime < myActions[\"Shadow Crash\"].coolDown.expirationTime + 1.5)\n                then\n                    countVampiricTouch_Expiring = countVampiricTouch_Expiring + 1                                           \n                    if target then targetVampiricTouch_Expiring = 1 end\n                end\n            end        \n        end                 \n    end   \n    \n    --Always check target and then scan for others\n    if UnitExists(\"target\") and UnitCanAttack(\"player\", \"target\") and not UnitIsDead(\"target\")     \n    --and select(4,UnitDetailedThreatSituation(\"player\", \"target\")) ~= nil    \n    then\n        checkTarget(\"target\")\n    end\n    \n    --Use Targets identified in unitsInMelee aura instead of repeating code here\n    for unit,_ in pairs(unitsInRange.units) do\n        if UnitGUID(\"target\") ~= UnitGUID(unit)\n        then            \n            checkTarget(unit)\n        end\n    end\n    \n    --legacy will remove\n    --for i = 1, 40 do\n    --    local unit = \"nameplate\"..i            \n    --    if WeakAuras.CheckRange(unit, range, \"<=\")\n    --    and UnitCanAttack(\"player\", unit) and not UnitIsDead(unit)\n    --    and (select(4,UnitDetailedThreatSituation(\"player\", unit)) ~= nil and (UnitGUID(\"target\") ~= UnitGUID(unit)))\n    --    and not string.match(select(1,UnitName(unit), \"Totem\")) and not string.match(select(1,UnitName(unit), \"totem\"))        \n    --    then\n    --        checkTarget(unit)\n    --    end                \n    --end        \n    \n    \n    --DevouringPlaque\n    shadowData.devouringPlague.skip = countDevouringPlague_Skip\n    \n    local target_MostHealth = 0\n    --Find Target with most health to make sure we get as much self healing out of Devouring Plaque as possible\n    if countDevouringPlaque_Skip ~= unitsInRange.count\n    then\n        --print(\"Begin\")\n        local unit\n        local health\n        for k,v in pairs(unitsDevouringPlague_Health) do\n            --print(k..\" \"..v)\n            if unit == nil\n            then\n                unit = k\n                health = v                \n            elseif v > health\n            then\n                unit = k\n                health = v\n            elseif v == health\n            then\n                unit = nil\n                health = nill                \n            end    \n        end\n        if unit ~= nil and unit == UnitGUID(\"target\") \n        then\n            target_MostHealth = 1\n        else\n            target_MostHealth = 0\n        end        \n    end    \n    shadowData.devouringPlague.target = target_MostHealth\n    \n    --ShadowWordDeath\n    shadowData.shadowWordDeath.count = countShadowWordDeath\n    shadowData.shadowWordDeath.target = targetShadowWordDeath\n    \n    --ShadowWordPain\n    shadowData.shadowWordPain.missing = countShadowWordPain_Missing   \n    shadowData.shadowWordPain.expiring = countShadowWordPain_Expiring\n    shadowData.shadowWordPain.target.missing = targetShadowWordPain_Missing\n    shadowData.shadowWordPain.target.expiring = targetShadowWordPain_Expiring\n    \n    --VampiricTouch\n    shadowData.vampiricTouch.missing = countVampiricTouch_Missing        \n    shadowData.vampiricTouch.expiring = countVampiricTouch_Expiring    \n    shadowData.vampiricTouch.target.missing = targetVampiricTouch_Missing\n    shadowData.vampiricTouch.target.expiring = targetVampiricTouch_Expiring\n    \n    return true\n    \nend\n\n\n\n",
 						["unit"] = "player",
 						["check"] = "update",
 						["names"] = {
@@ -29635,37 +29645,37 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Shadow Functions",
-			["regionType"] = "icon",
-			["conditions"] = {
-			},
-			["icon"] = true,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0, -- [4]
 			},
+			["regionType"] = "icon",
+			["conditions"] = {
+			},
+			["parent"] = "Shadow Functions",
+			["xOffset"] = -694.8000793457031,
 			["cooldown"] = false,
 			["cooldownTextDisabled"] = false,
 			["config"] = {
 			},
 			["zoom"] = 0,
 			["auto"] = false,
-			["frameStrata"] = 1,
+			["alpha"] = 1,
 			["id"] = "Shadow Multi Target Tracker",
 			["width"] = 64,
-			["alpha"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["frameStrata"] = 1,
 			["uid"] = "K4rm(kmCiZM",
 			["inverse"] = false,
-			["xOffset"] = -694.8000793457031,
+			["selfPoint"] = "CENTER",
 			["displayIcon"] = "136207",
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
 		},
 		["Feral Dash"] = {
 			["iconSource"] = 0,
@@ -29695,11 +29705,11 @@ WeakAurasSaved = {
 						},
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["custom_hide"] = "timed",
-						["group_count"] = "0",
 						["group_countOperator"] = "==",
+						["group_count"] = "0",
+						["buffShowOn"] = "showOnMissing",
 						["use_targetRequired"] = false,
-						["spellName"] = 1850,
+						["custom_hide"] = "timed",
 						["subeventSuffix"] = "_CAST_START",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -29712,8 +29722,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["buffShowOn"] = "showOnMissing",
 						["debuffType"] = "HELPFUL",
+						["spellName"] = 1850,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["ownOnly"] = true,
@@ -29874,16 +29884,6 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "pwJ7Bc(oDmB",
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
-			["parent"] = "Feral CD Bar",
-			["regionType"] = "icon",
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -29904,9 +29904,12 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["parent"] = "Feral CD Bar",
+			["regionType"] = "icon",
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = 132120,
-			["stickyDuration"] = false,
+			["useTooltip"] = false,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -29925,7 +29928,14 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["xOffset"] = 0,
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -29956,7 +29966,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["xOffset"] = 0,
 		},
 		["Eye Beam CD"] = {
 			["iconSource"] = 0,
@@ -29985,11 +29995,11 @@ WeakAurasSaved = {
 						},
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["group_count"] = "0",
 						["group_countOperator"] = "==",
+						["group_count"] = "0",
+						["debuffType"] = "HELPFUL",
 						["useName"] = true,
-						["spellName"] = 198013,
+						["buffShowOn"] = "showOnMissing",
 						["use_targetRequired"] = false,
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -30002,8 +30012,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
 						["custom_hide"] = "timed",
+						["spellName"] = 198013,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["duration"] = "1",
@@ -30199,10 +30209,6 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["useTooltip"] = false,
-			["authorOptions"] = {
-			},
-			["regionType"] = "icon",
 			["actions"] = {
 				["start"] = {
 				},
@@ -30211,6 +30217,10 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
+			["authorOptions"] = {
+			},
+			["regionType"] = "icon",
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -30243,7 +30253,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["stickyDuration"] = false,
+			["xOffset"] = 0,
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -30261,13 +30271,13 @@ WeakAurasSaved = {
 			},
 			["uid"] = "AKhGCaCZaPA",
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["useTooltip"] = false,
 			["displayIcon"] = 1305156,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 		},
 		["Vampiric Embrace"] = {
 			["iconSource"] = 0,
@@ -30288,18 +30298,18 @@ WeakAurasSaved = {
 						},
 						["ownOnly"] = true,
 						["useGroup_count"] = false,
-						["debuffType"] = "HELPFUL",
+						["spellName"] = 15286,
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["group_count"] = "0",
-						["spellName"] = 15286,
-						["type"] = "spell",
 						["group_countOperator"] = "==",
+						["type"] = "spell",
+						["custom_hide"] = "timed",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -30551,18 +30561,18 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "0KlShaQX6gq",
-			["useTooltip"] = false,
+			["desaturate"] = false,
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["desaturate"] = false,
-			["cooldown"] = true,
-			["displayIcon"] = 136230,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["cooldown"] = true,
+			["displayIcon"] = 136230,
+			["selfPoint"] = "CENTER",
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -30583,7 +30593,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Shadow CD Bar",
+			["useTooltip"] = false,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -30619,7 +30629,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["parent"] = "Shadow CD Bar",
 		},
 		["Shadow CD Bar"] = {
 			["grow"] = "HORIZONTAL",
@@ -30696,7 +30706,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Shadow",
+			["fullCircle"] = true,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -30724,7 +30734,7 @@ WeakAurasSaved = {
 				},
 			},
 			["animate"] = false,
-			["rotation"] = 0,
+			["rowSpace"] = 1,
 			["scale"] = 1,
 			["gridType"] = "RD",
 			["border"] = false,
@@ -30732,9 +30742,8 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["authorOptions"] = {
-			},
-			["useLimit"] = false,
+			["rotation"] = 0,
+			["internalVersion"] = 59,
 			["constantFactor"] = "RADIUS",
 			["groupIcon"] = 136207,
 			["borderOffset"] = 4,
@@ -30747,14 +30756,15 @@ WeakAurasSaved = {
 			["arcLength"] = 360,
 			["config"] = {
 			},
-			["fullCircle"] = true,
-			["internalVersion"] = 59,
+			["useLimit"] = false,
+			["authorOptions"] = {
+			},
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["rowSpace"] = 1,
+			["parent"] = "Shadow",
 		},
 		["Frostwyrm's Fury"] = {
 			["iconSource"] = 0,
@@ -30792,14 +30802,14 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["spellName"] = 279302,
+						["buffShowOn"] = "showOnMissing",
 						["match_count"] = "0",
-						["group_countOperator"] = "==",
+						["debuffType"] = "HELPFUL",
 						["use_targetRequired"] = false,
-						["custom_hide"] = "timed",
+						["spellName"] = 279302,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -30812,7 +30822,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["subeventPrefix"] = "SPELL",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -31013,10 +31023,11 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["icon"] = true,
+			["parent"] = "Frost Knight CD Bar",
 			["useTooltip"] = false,
 			["regionType"] = "icon",
-			["parent"] = "Frost Knight CD Bar",
+			["authorOptions"] = {
+			},
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -31049,8 +31060,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["authorOptions"] = {
-			},
+			["selfPoint"] = "CENTER",
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -31063,13 +31073,13 @@ WeakAurasSaved = {
 			["xOffset"] = 0,
 			["uid"] = "LGEKDR5VMaV",
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["displayIcon"] = 341980,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["stickyDuration"] = false,
 		},
 		["Rune of Power"] = {
 			["iconSource"] = 0,
@@ -31126,11 +31136,11 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["custom_type"] = "event",
 						["duration"] = "1",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["subeventPrefix"] = "SPELL",
-						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
+						["subeventPrefix"] = "SPELL",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["unit"] = "player",
 						["names"] = {
 						},
@@ -31300,15 +31310,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = true",
+					["custom"] = "myActions_VoidEruption = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\n\nshadowActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\n\nmyActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = false",
+					["custom"] = "myActions_VoidEruption = false",
 				},
 			},
 			["parent"] = "Fire Action Bar",
@@ -31758,7 +31768,7 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["use_targetRequired"] = false,
+						["match_countOperator"] = "==",
 						["ownOnly"] = true,
 						["subeventPrefix"] = "SPELL",
 						["spellName"] = 106951,
@@ -31768,8 +31778,8 @@ WeakAurasSaved = {
 						["spellIds"] = {
 						},
 						["buffShowOn"] = "showOnMissing",
+						["use_targetRequired"] = false,
 						["unevent"] = "auto",
-						["match_countOperator"] = "==",
 						["type"] = "spell",
 						["custom_hide"] = "timed",
 					},
@@ -31991,11 +32001,16 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["selfPoint"] = "CENTER",
+			["xOffset"] = 0,
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["xOffset"] = 0,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -32028,12 +32043,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["useTooltip"] = false,
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -32046,13 +32056,13 @@ WeakAurasSaved = {
 			["icon"] = true,
 			["uid"] = "N4HNM4iNrdu",
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["selfPoint"] = "CENTER",
 			["displayIcon"] = 236149,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["stickyDuration"] = false,
 		},
 		["Ascendance"] = {
 			["iconSource"] = 0,
@@ -32079,14 +32089,14 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["debuffType"] = "HELPFUL",
+						["spellName"] = 114051,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["match_count"] = "0",
-						["spellName"] = 114051,
+						["custom_hide"] = "timed",
 						["type"] = "spell",
-						["group_countOperator"] = "==",
+						["buffShowOn"] = "showOnMissing",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -32099,7 +32109,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
+						["group_countOperator"] = "==",
 						["use_unit"] = true,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -32300,18 +32310,18 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "wHIGKUH4qcd",
-			["useTooltip"] = false,
+			["desaturate"] = false,
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["desaturate"] = false,
-			["cooldown"] = true,
-			["displayIcon"] = 135791,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["cooldown"] = true,
+			["displayIcon"] = 135791,
+			["selfPoint"] = "CENTER",
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -32332,7 +32342,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Enhancment CD Bar",
+			["useTooltip"] = false,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -32368,7 +32378,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["parent"] = "Enhancment CD Bar",
 		},
 		["Hot Streak"] = {
 			["sparkWidth"] = 10,
@@ -32380,13 +32390,11 @@ WeakAurasSaved = {
 			["sparkRotation"] = 0,
 			["customTextUpdate"] = "update",
 			["zoom"] = 0,
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.5, -- [4]
 			},
 			["triggers"] = {
 				{
@@ -32395,18 +32403,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "status",
-						["unit"] = "player",
-						["duration"] = "1",
-						["event"] = "Health",
 						["names"] = {
 						},
+						["duration"] = "1",
+						["event"] = "Health",
+						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()\n    local s = 0  \n    if select(1,AuraUtil.FindAuraByName(\"Heating Up\", \"player\", \"HELPFUL|PLAYER\"))\n    then\n        s = 1\n    elseif select(1,AuraUtil.FindAuraByName(\"Hot Streak!\", \"player\", \"HELPFUL|PLAYER\"))\n    then\n        s = 2\n    end        \n    \n    return s,2, function() return s,2 end\nend\n\n\n",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["use_unit"] = true,
 						["check"] = "update",
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -32503,8 +32511,15 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["desaturate"] = false,
-			["icon"] = false,
-			["selfPoint"] = "CENTER",
+			["iconSource"] = -1,
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -32630,7 +32645,7 @@ WeakAurasSaved = {
 				}, -- [6]
 			},
 			["height"] = 15,
-			["fontFlags"] = "OUTLINE",
+			["sparkOffsetX"] = 0,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -32699,14 +32714,9 @@ WeakAurasSaved = {
 				},
 			},
 			["sparkBlendMode"] = "ADD",
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
-			},
-			["xOffset"] = 0,
-			["parent"] = "Fire Power Bar",
+			["useAdjustededMax"] = false,
+			["icon"] = false,
+			["selfPoint"] = "CENTER",
 			["uid"] = "FGh)TdEkIWF",
 			["stickyDuration"] = false,
 			["width"] = 250,
@@ -32723,17 +32733,17 @@ WeakAurasSaved = {
 			["spark"] = false,
 			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
 			["auto"] = true,
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
-			},
+			["xOffset"] = 0,
 			["sparkHidden"] = "NEVER",
-			["useAdjustededMax"] = false,
+			["fontFlags"] = "OUTLINE",
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["iconSource"] = -1,
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
+			},
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -32749,7 +32759,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["sparkOffsetX"] = 0,
+			["parent"] = "Fire Power Bar",
 		},
 		["Windwalker"] = {
 			["backdropColor"] = {
@@ -32763,7 +32773,7 @@ WeakAurasSaved = {
 				"Windwalker Action Bar", -- [2]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["scale"] = 1,
+			["xOffset"] = 0,
 			["groupIcon"] = 608953,
 			["border"] = false,
 			["yOffset"] = 0,
@@ -32776,8 +32786,7 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["actions"] = {
 				["start"] = {
 				},
@@ -32806,7 +32815,8 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["internalVersion"] = 59,
-			["xOffset"] = 0,
+			["authorOptions"] = {
+			},
 			["selfPoint"] = "CENTER",
 			["id"] = "Windwalker",
 			["borderOffset"] = 4,
@@ -32876,7 +32886,7 @@ WeakAurasSaved = {
 				"Shadow Functions", -- [4]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["xOffset"] = 0,
+			["scale"] = 1,
 			["borderEdge"] = "Square Full White",
 			["border"] = false,
 			["groupIcon"] = "136207",
@@ -32908,7 +32918,8 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["scale"] = 1,
+			["authorOptions"] = {
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -32937,8 +32948,7 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["internalVersion"] = 59,
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["selfPoint"] = "CENTER",
 			["id"] = "Shadow",
 			["yOffset"] = 0,
@@ -33241,7 +33251,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 			},
 			["triggers"] = {
@@ -33669,38 +33679,38 @@ WeakAurasSaved = {
 				["use_never"] = false,
 				["zoneIds"] = "",
 			},
-			["xOffset"] = 0,
-			["regionType"] = "icon",
-			["displayIcon"] = 132179,
-			["icon"] = true,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["regionType"] = "icon",
+			["displayIcon"] = 132179,
+			["xOffset"] = 0,
+			["parent"] = "Survival Action Bar",
 			["cooldown"] = true,
 			["zoom"] = 0.28,
 			["uid"] = "a1JkLcNEPWj",
 			["cooldownTextDisabled"] = false,
 			["auto"] = false,
-			["frameStrata"] = 1,
+			["alpha"] = 1,
 			["id"] = "Mend Pet",
 			["anchorFrameType"] = "SCREEN",
-			["alpha"] = 1,
-			["width"] = 50,
 			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["frameStrata"] = 1,
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Survival Action Bar",
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
 		},
 		["Debuff"] = {
 			["outline"] = "OUTLINE",
@@ -33736,10 +33746,10 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["unit"] = "player",
 						["unevent"] = "auto",
-						["spellIds"] = {
-						},
 						["events"] = "AOE",
 						["custom"] = "function()\n    return true\nend",
+						["spellIds"] = {
+						},
 						["check"] = "update",
 						["custom_type"] = "status",
 						["custom_hide"] = "timed",
@@ -34063,7 +34073,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Windfury Weapon\"] = {\n    [\"priority\"] = -3,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Windfury Weapon\"] = {\n    [\"priority\"] = -3,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 			},
 			["regionType"] = "icon",
@@ -34120,7 +34130,7 @@ WeakAurasSaved = {
 		["Get Talent"] = {
 			["iconSource"] = 0,
 			["parent"] = "Usefull meta functions",
-			["customText"] = "function()\n    \n    local voidFormState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 5)\n    local powerState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 6)\n    \n    if ((voidFormState[\"\"] ~= nil and voidFormState[\"\"].show) or shadowActions[\"Void Eruption\"].casting.active)\n    --and (powerState[\"\"] ~= nil and powerState[\"\"].show)\n    then\n        print(tostring(shadowActions[\"Void Bolt\"].coolDown.active)..\" \"..tostring(shadowActions[\"Void Bolt\"].coolDown.override)\n            ..\" \"..tostring(shadowActions[\"Mind Blast\"].coolDown.active)..\" \"..tostring(shadowActions[\"Mind Blast\"].coolDown.override))\n    end \n    \nend",
+			["customText"] = "function()\n    \n    local voidFormState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 5)\n    local powerState = WeakAuras.GetTriggerStateForTrigger(\"Void Bolt\", 6)\n    \n    if ((voidFormState[\"\"] ~= nil and voidFormState[\"\"].show) or myActions[\"Void Eruption\"].casting.active)\n    --and (powerState[\"\"] ~= nil and powerState[\"\"].show)\n    then\n        print(tostring(myActions[\"Void Bolt\"].coolDown.active)..\" \"..tostring(myActions[\"Void Bolt\"].coolDown.override)\n            ..\" \"..tostring(myActions[\"Mind Blast\"].coolDown.active)..\" \"..tostring(myActions[\"Mind Blast\"].coolDown.override))\n    end \n    \nend",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -34262,12 +34272,11 @@ WeakAurasSaved = {
 					},
 				},
 			},
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
 			["displayIcon"] = 132222,
-			["authorOptions"] = {
-			},
-			["selfPoint"] = "CENTER",
+			["xOffset"] = 0,
+			["icon"] = true,
 			["information"] = {
 				["forceEvents"] = true,
 			},
@@ -34275,24 +34284,25 @@ WeakAurasSaved = {
 			["uid"] = "6In9RKwyxyn",
 			["cooldownTextDisabled"] = false,
 			["auto"] = false,
-			["useCooldownModRate"] = true,
+			["frameStrata"] = 1,
 			["id"] = "Get Talent",
 			["anchorFrameType"] = "SCREEN",
-			["frameStrata"] = 1,
-			["width"] = 40,
 			["alpha"] = 1,
+			["width"] = 40,
+			["useCooldownModRate"] = true,
 			["config"] = {
 			},
 			["inverse"] = false,
-			["icon"] = true,
-			["conditions"] = {
-			},
-			["cooldown"] = false,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0, -- [4]
+			},
+			["conditions"] = {
+			},
+			["cooldown"] = false,
+			["authorOptions"] = {
 			},
 		},
 		["Tiger Palm"] = {
@@ -34308,7 +34318,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not windwalkerActions then\n    windwalkerActions = {}\nend\n\nwindwalkerActions[\"Tiger Palm\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 13,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Tiger Palm\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 13,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -34325,7 +34335,7 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
 						["use_unit"] = true,
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(windwalkerActions[\"Tiger Palm\"].coolDown.duration, windwalkerActions[\"Tiger Palm\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Tiger Palm\"].coolDown.duration, myActions[\"Tiger Palm\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -34348,13 +34358,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["event"] = "Action Usable",
 						["spellIds"] = {
 						},
+						["event"] = "Action Usable",
+						["events"] = "cEvent_ValidTarget",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["debuffType"] = "HELPFUL",
 						["custom_type"] = "event",
 						["subeventPrefix"] = "SPELL",
@@ -34370,7 +34380,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown        \n    windwalkerActions[\"Tiger Palm\"].coolDown.duration = 0\n    windwalkerActions[\"Tiger Palm\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 50\n    \n    local energy = UnitPower(\"player\",3)\n    if energy < req_energy\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end        \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        windwalkerActions[\"Tiger Palm\"].coolDown.duration = coolDownDuration + .5\n        windwalkerActions[\"Tiger Palm\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end   \n    \n    --priority\n    windwalkerActions[\"Tiger Palm\"].priority = nil\n    local chi = UnitPower(\"player\",12)\n    if energy >= 75 and chi < 4\n    then        \n        windwalkerActions[\"Tiger Palm\"].priority = 3\n    elseif chi < 4\n    then        \n        windwalkerActions[\"Tiger Palm\"].priority = 13\n    end\n    \n    return isAuraHighestPriority(\"Tiger Palm\", windwalkerActions)\n    \nend",
+						["custom"] = "function()\n    \n    --coolDown        \n    myActions[\"Tiger Palm\"].coolDown.duration = 0\n    myActions[\"Tiger Palm\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 50\n    \n    local energy = UnitPower(\"player\",3)\n    if energy < req_energy\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end        \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Tiger Palm\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Tiger Palm\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end   \n    \n    --priority\n    myActions[\"Tiger Palm\"].priority = nil\n    local chi = UnitPower(\"player\",12)\n    if energy >= 75 and chi < 4\n    then        \n        myActions[\"Tiger Palm\"].priority = 3\n    elseif chi < 4\n    then        \n        myActions[\"Tiger Palm\"].priority = 13\n    end\n    \n    return isAuraHighestPriority(\"Tiger Palm\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -34399,7 +34409,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        windwalkerActions[\"Tiger Palm\"].inRange = true\n    else\n        windwalkerActions[\"Tiger Palm\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        windwalkerActions[\"Tiger Palm\"].show = true\n    else\n        windwalkerActions[\"Tiger Palm\"].show = false\n    end\n    \n    return windwalkerActions[\"Tiger Palm\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Tiger Palm\"].inRange = true\n    else\n        myActions[\"Tiger Palm\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Tiger Palm\"].show = true\n    else\n        myActions[\"Tiger Palm\"].show = false\n    end\n    \n    return myActions[\"Tiger Palm\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -34595,7 +34605,7 @@ WeakAurasSaved = {
 				"Fury Functions", -- [4]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["xOffset"] = 0,
+			["scale"] = 1,
 			["yOffset"] = 0,
 			["border"] = false,
 			["borderEdge"] = "Square Full White",
@@ -34627,7 +34637,8 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["scale"] = 1,
+			["authorOptions"] = {
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -34656,8 +34667,7 @@ WeakAurasSaved = {
 			},
 			["anchorPoint"] = "CENTER",
 			["internalVersion"] = 59,
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["selfPoint"] = "CENTER",
 			["id"] = "Fury",
 			["groupIcon"] = "132347",
@@ -34720,18 +34730,18 @@ WeakAurasSaved = {
 						},
 						["duration"] = "1",
 						["useGroup_count"] = false,
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["subeventPrefix"] = "SPELL",
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
+						["debuffType"] = "HELPFUL",
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["subeventSuffix"] = "_CAST_START",
 						["spellName"] = 97462,
+						["subeventSuffix"] = "_CAST_START",
+						["group_countOperator"] = "==",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -34950,10 +34960,15 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["stickyDuration"] = false,
+			["selfPoint"] = "CENTER",
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -34989,12 +35004,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Fury CD Bar",
 			["useTooltip"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -35007,10 +35017,10 @@ WeakAurasSaved = {
 			["zoom"] = 0.28,
 			["uid"] = "8diyMb34kDD",
 			["inverse"] = true,
-			["icon"] = true,
+			["stickyDuration"] = false,
 			["displayIcon"] = 132351,
 			["cooldown"] = true,
-			["parent"] = "Fury CD Bar",
+			["icon"] = true,
 		},
 		["Lightning Shield"] = {
 			["iconSource"] = 0,
@@ -35025,7 +35035,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Lightning Shield\"] = {\n    [\"priority\"] = -1,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Lightning Shield\"] = {\n    [\"priority\"] = -1,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 				["finish"] = {
 				},
@@ -35269,15 +35279,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidBolt = true",
+					["custom"] = "myActions_VoidBolt = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidBolt = false",
+					["custom"] = "myActions_VoidBolt = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Void Bolt\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Void Bolt\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
 				},
 			},
 			["triggers"] = {
@@ -35309,7 +35319,7 @@ WeakAurasSaved = {
 						["buffShowOn"] = "showOnMissing",
 						["unevent"] = "auto",
 						["type"] = "custom",
-						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(shadowActions[\"Void Bolt\"].coolDown.duration, \n            shadowActions[\"Void Bolt\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(shadowActions[\"Void Bolt\"].coolDown.duration, \n            shadowActions[\"Void Bolt\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
+						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(myActions[\"Void Bolt\"].coolDown.duration, \n            myActions[\"Void Bolt\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(myActions[\"Void Bolt\"].coolDown.duration, \n            myActions[\"Void Bolt\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
 						["use_targetRequired"] = false,
 						["debuffType"] = "HELPFUL",
 						["match_count"] = "0",
@@ -35366,7 +35376,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    shadowActions[\"Void Bolt\"].coolDown.duration = 0\n    shadowActions[\"Void Bolt\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Void Bolt\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        shadowActions[\"Void Bolt\"].coolDown.duration = coolDownDuration\n        shadowActions[\"Void Bolt\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    shadowActions[\"Void Bolt\"].priority = nil    \n    \n    \n    local voidForm = select(1,AuraUtil.FindAuraByName(\"Voidform\", \"player\", \"HELPFUL|PLAYER\"))\n    local voidEruption = select(1,UnitCastingInfo(\"player\"))\n    \n    if (voidForm ~= nil or (voidEruption ~= nil and voidEruption == \"Void Eruption\")) and UnitPower(\"player\",13) < 85\n    then\n        shadowActions[\"Void Bolt\"].priority = 7\n    end    \n    \n    return isAuraHighestPriority(\"Void Bolt\", shadowActions)\nend\n\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Void Bolt\"].coolDown.duration = 0\n    myActions[\"Void Bolt\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Void Bolt\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Void Bolt\"].coolDown.duration = coolDownDuration\n        myActions[\"Void Bolt\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    myActions[\"Void Bolt\"].priority = nil    \n    \n    \n    local voidForm = select(1,AuraUtil.FindAuraByName(\"Voidform\", \"player\", \"HELPFUL|PLAYER\"))\n    local voidEruption = select(1,UnitCastingInfo(\"player\"))\n    \n    if (voidForm ~= nil or (voidEruption ~= nil and voidEruption == \"Void Eruption\")) and UnitPower(\"player\",13) < 85\n    then\n        myActions[\"Void Bolt\"].priority = 7\n    end    \n    \n    return isAuraHighestPriority(\"Void Bolt\", myActions)\nend\n\n\n\n\n",
 						["subeventPrefix"] = "",
 						["check"] = "update",
 						["use_itemBonusId"] = true,
@@ -35396,7 +35406,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        shadowActions[\"Void Bolt\"].inRange = true  \n    else\n        shadowActions[\"Void Bolt\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Void Bolt\"].show = true\n    else\n        shadowActions[\"Void Bolt\"].show = false\n    end\n    \n    return shadowActions[\"Void Bolt\"].show\nend\n\n\n\n\n",
+				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        myActions[\"Void Bolt\"].inRange = true  \n    else\n        myActions[\"Void Bolt\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Void Bolt\"].show = true\n    else\n        myActions[\"Void Bolt\"].show = false\n    end\n    \n    return myActions[\"Void Bolt\"].show\nend\n\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -35951,38 +35961,38 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["selfPoint"] = "CENTER",
-			["regionType"] = "icon",
-			["displayIcon"] = "132347",
-			["icon"] = true,
 			["authorOptions"] = {
 			},
+			["regionType"] = "icon",
+			["displayIcon"] = "132347",
+			["selfPoint"] = "CENTER",
+			["parent"] = "Fury Functions",
 			["cooldown"] = false,
 			["cooldownTextDisabled"] = false,
 			["uid"] = "eruULlDZLhR",
 			["zoom"] = 0,
 			["auto"] = false,
-			["alpha"] = 1,
+			["frameStrata"] = 1,
 			["id"] = "Fury Multi Target Tracker",
 			["width"] = 64,
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["alpha"] = 1,
 			["config"] = {
 			},
 			["inverse"] = false,
-			["parent"] = "Fury Functions",
-			["conditions"] = {
-			},
-			["information"] = {
-				["forceEvents"] = true,
-			},
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0, -- [4]
 			},
+			["conditions"] = {
+			},
+			["information"] = {
+				["forceEvents"] = true,
+			},
+			["icon"] = true,
 		},
 		["Enhancment Action Bar"] = {
 			["grow"] = "HORIZONTAL",
@@ -36050,7 +36060,8 @@ WeakAurasSaved = {
 			["subRegions"] = {
 			},
 			["borderInset"] = 1,
-			["parent"] = "Enhancement",
+			["authorOptions"] = {
+			},
 			["load"] = {
 				["talent"] = {
 					["multi"] = {
@@ -36070,7 +36081,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if enhancementActions[a.id] ~= nil \n    then \n        aData = enhancementActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if enhancementActions[b.id] ~= nil \n    then \n        bData = enhancementActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
+			["customSort"] = "function(a, b)    \n    \n    local aData\n    local bData\n    if myActions[a.id] ~= nil \n    then \n        aData = myActions[a.id]\n    else\n        aData = {     \n            [\"priority\"] = a.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil,\n            [\"inRange\"] = nil\n        }\n    end\n    if myActions[b.id] ~= nil \n    then \n        bData = myActions[b.id] \n    else\n        bData = {     \n            [\"priority\"] = b.dataIndex,\n            [\"onCoolDown\"] = false,\n            [\"expirationTime\"] = nil, \n            [\"inRange\"] = nil            \n        }\n    end\n    \n    -- Sort Order: inRange, not onCoolDown, expirationTime, priority\n    if aData.onCoolDown and bData.onCoolDown then        \n        return aData.expirationTime <= bData.expirationTime\n    elseif aData.onCoolDown and not bData.onCoolDown then\n        return false\n    elseif not aData.onCoolDown and bData.onCoolDown then\n        return true\n    else \n        \n        if aData.priority == nil then aData.priority = 99 end\n        if bData.priority == nil then bData.priority = 99 end        \n        \n        if aData.inRange and not bData.inRange then\n            return true\n        elseif not aData.inRange and bData.inRange then\n            return false\n        else\n            return aData.priority <= bData.priority\n        end\n    end\nend\n\n\n\n\n",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -36079,36 +36090,6 @@ WeakAurasSaved = {
 			},
 			["rowSpace"] = 1,
 			["animate"] = false,
-			["internalVersion"] = 59,
-			["scale"] = 1,
-			["gridType"] = "RD",
-			["border"] = false,
-			["borderEdge"] = "Square Full White",
-			["regionType"] = "dynamicgroup",
-			["borderSize"] = 2,
-			["sort"] = "none",
-			["fullCircle"] = true,
-			["useLimit"] = false,
-			["constantFactor"] = "RADIUS",
-			["arcLength"] = 360,
-			["borderOffset"] = 4,
-			["uid"] = "s99s5YszZ9G",
-			["frameStrata"] = 1,
-			["id"] = "Enhancment Action Bar",
-			["limit"] = 1,
-			["gridWidth"] = 5,
-			["anchorFrameType"] = "SCREEN",
-			["groupIcon"] = 237581,
-			["config"] = {
-			},
-			["authorOptions"] = {
-			},
-			["rotation"] = 0,
-			["conditions"] = {
-			},
-			["information"] = {
-				["forceEvents"] = true,
-			},
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -36129,6 +36110,35 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["scale"] = 1,
+			["gridType"] = "RD",
+			["border"] = false,
+			["borderEdge"] = "Square Full White",
+			["regionType"] = "dynamicgroup",
+			["borderSize"] = 2,
+			["sort"] = "none",
+			["internalVersion"] = 59,
+			["rotation"] = 0,
+			["constantFactor"] = "RADIUS",
+			["arcLength"] = 360,
+			["borderOffset"] = 4,
+			["uid"] = "s99s5YszZ9G",
+			["frameStrata"] = 1,
+			["id"] = "Enhancment Action Bar",
+			["limit"] = 1,
+			["gridWidth"] = 5,
+			["anchorFrameType"] = "SCREEN",
+			["groupIcon"] = 237581,
+			["config"] = {
+			},
+			["useLimit"] = false,
+			["fullCircle"] = true,
+			["conditions"] = {
+			},
+			["information"] = {
+				["forceEvents"] = true,
+			},
+			["parent"] = "Enhancement",
 		},
 		["Shadowform"] = {
 			["iconSource"] = -1,
@@ -36161,12 +36171,12 @@ WeakAurasSaved = {
 						["group_countOperator"] = "==",
 						["match_count"] = "0",
 						["buffShowOn"] = "showOnMissing",
-						["use_targetRequired"] = false,
+						["match_countOperator"] = "==",
 						["spellName"] = 193786,
-						["subeventSuffix"] = "_CAST_START",
+						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
-						["match_countOperator"] = "==",
+						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 						["event"] = "Action Usable",
@@ -36396,7 +36406,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Consecration\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Consecration\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -36410,7 +36420,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["unit"] = "player",
-						["customDuration"] = "function() \n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(retActions[\"Consecration\"].coolDown.duration, retActions[\"Consecration\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function() \n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(myActions[\"Consecration\"].coolDown.duration, myActions[\"Consecration\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -36440,11 +36450,11 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["debuffType"] = "HELPFUL",
+						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["unevent"] = "auto",
 						["custom_hide"] = "custom",
 					},
@@ -36456,7 +36466,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    retActions[\"Consecration\"].coolDown.duration = 0\n    retActions[\"Consecration\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Consecration\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        retActions[\"Consecration\"].coolDown.duration = coolDownDuration\n        retActions[\"Consecration\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    retActions[\"Consecration\"].priority = 10\n    local consecration = select(1,AuraUtil.FindAuraByName(\"Consecration\", \"target\", \"HARMFUL\"))\n    \n    if unitsInMelee.count > 1 and not consecration\n    then    \n        retActions[\"Consecration\"].priority = 8                                      \n    end \n    \n    return isAuraHighestPriority(\"Consecration\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Consecration\"].coolDown.duration = 0\n    myActions[\"Consecration\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Consecration\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Consecration\"].coolDown.duration = coolDownDuration\n        myActions[\"Consecration\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    myActions[\"Consecration\"].priority = 10\n    local consecration = select(1,AuraUtil.FindAuraByName(\"Consecration\", \"target\", \"HARMFUL\"))\n    \n    if unitsInMelee.count > 1 and not consecration\n    then    \n        myActions[\"Consecration\"].priority = 8                                      \n    end \n    \n    return isAuraHighestPriority(\"Consecration\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -36485,7 +36495,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        retActions[\"Consecration\"].inRange = true\n    else\n        retActions[\"Consecration\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Consecration\"].show = true\n    else\n        retActions[\"Consecration\"].show = false\n    end\n    \n    return retActions[\"Consecration\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Consecration\"].inRange = true\n    else\n        myActions[\"Consecration\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Consecration\"].show = true\n    else\n        myActions[\"Consecration\"].show = false\n    end\n    \n    return myActions[\"Consecration\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -36692,18 +36702,18 @@ WeakAurasSaved = {
 						},
 						["matchesShowOn"] = "showOnMissing",
 						["useGroup_count"] = false,
-						["debuffType"] = "HELPFUL",
+						["spellName"] = 77764,
 						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
 						["subeventPrefix"] = "SPELL",
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
+						["buffShowOn"] = "showOnMissing",
 						["match_count"] = "0",
-						["spellName"] = 77764,
-						["type"] = "spell",
 						["custom_hide"] = "timed",
+						["type"] = "spell",
+						["group_countOperator"] = "==",
 						["match_countOperator"] = "==",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -36882,30 +36892,11 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["animation"] = {
-				["start"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["duration_type"] = "seconds",
-					["type"] = "none",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["useTooltip"] = false,
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["useTooltip"] = false,
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -36933,7 +36924,12 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["xOffset"] = 0,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -36946,18 +36942,32 @@ WeakAurasSaved = {
 			["icon"] = true,
 			["uid"] = "Zp(lBvPzHAa",
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["animation"] = {
+				["start"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["duration_type"] = "seconds",
+					["type"] = "none",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+			},
 			["displayIcon"] = 464343,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["stickyDuration"] = false,
 		},
 		["block_torment"] = {
 			["iconSource"] = -1,
@@ -37132,18 +37142,23 @@ WeakAurasSaved = {
 					},
 				},
 			},
-			["useTooltip"] = true,
-			["alpha"] = 1,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
+			["useCooldownModRate"] = true,
 			["icon"] = true,
-			["parent"] = "TORGHAST_PANEL",
+			["alpha"] = 1,
 			["cooldown"] = false,
 			["displayIcon"] = "",
-			["selfPoint"] = "CENTER",
-			["regionType"] = "icon",
 			["authorOptions"] = {
 			},
+			["regionType"] = "icon",
+			["desc"] = "",
 			["uid"] = "TKVf)f7QjCw",
-			["cooldownEdge"] = false,
+			["desaturate"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = true,
 			["auto"] = true,
@@ -37151,26 +37166,21 @@ WeakAurasSaved = {
 			["semver"] = "1.0.9",
 			["tocversion"] = 90001,
 			["id"] = "block_torment",
-			["desaturate"] = false,
+			["useTooltip"] = true,
 			["frameStrata"] = 1,
 			["width"] = 20,
-			["desc"] = "",
+			["cooldownEdge"] = false,
 			["config"] = {
 			},
 			["inverse"] = false,
-			["useCooldownModRate"] = true,
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "TORGHAST_PANEL",
 		},
 		["Windwalker Energy"] = {
 			["sparkWidth"] = 10,
@@ -37180,8 +37190,7 @@ WeakAurasSaved = {
 			["anchorPoint"] = "CENTER",
 			["sparkRotation"] = 0,
 			["sparkRotationMode"] = "AUTO",
-			["config"] = {
-			},
+			["parent"] = "Windwalker Power Bar",
 			["backgroundColor"] = {
 				0, -- [1]
 				0, -- [2]
@@ -37217,6 +37226,14 @@ WeakAurasSaved = {
 				},
 			},
 			["backdropInFront"] = false,
+			["customTextUpdate"] = "update",
+			["barColor"] = {
+				1, -- [1]
+				0.831372549019608, -- [2]
+				0.0862745098039216, -- [3]
+				1, -- [4]
+			},
+			["desaturate"] = false,
 			["triggers"] = {
 				{
 					["trigger"] = {
@@ -37259,13 +37276,6 @@ WeakAurasSaved = {
 				["disjunctive"] = "all",
 				["activeTriggerMode"] = 1,
 			},
-			["barColor"] = {
-				1, -- [1]
-				0.831372549019608, -- [2]
-				0.0862745098039216, -- [3]
-				1, -- [4]
-			},
-			["desaturate"] = false,
 			["actions"] = {
 				["start"] = {
 				},
@@ -37276,7 +37286,6 @@ WeakAurasSaved = {
 					["custom"] = "windwalker_energy = {}\n\n\ncFunction_GetEnergyCoolDowns = function(req_energey) \n    \n    local energy = UnitPower(\"player\",3)\n    \n    if energy >= req_energey\n    then\n        windwalker_energy[req_energey] = nil\n        \n        print(\"Bypass\")\n        \n        return 0,0\n    end\n    \n    if windwalker_energy[req_energey] ~= nil and windwalker_energy[req_energey].expirationTime < GetTime()\n    then\n        windwalker_energy[req_energey] = nil\n    end\n    \n    if windwalker_energy[req_energey] == nil\n    then\n        \n        local regen = GetPowerRegen()\n        local duration = req_energey / regen        \n        \n        local expirationTime = ((req_energey - energy) / regen) + GetTime()\n        \n        windwalker_energy[req_energey] = {\n            [\"duration\"] = duration,\n            [\"expirationTime\"] = expirationTime\n        }\n        \n    end  \n    \n    --print(\"Duration: \"..windwalker_energy[req_energey].duration..\" Expire: \"..windwalker_energy[req_energey].expirationTime)\n    \n    return windwalker_energy[req_energey].duration, windwalker_energy[req_energey].expirationTime\nend",
 				},
 			},
-			["sparkOffsetX"] = 0,
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -37358,8 +37367,7 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["authorOptions"] = {
-			},
+			["sparkOffsetX"] = 0,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -37409,38 +37417,40 @@ WeakAurasSaved = {
 					},
 				},
 				["use_class_and_spec"] = true,
-				["use_vehicleUi"] = false,
+				["pvptalent"] = {
+					["multi"] = {
+					},
+				},
 				["zoneIds"] = "",
 				["race"] = {
 					["multi"] = {
 					},
 				},
+				["use_vehicleUi"] = false,
 				["faction"] = {
-					["multi"] = {
-					},
-				},
-				["pvptalent"] = {
 					["multi"] = {
 					},
 				},
 			},
 			["sparkBlendMode"] = "ADD",
-			["useAdjustededMax"] = false,
-			["stickyDuration"] = false,
-			["parent"] = "Windwalker Power Bar",
-			["uid"] = "qu1UYHk6KVc",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0.5, -- [4]
 			},
+			["useAdjustededMax"] = false,
+			["authorOptions"] = {
+			},
+			["uid"] = "qu1UYHk6KVc",
+			["config"] = {
+			},
 			["width"] = 250,
 			["alpha"] = 1,
 			["useAdjustededMin"] = false,
 			["regionType"] = "aurabar",
 			["borderInFront"] = false,
-			["customTextUpdate"] = "update",
+			["stickyDuration"] = false,
 			["icon_side"] = "RIGHT",
 			["sparkHidden"] = "NEVER",
 			["sparkHeight"] = 30,
@@ -37503,11 +37513,11 @@ WeakAurasSaved = {
 						["matchesShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["custom_hide"] = "timed",
-						["group_count"] = "0",
 						["spellName"] = 47568,
+						["group_count"] = "0",
+						["group_countOperator"] = "==",
 						["type"] = "spell",
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -37520,8 +37530,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
 						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["auranames"] = {
@@ -37722,19 +37732,14 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "g3)AXO6k3LJ",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
+			["authorOptions"] = {
 			},
 			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["displayIcon"] = 135372,
-			["xOffset"] = 0,
+			["icon"] = true,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -37748,7 +37753,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["internalVersion"] = 59,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -37784,7 +37794,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["icon"] = true,
+			["internalVersion"] = 59,
 		},
 		["Survival Health R"] = {
 			["sparkWidth"] = 10,
@@ -38084,10 +38094,10 @@ WeakAurasSaved = {
 						["custom_hide"] = "timed",
 						["type"] = "spell",
 						["debuffType"] = "HELPFUL",
-						["match_countOperator"] = "==",
-						["useName"] = true,
 						["unevent"] = "auto",
+						["useName"] = true,
 						["use_targetRequired"] = false,
+						["match_countOperator"] = "==",
 						["use_genericShowOn"] = true,
 						["unit"] = "player",
 						["buffShowOn"] = "showOnMissing",
@@ -38300,20 +38310,9 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "ulj0haxSzNV",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["stickyDuration"] = false,
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["stickyDuration"] = false,
-			["information"] = {
-				["forceEvents"] = true,
-				["ignoreOptionsEventErrors"] = true,
-			},
-			["displayIcon"] = 3636839,
 			["actions"] = {
 				["start"] = {
 				},
@@ -38322,6 +38321,12 @@ WeakAurasSaved = {
 				["finish"] = {
 				},
 			},
+			["information"] = {
+				["forceEvents"] = true,
+				["ignoreOptionsEventErrors"] = true,
+			},
+			["displayIcon"] = 3636839,
+			["useTooltip"] = false,
 			["zoom"] = 0.28,
 			["width"] = 45,
 			["cooldownTextDisabled"] = false,
@@ -38335,7 +38340,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -38368,7 +38378,7 @@ WeakAurasSaved = {
 				}, -- [1]
 			},
 			["cooldown"] = true,
-			["useTooltip"] = false,
+			["selfPoint"] = "CENTER",
 		},
 		["Exorcism"] = {
 			["iconSource"] = 0,
@@ -38391,7 +38401,7 @@ WeakAurasSaved = {
 						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()  \n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(retActions[\"Exorcism\"].coolDown.duration, retActions[\"Exorcism\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()  \n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(myActions[\"Exorcism\"].coolDown.duration, myActions[\"Exorcism\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -38420,11 +38430,11 @@ WeakAurasSaved = {
 						["unevent"] = "auto",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["debuffType"] = "HELPFUL",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
-						["events"] = "cEvent_ValidTarget",
 						["custom_type"] = "event",
 						["custom_hide"] = "custom",
 					},
@@ -38436,7 +38446,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    retActions[\"Exorcism\"].coolDown.duration = 0\n    retActions[\"Exorcism\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Exorcism\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        retActions[\"Exorcism\"].coolDown.duration = coolDownDuration\n        retActions[\"Exorcism\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    retActions[\"Exorcism\"].priority = nil\n    local consecration = select(1,AuraUtil.FindAuraByName(\"Consecration\", \"target\", \"HARMFUL\"))\n    \n    if unitsInMelee.count == 1\n    then\n        retActions[\"Exorcism\"].priority = 2    \n    elseif unitsInMelee.count > 1 and consecration\n    then        \n        retActions[\"Exorcism\"].priority = 2\n    end\n    \n    \n    return isAuraHighestPriority(\"Exorcism\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Exorcism\"].coolDown.duration = 0\n    myActions[\"Exorcism\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Exorcism\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Exorcism\"].coolDown.duration = coolDownDuration\n        myActions[\"Exorcism\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    myActions[\"Exorcism\"].priority = nil\n    local consecration = select(1,AuraUtil.FindAuraByName(\"Consecration\", \"target\", \"HARMFUL\"))\n    \n    if unitsInMelee.count == 1\n    then\n        myActions[\"Exorcism\"].priority = 2    \n    elseif unitsInMelee.count > 1 and consecration\n    then        \n        myActions[\"Exorcism\"].priority = 2\n    end\n    \n    \n    return isAuraHighestPriority(\"Exorcism\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -38465,7 +38475,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        retActions[\"Exorcism\"].inRange = true\n    else\n        retActions[\"Exorcism\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Exorcism\"].show = true\n    else\n        retActions[\"Exorcism\"].show = false\n    end\n    \n    return retActions[\"Exorcism\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Exorcism\"].inRange = true\n    else\n        myActions[\"Exorcism\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Exorcism\"].show = true\n    else\n        myActions[\"Exorcism\"].show = false\n    end\n    \n    return myActions[\"Exorcism\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -38618,7 +38628,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Exorcism\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 2,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Exorcism\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 2,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["conditions"] = {
@@ -38763,7 +38773,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Fire Mage",
+			["anchorPoint"] = "CENTER",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -38772,7 +38782,7 @@ WeakAurasSaved = {
 			},
 			["rotation"] = 0,
 			["animate"] = false,
-			["internalVersion"] = 59,
+			["fullCircle"] = true,
 			["scale"] = 1,
 			["groupIcon"] = 135812,
 			["border"] = false,
@@ -38780,21 +38790,7 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["rowSpace"] = 1,
-			["useLimit"] = false,
-			["constantFactor"] = "RADIUS",
-			["borderInset"] = 0,
-			["borderOffset"] = 16,
-			["grow"] = "DOWN",
-			["frameStrata"] = 1,
-			["id"] = "Fire Power Bar",
-			["limit"] = 5,
-			["gridWidth"] = 5,
-			["anchorFrameType"] = "SCREEN",
-			["xOffset"] = 0,
-			["config"] = {
-			},
-			["anchorPoint"] = "CENTER",
+			["internalVersion"] = 59,
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -38815,13 +38811,27 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["constantFactor"] = "RADIUS",
+			["borderInset"] = 0,
+			["borderOffset"] = 16,
+			["grow"] = "DOWN",
+			["frameStrata"] = 1,
+			["id"] = "Fire Power Bar",
+			["limit"] = 5,
+			["gridWidth"] = 5,
+			["anchorFrameType"] = "SCREEN",
+			["xOffset"] = 0,
+			["config"] = {
+			},
+			["useLimit"] = false,
+			["rowSpace"] = 1,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["fullCircle"] = true,
+			["parent"] = "Fire Mage",
 		},
 		["Custom Progress Bar Length"] = {
 			["sparkWidth"] = 10,
@@ -39040,10 +39050,14 @@ WeakAurasSaved = {
 			["regionType"] = "aurabar",
 			["authorOptions"] = {
 			},
-			["uid"] = "vQV5CspFmrQ",
-			["icon_side"] = "RIGHT",
-			["config"] = {
+			["sparkColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
 			},
+			["icon_side"] = "RIGHT",
+			["uid"] = "vQV5CspFmrQ",
 			["sparkHeight"] = 30,
 			["texture"] = "Blizzard",
 			["width"] = 200,
@@ -39055,11 +39069,7 @@ WeakAurasSaved = {
 			["alpha"] = 1,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0,
-			["sparkColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
+			["config"] = {
 			},
 			["inverse"] = false,
 			["triggers"] = {
@@ -39071,14 +39081,14 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()\n    local _,_,_,s = UnitBuff(\"player\", 'Lightning Shield', nil, \"PLAYER\")\n    if not s then\n        s = 0\n    end\n    return s,20, function() return s,20 end\nend",
-						["spellIds"] = {
-						},
 						["events"] = "UNIT_AURA",
+						["custom"] = "function()\n    return true\nend\n\n\n\n\n\n",
 						["custom_type"] = "event",
 						["names"] = {
 						},
 						["unit"] = "player",
-						["custom"] = "function()\n    return true\nend\n\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["custom_hide"] = "custom",
 					},
 					["untrigger"] = {
@@ -39117,7 +39127,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not furyActions then\n    furyActions = {}\nend\n\nfuryActions[\"Rampage\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 1,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Rampage\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 1,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -39127,18 +39137,18 @@ WeakAurasSaved = {
 						["type"] = "spell",
 						["subeventSuffix"] = "_CAST_START",
 						["custom_type"] = "status",
-						["use_unit"] = true,
-						["use_absorbMode"] = true,
-						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(frostKnightActions[\"Frostscythe\"].coolDown.duration,\n        frostKnightActions[\"Frostscythe\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["use_absorbMode"] = true,
+						["event"] = "Global Cooldown",
+						["unit"] = "player",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Frostscythe\"].coolDown.duration,\n        myActions[\"Frostscythe\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -39162,7 +39172,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority     \n    if UnitPower(\"player\",1) >= 100 or (not select(1,AuraUtil.FindAuraByName(\"Enrage\", \"player\", \"HELPFUL|PLAYER\")) and UnitPower(\"player\",1) >= 80)\n    then       \n        furyActions[\"Rampage\"].priority = 1        \n    else\n        furyActions[\"Rampage\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Rampage\", furyActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority     \n    if UnitPower(\"player\",1) >= 100 or (not select(1,AuraUtil.FindAuraByName(\"Enrage\", \"player\", \"HELPFUL|PLAYER\")) and UnitPower(\"player\",1) >= 80)\n    then       \n        myActions[\"Rampage\"].priority = 1        \n    else\n        myActions[\"Rampage\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Rampage\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -39178,16 +39188,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "3",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -39196,7 +39206,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        furyActions[\"Rampage\"].inRange = true\n    else\n        furyActions[\"Rampage\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        furyActions[\"Rampage\"].show = true\n    else\n        furyActions[\"Rampage\"].show = false\n    end    \n    return furyActions[\"Rampage\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Rampage\"].inRange = true\n    else\n        myActions[\"Rampage\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Rampage\"].show = true\n    else\n        myActions[\"Rampage\"].show = false\n    end    \n    return myActions[\"Rampage\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -39395,7 +39405,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not windwalkerActions then\n    windwalkerActions = {}\nend\n\nwindwalkerActions[\"Chi Wave\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 14,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Chi Wave\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 14,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -39409,7 +39419,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(windwalkerActions[\"Chi Wave\"].coolDown.duration, windwalkerActions[\"Chi Wave\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Chi Wave\"].coolDown.duration, myActions[\"Chi Wave\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -39439,11 +39449,11 @@ WeakAurasSaved = {
 						["custom_type"] = "event",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["debuffType"] = "HELPFUL",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
-						["events"] = "cEvent_ValidTarget",
 						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "custom",
 					},
@@ -39455,7 +39465,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown\n    windwalkerActions[\"Chi Wave\"].coolDown.duration = 0\n    windwalkerActions[\"Chi Wave\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Chi Wave\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        windwalkerActions[\"Chi Wave\"].coolDown.duration = coolDownDuration\n        windwalkerActions[\"Chi Wave\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end    \n    \n    --priority\n    windwalkerActions[\"Chi Wave\"].priority = nil\n    if (coolDownStart + coolDownDuration - GetTime()) <= 2\n    then\n        windwalkerActions[\"Chi Wave\"].priority = 14\n    end\n    \n    return isAuraHighestPriority(\"Chi Wave\", windwalkerActions)\n    \nend",
+						["custom"] = "function()\n    \n    --coolDown\n    myActions[\"Chi Wave\"].coolDown.duration = 0\n    myActions[\"Chi Wave\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Chi Wave\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Chi Wave\"].coolDown.duration = coolDownDuration\n        myActions[\"Chi Wave\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end    \n    \n    --priority\n    myActions[\"Chi Wave\"].priority = nil\n    if (coolDownStart + coolDownDuration - GetTime()) <= 2\n    then\n        myActions[\"Chi Wave\"].priority = 14\n    end\n    \n    return isAuraHighestPriority(\"Chi Wave\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -39484,7 +39494,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        windwalkerActions[\"Chi Wave\"].inRange = true\n    else\n        windwalkerActions[\"Chi Wave\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        windwalkerActions[\"Chi Wave\"].show = true\n    else\n        windwalkerActions[\"Chi Wave\"].show = false\n    end\n    \n    return windwalkerActions[\"Chi Wave\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Chi Wave\"].inRange = true\n    else\n        myActions[\"Chi Wave\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Chi Wave\"].show = true\n    else\n        myActions[\"Chi Wave\"].show = false\n    end\n    \n    return myActions[\"Chi Wave\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -39674,12 +39684,7 @@ WeakAurasSaved = {
 			["anchorPoint"] = "CENTER",
 			["sparkRotation"] = 0,
 			["customTextUpdate"] = "update",
-			["sparkColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Windwalker Power Bar",
 			["icon"] = false,
 			["triggers"] = {
 				{
@@ -39739,14 +39744,9 @@ WeakAurasSaved = {
 				0.05882352941176471, -- [3]
 				1, -- [4]
 			},
+			["desaturate"] = false,
 			["stickyDuration"] = false,
 			["fontFlags"] = "OUTLINE",
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
-			},
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -39828,7 +39828,12 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["borderBackdrop"] = "Blizzard Tooltip",
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.5, -- [4]
+			},
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -39878,12 +39883,13 @@ WeakAurasSaved = {
 					},
 				},
 				["use_class_and_spec"] = true,
-				["pvptalent"] = {
+				["use_vehicleUi"] = false,
+				["zoneIds"] = "",
+				["race"] = {
 					["multi"] = {
 					},
 				},
-				["zoneIds"] = "",
-				["race"] = {
+				["pvptalent"] = {
 					["multi"] = {
 					},
 				},
@@ -39891,27 +39897,31 @@ WeakAurasSaved = {
 					["multi"] = {
 					},
 				},
-				["use_vehicleUi"] = false,
 			},
 			["sparkBlendMode"] = "ADD",
+			["useAdjustededMax"] = false,
+			["borderBackdrop"] = "Blizzard Tooltip",
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0.5, -- [4]
 			},
-			["authorOptions"] = {
-			},
-			["parent"] = "Windwalker Power Bar",
 			["config"] = {
 			},
-			["desaturate"] = false,
+			["sparkColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["anchorFrameType"] = "SCREEN",
 			["frameStrata"] = 1,
 			["useAdjustededMin"] = false,
 			["regionType"] = "aurabar",
 			["borderInFront"] = false,
-			["useAdjustededMax"] = false,
+			["authorOptions"] = {
+			},
 			["icon_side"] = "RIGHT",
 			["id"] = "Windwalker Chi",
 			["sparkHeight"] = 30,
@@ -39987,7 +39997,7 @@ WeakAurasSaved = {
 			["authorOptions"] = {
 			},
 			["border"] = false,
-			["yOffset"] = 0,
+			["borderEdge"] = "None",
 			["anchorPoint"] = "CENTER",
 			["borderSize"] = 16,
 			["borderColor"] = {
@@ -40043,7 +40053,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["borderEdge"] = "None",
+			["groupIcon"] = 133738,
 			["internalVersion"] = 59,
 			["regionType"] = "group",
 			["selfPoint"] = "BOTTOMLEFT",
@@ -40051,7 +40061,7 @@ WeakAurasSaved = {
 			["scale"] = 1,
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["groupIcon"] = 133738,
+			["yOffset"] = 0,
 			["config"] = {
 			},
 			["borderOffset"] = 5,
@@ -40093,11 +40103,54 @@ WeakAurasSaved = {
 			["anchorPoint"] = "CENTER",
 			["sparkRotation"] = 0,
 			["sparkRotationMode"] = "AUTO",
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
+			["triggers"] = {
+				{
+					["trigger"] = {
+						["type"] = "unit",
+						["custom_hide"] = "timed",
+						["unevent"] = "auto",
+						["subeventSuffix"] = "_CAST_START",
+						["duration"] = "1",
+						["genericShowOn"] = "showOnActive",
+						["names"] = {
+						},
+						["unit"] = "player",
+						["powertype"] = 13,
+						["spellIds"] = {
+						},
+						["subeventPrefix"] = "SPELL",
+						["use_unit"] = true,
+						["event"] = "Power",
+						["use_powertype"] = true,
+						["debuffType"] = "HELPFUL",
+					},
+					["untrigger"] = {
+					},
+				}, -- [1]
+				{
+					["trigger"] = {
+						["custom_hide"] = "custom",
+						["type"] = "custom",
+						["custom_type"] = "event",
+						["unevent"] = "auto",
+						["events"] = "cEvent_ValidTarget",
+						["duration"] = "1",
+						["event"] = "Cooldown Progress (Spell)",
+						["unit"] = "player",
+						["realSpellName"] = 0,
+						["use_spellName"] = true,
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["debuffType"] = "HELPFUL",
+						["use_track"] = true,
+						["spellName"] = 0,
+					},
+					["untrigger"] = {
+						["custom"] = "function(event, show)\n    if not show then return true end\nend",
+					},
+				}, -- [2]
+				["activeTriggerMode"] = 1,
 			},
 			["icon"] = false,
 			["fontFlags"] = "OUTLINE",
@@ -40110,6 +40163,15 @@ WeakAurasSaved = {
 			["internalVersion"] = 59,
 			["selfPoint"] = "CENTER",
 			["backdropInFront"] = false,
+			["customTextUpdate"] = "update",
+			["barColor"] = {
+				0.2705882352941176, -- [1]
+				0, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
+			["desaturate"] = false,
+			["sparkOffsetX"] = 0,
 			["actions"] = {
 				["start"] = {
 				},
@@ -40118,15 +40180,6 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
-			["barColor"] = {
-				0.2705882352941176, -- [1]
-				0, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
-			["desaturate"] = false,
-			["iconSource"] = -1,
-			["xOffset"] = 0,
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -40252,12 +40305,7 @@ WeakAurasSaved = {
 				}, -- [6]
 			},
 			["height"] = 15,
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
-			},
+			["iconSource"] = -1,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -40324,58 +40372,18 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["sparkBlendMode"] = "ADD",
-			["useAdjustededMax"] = false,
-			["triggers"] = {
-				{
-					["trigger"] = {
-						["type"] = "unit",
-						["custom_hide"] = "timed",
-						["unevent"] = "auto",
-						["subeventSuffix"] = "_CAST_START",
-						["duration"] = "1",
-						["genericShowOn"] = "showOnActive",
-						["names"] = {
-						},
-						["unit"] = "player",
-						["powertype"] = 13,
-						["spellIds"] = {
-						},
-						["subeventPrefix"] = "SPELL",
-						["use_unit"] = true,
-						["event"] = "Power",
-						["use_powertype"] = true,
-						["debuffType"] = "HELPFUL",
-					},
-					["untrigger"] = {
-					},
-				}, -- [1]
-				{
-					["trigger"] = {
-						["custom_hide"] = "custom",
-						["type"] = "custom",
-						["custom_type"] = "event",
-						["unevent"] = "auto",
-						["events"] = "cEvent_ValidTarget",
-						["duration"] = "1",
-						["event"] = "Cooldown Progress (Spell)",
-						["unit"] = "player",
-						["realSpellName"] = 0,
-						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
-						["debuffType"] = "HELPFUL",
-						["use_track"] = true,
-						["spellName"] = 0,
-					},
-					["untrigger"] = {
-						["custom"] = "function(event, show)\n    if not show then return true end\nend",
-					},
-				}, -- [2]
-				["activeTriggerMode"] = 1,
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
 			},
-			["customTextUpdate"] = "update",
-			["config"] = {
+			["xOffset"] = 0,
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.5, -- [4]
 			},
 			["sparkColor"] = {
 				1, -- [1]
@@ -40383,12 +40391,14 @@ WeakAurasSaved = {
 				1, -- [3]
 				1, -- [4]
 			},
+			["useAdjustededMax"] = false,
 			["width"] = 250,
 			["alpha"] = 1,
 			["useAdjustededMin"] = false,
 			["regionType"] = "aurabar",
 			["borderInFront"] = false,
-			["sparkOffsetX"] = 0,
+			["config"] = {
+			},
 			["icon_side"] = "RIGHT",
 			["id"] = "Insanity",
 			["sparkHeight"] = 30,
@@ -40447,8 +40457,7 @@ WeakAurasSaved = {
 				"Frost Knight Power Bar", -- [3]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["groupIcon"] = "135773",
 			["border"] = false,
 			["borderEdge"] = "Square Full White",
@@ -40461,7 +40470,8 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["xOffset"] = 0,
+			["authorOptions"] = {
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -40490,7 +40500,7 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["borderOffset"] = 4,
-			["scale"] = 1,
+			["xOffset"] = 0,
 			["animation"] = {
 				["start"] = {
 					["easeStrength"] = 3,
@@ -40709,12 +40719,13 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["fixedWidth"] = 200,
+			["conditions"] = {
+			},
 			["regionType"] = "icon",
 			["authorOptions"] = {
 			},
 			["cooldownEdge"] = false,
-			["icon"] = true,
+			["fixedWidth"] = 200,
 			["config"] = {
 			},
 			["frameStrata"] = 1,
@@ -40729,8 +40740,7 @@ WeakAurasSaved = {
 			["parent"] = "Usefull meta functions",
 			["uid"] = "6meY3k8hpLg",
 			["inverse"] = false,
-			["conditions"] = {
-			},
+			["icon"] = true,
 			["shadowColor"] = {
 				0, -- [1]
 				0, -- [2]
@@ -40845,8 +40855,27 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["desaturate"] = false,
-			["stickyDuration"] = false,
-			["iconSource"] = -1,
+			["borderBackdrop"] = "Blizzard Tooltip",
+			["animation"] = {
+				["start"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+			},
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -40928,7 +40957,7 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["fontFlags"] = "OUTLINE",
+			["stickyDuration"] = false,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -40994,14 +41023,14 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["sparkBlendMode"] = "ADD",
-			["useAdjustededMax"] = false,
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
 				0.5, -- [4]
 			},
-			["sparkRotationMode"] = "AUTO",
+			["iconSource"] = -1,
+			["useAdjustededMax"] = false,
 			["config"] = {
 			},
 			["icon"] = false,
@@ -41018,23 +41047,23 @@ WeakAurasSaved = {
 			["auto"] = true,
 			["zoom"] = 0,
 			["spark"] = false,
-			["borderBackdrop"] = "Blizzard Tooltip",
-			["sparkHidden"] = "NEVER",
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
 				0.5, -- [4]
 			},
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
-			["uid"] = "wmvUEUsLZRy",
+			["sparkHidden"] = "NEVER",
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["frameStrata"] = 1,
+			["anchorFrameType"] = "SCREEN",
+			["fontFlags"] = "OUTLINE",
+			["uid"] = "wmvUEUsLZRy",
 			["inverse"] = false,
 			["sparkDesature"] = false,
 			["orientation"] = "HORIZONTAL",
@@ -41044,26 +41073,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["animation"] = {
-				["start"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["sparkRotationMode"] = "AUTO",
 		},
 		["Retribution Health R"] = {
 			["sparkWidth"] = 10,
@@ -41223,7 +41233,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
 				},
 				["finish"] = {
 				},
@@ -41361,13 +41371,13 @@ WeakAurasSaved = {
 						["group_count"] = "0",
 						["custom_hide"] = "timed",
 						["match_count"] = "0",
-						["unevent"] = "auto",
+						["use_targetRequired"] = false,
 						["type"] = "spell",
 						["buffShowOn"] = "showOnMissing",
-						["subeventSuffix"] = "_CAST_START",
+						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
-						["use_targetRequired"] = false,
+						["subeventSuffix"] = "_CAST_START",
 						["match_countOperator"] = "==",
 						["group_countOperator"] = "==",
 						["event"] = "Global Cooldown",
@@ -41665,14 +41675,14 @@ WeakAurasSaved = {
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["subeventPrefix"] = "SPELL",
-						["debuffType"] = "HELPFUL",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["spellName"] = 642,
+						["debuffType"] = "HELPFUL",
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
+						["custom_hide"] = "timed",
 						["useName"] = true,
-						["group_countOperator"] = "==",
+						["spellName"] = 642,
 						["unevent"] = "auto",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -41685,7 +41695,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
+						["group_countOperator"] = "==",
 						["use_unit"] = true,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -41868,7 +41878,7 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "q5FvZ3OrhoQ",
-			["internalVersion"] = 59,
+			["parent"] = "Retribution CD Bar",
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -41890,10 +41900,15 @@ WeakAurasSaved = {
 				},
 			},
 			["regionType"] = "icon",
-			["parent"] = "Retribution CD Bar",
+			["desaturate"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = 524354,
-			["desaturate"] = false,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -41908,14 +41923,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
+			["internalVersion"] = 59,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -41951,11 +41959,13 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
 			},
 		},
 		["Rake Tracker"] = {
@@ -41990,12 +42000,12 @@ WeakAurasSaved = {
 						["names"] = {
 						},
 						["unit"] = "player",
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "event",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "custom",
 					},
@@ -42244,10 +42254,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["stickyDuration"] = false,
+			["selfPoint"] = "CENTER",
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["selfPoint"] = "CENTER",
+			["internalVersion"] = 59,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -42276,7 +42286,8 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["internalVersion"] = 59,
+			["authorOptions"] = {
+			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -42289,14 +42300,13 @@ WeakAurasSaved = {
 			["icon"] = true,
 			["uid"] = "rf793qf8hko",
 			["inverse"] = true,
-			["parent"] = "Feral Bleed Bar",
+			["stickyDuration"] = false,
 			["displayIcon"] = 132122,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["authorOptions"] = {
-			},
+			["parent"] = "Feral Bleed Bar",
 		},
 		["Icebound Fortitude"] = {
 			["iconSource"] = 0,
@@ -42320,14 +42330,14 @@ WeakAurasSaved = {
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["subeventPrefix"] = "SPELL",
-						["spellName"] = 48792,
+						["debuffType"] = "HELPFUL",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
+						["spellName"] = 48792,
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["useName"] = true,
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["unevent"] = "auto",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -42340,7 +42350,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
@@ -42523,7 +42533,8 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "nZEncfD59Ky",
-			["useTooltip"] = false,
+			["authorOptions"] = {
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -42533,11 +42544,15 @@ WeakAurasSaved = {
 				},
 			},
 			["regionType"] = "icon",
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["displayIcon"] = 237525,
-			["xOffset"] = 0,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -42551,26 +42566,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["animation"] = {
-				["start"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["useTooltip"] = false,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -42606,11 +42602,25 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
+			["animation"] = {
+				["start"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
 			},
 		},
 		["Feral Bleed Bar"] = {
@@ -42793,13 +42803,13 @@ WeakAurasSaved = {
 			["useLimit"] = false,
 			["align"] = "LEFT",
 			["rotation"] = 0,
-			["yOffset"] = 199.63189697266,
+			["sort"] = "none",
 			["version"] = 10,
 			["subRegions"] = {
 			},
 			["config"] = {
 			},
-			["selfPoint"] = "LEFT",
+			["yOffset"] = 199.63189697266,
 			["load"] = {
 				["talent"] = {
 					["multi"] = {
@@ -42819,43 +42829,18 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["gridType"] = "RD",
+			["authorOptions"] = {
+			},
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0.5, -- [4]
 			},
-			["borderInset"] = 1,
+			["internalVersion"] = 59,
 			["animate"] = false,
 			["customGrow"] = "function(p, activeRegions)\n    local t = {}\n    for i = 1, #activeRegions do\n        local region = activeRegions[i].region\n        if #region.cloneId > 0 then\n            if t[region.id]==nil then\n                t[region.id]={}\n            end\n            t[region.id][region.cloneId] = i\n        else\n            t[region.id] = i\n        end\n    end\n    local tblPosition = {\n        header_phantasma= {0,-5},\n        header_floor = {37,0},\n        header_mapzone = {37,-15},\n        header_levelchunk = {0,-32},\n        header_deathcount = {0,-45},\n    }\n    for wName, pos in pairs (tblPosition) do\n        \n        local idx = t[wName]\n        if idx then\n            p[idx] =pos\n        end\n    end\n    \n    local function tblLength(T)\n        if type(T) == \"table\" then\n            local count = 0\n            for _ in pairs(T) do count = count + 1 end\n            return count\n        end\n        \n    end\n    \n    local function tblIndices(T)\n        if type(T) == \"table\" then\n            local count = 0\n            local tbl = {}\n            \n            local ts = {}\n            table.foreach (T, function (k, v) table.insert (ts, v) end )\n            table.sort (ts) \n            \n            for _,v in pairs(ts) do \n                tbl[count]=v\n                count = count + 1 \n            end\n            return tbl\n        end\n        \n    end\n    local function gridLayout (tbl, offset, maxRow, height, spacing)\n        if type(tbl) == \"table\" then\n            local count = 0\n            local frameCount = tblLength(tbl)\n            local indices = tblIndices(tbl)\n            local numFullRow = math.floor(frameCount/maxRow)\n            local leftover = (frameCount/maxRow-numFullRow)\n            if leftover > 0 then\n                numFullRow=numFullRow+1\n            end\n            local offsetHeight = offset[2]\n            for i = 1, numFullRow do\n                local before = offset[2]\n                offset[2] = offsetHeight - ((i-1)*height)\n                for n = 1, maxRow do\n                    local idx = indices[count]\n                    if idx then\n                        p[idx]={(n-1)*(spacing+25)+offset[1],offset[2]}\n                    end\n                    count = count+1\n                end\n            end\n        end\n        \n    end\n    \n    gridLayout (t.block_animapower,{0,-64}, 8,29,3)\n    gridLayout (t.block_torment,{203,0},8,35,3)\nend",
 			["scale"] = 1,
-			["authorOptions"] = {
-			},
-			["border"] = false,
-			["borderEdge"] = "Square Full White",
-			["regionType"] = "dynamicgroup",
-			["borderSize"] = 2,
-			["sort"] = "none",
-			["arcLength"] = 360,
-			["limit"] = 5,
-			["constantFactor"] = "RADIUS",
-			["borderColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				1, -- [4]
-			},
-			["borderOffset"] = 4,
-			["semver"] = "1.0.9",
-			["tocversion"] = 90001,
-			["id"] = "TORGHAST_PANEL",
-			["gridWidth"] = 5,
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
-			["stagger"] = 0,
-			["uid"] = "NSAtNcsFNmZ",
-			["space"] = 2,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -42876,13 +42861,38 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["border"] = false,
+			["borderEdge"] = "Square Full White",
+			["regionType"] = "dynamicgroup",
+			["borderSize"] = 2,
+			["limit"] = 5,
+			["space"] = 2,
+			["stagger"] = 0,
+			["constantFactor"] = "RADIUS",
+			["borderColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				1, -- [4]
+			},
+			["borderOffset"] = 4,
+			["semver"] = "1.0.9",
+			["tocversion"] = 90001,
+			["id"] = "TORGHAST_PANEL",
+			["gridWidth"] = 5,
+			["frameStrata"] = 1,
+			["anchorFrameType"] = "SCREEN",
+			["borderInset"] = 1,
+			["uid"] = "NSAtNcsFNmZ",
+			["selfPoint"] = "LEFT",
+			["arcLength"] = 360,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["internalVersion"] = 59,
+			["gridType"] = "RD",
 		},
 		["Lichborne"] = {
 			["iconSource"] = 0,
@@ -42913,14 +42923,14 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["spellName"] = 49039,
+						["custom_hide"] = "timed",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["spellName"] = 49039,
 						["group_count"] = "0",
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["subeventSuffix"] = "_CAST_START",
-						["group_countOperator"] = "==",
+						["debuffType"] = "HELPFUL",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -42933,7 +42943,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["use_unit"] = true,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -43133,10 +43143,11 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["useTooltip"] = false,
+			["parent"] = "Frost Knight CD Bar",
 			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
-			["parent"] = "Frost Knight CD Bar",
+			["authorOptions"] = {
+			},
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -43169,7 +43180,13 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["authorOptions"] = {
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
 			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
@@ -43183,20 +43200,13 @@ WeakAurasSaved = {
 			["xOffset"] = 0,
 			["uid"] = "Xs4hZ5S7zEP",
 			["inverse"] = true,
-			["desaturate"] = false,
+			["useTooltip"] = false,
 			["displayIcon"] = 136187,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
-			},
+			["desaturate"] = false,
 		},
 		["Fire CD Bar"] = {
 			["arcLength"] = 360,
@@ -43579,15 +43589,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = true",
+					["custom"] = "myActions_ShadowWordDeath = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = false",
+					["custom"] = "myActions_ShadowWordDeath = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Shadow Word: Death\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Shadow Word: Death\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -43597,7 +43607,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(shadowActions[\"Shadow Word: Death\"].coolDown.duration, \n            shadowActions[\"Shadow Word: Death\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(shadowActions[\"Shadow Word: Death\"].coolDown.duration, \n            shadowActions[\"Shadow Word: Death\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend\n\n\n",
+						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(myActions[\"Shadow Word: Death\"].coolDown.duration, \n            myActions[\"Shadow Word: Death\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(myActions[\"Shadow Word: Death\"].coolDown.duration, \n            myActions[\"Shadow Word: Death\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend\n\n\n",
 						["names"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
@@ -43625,11 +43635,11 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["unevent"] = "auto",
 						["custom_type"] = "event",
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["use_absorbMode"] = true,
+						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["custom_hide"] = "custom",
 					},
@@ -43645,7 +43655,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    shadowActions[\"Shadow Word: Death\"].coolDown.duration = 0\n    shadowActions[\"Shadow Word: Death\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Shadow Word: Death\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        shadowActions[\"Shadow Word: Death\"].coolDown.duration = coolDownDuration\n        shadowActions[\"Shadow Word: Death\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    shadowActions[\"Shadow Word: Death\"].priority = nil    \n    \n    if (unitsInRange.count <= 4 or attackMode == \"Focus\") and shadowData.shadowWordDeath.count >= 1\n    then        \n        --If i'm alone then i want to prioritize SWD over everything else just so i'm not doting world mobs when i can just nuke them\n        if GetNumSubgroupMembers() > 0\n        then\n            shadowActions[\"Shadow Word: Death\"].priority = 12\n        else\n            shadowActions[\"Shadow Word: Death\"].priority = -1\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Shadow Word: Death\", shadowActions)\nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Shadow Word: Death\"].coolDown.duration = 0\n    myActions[\"Shadow Word: Death\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Shadow Word: Death\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Shadow Word: Death\"].coolDown.duration = coolDownDuration\n        myActions[\"Shadow Word: Death\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    myActions[\"Shadow Word: Death\"].priority = nil    \n    \n    if (unitsInRange.count <= 4 or attackMode == \"Focus\") and shadowData.shadowWordDeath.count >= 1\n    then        \n        --If i'm alone then i want to prioritize SWD over everything else just so i'm not doting world mobs when i can just nuke them\n        if GetNumSubgroupMembers() > 0\n        then\n            myActions[\"Shadow Word: Death\"].priority = 12\n        else\n            myActions[\"Shadow Word: Death\"].priority = -1\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Shadow Word: Death\", myActions)\nend\n\n\n",
 						["unit"] = "player",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -43687,7 +43697,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    \n    if t[5]\n    then\n        shadowActions[\"Shadow Word: Death\"].inRange = true  \n    else\n        shadowActions[\"Shadow Word: Death\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Shadow Word: Death\"].show = true\n    else\n        shadowActions[\"Shadow Word: Death\"].show = false\n    end\n    \n    return shadowActions[\"Shadow Word: Death\"].show\nend",
+				["customTriggerLogic"] = "function(t)         \n    \n    if t[5]\n    then\n        myActions[\"Shadow Word: Death\"].inRange = true  \n    else\n        myActions[\"Shadow Word: Death\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Shadow Word: Death\"].show = true\n    else\n        myActions[\"Shadow Word: Death\"].show = false\n    end\n    \n    return myActions[\"Shadow Word: Death\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["useTooltip"] = false,
@@ -43845,11 +43855,11 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["icon"] = true,
+			["internalVersion"] = 59,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -43879,7 +43889,7 @@ WeakAurasSaved = {
 					},
 				}, -- [2]
 			},
-			["internalVersion"] = 59,
+			["stickyDuration"] = false,
 			["cooldownTextDisabled"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0.28,
@@ -43892,13 +43902,13 @@ WeakAurasSaved = {
 			["xOffset"] = 0,
 			["uid"] = "MvBDSlORGUd",
 			["inverse"] = true,
-			["parent"] = "Shadow Action Bar",
+			["selfPoint"] = "CENTER",
 			["displayIcon"] = 136149,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["stickyDuration"] = false,
+			["parent"] = "Shadow Action Bar",
 		},
 		["Power Word: Shield"] = {
 			["iconSource"] = 0,
@@ -44277,18 +44287,18 @@ WeakAurasSaved = {
 						["subeventPrefix"] = "SPELL",
 						["ownOnly"] = true,
 						["useGroup_count"] = false,
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["spellName"] = 184364,
+						["custom_hide"] = "timed",
 						["group_count"] = "0",
-						["debuffType"] = "HELPFUL",
-						["use_targetRequired"] = false,
 						["group_countOperator"] = "==",
+						["use_targetRequired"] = false,
+						["spellName"] = 184364,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -44489,9 +44499,6 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["stickyDuration"] = false,
-			["xOffset"] = 0,
-			["regionType"] = "icon",
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -44512,6 +44519,9 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["xOffset"] = 0,
+			["regionType"] = "icon",
+			["useTooltip"] = false,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -44547,7 +44557,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["useTooltip"] = false,
+			["parent"] = "Fury CD Bar",
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -44565,6 +44575,9 @@ WeakAurasSaved = {
 			["zoom"] = 0.28,
 			["uid"] = "8w1ursqdKz)",
 			["inverse"] = true,
+			["stickyDuration"] = false,
+			["displayIcon"] = 132345,
+			["cooldown"] = true,
 			["actions"] = {
 				["start"] = {
 				},
@@ -44573,9 +44586,6 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
-			["displayIcon"] = 132345,
-			["cooldown"] = true,
-			["parent"] = "Fury CD Bar",
 		},
 		["Feral Health L"] = {
 			["sparkWidth"] = 10,
@@ -44860,18 +44870,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["custom_type"] = "status",
-						["unit"] = "player",
-						["use_absorbMode"] = true,
-						["event"] = "Global Cooldown",
 						["names"] = {
 						},
+						["use_absorbMode"] = true,
+						["event"] = "Global Cooldown",
+						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()\n    return coolDown.cast_gcd.duration, coolDown.cast_gcd.expirationTime \nend\n",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["use_unit"] = true,
 						["check"] = "update",
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -44902,8 +44912,8 @@ WeakAurasSaved = {
 						["subeventPrefix"] = "SPELL",
 						["stacks"] = "4",
 						["unit"] = "player",
-						["custom_hide"] = "timed",
 						["buffShowOn"] = "showOnMissing",
+						["spellName"] = 343721,
 						["auranames"] = {
 							"Selfless Healer", -- [1]
 						},
@@ -44919,7 +44929,7 @@ WeakAurasSaved = {
 						["spellIds"] = {
 						},
 						["useName"] = true,
-						["spellName"] = 343721,
+						["custom_hide"] = "timed",
 						["combineMatches"] = "showLowest",
 						["names"] = {
 							"Mark of the Wild", -- [1]
@@ -45123,7 +45133,7 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(windwalkerActions[\"Fists of Fury\"].coolDown.duration, windwalkerActions[\"Fists of Fury\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Fists of Fury\"].coolDown.duration, myActions[\"Fists of Fury\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -45147,13 +45157,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "event",
-						["events"] = "cEvent_ValidTarget",
-						["event"] = "Action Usable",
 						["spellIds"] = {
 						},
+						["event"] = "Action Usable",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["debuffType"] = "HELPFUL",
 						["subeventSuffix"] = "_CAST_START",
 						["unit"] = "player",
@@ -45169,7 +45179,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()    \n    \n    --coolDown\n    windwalkerActions[\"Fists of Fury\"].coolDown.duration = 0\n    windwalkerActions[\"Fists of Fury\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Fists of Fury\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        windwalkerActions[\"Fists of Fury\"].coolDown.duration = coolDownDuration\n        windwalkerActions[\"Fists of Fury\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end  \n    \n    --Should other abilities defer spending chi if i want to use Fist of Fury\n    local healthTreshhold = (UnitHealthMax(\"player\") / 4)\n    local coolDownTreshhold = 4\n    -- Should do Spinning Crane Kick if tarets are \"week\"\n    local validTargets = unitsInMelee.count - unitsInMelee.weak \n    \n    --Tell lower priotiy abilites to not spend chi\n    if (validTargets >= 2 or UnitHealth(\"target\") >= healthTreshhold) and (coolDownStart + coolDownDuration - GetTime()) <= coolDownTreshhold\n    then\n        windwalkerActions[\"Fists of Fury\"].poolpowerforme = true\n    else        \n        windwalkerActions[\"Fists of Fury\"].poolpowerforme = nil\n    end\n    \n    --priority\n    windwalkerActions[\"Fists of Fury\"].priority = nil\n    if UnitPower(\"player\",12) >= 3\n    then\n        if validTargets == 1 and UnitHealth(\"target\") >= healthTreshhold\n        then \n            windwalkerActions[\"Fists of Fury\"].priority = 6\n        elseif validTargets >= 2\n        then            \n            windwalkerActions[\"Fists of Fury\"].priority = 5            \n        end\n    end\n    \n    return isAuraHighestPriority(\"Fists of Fury\", windwalkerActions)\n    \nend",
+						["custom"] = "function()    \n    \n    --coolDown\n    myActions[\"Fists of Fury\"].coolDown.duration = 0\n    myActions[\"Fists of Fury\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Fists of Fury\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Fists of Fury\"].coolDown.duration = coolDownDuration\n        myActions[\"Fists of Fury\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end  \n    \n    --Should other abilities defer spending chi if i want to use Fist of Fury\n    local healthTreshhold = (UnitHealthMax(\"player\") / 4)\n    local coolDownTreshhold = 4\n    -- Should do Spinning Crane Kick if tarets are \"week\"\n    local validTargets = unitsInMelee.count - unitsInMelee.weak \n    \n    --Tell lower priotiy abilites to not spend chi\n    if (validTargets >= 2 or UnitHealth(\"target\") >= healthTreshhold) and (coolDownStart + coolDownDuration - GetTime()) <= coolDownTreshhold\n    then\n        myActions[\"Fists of Fury\"].poolpowerforme = true\n    else        \n        myActions[\"Fists of Fury\"].poolpowerforme = nil\n    end\n    \n    --priority\n    myActions[\"Fists of Fury\"].priority = nil\n    if UnitPower(\"player\",12) >= 3\n    then\n        if validTargets == 1 and UnitHealth(\"target\") >= healthTreshhold\n        then \n            myActions[\"Fists of Fury\"].priority = 6\n        elseif validTargets >= 2\n        then            \n            myActions[\"Fists of Fury\"].priority = 5            \n        end\n    end\n    \n    return isAuraHighestPriority(\"Fists of Fury\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -45198,7 +45208,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        windwalkerActions[\"Fists of Fury\"].inRange = true\n    else\n        windwalkerActions[\"Fists of Fury\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        windwalkerActions[\"Fists of Fury\"].show = true\n    else\n        windwalkerActions[\"Fists of Fury\"].show = false\n    end\n    \n    return windwalkerActions[\"Fists of Fury\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Fists of Fury\"].inRange = true\n    else\n        myActions[\"Fists of Fury\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Fists of Fury\"].show = true\n    else\n        myActions[\"Fists of Fury\"].show = false\n    end\n    \n    return myActions[\"Fists of Fury\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -45318,7 +45328,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not windwalkerActions then\n    windwalkerActions = {}\nend\n\nwindwalkerActions[\"Fists of Fury\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,   \n    [\"inRange\"] = false,\n    [\"poolpowerforme\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Fists of Fury\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,   \n    [\"inRange\"] = false,\n    [\"poolpowerforme\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -45412,20 +45422,20 @@ WeakAurasSaved = {
 						["auranames"] = {
 							"Lightning Shield", -- [1]
 						},
-						["unit"] = "player",
-						["ownOnly"] = true,
-						["genericShowOn"] = "showOnCooldown",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
+						["ownOnly"] = true,
+						["genericShowOn"] = "showOnCooldown",
+						["subeventPrefix"] = "SPELL",
 						["duration"] = "1",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["group_count"] = "0",
 						["custom_hide"] = "timed",
+						["group_count"] = "0",
+						["group_countOperator"] = "==",
 						["subeventSuffix"] = "_CAST_START",
-						["spellName"] = 31884,
+						["buffShowOn"] = "showOnMissing",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -45438,11 +45448,11 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
 						["debuffType"] = "HELPFUL",
+						["spellName"] = 31884,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 					},
 					["untrigger"] = {
 						["spellName"] = 193786,
@@ -45626,7 +45636,7 @@ WeakAurasSaved = {
 					["multi"] = {
 					},
 				},
-				["faction"] = {
+				["pvptalent"] = {
 					["multi"] = {
 					},
 				},
@@ -45635,24 +45645,24 @@ WeakAurasSaved = {
 						[384442] = true,
 					},
 				},
-				["pvptalent"] = {
-					["multi"] = {
-					},
-				},
+				["use_vehicleUi"] = false,
 				["role"] = {
 					["multi"] = {
 					},
 				},
-				["use_vehicleUi"] = false,
+				["faction"] = {
+					["multi"] = {
+					},
+				},
 				["zoneIds"] = "",
 				["use_talent3"] = false,
 			},
 			["config"] = {
 			},
-			["xOffset"] = 0,
+			["parent"] = "Retribution CD Bar",
 			["stickyDuration"] = false,
 			["regionType"] = "icon",
-			["parent"] = "Retribution CD Bar",
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -45685,7 +45695,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["selfPoint"] = "CENTER",
+			["useTooltip"] = false,
 			["cooldownTextDisabled"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0.28,
@@ -45699,6 +45709,12 @@ WeakAurasSaved = {
 			},
 			["uid"] = "Sm0fM(j6Eg7",
 			["inverse"] = true,
+			["xOffset"] = 0,
+			["displayIcon"] = 135875,
+			["information"] = {
+				["forceEvents"] = true,
+				["ignoreOptionsEventErrors"] = true,
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -45707,12 +45723,6 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
-			["displayIcon"] = 135875,
-			["information"] = {
-				["forceEvents"] = true,
-				["ignoreOptionsEventErrors"] = true,
-			},
-			["useTooltip"] = false,
 		},
 		["Shadow Action Bar"] = {
 			["grow"] = "HORIZONTAL",
@@ -45800,7 +45810,8 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Shadow",
+			["authorOptions"] = {
+			},
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -45809,36 +45820,6 @@ WeakAurasSaved = {
 			},
 			["rowSpace"] = 1,
 			["animate"] = false,
-			["internalVersion"] = 59,
-			["scale"] = 1,
-			["gridType"] = "RD",
-			["border"] = false,
-			["borderEdge"] = "Square Full White",
-			["regionType"] = "dynamicgroup",
-			["borderSize"] = 2,
-			["sort"] = "none",
-			["fullCircle"] = true,
-			["useLimit"] = false,
-			["constantFactor"] = "RADIUS",
-			["arcLength"] = 360,
-			["borderOffset"] = 4,
-			["uid"] = "TrjM6yS1g8y",
-			["frameStrata"] = 1,
-			["id"] = "Shadow Action Bar",
-			["limit"] = 5,
-			["gridWidth"] = 5,
-			["anchorFrameType"] = "SCREEN",
-			["groupIcon"] = 136207,
-			["config"] = {
-			},
-			["authorOptions"] = {
-			},
-			["rotation"] = 0,
-			["conditions"] = {
-			},
-			["information"] = {
-				["forceEvents"] = true,
-			},
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -45859,6 +45840,35 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
+			["scale"] = 1,
+			["gridType"] = "RD",
+			["border"] = false,
+			["borderEdge"] = "Square Full White",
+			["regionType"] = "dynamicgroup",
+			["borderSize"] = 2,
+			["sort"] = "none",
+			["internalVersion"] = 59,
+			["rotation"] = 0,
+			["constantFactor"] = "RADIUS",
+			["arcLength"] = 360,
+			["borderOffset"] = 4,
+			["uid"] = "TrjM6yS1g8y",
+			["frameStrata"] = 1,
+			["id"] = "Shadow Action Bar",
+			["limit"] = 5,
+			["gridWidth"] = 5,
+			["anchorFrameType"] = "SCREEN",
+			["groupIcon"] = 136207,
+			["config"] = {
+			},
+			["useLimit"] = false,
+			["fullCircle"] = true,
+			["conditions"] = {
+			},
+			["information"] = {
+				["forceEvents"] = true,
+			},
+			["parent"] = "Shadow",
 		},
 		["Usefull meta functions"] = {
 			["backdropColor"] = {
@@ -45881,7 +45891,7 @@ WeakAurasSaved = {
 			["borderBackdrop"] = "Blizzard Tooltip",
 			["scale"] = 1,
 			["border"] = false,
-			["groupIcon"] = 133738,
+			["borderEdge"] = "None",
 			["anchorPoint"] = "CENTER",
 			["borderSize"] = 16,
 			["borderColor"] = {
@@ -45937,7 +45947,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["borderEdge"] = "None",
+			["yOffset"] = 353.600433349609,
 			["internalVersion"] = 59,
 			["regionType"] = "group",
 			["animation"] = {
@@ -45964,7 +45974,7 @@ WeakAurasSaved = {
 			["xOffset"] = -712.800174713135,
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["yOffset"] = 353.600433349609,
+			["groupIcon"] = 133738,
 			["borderInset"] = 11,
 			["borderOffset"] = 5,
 			["config"] = {
@@ -45991,15 +46001,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Thrash = true",
+					["custom"] = "myActions_Thrash = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "feralActions[\"Feral Thrash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 12,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "myActions[\"Feral Thrash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 12,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Thrash = false",
+					["custom"] = "myActions_Thrash = false",
 				},
 			},
 			["triggers"] = {
@@ -46009,18 +46019,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["duration"] = "1",
 						["unevent"] = "auto",
-						["use_unit"] = true,
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["event"] = "DBM Timer",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Feral Thrash\"].coolDown.duration, feralActions[\"Feral Thrash\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Feral Thrash\"].coolDown.duration, myActions[\"Feral Thrash\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["use_unit"] = true,
 						["subeventSuffix"] = "_CAST_START",
 						["debuffType"] = "HELPFUL",
 					},
@@ -46060,7 +46070,7 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["use_debuffClass"] = false,
 						["custom_type"] = "status",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown        \n    feralActions[\"Feral Thrash\"].coolDown.duration = 0\n    feralActions[\"Feral Thrash\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 40\n    \n    -- Energy Pool when i have bloodtalons and not berserking\n    if not Berserk and cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 70        \n    end     \n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end\n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Feral Thrash\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Feral Thrash\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end  \n    \n    --priority \n    feralActions[\"Feral Thrash\"].priority = nil\n    local trash_missing = feralData.trash.missing + feralData.trash.expiring\n    if UnitPower(\"player\",4) <= 4 and GetShapeshiftForm() == 2 and attackMode ~= \"Focus\"\n    then\n        if unitsInMelee.count >= 3 and trash_missing >= 3\n        then\n            feralActions[\"Feral Thrash\"].priority = 9            \n        elseif unitsInMelee.count >= 3 and trash_missing == 2\n        then\n            feralActions[\"Feral Thrash\"].priority = 12            \n        end   \n    end    \n    \n    return isAuraHighestPriority(\"Feral Thrash\", feralActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown        \n    myActions[\"Feral Thrash\"].coolDown.duration = 0\n    myActions[\"Feral Thrash\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 40\n    \n    -- Energy Pool when i have bloodtalons and not berserking\n    if not Berserk and cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 70        \n    end     \n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end\n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Feral Thrash\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Feral Thrash\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end  \n    \n    --priority \n    myActions[\"Feral Thrash\"].priority = nil\n    local trash_missing = feralData.trash.missing + feralData.trash.expiring\n    if UnitPower(\"player\",4) <= 4 and GetShapeshiftForm() == 2 and attackMode ~= \"Focus\"\n    then\n        if unitsInMelee.count >= 3 and trash_missing >= 3\n        then\n            myActions[\"Feral Thrash\"].priority = 9            \n        elseif unitsInMelee.count >= 3 and trash_missing == 2\n        then\n            myActions[\"Feral Thrash\"].priority = 12            \n        end   \n    end    \n    \n    return isAuraHighestPriority(\"Feral Thrash\", myActions)\nend",
 						["debuffType"] = "HARMFUL",
 						["event"] = "Health",
 						["buffShowOn"] = "showOnMissing",
@@ -46083,16 +46093,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "8",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -46101,7 +46111,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Feral Thrash\"].inRange = true\n    else\n        feralActions[\"Feral Thrash\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Feral Thrash\"].show = true\n    else\n        feralActions[\"Feral Thrash\"].show = false\n    end    \n    return feralActions[\"Feral Thrash\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Feral Thrash\"].inRange = true\n    else\n        myActions[\"Feral Thrash\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Feral Thrash\"].show = true\n    else\n        myActions[\"Feral Thrash\"].show = false\n    end    \n    return myActions[\"Feral Thrash\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -46336,48 +46346,14 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["desaturate"] = false,
-			["iconSource"] = -1,
-			["triggers"] = {
-				{
-					["trigger"] = {
-						["type"] = "unit",
-						["custom_hide"] = "timed",
-						["subeventSuffix"] = "_CAST_START",
-						["use_unit"] = true,
-						["duration"] = "1",
-						["genericShowOn"] = "showOnActive",
-						["unit"] = "player",
-						["names"] = {
-						},
-						["powertype"] = 1,
-						["spellIds"] = {
-						},
-						["event"] = "Power",
-						["subeventPrefix"] = "SPELL",
-						["unevent"] = "auto",
-						["use_powertype"] = true,
-						["debuffType"] = "HELPFUL",
-					},
-					["untrigger"] = {
-					},
-				}, -- [1]
-				{
-					["trigger"] = {
-						["custom_hide"] = "custom",
-						["type"] = "custom",
-						["events"] = "cEvent_ValidTarget",
-						["custom_type"] = "event",
-						["check"] = "update",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["unit"] = "player",
-						["debuffType"] = "HELPFUL",
-					},
-					["untrigger"] = {
-						["custom"] = "function(event, show)\n    if not show then return true end\nend",
-					},
-				}, -- [2]
-				["disjunctive"] = "all",
-				["activeTriggerMode"] = 1,
+			["borderBackdrop"] = "Blizzard Tooltip",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
 			},
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
@@ -46460,7 +46436,7 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["xOffset"] = 0,
+			["iconSource"] = -1,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -46527,10 +46503,55 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["sparkBlendMode"] = "ADD",
-			["useAdjustededMax"] = false,
-			["customTextUpdate"] = "update",
-			["authorOptions"] = {
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
 			},
+			["triggers"] = {
+				{
+					["trigger"] = {
+						["type"] = "unit",
+						["custom_hide"] = "timed",
+						["subeventSuffix"] = "_CAST_START",
+						["use_unit"] = true,
+						["duration"] = "1",
+						["genericShowOn"] = "showOnActive",
+						["unit"] = "player",
+						["names"] = {
+						},
+						["powertype"] = 1,
+						["spellIds"] = {
+						},
+						["event"] = "Power",
+						["subeventPrefix"] = "SPELL",
+						["unevent"] = "auto",
+						["use_powertype"] = true,
+						["debuffType"] = "HELPFUL",
+					},
+					["untrigger"] = {
+					},
+				}, -- [1]
+				{
+					["trigger"] = {
+						["custom_hide"] = "custom",
+						["type"] = "custom",
+						["events"] = "cEvent_ValidTarget",
+						["custom_type"] = "event",
+						["check"] = "update",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["unit"] = "player",
+						["debuffType"] = "HELPFUL",
+					},
+					["untrigger"] = {
+						["custom"] = "function(event, show)\n    if not show then return true end\nend",
+					},
+				}, -- [2]
+				["disjunctive"] = "all",
+				["activeTriggerMode"] = 1,
+			},
+			["xOffset"] = 0,
 			["config"] = {
 			},
 			["icon"] = false,
@@ -46547,23 +46568,18 @@ WeakAurasSaved = {
 			["auto"] = true,
 			["zoom"] = 0,
 			["spark"] = false,
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
-			},
+			["customTextUpdate"] = "update",
 			["sparkHidden"] = "NEVER",
-			["borderBackdrop"] = "Blizzard Tooltip",
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
-			["uid"] = "V1onu7zTy72",
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["frameStrata"] = 1,
+			["anchorFrameType"] = "SCREEN",
+			["useAdjustededMax"] = false,
+			["uid"] = "V1onu7zTy72",
 			["inverse"] = false,
 			["sparkDesature"] = false,
 			["orientation"] = "HORIZONTAL",
@@ -46573,19 +46589,13 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
+			["authorOptions"] = {
 			},
 		},
 		["Ice Strike"] = {
 			["iconSource"] = 0,
 			["parent"] = "Enhancment Action Bar",
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Sundering\", enhancementActions)\nend",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Sundering\", myActions)\nend",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -46594,15 +46604,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_Sundering = true",
+					["custom"] = "myActions_Sundering = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Ice Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Ice Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }           \n}\n\n\n",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Sundering\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Sundering\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 			},
 			["triggers"] = {
@@ -46612,7 +46622,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(enhancementActions[\"Ice Strike\"].coolDown.duration, \n        enhancementActions[\"Ice Strike\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Ice Strike\"].coolDown.duration, \n        myActions[\"Ice Strike\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["names"] = {
 						},
 						["spellIds"] = {
@@ -46643,7 +46653,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    enhancementActions[\"Ice Strike\"].coolDown.duration = 0\n    enhancementActions[\"Ice Strike\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Ice Strike\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Ice Strike\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Ice Strike\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    enhancementActions[\"Ice Strike\"].priority = nil    \n    if unitsInMelee.count <= 1 \n    then    \n        enhancementActions[\"Ice Strike\"].priority = 6\n    elseif unitsInMelee.count> 1\n    then\n        if select(1,AuraUtil.FindAuraByName(\"Hailstorm\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            enhancementActions[\"Ice Strike\"].priority = 4\n        else\n            enhancementActions[\"Ice Strike\"].priority = 11\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Ice Strike\", enhancementActions)\nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Ice Strike\"].coolDown.duration = 0\n    myActions[\"Ice Strike\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Ice Strike\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Ice Strike\"].coolDown.duration = coolDownDuration\n        myActions[\"Ice Strike\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    myActions[\"Ice Strike\"].priority = nil    \n    if unitsInMelee.count <= 1 \n    then    \n        myActions[\"Ice Strike\"].priority = 6\n    elseif unitsInMelee.count> 1\n    then\n        if select(1,AuraUtil.FindAuraByName(\"Hailstorm\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            myActions[\"Ice Strike\"].priority = 4\n        else\n            myActions[\"Ice Strike\"].priority = 11\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Ice Strike\", myActions)\nend\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -46672,7 +46682,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        enhancementActions[\"Ice Strike\"].inRange = true\n    else\n        enhancementActions[\"Ice Strike\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Ice Strike\"].show = true\n    else\n        enhancementActions[\"Ice Strike\"].show = false\n    end    \n    return enhancementActions[\"Ice Strike\"].show\nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Ice Strike\"].inRange = true\n    else\n        myActions[\"Ice Strike\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Ice Strike\"].show = true\n    else\n        myActions[\"Ice Strike\"].show = false\n    end    \n    return myActions[\"Ice Strike\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -47404,10 +47414,32 @@ WeakAurasSaved = {
 				["use_spec"] = true,
 				["zoneIds"] = "",
 			},
-			["authorOptions"] = {
-			},
+			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
 			["conditions"] = {
+			},
+			["authorOptions"] = {
+			},
+			["icon"] = true,
+			["cooldown"] = true,
+			["zoom"] = 0.28,
+			["config"] = {
+			},
+			["cooldownTextDisabled"] = false,
+			["auto"] = false,
+			["alpha"] = 1,
+			["id"] = "Harpoon Old",
+			["anchorFrameType"] = "SCREEN",
+			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["frameStrata"] = 5,
+			["uid"] = "IAcsX1lP)at",
+			["inverse"] = true,
+			["xOffset"] = 0,
+			["displayIcon"] = 1376040,
+			["information"] = {
+				["forceEvents"] = true,
+				["ignoreOptionsEventErrors"] = true,
 			},
 			["color"] = {
 				1, -- [1]
@@ -47415,28 +47447,6 @@ WeakAurasSaved = {
 				1, -- [3]
 				1, -- [4]
 			},
-			["selfPoint"] = "CENTER",
-			["cooldown"] = true,
-			["zoom"] = 0.28,
-			["config"] = {
-			},
-			["cooldownTextDisabled"] = false,
-			["auto"] = false,
-			["frameStrata"] = 5,
-			["id"] = "Harpoon Old",
-			["anchorFrameType"] = "SCREEN",
-			["alpha"] = 1,
-			["width"] = 50,
-			["useCooldownModRate"] = true,
-			["uid"] = "IAcsX1lP)at",
-			["inverse"] = true,
-			["icon"] = true,
-			["displayIcon"] = 1376040,
-			["information"] = {
-				["forceEvents"] = true,
-				["ignoreOptionsEventErrors"] = true,
-			},
-			["xOffset"] = 0,
 		},
 		["Brutal Slash"] = {
 			["iconSource"] = 0,
@@ -47450,15 +47460,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_BrutalSlash = true",
+					["custom"] = "myActions_BrutalSlash = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Brutal Slash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Brutal Slash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_BrutalSlash = false",
+					["custom"] = "myActions_BrutalSlash = false",
 				},
 			},
 			["triggers"] = {
@@ -47468,18 +47478,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["custom_type"] = "status",
 						["unevent"] = "auto",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Brutal Slash\"].coolDown.duration, feralActions[\"Brutal Slash\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Brutal Slash\"].coolDown.duration, myActions[\"Brutal Slash\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -47505,7 +47515,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown\n    feralActions[\"Brutal Slash\"].coolDown.duration = 0\n    feralActions[\"Brutal Slash\"].coolDown.expirationTime = 0 \n    \n    local coolDownRegenDuration = 0\n    local coolDownRegenExpirationTime = 0\n    local req_energy = 45\n    -- Energy Pool when i have bloodtalons\n    if feraltalents[\"Bloodtalons\"]\n    then\n        req_energy = 75           \n    end\n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)        \n    end\n    \n    local coolDownChargesExpirationTime = 0\n    local currentCharges, maxCharges, coolDownChargesStart, coolDownChargesDuration, chargeModRate = GetSpellCharges(\"Brutal Slash\")\n    if currentCharges == 0 and coolDownChargesStart < 4290000\n    then \n        coolDownChargesExpirationTime = coolDownChargesStart + coolDownChargesDuration\n    end\n    \n    if coolDownChargesExpirationTime > coolDown.gcd.expirationTime and coolDownChargesExpirationTime > coolDownRegenExpirationTime\n    then\n        feralActions[\"Brutal Slash\"].coolDown.duration = coolDownChargesDuration\n        feralActions[\"Brutal Slash\"].coolDown.expirationTime = coolDownChargesExpirationTime\n    elseif coolDownRegenExpirationTime > coolDown.gcd.expirationTime and coolDownRegenExpirationTime >= coolDownChargesExpirationTime\n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Brutal Slash\"].coolDown.duration = coolDownRegenDuration + .5\n        feralActions[\"Brutal Slash\"].coolDown.expirationTime = coolDownRegenExpirationTime + .5\n    end    \n    \n    --priority\n    if UnitPower(\"player\",4) <= 4 and not Berserk\n    and GetShapeshiftForm() == 2\n    then    \n        if unitsInMelee.count >= 5\n        then\n            feralActions[\"Brutal Slash\"].priority = 10                                              \n        else\n            feralActions[\"Brutal Slash\"].priority = 13\n        end \n    else\n        feralActions[\"Brutal Slash\"].priority = nil\n    end     \n    \n    return isAuraHighestPriority(\"Brutal Slash\", feralActions)\n    \nend\n\n\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown\n    myActions[\"Brutal Slash\"].coolDown.duration = 0\n    myActions[\"Brutal Slash\"].coolDown.expirationTime = 0 \n    \n    local coolDownRegenDuration = 0\n    local coolDownRegenExpirationTime = 0\n    local req_energy = 45\n    -- Energy Pool when i have bloodtalons\n    if feraltalents[\"Bloodtalons\"]\n    then\n        req_energy = 75           \n    end\n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)        \n    end\n    \n    local coolDownChargesExpirationTime = 0\n    local currentCharges, maxCharges, coolDownChargesStart, coolDownChargesDuration, chargeModRate = GetSpellCharges(\"Brutal Slash\")\n    if currentCharges == 0 and coolDownChargesStart < 4290000\n    then \n        coolDownChargesExpirationTime = coolDownChargesStart + coolDownChargesDuration\n    end\n    \n    if coolDownChargesExpirationTime > coolDown.gcd.expirationTime and coolDownChargesExpirationTime > coolDownRegenExpirationTime\n    then\n        myActions[\"Brutal Slash\"].coolDown.duration = coolDownChargesDuration\n        myActions[\"Brutal Slash\"].coolDown.expirationTime = coolDownChargesExpirationTime\n    elseif coolDownRegenExpirationTime > coolDown.gcd.expirationTime and coolDownRegenExpirationTime >= coolDownChargesExpirationTime\n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Brutal Slash\"].coolDown.duration = coolDownRegenDuration + .5\n        myActions[\"Brutal Slash\"].coolDown.expirationTime = coolDownRegenExpirationTime + .5\n    end    \n    \n    --priority\n    if UnitPower(\"player\",4) <= 4 and not Berserk\n    and GetShapeshiftForm() == 2\n    then    \n        if unitsInMelee.count >= 5\n        then\n            myActions[\"Brutal Slash\"].priority = 10                                              \n        else\n            myActions[\"Brutal Slash\"].priority = 13\n        end \n    else\n        myActions[\"Brutal Slash\"].priority = nil\n    end     \n    \n    return isAuraHighestPriority(\"Brutal Slash\", myActions)\n    \nend\n\n\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -47520,16 +47530,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "8",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["range"] = "8",
+						["event"] = "Range Check",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -47538,7 +47548,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Brutal Slash\"].inRange = true\n    else\n        feralActions[\"Brutal Slash\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Brutal Slash\"].show = true\n    else\n        feralActions[\"Brutal Slash\"].show = false\n    end    \n    return feralActions[\"Brutal Slash\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Brutal Slash\"].inRange = true\n    else\n        myActions[\"Brutal Slash\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Brutal Slash\"].show = true\n    else\n        myActions[\"Brutal Slash\"].show = false\n    end    \n    return myActions[\"Brutal Slash\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -47904,14 +47914,12 @@ WeakAurasSaved = {
 					},
 				},
 			},
-			["xOffset"] = 0,
-			["alpha"] = 1,
+			["useTooltip"] = true,
+			["useCooldownModRate"] = true,
 			["icon"] = true,
-			["parent"] = "TORGHAST_PANEL",
+			["alpha"] = 1,
 			["cooldown"] = true,
 			["displayIcon"] = "",
-			["selfPoint"] = "CENTER",
-			["regionType"] = "icon",
 			["authorOptions"] = {
 				{
 					["type"] = "number",
@@ -47925,8 +47933,10 @@ WeakAurasSaved = {
 					["default"] = 0,
 				}, -- [1]
 			},
+			["regionType"] = "icon",
+			["cooldownEdge"] = false,
 			["uid"] = "L7(4Fl)rrJt",
-			["desaturate"] = false,
+			["stickyDuration"] = false,
 			["width"] = 35,
 			["cooldownTextDisabled"] = true,
 			["auto"] = true,
@@ -47934,15 +47944,15 @@ WeakAurasSaved = {
 			["semver"] = "1.0.9",
 			["tocversion"] = 90001,
 			["id"] = "header_phantasma",
-			["stickyDuration"] = false,
+			["xOffset"] = 0,
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["cooldownEdge"] = false,
+			["desaturate"] = false,
 			["config"] = {
 				["currencyID"] = 1728,
 			},
 			["inverse"] = false,
-			["useCooldownModRate"] = true,
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 				{
 					["check"] = {
@@ -47967,7 +47977,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = true,
+			["parent"] = "TORGHAST_PANEL",
 		},
 		["Tiger's Fury"] = {
 			["iconSource"] = 0,
@@ -48178,14 +48188,14 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["xOffset"] = 0,
+			["icon"] = true,
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["icon"] = true,
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = "Interface\\Icons\\Ability_Mount_JungleTiger",
-			["stickyDuration"] = false,
+			["parent"] = "Feral Action Bar",
 			["cooldownTextDisabled"] = false,
 			["width"] = 50,
 			["zoom"] = 0.28,
@@ -48217,7 +48227,7 @@ WeakAurasSaved = {
 			},
 			["uid"] = "MXJvc(Q8xjt",
 			["inverse"] = true,
-			["useTooltip"] = false,
+			["xOffset"] = 0,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -48237,7 +48247,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["parent"] = "Feral Action Bar",
+			["useTooltip"] = false,
 		},
 		["Moonfire"] = {
 			["iconSource"] = 0,
@@ -48259,7 +48269,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Moonfire_Weak\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 21,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Moonfire_Weak\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 21,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -48269,18 +48279,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["unevent"] = "auto",
 						["subeventSuffix"] = "_CAST_START",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["use_unit"] = true,
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Moonfire_Weak\"].coolDown.duration, feralActions[\"Moonfire_Weak\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Moonfire_Weak\"].coolDown.duration, myActions[\"Moonfire_Weak\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -48319,7 +48329,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["unit"] = "player",
 						["use_unit"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --Only if no units in range don't care about pandimic clipping\n    feralActions[\"Moonfire_Weak\"].priority = nil\n    if unitsInMelee.count == 0 and not select(1,AuraUtil.FindAuraByName(\"Moonfire\", \"target\", \"HARMFUL|PLAYER\")) \n    -- Not in Bear\n    and GetShapeshiftForm() ~= 1\n    then        \n        feralActions[\"Moonfire_Weak\"].priority = 21\n    end        \n    \n    return isAuraHighestPriority(\"Moonfire_Weak\", feralActions)    \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --Only if no units in range don't care about pandimic clipping\n    myActions[\"Moonfire_Weak\"].priority = nil\n    if unitsInMelee.count == 0 and not select(1,AuraUtil.FindAuraByName(\"Moonfire\", \"target\", \"HARMFUL|PLAYER\")) \n    -- Not in Bear\n    and GetShapeshiftForm() ~= 1\n    then        \n        myActions[\"Moonfire_Weak\"].priority = 21\n    end        \n    \n    return isAuraHighestPriority(\"Moonfire_Weak\", myActions)    \nend\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -48335,16 +48345,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "40",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -48353,7 +48363,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Moonfire_Weak\"].inRange = true\n    else\n        feralActions[\"Moonfire_Weak\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Moonfire_Weak\"].show = true\n    else\n        feralActions[\"Moonfire_Weak\"].show = false\n    end    \n    return feralActions[\"Moonfire_Weak\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Moonfire_Weak\"].inRange = true\n    else\n        myActions[\"Moonfire_Weak\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Moonfire_Weak\"].show = true\n    else\n        myActions[\"Moonfire_Weak\"].show = false\n    end    \n    return myActions[\"Moonfire_Weak\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -48569,11 +48579,11 @@ WeakAurasSaved = {
 						["ownOnly"] = true,
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
-						["group_count"] = "0",
 						["group_countOperator"] = "==",
+						["group_count"] = "0",
+						["custom_hide"] = "timed",
 						["type"] = "spell",
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -48586,8 +48596,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
 						["spellName"] = 391109,
+						["buffShowOn"] = "showOnMissing",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["useGroup_count"] = false,
@@ -48824,7 +48834,7 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "eiLnImximvU",
-			["internalVersion"] = 59,
+			["parent"] = "Shadow CD Bar",
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -48832,14 +48842,14 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["regionType"] = "icon",
-			["parent"] = "Shadow CD Bar",
+			["authorOptions"] = {
+			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
 			["displayIcon"] = 1445237,
-			["authorOptions"] = {
-			},
+			["icon"] = true,
 			["selfPoint"] = "CENTER",
 			["width"] = 45,
 			["zoom"] = 0.31,
@@ -48853,7 +48863,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["internalVersion"] = 59,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -48890,7 +48900,7 @@ WeakAurasSaved = {
 				}, -- [1]
 			},
 			["cooldown"] = true,
-			["icon"] = true,
+			["stickyDuration"] = false,
 		},
 		["Trigger Data"] = {
 			["outline"] = "OUTLINE",
@@ -49296,7 +49306,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["use_unit"] = true,
-						["customDuration"] = "function() \n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(retActions[\"Wake of Ashes\"].coolDown.duration, retActions[\"Wake of Ashes\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function() \n    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(myActions[\"Wake of Ashes\"].coolDown.duration, myActions[\"Wake of Ashes\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -49320,13 +49330,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "event",
-						["events"] = "cEvent_ValidTarget",
-						["event"] = "Action Usable",
 						["spellIds"] = {
 						},
+						["event"] = "Action Usable",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["debuffType"] = "HELPFUL",
 						["subeventSuffix"] = "_CAST_START",
 						["names"] = {
@@ -49342,7 +49352,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or coolDown == nil then return false end    \n    \n    --coolDown\n    retActions[\"Wake of Ashes\"].coolDown.duration = 0\n    retActions[\"Wake of Ashes\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Wake of Ashes\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        retActions[\"Wake of Ashes\"].coolDown.duration = coolDownDuration\n        retActions[\"Wake of Ashes\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    retActions[\"Wake of Ashes\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 2\n    then    \n        retActions[\"Wake of Ashes\"].priority = 1                                      \n    end \n    \n    return isAuraHighestPriority(\"Wake of Ashes\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil or coolDown == nil then return false end    \n    \n    --coolDown\n    myActions[\"Wake of Ashes\"].coolDown.duration = 0\n    myActions[\"Wake of Ashes\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Wake of Ashes\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Wake of Ashes\"].coolDown.duration = coolDownDuration\n        myActions[\"Wake of Ashes\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    myActions[\"Wake of Ashes\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 2\n    then    \n        myActions[\"Wake of Ashes\"].priority = 1                                      \n    end \n    \n    return isAuraHighestPriority(\"Wake of Ashes\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -49371,7 +49381,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        retActions[\"Wake of Ashes\"].inRange = true\n    else\n        retActions[\"Wake of Ashes\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Wake of Ashes\"].show = true\n    else\n        retActions[\"Wake of Ashes\"].show = false\n    end\n    \n    return retActions[\"Wake of Ashes\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Wake of Ashes\"].inRange = true\n    else\n        myActions[\"Wake of Ashes\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Wake of Ashes\"].show = true\n    else\n        myActions[\"Wake of Ashes\"].show = false\n    end\n    \n    return myActions[\"Wake of Ashes\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -49556,7 +49566,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Wake of Ashes\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 1,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Wake of Ashes\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 1,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -49786,38 +49796,38 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["authorMode"] = true,
-			["xOffset"] = -1.52587890625e-05,
+			["parent"] = "Usefull meta functions",
 			["regionType"] = "icon",
 			["displayIcon"] = 132212,
-			["icon"] = true,
-			["parent"] = "Usefull meta functions",
-			["cooldown"] = false,
-			["cooldownTextDisabled"] = false,
-			["uid"] = "EHvB(cEV8FE",
-			["zoom"] = 0.28,
-			["auto"] = false,
-			["frameStrata"] = 1,
-			["id"] = "Valid Target",
-			["width"] = 40,
-			["alpha"] = 1,
-			["anchorFrameType"] = "SCREEN",
-			["useCooldownModRate"] = true,
-			["config"] = {
-			},
-			["inverse"] = false,
+			["xOffset"] = -1.52587890625e-05,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				0, -- [4]
 			},
+			["cooldown"] = false,
+			["cooldownTextDisabled"] = false,
+			["uid"] = "EHvB(cEV8FE",
+			["zoom"] = 0.28,
+			["auto"] = false,
+			["alpha"] = 1,
+			["id"] = "Valid Target",
+			["width"] = 40,
+			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["frameStrata"] = 1,
+			["config"] = {
+			},
+			["inverse"] = false,
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
 		},
 		["Coordinated Assault Old"] = {
 			["iconSource"] = 0,
@@ -50009,37 +50019,42 @@ WeakAurasSaved = {
 				["use_vehicleUi"] = false,
 				["zoneIds"] = "",
 			},
-			["icon"] = true,
+			["parent"] = "Survival Actions Old",
 			["regionType"] = "icon",
 			["conditions"] = {
 			},
-			["authorOptions"] = {
-			},
-			["parent"] = "Survival Actions Old",
+			["icon"] = true,
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["cooldownTextDisabled"] = false,
 			["config"] = {
 			},
 			["zoom"] = 0.28,
 			["auto"] = false,
-			["frameStrata"] = 8,
+			["alpha"] = 1,
 			["id"] = "Coordinated Assault Old",
 			["width"] = 22,
-			["alpha"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["frameStrata"] = 8,
 			["uid"] = "ZT(gAftDPV2",
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["xOffset"] = -14,
 			["displayIcon"] = 2065565,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["xOffset"] = -14,
+			["authorOptions"] = {
+			},
 		},
 		["BT Swipe"] = {
-			["parent"] = "Feral Bloodtalon Tracker",
+			["color"] = {
+				0.984313725490196, -- [1]
+				0.0509803921568627, -- [2]
+				0, -- [3]
+				1, -- [4]
+			},
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["actions"] = {
@@ -50217,15 +50232,10 @@ WeakAurasSaved = {
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
 			["id"] = "BT Swipe",
-			["authorOptions"] = {
-			},
+			["parent"] = "Feral Bloodtalon Tracker",
 			["alpha"] = 1,
 			["width"] = 60,
-			["color"] = {
-				0.984313725490196, -- [1]
-				0.0509803921568627, -- [2]
-				0, -- [3]
-				1, -- [4]
+			["authorOptions"] = {
 			},
 			["uid"] = "ssjHWzYCudf",
 			["animation"] = {
@@ -50547,15 +50557,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Rake = true",
+					["custom"] = "myActions_Rake = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Rake = false",
+					["custom"] = "myActions_Rake = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Moonfire\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Moonfire\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -50565,18 +50575,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["duration"] = "1",
 						["subeventSuffix"] = "_CAST_START",
-						["subeventPrefix"] = "SPELL",
+						["use_unit"] = true,
 						["use_absorbMode"] = true,
 						["event"] = "DBM Timer",
-						["use_unit"] = true,
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Rake\"].coolDown.duration, feralActions[\"Rake\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Rake\"].coolDown.duration, myActions[\"Rake\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["unit"] = "player",
 						["check"] = "update",
-						["names"] = {
-						},
+						["subeventPrefix"] = "SPELL",
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 					},
@@ -50600,7 +50610,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown        \n    feralActions[\"Moonfire\"].coolDown.duration = 0\n    feralActions[\"Moonfire\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(30)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Moonfire\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Moonfire\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end                         \n    \n    --priority  \n    rakeTotal = feralData.moonfire.missing + feralData.moonfire.expiring\n    if UnitPower(\"player\",4) <= 4 and GetShapeshiftForm() == 2\n    and \n    (\n        -- Only spread rakes around if attck Mode is AOE else only rake target\n        -- Also limit to max 5 targets else i lose too much time tabing around to find the target\n        (feralData.moonfire.missing + feralData.moonfire.expiring > 0 and unitsInMelee.count <= 5 and attackMode == \"AOE\")\n        or\n        (feralData.moonfire.target.missing + feralData.moonfire.target.expiring > 0 )\n    )\n    then\n        \n        feralActions[\"Moonfire\"].priority = 12\n        \n    else\n        feralActions[\"Moonfire\"].priority = nil\n    end   \n    \n    return isAuraHighestPriority(\"Moonfire\", feralActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown        \n    myActions[\"Moonfire\"].coolDown.duration = 0\n    myActions[\"Moonfire\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(30)                \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Moonfire\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Moonfire\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end                         \n    \n    --priority  \n    rakeTotal = feralData.moonfire.missing + feralData.moonfire.expiring\n    if UnitPower(\"player\",4) <= 4 and GetShapeshiftForm() == 2\n    and \n    (\n        -- Only spread rakes around if attck Mode is AOE else only rake target\n        -- Also limit to max 5 targets else i lose too much time tabing around to find the target\n        (feralData.moonfire.missing + feralData.moonfire.expiring > 0 and unitsInMelee.count <= 5 and attackMode == \"AOE\")\n        or\n        (feralData.moonfire.target.missing + feralData.moonfire.target.expiring > 0 )\n    )\n    then\n        \n        myActions[\"Moonfire\"].priority = 12\n        \n    else\n        myActions[\"Moonfire\"].priority = nil\n    end   \n    \n    return isAuraHighestPriority(\"Moonfire\", myActions)\nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -50624,14 +50634,14 @@ WeakAurasSaved = {
 						},
 						["ownOnly"] = true,
 						["debuffType"] = "HARMFUL",
-						["custom_type"] = "status",
+						["unevent"] = "auto",
 						["custom_hide"] = "timed",
 						["spellIds"] = {
 							1822, -- [1]
 						},
 						["type"] = "custom",
 						["use_debuffClass"] = false,
-						["unevent"] = "auto",
+						["subeventSuffix"] = "_CAST_START",
 						["use_unit"] = true,
 						["duration"] = "1",
 						["event"] = "Health",
@@ -50641,7 +50651,7 @@ WeakAurasSaved = {
 							"155722", -- [1]
 						},
 						["custom"] = "function()\n    -- If multiple targets should i switch targets to (re)apply missing/expiring rakes\n    if feralData ~=nil and feralData.moonfire.missing + feralData.moonfire.expiring > 0 \n    and feralData.moonfire.target.missing + feralData.moonfire.target.expiring == 0 \n    then\n        return true\n    end\n    \n    return false\nend",
-						["subeventSuffix"] = "_CAST_START",
+						["custom_type"] = "status",
 						["check"] = "update",
 						["combineMatches"] = "showLowest",
 						["subeventPrefix"] = "SPELL",
@@ -50656,16 +50666,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "40",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["range"] = "40",
+						["event"] = "Range Check",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -50674,7 +50684,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        feralActions[\"Moonfire\"].inRange = true\n    else\n        feralActions[\"Moonfire\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Moonfire\"].show = true\n    else\n        feralActions[\"Moonfire\"].show = false\n    end    \n    return feralActions[\"Moonfire\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        myActions[\"Moonfire\"].inRange = true\n    else\n        myActions[\"Moonfire\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Moonfire\"].show = true\n    else\n        myActions[\"Moonfire\"].show = false\n    end    \n    return myActions[\"Moonfire\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -51061,7 +51071,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
 				},
 				["finish"] = {
 				},
@@ -51173,7 +51183,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not frostKnightActions then\n    frostKnightActions = {}\nend\n\nfrostKnightActions[\"Howling Blast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Howling Blast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
 				},
 			},
 			["triggers"] = {
@@ -51183,18 +51193,18 @@ WeakAurasSaved = {
 						["type"] = "spell",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(frostKnightActions[\"Howling Blast\"].coolDown.duration,\n        frostKnightActions[\"Howling Blast\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Howling Blast\"].coolDown.duration,\n        myActions[\"Howling Blast\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -51218,7 +51228,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    frostKnightActions[\"Howling Blast\"].priority = nil\n    \n    if select(1,AuraUtil.FindAuraByName(\"Rime\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n    then\n        if unitsInMelee.count <= 1 \n        then\n            frostKnightActions[\"Howling Blast\"].priority = 4\n        else\n            frostKnightActions[\"Howling Blast\"].priority = 2\n        end \n    end    \n    \n    return isAuraHighestPriority(\"Howling Blast\", frostKnightActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    myActions[\"Howling Blast\"].priority = nil\n    \n    if select(1,AuraUtil.FindAuraByName(\"Rime\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n    then\n        if unitsInMelee.count <= 1 \n        then\n            myActions[\"Howling Blast\"].priority = 4\n        else\n            myActions[\"Howling Blast\"].priority = 2\n        end \n    end    \n    \n    return isAuraHighestPriority(\"Howling Blast\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -51234,16 +51244,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["range"] = "30",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "30",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -51252,7 +51262,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)      \n    if t[4] then\n        frostKnightActions[\"Howling Blast\"].inRange = true\n    else\n        frostKnightActions[\"Howling Blast\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        frostKnightActions[\"Howling Blast\"].show = true\n    else\n        frostKnightActions[\"Howling Blast\"].show = false\n    end    \n    return frostKnightActions[\"Howling Blast\"].show\nend",
+				["customTriggerLogic"] = "function(t)      \n    if t[4] then\n        myActions[\"Howling Blast\"].inRange = true\n    else\n        myActions[\"Howling Blast\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Howling Blast\"].show = true\n    else\n        myActions[\"Howling Blast\"].show = false\n    end    \n    return myActions[\"Howling Blast\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -51466,11 +51476,11 @@ WeakAurasSaved = {
 						["useGroup_count"] = false,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
-						["match_count"] = "0",
 						["custom_hide"] = "timed",
+						["match_count"] = "0",
+						["buffShowOn"] = "showOnMissing",
 						["subeventSuffix"] = "_CAST_START",
-						["spellName"] = 19236,
+						["group_countOperator"] = "==",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -51483,8 +51493,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["buffShowOn"] = "showOnMissing",
 						["debuffType"] = "HELPFUL",
+						["spellName"] = 19236,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["matchesShowOn"] = "showOnMissing",
@@ -51721,10 +51731,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["icon"] = true,
+			["xOffset"] = 0,
 			["stickyDuration"] = false,
 			["regionType"] = "icon",
-			["xOffset"] = 0,
+			["useTooltip"] = false,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -51757,7 +51767,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["useTooltip"] = false,
+			["selfPoint"] = "CENTER",
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -51775,14 +51785,14 @@ WeakAurasSaved = {
 			},
 			["uid"] = "9uTZD5YWaal",
 			["inverse"] = true,
-			["authorOptions"] = {
-			},
+			["icon"] = true,
 			["displayIcon"] = 237550,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["authorOptions"] = {
+			},
 		},
 		["Havoc Health L"] = {
 			["sparkWidth"] = 10,
@@ -52604,35 +52614,27 @@ WeakAurasSaved = {
 				["use_class_and_spec"] = true,
 				["zoneIds"] = "",
 			},
-			["parent"] = "Survival Action Bar",
-			["regionType"] = "icon",
-			["displayIcon"] = "1376040",
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-					["custom"] = "",
-				},
-				["finish"] = {
-				},
-			},
 			["authorOptions"] = {
 			},
+			["regionType"] = "icon",
+			["displayIcon"] = "1376040",
+			["parent"] = "Survival Action Bar",
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["zoom"] = 0.28,
 			["uid"] = "x9eD)ssFJfU",
 			["cooldownTextDisabled"] = false,
 			["auto"] = false,
-			["alpha"] = 1,
+			["frameStrata"] = 1,
 			["id"] = "Harpoon",
 			["anchorFrameType"] = "SCREEN",
-			["frameStrata"] = 1,
-			["width"] = 50,
 			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["alpha"] = 1,
 			["config"] = {
 			},
 			["inverse"] = true,
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 				{
 					["check"] = {
@@ -52680,7 +52682,15 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+					["custom"] = "",
+				},
+				["finish"] = {
+				},
+			},
 		},
 		["Serpent Sting Old"] = {
 			["iconSource"] = 0,
@@ -52900,27 +52910,26 @@ WeakAurasSaved = {
 				["use_spec"] = true,
 				["zoneIds"] = "",
 			},
-			["icon"] = true,
+			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
 			["displayIcon"] = 1033905,
-			["authorOptions"] = {
-			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["cooldownTextDisabled"] = false,
 			["uid"] = "ci0YeSmZGgC",
 			["zoom"] = 0.28,
 			["auto"] = false,
-			["alpha"] = 1,
+			["frameStrata"] = 3,
 			["id"] = "Serpent Sting Old",
 			["anchorFrameType"] = "SCREEN",
-			["frameStrata"] = 3,
-			["width"] = 50,
 			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["alpha"] = 1,
 			["config"] = {
 			},
 			["inverse"] = true,
-			["xOffset"] = 0,
+			["parent"] = "Survival Actions Old",
 			["conditions"] = {
 				{
 					["check"] = {
@@ -52940,7 +52949,8 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["parent"] = "Survival Actions Old",
+			["authorOptions"] = {
+			},
 		},
 		["Feral Bear Thrash"] = {
 			["iconSource"] = 0,
@@ -52957,7 +52967,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Feral Bear Thrash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 103,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Feral Bear Thrash\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 103,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -52967,18 +52977,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["use_unit"] = true,
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Feral Bear Thrash\"].coolDown.duration, feralActions[\"Feral Bear Thrash\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Feral Bear Thrash\"].coolDown.duration, myActions[\"Feral Bear Thrash\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -53002,7 +53012,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    feralActions[\"Feral Bear Thrash\"].coolDown.duration = 0\n    feralActions[\"Feral Bear Thrash\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Thrash\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        feralActions[\"Feral Bear Thrash\"].coolDown.duration = coolDownDuration\n        feralActions[\"Feral Bear Thrash\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    if GetShapeshiftForm() == 1\n    then\n        feralActions[\"Feral Bear Thrash\"].priority = 103\n    else\n        feralActions[\"Feral Bear Thrash\"].priority = nil\n    end\n    \n    \n    return isAuraHighestPriority(\"Feral Bear Thrash\", feralActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Feral Bear Thrash\"].coolDown.duration = 0\n    myActions[\"Feral Bear Thrash\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Thrash\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Feral Bear Thrash\"].coolDown.duration = coolDownDuration\n        myActions[\"Feral Bear Thrash\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    if GetShapeshiftForm() == 1\n    then\n        myActions[\"Feral Bear Thrash\"].priority = 103\n    else\n        myActions[\"Feral Bear Thrash\"].priority = nil\n    end\n    \n    \n    return isAuraHighestPriority(\"Feral Bear Thrash\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -53018,16 +53028,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["event"] = "Range Check",
-						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["range"] = "8",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["range"] = "8",
+						["event"] = "Range Check",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -53036,7 +53046,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Feral Bear Thrash\"].inRange = true\n    else\n        feralActions[\"Feral Bear Thrash\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Feral Bear Thrash\"].show = true\n    else\n        feralActions[\"Feral Bear Thrash\"].show = false\n    end    \n    return feralActions[\"Feral Bear Thrash\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Feral Bear Thrash\"].inRange = true\n    else\n        myActions[\"Feral Bear Thrash\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Feral Bear Thrash\"].show = true\n    else\n        myActions[\"Feral Bear Thrash\"].show = false\n    end    \n    return myActions[\"Feral Bear Thrash\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -53365,7 +53375,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
 				},
 			},
 			["iconSource"] = -1,
@@ -53790,15 +53800,11 @@ WeakAurasSaved = {
 			["sparkRotation"] = 0,
 			["sparkRotationMode"] = "AUTO",
 			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-					["do_custom"] = true,
-					["custom"] = "if not runes then\n    runes = {0,0,0,0,0,0,0,0}\nend\n\n\ncFunction_GetRunesCount = function() \n    local total = 0\n    for i=1,6 do\n        total = total + GetRuneCount(i)\n    end\n    return total\nend\n\ncFunction_GetRunesCoolDowns = function(runeCount)     \n    local runes = {}\n    local runeCoolDownDuration = 0\n    \n    for i=1,6 do\n        \n        local start, duration, runeReady = GetRuneCooldown(i)\n        if not runeReady\n        then\n            table.insert(runes, start + duration)\n        else\n            table.insert(runes, 0)\n        end\n        \n        runeCoolDownDuration = duration\n    end\n    \n    table.sort(runes)    \n    \n    return runeCoolDownDuration, runes[runeCount]\nend",
-				},
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.5, -- [4]
 			},
 			["fontFlags"] = "OUTLINE",
 			["icon_color"] = {
@@ -53817,18 +53823,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["use_absorbMode"] = true,
 						["subeventSuffix"] = "_CAST_START",
-						["unit"] = "player",
-						["duration"] = "1",
-						["event"] = "Health",
 						["names"] = {
 						},
+						["duration"] = "1",
+						["event"] = "Health",
+						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()    \n    return cFunction_GetRunesCount(),6, function() return cFunction_GetRunesCount(),6 end\nend\n\n\n",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["use_unit"] = true,
 						["check"] = "update",
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 					},
@@ -53869,8 +53875,8 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["stickyDuration"] = false,
-			["icon"] = false,
-			["desaturate"] = false,
+			["parent"] = "Frost Knight Power Bar",
+			["customTextUpdate"] = "update",
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -53996,7 +54002,15 @@ WeakAurasSaved = {
 				}, -- [6]
 			},
 			["height"] = 15,
-			["authorOptions"] = {
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+					["do_custom"] = true,
+					["custom"] = "if not runes then\n    runes = {0,0,0,0,0,0,0,0}\nend\n\n\ncFunction_GetRunesCount = function() \n    local total = 0\n    for i=1,6 do\n        total = total + GetRuneCount(i)\n    end\n    return total\nend\n\ncFunction_GetRunesCoolDowns = function(runeCount)     \n    local runes = {}\n    local runeCoolDownDuration = 0\n    \n    for i=1,6 do\n        \n        local start, duration, runeReady = GetRuneCooldown(i)\n        if not runeReady\n        then\n            table.insert(runes, start + duration)\n        else\n            table.insert(runes, 0)\n        end\n        \n        runeCoolDownDuration = duration\n    end\n    \n    table.sort(runes)    \n    \n    return runeCoolDownDuration, runes[runeCount]\nend",
+				},
 			},
 			["load"] = {
 				["ingroup"] = {
@@ -54067,8 +54081,27 @@ WeakAurasSaved = {
 			},
 			["sparkBlendMode"] = "ADD",
 			["useAdjustededMax"] = false,
-			["iconSource"] = -1,
-			["borderBackdrop"] = "Blizzard Tooltip",
+			["animation"] = {
+				["start"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+			},
+			["icon"] = false,
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -54094,17 +54127,13 @@ WeakAurasSaved = {
 			["auto"] = true,
 			["zoom"] = 0,
 			["spark"] = false,
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
-			},
+			["iconSource"] = -1,
 			["sparkHidden"] = "NEVER",
-			["customTextUpdate"] = "update",
+			["authorOptions"] = {
+			},
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["parent"] = "Frost Knight Power Bar",
+			["desaturate"] = false,
 			["config"] = {
 			},
 			["inverse"] = false,
@@ -54116,26 +54145,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["animation"] = {
-				["start"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["borderBackdrop"] = "Blizzard Tooltip",
 		},
 		["Demon's Bite"] = {
 			["iconSource"] = 0,
@@ -54459,15 +54469,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = true",
+					["custom"] = "myActions_VoidEruption = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\n\nshadowActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\n\nmyActions[\"Void Eruption\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidEruption = false",
+					["custom"] = "myActions_VoidEruption = false",
 				},
 			},
 			["triggers"] = {
@@ -54509,10 +54519,10 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["event"] = "Conditions",
 						["subeventSuffix"] = "_CAST_START",
-						["events"] = "cEvent_ValidTarget",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
+						["events"] = "cEvent_ValidTarget",
 						["duration"] = "1",
 						["unit"] = "player",
 						["unevent"] = "auto",
@@ -54726,18 +54736,18 @@ WeakAurasSaved = {
 						["auranames"] = {
 							"Lightning Shield", -- [1]
 						},
-						["spellName"] = 108271,
+						["custom_hide"] = "timed",
 						["ownOnly"] = true,
 						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
-						["group_countOperator"] = "==",
+						["spellName"] = 108271,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["group_countOperator"] = "==",
 						["match_count"] = "0",
-						["custom_hide"] = "timed",
-						["subeventSuffix"] = "_CAST_START",
 						["buffShowOn"] = "showOnMissing",
+						["subeventSuffix"] = "_CAST_START",
+						["debuffType"] = "HELPFUL",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -54933,10 +54943,6 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["parent"] = "Enhancment CD Bar",
-			["authorOptions"] = {
-			},
-			["regionType"] = "icon",
 			["actions"] = {
 				["start"] = {
 				},
@@ -54944,6 +54950,15 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 				},
+			},
+			["authorOptions"] = {
+			},
+			["regionType"] = "icon",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
 			},
 			["information"] = {
 				["forceEvents"] = true,
@@ -54980,12 +54995,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["desaturate"] = false,
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -54998,6 +55008,9 @@ WeakAurasSaved = {
 			["internalVersion"] = 59,
 			["uid"] = "0izzCjUfsuE",
 			["inverse"] = true,
+			["parent"] = "Enhancment CD Bar",
+			["displayIcon"] = 538564,
+			["cooldown"] = true,
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -55018,9 +55031,6 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["displayIcon"] = 538564,
-			["cooldown"] = true,
-			["desaturate"] = false,
 		},
 		["Mindbender"] = {
 			["iconSource"] = 0,
@@ -55048,18 +55058,18 @@ WeakAurasSaved = {
 						["unit"] = "player",
 						["ownOnly"] = true,
 						["useGroup_count"] = false,
-						["spellName"] = 200174,
+						["buffShowOn"] = "showOnMissing",
 						["duration"] = "1",
 						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
-						["debuffType"] = "HELPFUL",
+						["spellName"] = 200174,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
+						["debuffType"] = "HELPFUL",
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["useName"] = true,
 						["custom_hide"] = "timed",
+						["useName"] = true,
+						["group_countOperator"] = "==",
 						["unevent"] = "auto",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -55312,18 +55322,13 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "BeaID0kytb9",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["stickyDuration"] = false,
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["cooldown"] = true,
 			["displayIcon"] = 136214,
-			["icon"] = true,
+			["useTooltip"] = false,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -55337,7 +55342,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Shadow CD Bar",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -55373,14 +55383,10 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["parent"] = "Shadow CD Bar",
 		},
 		["BT Brutal Slash"] = {
-			["color"] = {
-				0.984313725490196, -- [1]
-				0.0509803921568627, -- [2]
-				0, -- [3]
-				1, -- [4]
+			["authorOptions"] = {
 			},
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
@@ -55559,11 +55565,15 @@ WeakAurasSaved = {
 			["frameStrata"] = 1,
 			["width"] = 60,
 			["id"] = "BT Brutal Slash",
-			["parent"] = "Feral Bloodtalon Tracker",
+			["color"] = {
+				0.984313725490196, -- [1]
+				0.0509803921568627, -- [2]
+				0, -- [3]
+				1, -- [4]
+			},
 			["alpha"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["authorOptions"] = {
-			},
+			["parent"] = "Feral Bloodtalon Tracker",
 			["config"] = {
 			},
 			["animation"] = {
@@ -55786,7 +55796,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health L\"] = {\n    [\"priority\"] = -99,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 			},
 			["smoothProgress"] = true,
@@ -56069,7 +56079,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Flametongue Weapon\"] = {\n    [\"priority\"] = -2,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Flametongue Weapon\"] = {\n    [\"priority\"] = -2,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 				["finish"] = {
 				},
@@ -56387,14 +56397,14 @@ WeakAurasSaved = {
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["group_countOperator"] = "==",
+						["custom_hide"] = "timed",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["spellName"] = 184662,
+						["group_countOperator"] = "==",
 						["group_count"] = "0",
-						["custom_hide"] = "timed",
+						["debuffType"] = "HELPFUL",
 						["use_targetRequired"] = false,
-						["buffShowOn"] = "showOnMissing",
+						["spellName"] = 184662,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -56407,7 +56417,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
+						["buffShowOn"] = "showOnMissing",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
@@ -56612,10 +56622,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["icon"] = true,
+			["parent"] = "Retribution CD Bar",
 			["desaturate"] = false,
 			["regionType"] = "icon",
-			["parent"] = "Retribution CD Bar",
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -56648,7 +56658,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -56662,13 +56672,13 @@ WeakAurasSaved = {
 			},
 			["uid"] = "CJ1X3XpK99p",
 			["inverse"] = true,
-			["useTooltip"] = false,
+			["icon"] = true,
 			["displayIcon"] = 236264,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["useTooltip"] = false,
 		},
 		["Blazing Barrier"] = {
 			["iconSource"] = 0,
@@ -57017,20 +57027,20 @@ WeakAurasSaved = {
 						["auranames"] = {
 							"Lightning Shield", -- [1]
 						},
-						["unit"] = "player",
-						["ownOnly"] = true,
-						["genericShowOn"] = "showOnCooldown",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
+						["ownOnly"] = true,
+						["genericShowOn"] = "showOnCooldown",
+						["subeventPrefix"] = "SPELL",
 						["duration"] = "1",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["group_count"] = "0",
 						["custom_hide"] = "timed",
+						["group_count"] = "0",
+						["group_countOperator"] = "==",
 						["subeventSuffix"] = "_CAST_START",
-						["spellName"] = 55342,
+						["buffShowOn"] = "showOnMissing",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -57043,11 +57053,11 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
 						["debuffType"] = "HELPFUL",
+						["spellName"] = 55342,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 					},
 					["untrigger"] = {
 						["spellName"] = 193786,
@@ -57245,10 +57255,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["xOffset"] = 0,
+			["parent"] = "Fire CD Bar",
 			["stickyDuration"] = false,
 			["regionType"] = "icon",
-			["parent"] = "Fire CD Bar",
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -57281,7 +57291,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["selfPoint"] = "CENTER",
+			["useTooltip"] = false,
 			["cooldownTextDisabled"] = false,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0.28,
@@ -57295,6 +57305,12 @@ WeakAurasSaved = {
 			},
 			["uid"] = "Hd3QJDHFUZ0",
 			["inverse"] = true,
+			["xOffset"] = 0,
+			["displayIcon"] = 135994,
+			["information"] = {
+				["forceEvents"] = true,
+				["ignoreOptionsEventErrors"] = true,
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -57303,12 +57319,6 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
-			["displayIcon"] = 135994,
-			["information"] = {
-				["forceEvents"] = true,
-				["ignoreOptionsEventErrors"] = true,
-			},
-			["useTooltip"] = false,
 		},
 		["Retribution"] = {
 			["backdropColor"] = {
@@ -57324,7 +57334,8 @@ WeakAurasSaved = {
 				"Retribution Functions", -- [4]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["scale"] = 1,
+			["authorOptions"] = {
+			},
 			["borderEdge"] = "Square Full White",
 			["border"] = false,
 			["yOffset"] = 0,
@@ -57338,8 +57349,7 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["actions"] = {
 				["start"] = {
 				},
@@ -57368,7 +57378,7 @@ WeakAurasSaved = {
 			},
 			["anchorPoint"] = "CENTER",
 			["internalVersion"] = 59,
-			["xOffset"] = 0,
+			["scale"] = 1,
 			["selfPoint"] = "CENTER",
 			["id"] = "Retribution",
 			["groupIcon"] = "135873",
@@ -57438,7 +57448,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Lightning Shield\"] = {\n    [\"priority\"] = -1,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Lightning Shield\"] = {\n    [\"priority\"] = -1,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true     \n}",
 				},
 			},
 			["triggers"] = {
@@ -57450,8 +57460,8 @@ WeakAurasSaved = {
 						["matchesShowOn"] = "showOnMissing",
 						["subeventPrefix"] = "SPELL",
 						["use_tooltip"] = false,
-						["debuffType"] = "HELPFUL",
 						["spellName"] = 22568,
+						["buffShowOn"] = "showOnMissing",
 						["custom_hide"] = "timed",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -57472,7 +57482,7 @@ WeakAurasSaved = {
 						["useGroup_count"] = false,
 						["combineMatches"] = "showLowest",
 						["subeventSuffix"] = "_CAST_START",
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 					},
 					["untrigger"] = {
 						["spellName"] = 22568,
@@ -57823,6 +57833,9 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
+			["xOffset"] = -694.8000793457031,
+			["regionType"] = "icon",
+			["displayIcon"] = 135812,
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -57843,32 +57856,29 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["regionType"] = "icon",
-			["displayIcon"] = 135812,
-			["icon"] = true,
-			["xOffset"] = -694.8000793457031,
+			["authorOptions"] = {
+			},
 			["cooldown"] = false,
 			["zoom"] = 0,
 			["uid"] = "y8wXR2xAbXt",
 			["cooldownTextDisabled"] = false,
 			["auto"] = false,
-			["alpha"] = 1,
+			["frameStrata"] = 1,
 			["id"] = "Fire Multi Target Tracker",
 			["width"] = 64,
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["alpha"] = 1,
 			["config"] = {
 			},
 			["inverse"] = false,
-			["authorOptions"] = {
-			},
+			["parent"] = "Fire Functions",
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["parent"] = "Fire Functions",
+			["icon"] = true,
 		},
 		["Havoc"] = {
 			["backdropColor"] = {
@@ -57883,8 +57893,7 @@ WeakAurasSaved = {
 				"Havoc Power Bar", -- [3]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["borderEdge"] = "Square Full White",
 			["border"] = false,
 			["yOffset"] = 0,
@@ -57897,7 +57906,8 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["xOffset"] = 0,
+			["authorOptions"] = {
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -57926,7 +57936,7 @@ WeakAurasSaved = {
 			},
 			["anchorPoint"] = "CENTER",
 			["internalVersion"] = 59,
-			["scale"] = 1,
+			["xOffset"] = 0,
 			["selfPoint"] = "CENTER",
 			["id"] = "Havoc",
 			["borderOffset"] = 4,
@@ -57991,8 +58001,66 @@ WeakAurasSaved = {
 			["sparkRotation"] = 0,
 			["sparkRotationMode"] = "AUTO",
 			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
-			["icon"] = false,
-			["fontFlags"] = "OUTLINE",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
+			["triggers"] = {
+				{
+					["trigger"] = {
+						["custom_type"] = "status",
+						["type"] = "custom",
+						["use_absorbMode"] = true,
+						["subeventSuffix"] = "_CAST_START",
+						["unit"] = "player",
+						["duration"] = "1",
+						["event"] = "Health",
+						["names"] = {
+						},
+						["customDuration"] = "function()\n    \n    s = UnitPower(\"player\",9)\n    if not s then\n        s = 0\n    end\n    return s,5, function() return s,5 end\n    \nend\n\n\n",
+						["spellIds"] = {
+						},
+						["custom"] = "function()\n    return true\nend",
+						["use_unit"] = true,
+						["check"] = "update",
+						["subeventPrefix"] = "SPELL",
+						["unevent"] = "auto",
+						["debuffType"] = "HELPFUL",
+					},
+					["untrigger"] = {
+					},
+				}, -- [1]
+				{
+					["trigger"] = {
+						["custom_hide"] = "custom",
+						["type"] = "custom",
+						["debuffType"] = "HELPFUL",
+						["custom_type"] = "event",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["duration"] = "1",
+						["event"] = "Cooldown Progress (Spell)",
+						["unit"] = "player",
+						["realSpellName"] = 0,
+						["use_spellName"] = true,
+						["events"] = "cEvent_ValidTarget",
+						["genericShowOn"] = "showOnCooldown",
+						["use_genericShowOn"] = true,
+						["unevent"] = "auto",
+						["use_track"] = true,
+						["spellName"] = 0,
+					},
+					["untrigger"] = {
+						["custom"] = "function(event, show)\n    if not show then return true end\nend",
+					},
+				}, -- [2]
+				["disjunctive"] = "custom",
+				["customTriggerLogic"] = "function(t)\n    return t[2]\nend",
+				["activeTriggerMode"] = 1,
+			},
 			["icon_color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -58009,10 +58077,9 @@ WeakAurasSaved = {
 				0.05098039215686274, -- [3]
 				1, -- [4]
 			},
+			["desaturate"] = false,
 			["stickyDuration"] = false,
-			["authorOptions"] = {
-			},
-			["parent"] = "Retribution Power Bar",
+			["icon"] = false,
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -58138,7 +58205,7 @@ WeakAurasSaved = {
 				}, -- [6]
 			},
 			["height"] = 15,
-			["customTextUpdate"] = "update",
+			["iconSource"] = -1,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -58206,19 +58273,10 @@ WeakAurasSaved = {
 				},
 			},
 			["sparkBlendMode"] = "ADD",
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
+			["useAdjustededMax"] = false,
+			["authorOptions"] = {
 			},
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
-			},
-			["desaturate"] = false,
+			["parent"] = "Retribution Power Bar",
 			["config"] = {
 			},
 			["sparkColor"] = {
@@ -58259,69 +58317,21 @@ WeakAurasSaved = {
 			["auto"] = true,
 			["zoom"] = 0,
 			["spark"] = false,
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.5, -- [4]
 			},
 			["sparkHidden"] = "NEVER",
-			["useAdjustededMax"] = false,
+			["customTextUpdate"] = "update",
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["triggers"] = {
-				{
-					["trigger"] = {
-						["custom_type"] = "status",
-						["type"] = "custom",
-						["use_absorbMode"] = true,
-						["subeventSuffix"] = "_CAST_START",
-						["subeventPrefix"] = "SPELL",
-						["duration"] = "1",
-						["event"] = "Health",
-						["unit"] = "player",
-						["customDuration"] = "function()\n    \n    s = UnitPower(\"player\",9)\n    if not s then\n        s = 0\n    end\n    return s,5, function() return s,5 end\n    \nend\n\n\n",
-						["spellIds"] = {
-						},
-						["custom"] = "function()\n    return true\nend",
-						["use_unit"] = true,
-						["check"] = "update",
-						["names"] = {
-						},
-						["unevent"] = "auto",
-						["debuffType"] = "HELPFUL",
-					},
-					["untrigger"] = {
-					},
-				}, -- [1]
-				{
-					["trigger"] = {
-						["custom_hide"] = "custom",
-						["type"] = "custom",
-						["debuffType"] = "HELPFUL",
-						["custom_type"] = "event",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["duration"] = "1",
-						["event"] = "Cooldown Progress (Spell)",
-						["unit"] = "player",
-						["realSpellName"] = 0,
-						["use_spellName"] = true,
-						["events"] = "cEvent_ValidTarget",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
-						["unevent"] = "auto",
-						["use_track"] = true,
-						["spellName"] = 0,
-					},
-					["untrigger"] = {
-						["custom"] = "function(event, show)\n    if not show then return true end\nend",
-					},
-				}, -- [2]
-				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)\n    return t[2]\nend",
-				["activeTriggerMode"] = 1,
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
 			},
 			["uid"] = "IBUuFr0G0wn",
 			["inverse"] = false,
@@ -58333,7 +58343,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["iconSource"] = -1,
+			["fontFlags"] = "OUTLINE",
 		},
 		["Wrath"] = {
 			["iconSource"] = 0,
@@ -58351,18 +58361,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["custom_type"] = "status",
-						["use_unit"] = true,
-						["duration"] = "1",
-						["event"] = "Global Cooldown",
 						["names"] = {
 						},
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Wrath\"].coolDown.duration, feralActions[\"Wrath\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["duration"] = "1",
+						["event"] = "Global Cooldown",
+						["unit"] = "player",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Wrath\"].coolDown.duration, myActions[\"Wrath\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -58401,7 +58411,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["unit"] = "player",
 						["subeventPrefix"] = "SPELL",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --Only if no units in range\n    feralActions[\"Wrath\"].priority = nil\n    if unitsInMelee.count == 0\n    -- Not in Bear\n    and GetShapeshiftForm() ~= 1\n    then        \n        feralActions[\"Wrath\"].priority = 22\n    end    \n    \n    return isAuraHighestPriority(\"Wrath\", feralActions)    \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --Only if no units in range\n    myActions[\"Wrath\"].priority = nil\n    if unitsInMelee.count == 0\n    -- Not in Bear\n    and GetShapeshiftForm() ~= 1\n    then        \n        myActions[\"Wrath\"].priority = 22\n    end    \n    \n    return isAuraHighestPriority(\"Wrath\", myActions)    \nend\n\n\n",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -58417,16 +58427,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["range"] = "40",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "40",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -58435,7 +58445,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Wrath\"].inRange = true\n    else\n        feralActions[\"Wrath\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Wrath\"].show = true\n    else\n        feralActions[\"Wrath\"].show = false\n    end    \n    return feralActions[\"Wrath\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Wrath\"].inRange = true\n    else\n        myActions[\"Wrath\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Wrath\"].show = true\n    else\n        myActions[\"Wrath\"].show = false\n    end    \n    return myActions[\"Wrath\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -58578,7 +58588,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Wrath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 22,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Wrath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 22,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -58664,28 +58674,9 @@ WeakAurasSaved = {
 				0.03529411764705882, -- [3]
 				1, -- [4]
 			},
-			["desaturate"] = false,
-			["iconSource"] = -1,
-			["animation"] = {
-				["start"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["stickyDuration"] = false,
+			["sparkOffsetX"] = 0,
+			["icon"] = false,
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -58767,16 +58758,7 @@ WeakAurasSaved = {
 				}, -- [4]
 			},
 			["height"] = 15,
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-					["do_custom"] = true,
-					["custom"] = "feral_energy = {}\n\n\ncFunction_GetEnergyCoolDowns = function(req_energey) \n    \n    local energy = UnitPower(\"player\",3)\n    \n    if energy >= req_energey\n    then\n        feral_energy[req_energey] = nil\n        return 0,0\n    end\n    \n    if feral_energy[req_energey] ~= nil and feral_energy[req_energey].expirationTime < GetTime()\n    then\n        feral_energy[req_energey] = nil\n    end\n    \n    if feral_energy[req_energey] == nil\n    then\n        \n        local regen = GetPowerRegen()\n        local duration = req_energey / regen        \n        \n        local expirationTime = ((req_energey - energy) / regen) + GetTime()\n        \n        feral_energy[req_energey] = {\n            [\"duration\"] = duration,\n            [\"expirationTime\"] = expirationTime\n        }\n        \n    end  \n    \n    return feral_energy[req_energey].duration, feral_energy[req_energey].expirationTime\nend",
-				},
-			},
+			["desaturate"] = false,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -58843,6 +58825,47 @@ WeakAurasSaved = {
 			},
 			["sparkBlendMode"] = "ADD",
 			["useAdjustededMax"] = false,
+			["iconSource"] = -1,
+			["animation"] = {
+				["start"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+			},
+			["uid"] = "v2AtsGmEnSO",
+			["backdropColor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
+			},
+			["width"] = 250,
+			["alpha"] = 1,
+			["useAdjustededMin"] = false,
+			["regionType"] = "aurabar",
+			["borderInFront"] = false,
+			["parent"] = "Fearl Power Bar",
+			["icon_side"] = "RIGHT",
+			["id"] = "Feral Rage",
+			["sparkHeight"] = 30,
+			["texture"] = "Blizzard",
+			["spark"] = false,
+			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
+			["auto"] = true,
 			["triggers"] = {
 				{
 					["trigger"] = {
@@ -58907,39 +58930,26 @@ WeakAurasSaved = {
 				["disjunctive"] = "all",
 				["activeTriggerMode"] = 1,
 			},
-			["xOffset"] = 0,
-			["uid"] = "v2AtsGmEnSO",
-			["backdropColor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
-			},
-			["width"] = 250,
-			["alpha"] = 1,
-			["useAdjustededMin"] = false,
-			["regionType"] = "aurabar",
-			["borderInFront"] = false,
-			["parent"] = "Fearl Power Bar",
-			["icon_side"] = "RIGHT",
-			["id"] = "Feral Rage",
-			["sparkHeight"] = 30,
-			["texture"] = "Blizzard",
-			["spark"] = false,
-			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
-			["auto"] = true,
-			["stickyDuration"] = false,
 			["sparkHidden"] = "NEVER",
-			["sparkOffsetX"] = 0,
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
-			["config"] = {
-			},
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
+			},
+			["frameStrata"] = 1,
+			["anchorFrameType"] = "SCREEN",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+					["do_custom"] = true,
+					["custom"] = "feral_energy = {}\n\n\ncFunction_GetEnergyCoolDowns = function(req_energey) \n    \n    local energy = UnitPower(\"player\",3)\n    \n    if energy >= req_energey\n    then\n        feral_energy[req_energey] = nil\n        return 0,0\n    end\n    \n    if feral_energy[req_energey] ~= nil and feral_energy[req_energey].expirationTime < GetTime()\n    then\n        feral_energy[req_energey] = nil\n    end\n    \n    if feral_energy[req_energey] == nil\n    then\n        \n        local regen = GetPowerRegen()\n        local duration = req_energey / regen        \n        \n        local expirationTime = ((req_energey - energy) / regen) + GetTime()\n        \n        feral_energy[req_energey] = {\n            [\"duration\"] = duration,\n            [\"expirationTime\"] = expirationTime\n        }\n        \n    end  \n    \n    return feral_energy[req_energey].duration, feral_energy[req_energey].expirationTime\nend",
+				},
+			},
+			["config"] = {
 			},
 			["inverse"] = false,
 			["sparkDesature"] = false,
@@ -58988,7 +58998,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["icon"] = false,
+			["xOffset"] = 0,
 		},
 		["Execute"] = {
 			["iconSource"] = 0,
@@ -59006,7 +59016,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(furyActions[\"Execute\"].coolDown.duration, furyActions[\"Execute\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()    \n    if cFunction_SpellReadyTime == nil then return false end\n    \n    return cFunction_SpellReadyTime(myActions[\"Execute\"].coolDown.duration, myActions[\"Execute\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["names"] = {
 						},
 						["spellIds"] = {
@@ -59032,10 +59042,10 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["names"] = {
 						},
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["duration"] = "1",
 						["unevent"] = "auto",
 						["subeventSuffix"] = "_CAST_START",
@@ -59054,7 +59064,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["subeventSuffix"] = "_CAST_START",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --Execute doesn't work with GetSpellCooldown or IsUsableSpell, made custom trigger/timmer\n    --coolDown\n    --furyActions[\"Execute\"].coolDown.duration = 0\n    --furyActions[\"Execute\"].coolDown.expirationTime = 0 \n    \n    --local coolDownExpirationTime = 0\n    --local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(280849)    \n    \n    --if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    --then\n    --    print(\"here\")\n    --    furyActions[\"Execute\"].coolDown.duration = coolDownDuration\n    --    furyActions[\"Execute\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    --end    \n    \n    --Priority\n    furyActions[\"Execute\"].priority = nil    \n    \n    local executeCD_State = WeakAuras.GetTriggerStateForTrigger(\"Execute\", 6)\n    local maxRage = 100\n    if cFunction_HasTalent(\"Overwhelming Rage\") then maxRage = 130 end\n    \n    if select(1,AuraUtil.FindAuraByName(\"Sudden Death\", \"player\", \"HELPFUL|PLAYER\"))    \n    or    \n    ( executeCD_State[\"\"] == nil\n        and\n        (\n            furyData.execute.target == 1            \n            or \n            (unitsInMelee.count <= 5 and furyData.execute.count >= 1 and attackMode == \"AOE\")\n        )\n    )        \n    then        \n        --If i'm alone then i want to prioritize unless rage would be wasted\n        if GetNumSubgroupMembers() == 0 and  UnitPower(\"player\",1) <= maxRage - 20\n        then\n            furyActions[\"Execute\"].priority = 0\n        else\n            furyActions[\"Execute\"].priority = 3\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Execute\", furyActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --Execute doesn't work with GetSpellCooldown or IsUsableSpell, made custom trigger/timmer\n    --coolDown\n    --myActions[\"Execute\"].coolDown.duration = 0\n    --myActions[\"Execute\"].coolDown.expirationTime = 0 \n    \n    --local coolDownExpirationTime = 0\n    --local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(280849)    \n    \n    --if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    --then\n    --    print(\"here\")\n    --    myActions[\"Execute\"].coolDown.duration = coolDownDuration\n    --    myActions[\"Execute\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    --end    \n    \n    --Priority\n    myActions[\"Execute\"].priority = nil    \n    \n    local executeCD_State = WeakAuras.GetTriggerStateForTrigger(\"Execute\", 6)\n    local maxRage = 100\n    if cFunction_HasTalent(\"Overwhelming Rage\") then maxRage = 130 end\n    \n    if select(1,AuraUtil.FindAuraByName(\"Sudden Death\", \"player\", \"HELPFUL|PLAYER\"))    \n    or    \n    ( executeCD_State[\"\"] == nil\n        and\n        (\n            furyData.execute.target == 1            \n            or \n            (unitsInMelee.count <= 5 and furyData.execute.count >= 1 and attackMode == \"AOE\")\n        )\n    )        \n    then        \n        --If i'm alone then i want to prioritize unless rage would be wasted\n        if GetNumSubgroupMembers() == 0 and  UnitPower(\"player\",1) <= maxRage - 20\n        then\n            myActions[\"Execute\"].priority = 0\n        else\n            myActions[\"Execute\"].priority = 3\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Execute\", myActions)\nend",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -59112,7 +59122,7 @@ WeakAurasSaved = {
 					},
 				}, -- [6]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        furyActions[\"Execute\"].inRange = true\n    else\n        furyActions[\"Execute\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        furyActions[\"Execute\"].show = true\n    else\n        furyActions[\"Execute\"].show = false\n    end    \n    return furyActions[\"Execute\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        myActions[\"Execute\"].inRange = true\n    else\n        myActions[\"Execute\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Execute\"].show = true\n    else\n        myActions[\"Execute\"].show = false\n    end    \n    return myActions[\"Execute\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -59268,27 +59278,14 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "8tD6qkcmsfW",
-			["actions"] = {
-				["start"] = {
-					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = true",
-				},
-				["init"] = {
-					["do_custom"] = true,
-					["custom"] = "if not furyActions then\n    furyActions = {}\nend\n\nfuryActions[\"Execute\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
-				},
-				["finish"] = {
-					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = false",
-				},
+			["authorOptions"] = {
 			},
 			["stickyDuration"] = false,
 			["regionType"] = "icon",
-			["authorOptions"] = {
-			},
+			["parent"] = "Fury Action Bar",
 			["cooldown"] = true,
 			["displayIcon"] = 135358,
-			["parent"] = "Fury Action Bar",
+			["selfPoint"] = "CENTER",
 			["zoom"] = 0.28,
 			["width"] = 50,
 			["cooldownTextDisabled"] = false,
@@ -59307,7 +59304,20 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["useTooltip"] = false,
+			["actions"] = {
+				["start"] = {
+					["do_custom"] = false,
+					["custom"] = "myActions_ShadowWordDeath = true",
+				},
+				["init"] = {
+					["do_custom"] = true,
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Execute\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+				},
+				["finish"] = {
+					["do_custom"] = false,
+					["custom"] = "myActions_ShadowWordDeath = false",
+				},
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -59340,7 +59350,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["useTooltip"] = false,
 		},
 		["Vampiric Touch"] = {
 			["iconSource"] = 0,
@@ -59364,18 +59374,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["duration"] = "1",
 						["custom_type"] = "status",
-						["use_unit"] = true,
-						["use_absorbMode"] = true,
-						["event"] = "Global Cooldown",
 						["names"] = {
 						},
+						["use_absorbMode"] = true,
+						["event"] = "Global Cooldown",
+						["unit"] = "player",
 						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return coolDown.channel_gcd.duration, coolDown.channel_gcd.expirationTime\n    else\n        return coolDown.cast_gcd.duration, coolDown.cast_gcd.expirationTime\n    end\nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 					},
@@ -59399,7 +59409,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Vampiric Touch\"\n    then\n        shadowActions[\"Vampiric Touch\"].casting.active = true\n        shadowActions[\"Vampiric Touch\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        shadowActions[\"Vampiric Touch\"].casting.active = false\n        shadowActions[\"Vampiric Touch\"].casting.expirationTime = nil\n    end \n    \n    --Priority\n    shadowActions[\"Vampiric Touch\"].priority = nil    \n    local voidForm = select(1,AuraUtil.FindAuraByName(\"Voidform\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    if voidForm ~= nil and unitsInRange.count >= 6 and attackMode ~= \"Focus\"\n    then        \n        -- No spreading dots if void form and more than 5 targets        \n        shadowActions[\"Vampiric Touch\"].priority = nil\n    elseif unitsInRange.count >=3 and shadowActions[\"Shadow Crash\"].coolDown.expirationTime <= GetTime() + 3\n    and attackMode ~= \"Focus\"\n    then\n        -- Wait for dot in multi target if Shadow Crash comes off cool down soon\n        shadowActions[\"Vampiric Touch\"].priority = nil        \n    elseif shadowData.vampiricTouch.target.missing + shadowData.vampiricTouch.target.expiring == 1 and attackMode == \"Focus\"\n    and (coolDown.channel.name == nil or coolDown.channel.name ~= \"Mind Flay\")\n    and not shadowActions[\"Vampiric Touch\"].casting.active\n    then    \n        shadowActions[\"Vampiric Touch\"].priority = 2 \n    elseif shadowData.vampiricTouch.missing + shadowData.vampiricTouch.expiring > 1 and attackMode ~= \"Focus\"\n    then        \n        shadowActions[\"Vampiric Touch\"].priority = 2\n    elseif shadowData.vampiricTouch.missing + shadowData.vampiricTouch.expiring == 1 \n    and not shadowActions[\"Vampiric Touch\"].casting.active and attackMode ~= \"Focus\"\n    then \n        shadowActions[\"Vampiric Touch\"].priority = 2\n    end                \n    \n    return isAuraHighestPriority(\"Vampiric Touch\", shadowActions)\n    \nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Vampiric Touch\"\n    then\n        myActions[\"Vampiric Touch\"].casting.active = true\n        myActions[\"Vampiric Touch\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        myActions[\"Vampiric Touch\"].casting.active = false\n        myActions[\"Vampiric Touch\"].casting.expirationTime = nil\n    end \n    \n    --Priority\n    myActions[\"Vampiric Touch\"].priority = nil    \n    local voidForm = select(1,AuraUtil.FindAuraByName(\"Voidform\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    if voidForm ~= nil and unitsInRange.count >= 6 and attackMode ~= \"Focus\"\n    then        \n        -- No spreading dots if void form and more than 5 targets        \n        myActions[\"Vampiric Touch\"].priority = nil\n    elseif unitsInRange.count >=3 and myActions[\"Shadow Crash\"].coolDown.expirationTime <= GetTime() + 3\n    and attackMode ~= \"Focus\"\n    then\n        -- Wait for dot in multi target if Shadow Crash comes off cool down soon\n        myActions[\"Vampiric Touch\"].priority = nil        \n    elseif shadowData.vampiricTouch.target.missing + shadowData.vampiricTouch.target.expiring == 1 and attackMode == \"Focus\"\n    and (coolDown.channel.name == nil or coolDown.channel.name ~= \"Mind Flay\")\n    and not myActions[\"Vampiric Touch\"].casting.active\n    then    \n        myActions[\"Vampiric Touch\"].priority = 2 \n    elseif shadowData.vampiricTouch.missing + shadowData.vampiricTouch.expiring > 1 and attackMode ~= \"Focus\"\n    then        \n        myActions[\"Vampiric Touch\"].priority = 2\n    elseif shadowData.vampiricTouch.missing + shadowData.vampiricTouch.expiring == 1 \n    and not myActions[\"Vampiric Touch\"].casting.active and attackMode ~= \"Focus\"\n    then \n        myActions[\"Vampiric Touch\"].priority = 2\n    end                \n    \n    return isAuraHighestPriority(\"Vampiric Touch\", myActions)\n    \nend\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -59422,14 +59432,14 @@ WeakAurasSaved = {
 						},
 						["ownOnly"] = true,
 						["debuffType"] = "HARMFUL",
-						["unevent"] = "auto",
+						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "timed",
 						["spellIds"] = {
 							1822, -- [1]
 						},
 						["type"] = "custom",
 						["use_debuffClass"] = false,
-						["subeventSuffix"] = "_CAST_START",
+						["custom_type"] = "status",
 						["use_unit"] = true,
 						["duration"] = "1",
 						["event"] = "Health",
@@ -59439,7 +59449,7 @@ WeakAurasSaved = {
 							"155722", -- [1]
 						},
 						["custom"] = "function()\n    -- If multiple targets should i switch targets to (re)apply missing/expiring\n    if shadowData ~=nil and shadowData.vampiricTouch.missing + shadowData.vampiricTouch.expiring > 0 \n    and shadowData.vampiricTouch.target.missing + shadowData.vampiricTouch.target.expiring == 0 then\n        return true\n    end\n    \n    return false\nend",
-						["custom_type"] = "status",
+						["unevent"] = "auto",
 						["check"] = "update",
 						["combineMatches"] = "showLowest",
 						["subeventPrefix"] = "SPELL",
@@ -59472,7 +59482,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[5]\n    then\n        shadowActions[\"Vampiric Touch\"].inRange = true  \n    else\n        shadowActions[\"Vampiric Touch\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Vampiric Touch\"].show = true  \n    else\n        shadowActions[\"Vampiric Touch\"].show = false        \n    end\n    \n    return shadowActions[\"Vampiric Touch\"].show\nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[5]\n    then\n        myActions[\"Vampiric Touch\"].inRange = true  \n    else\n        myActions[\"Vampiric Touch\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Vampiric Touch\"].show = true  \n    else\n        myActions[\"Vampiric Touch\"].show = false        \n    end\n    \n    return myActions[\"Vampiric Touch\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -59662,15 +59672,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VampiricTouch = true",
+					["custom"] = "myActions_VampiricTouch = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VampiricTouch = false",
+					["custom"] = "myActions_VampiricTouch = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Vampiric Touch\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 2,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Vampiric Touch\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 2,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
 				},
 			},
 			["regionType"] = "icon",
@@ -59731,7 +59741,11 @@ WeakAurasSaved = {
 			["selfPoint"] = "CENTER",
 		},
 		["BT Rake"] = {
-			["authorOptions"] = {
+			["color"] = {
+				0.984313725490196, -- [1]
+				0.0509803921568627, -- [2]
+				0, -- [3]
+				1, -- [4]
 			},
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
@@ -59928,15 +59942,11 @@ WeakAurasSaved = {
 			["frameStrata"] = 1,
 			["width"] = 60,
 			["id"] = "BT Rake",
-			["xOffset"] = 0,
+			["authorOptions"] = {
+			},
 			["alpha"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["color"] = {
-				0.984313725490196, -- [1]
-				0.0509803921568627, -- [2]
-				0, -- [3]
-				1, -- [4]
-			},
+			["xOffset"] = 0,
 			["uid"] = "qANJfj9Znnm",
 			["selfPoint"] = "CENTER",
 			["parent"] = "Feral Bloodtalon Tracker",
@@ -60137,7 +60147,7 @@ WeakAurasSaved = {
 			["iconSource"] = 0,
 			["authorOptions"] = {
 			},
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Stormstrike\", enhancementActions)\nend\n",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Stormstrike\", myActions)\nend\n",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -60146,15 +60156,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_Stormstrike = true",
+					["custom"] = "myActions_Stormstrike = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Stormstrike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }          \n}\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Stormstrike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 11,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }          \n}\n\n\n",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Stormstrike\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Stormstrike\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 			},
 			["triggers"] = {
@@ -60167,16 +60177,16 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["names"] = {
-						},
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(enhancementActions[\"Stormstrike\"].coolDown.duration, \n        enhancementActions[\"Stormstrike\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["unit"] = "player",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Stormstrike\"].coolDown.duration, \n        myActions[\"Stormstrike\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["use_unit"] = true,
 						["check"] = "update",
+						["names"] = {
+						},
 						["subeventPrefix"] = "SPELL",
-						["unit"] = "player",
 						["debuffType"] = "HELPFUL",
 					},
 					["untrigger"] = {
@@ -60195,10 +60205,10 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["event"] = "Conditions",
 						["unevent"] = "auto",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["custom_type"] = "event",
 						["duration"] = "1",
 						["use_unit"] = true,
@@ -60213,7 +60223,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    --coolDown\n    enhancementActions[\"Stormstrike\"].coolDown.duration = 0\n    enhancementActions[\"Stormstrike\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Stormstrike\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Stormstrike\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Stormstrike\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    enhancementActions[\"Stormstrike\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        enhancementActions[\"Stormstrike\"].priority = 11\n        --if select(1,AuraUtil.FindAuraByName(\"Stormbringer\", \"player\", \"HELPFUL|PLAYER\")) ~= nil        \n    elseif unitsInMelee.count > 1 \n    then\n        enhancementActions[\"Stormstrike\"].priority = 12\n    end\n    \n    return isAuraHighestPriority(\"Stormstrike\", enhancementActions)    \nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    \n    --coolDown\n    myActions[\"Stormstrike\"].coolDown.duration = 0\n    myActions[\"Stormstrike\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Stormstrike\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Stormstrike\"].coolDown.duration = coolDownDuration\n        myActions[\"Stormstrike\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    myActions[\"Stormstrike\"].priority = nil\n    if unitsInMelee.count <= 1 \n    then\n        myActions[\"Stormstrike\"].priority = 11\n        --if select(1,AuraUtil.FindAuraByName(\"Stormbringer\", \"player\", \"HELPFUL|PLAYER\")) ~= nil        \n    elseif unitsInMelee.count > 1 \n    then\n        myActions[\"Stormstrike\"].priority = 12\n    end\n    \n    return isAuraHighestPriority(\"Stormstrike\", myActions)    \nend\n\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -60246,7 +60256,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    \n    if t[4] then\n        enhancementActions[\"Stormstrike\"].inRange = true\n    else\n        enhancementActions[\"Stormstrike\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Stormstrike\"].show = true\n    else\n        enhancementActions[\"Stormstrike\"].show = false\n    end    \n    return enhancementActions[\"Stormstrike\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    \n    if t[4] then\n        myActions[\"Stormstrike\"].inRange = true\n    else\n        myActions[\"Stormstrike\"].inRange = false\n    end    \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Stormstrike\"].show = true\n    else\n        myActions[\"Stormstrike\"].show = false\n    end    \n    return myActions[\"Stormstrike\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -60449,15 +60459,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = true",
+					["custom"] = "myActions_MindBlast = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not fireActions then\n    fireActions = {}\nend\n\nfireActions[\"Pyroblast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Pyroblast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = false",
+					["custom"] = "myActions_MindBlast = false",
 				},
 			},
 			["triggers"] = {
@@ -60469,7 +60479,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["names"] = {
 						},
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(fireActions[\"Pyroblast\"].coolDown.duration, fireActions[\"Pyroblast\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Pyroblast\"].coolDown.duration, myActions[\"Pyroblast\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
@@ -60494,11 +60504,11 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["unit"] = "player",
 						["unevent"] = "auto",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["events"] = "cEvent_ValidTarget",
-						["duration"] = "1",
 						["spellIds"] = {
 						},
+						["duration"] = "1",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["names"] = {
 						},
 						["custom_type"] = "event",
@@ -60516,7 +60526,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["custom_type"] = "status",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Pyroblast\"\n    then\n        fireActions[\"Pyroblast\"].casting.active = true\n        fireActions[\"Fireball\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        fireActions[\"Pyroblast\"].casting.active = false\n        fireActions[\"Pyroblast\"].casting.expirationTime = nil\n    end \n    \n    --priority    \n    fireActions[\"Pyroblast\"].priority = nil\n    \n    local combustion = select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\"))\n    local searingTouch = cFunction_HasTalent(\"Searing Touch\")\n    local flamestrike = cFunction_HasTalent(\"Flamestrike\")\n    local flamePatch = cFunction_HasTalent(\"Flame Patch\")\n    \n    if select(1,AuraUtil.FindAuraByName(\"Hot Streak!\", \"player\", \"HELPFUL|PLAYER\")) \n    then\n        \n        if        \n        --Flame Strike\n        (flamestrike and \n            ((not combustion and (unitsInRange.count >= 4 or (flamePatch and unitsInRange.count >= 2)))                \n                or combustion and (unitsInRange.count >= 6 or (flamePatch and unitsInRange.count >= 3)))   \n        )\n        then\n            aura_env.icon = 135826\n            fireActions[\"Pyroblast\"].priority = 5 \n        elseif (fireActions[\"Fireball\"].casting.active or combustion)\n        --Searing Touch Talent, cause scorch has no travel time\n        or (searingTouch and fireData.scorch.target == 1)\n        then\n            aura_env.icon = 135808\n            fireActions[\"Pyroblast\"].priority = 5             \n        end   \n        \n    end    \n    \n    return isAuraHighestPriority(\"Pyroblast\", fireActions)\n    \nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Pyroblast\"\n    then\n        myActions[\"Pyroblast\"].casting.active = true\n        myActions[\"Fireball\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        myActions[\"Pyroblast\"].casting.active = false\n        myActions[\"Pyroblast\"].casting.expirationTime = nil\n    end \n    \n    --priority    \n    myActions[\"Pyroblast\"].priority = nil\n    \n    local combustion = select(1,AuraUtil.FindAuraByName(\"Combustion\", \"player\", \"HELPFUL|PLAYER\"))\n    local searingTouch = cFunction_HasTalent(\"Searing Touch\")\n    local flamestrike = cFunction_HasTalent(\"Flamestrike\")\n    local flamePatch = cFunction_HasTalent(\"Flame Patch\")\n    \n    if select(1,AuraUtil.FindAuraByName(\"Hot Streak!\", \"player\", \"HELPFUL|PLAYER\")) \n    then\n        \n        if        \n        --Flame Strike\n        (flamestrike and \n            ((not combustion and (unitsInRange.count >= 4 or (flamePatch and unitsInRange.count >= 2)))                \n                or combustion and (unitsInRange.count >= 6 or (flamePatch and unitsInRange.count >= 3)))   \n        )\n        then\n            aura_env.icon = 135826\n            myActions[\"Pyroblast\"].priority = 5 \n        elseif (myActions[\"Fireball\"].casting.active or combustion)\n        --Searing Touch Talent, cause scorch has no travel time\n        or (searingTouch and fireData.scorch.target == 1)\n        then\n            aura_env.icon = 135808\n            myActions[\"Pyroblast\"].priority = 5             \n        end   \n        \n    end    \n    \n    return isAuraHighestPriority(\"Pyroblast\", myActions)\n    \nend\n\n\n\n",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -60546,7 +60556,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    if t[4]\n    then\n        fireActions[\"Pyroblast\"].inRange = true  \n    else\n        fireActions[\"Pyroblast\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        fireActions[\"Pyroblast\"].show = true\n    else\n        fireActions[\"Pyroblast\"].show = false\n    end\n    \n    return fireActions[\"Pyroblast\"].show\nend\n\n\n\n",
+				["customTriggerLogic"] = "function(t)         \n    if t[4]\n    then\n        myActions[\"Pyroblast\"].inRange = true  \n    else\n        myActions[\"Pyroblast\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Pyroblast\"].show = true\n    else\n        myActions[\"Pyroblast\"].show = false\n    end\n    \n    return myActions[\"Pyroblast\"].show\nend\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -60664,7 +60674,7 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "vvnXg6KCXnK",
-			["icon"] = true,
+			["xOffset"] = 0,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
@@ -60672,11 +60682,11 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["regionType"] = "icon",
-			["xOffset"] = 0,
-			["cooldown"] = true,
-			["displayIcon"] = "135808",
 			["authorOptions"] = {
 			},
+			["cooldown"] = true,
+			["displayIcon"] = "135808",
+			["useTooltip"] = false,
 			["zoom"] = 0.28,
 			["width"] = 50,
 			["cooldownTextDisabled"] = false,
@@ -60690,6 +60700,26 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
+			["icon"] = true,
+			["conditions"] = {
+				{
+					["check"] = {
+						["trigger"] = 4,
+						["variable"] = "show",
+						["value"] = 0,
+					},
+					["changes"] = {
+						{
+							["value"] = true,
+							["property"] = "desaturate",
+						}, -- [1]
+					},
+				}, -- [1]
+			},
+			["information"] = {
+				["forceEvents"] = true,
+				["ignoreOptionsEventErrors"] = true,
+			},
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -60710,26 +60740,6 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["conditions"] = {
-				{
-					["check"] = {
-						["trigger"] = 4,
-						["variable"] = "show",
-						["value"] = 0,
-					},
-					["changes"] = {
-						{
-							["value"] = true,
-							["property"] = "desaturate",
-						}, -- [1]
-					},
-				}, -- [1]
-			},
-			["information"] = {
-				["forceEvents"] = true,
-				["ignoreOptionsEventErrors"] = true,
-			},
-			["useTooltip"] = false,
 		},
 		["Retribution CD Bar"] = {
 			["arcLength"] = 360,
@@ -60880,7 +60890,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not windwalkerActions then\n    windwalkerActions = {}\nend\n\nwindwalkerActions[\"Fist of the White Tiger\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 1,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Fist of the White Tiger\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 1,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -60894,7 +60904,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(windwalkerActions[\"Fist of the White Tiger\"].coolDown.duration, windwalkerActions[\"Fist of the White Tiger\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Fist of the White Tiger\"].coolDown.duration, myActions[\"Fist of the White Tiger\"].coolDown.expirationTime, \"channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -60924,11 +60934,11 @@ WeakAurasSaved = {
 						["custom_type"] = "event",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["events"] = "cEvent_ValidTarget",
 						["debuffType"] = "HELPFUL",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
-						["events"] = "cEvent_ValidTarget",
 						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "custom",
 					},
@@ -60940,7 +60950,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown\n    windwalkerActions[\"Fist of the White Tiger\"].coolDown.duration = 0\n    windwalkerActions[\"Fist of the White Tiger\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Fist of the White Tiger\")\n    \n    local coolDownExpirationTime_Energy = 0\n    local req_energy = 40\n    local energy = UnitPower(\"player\",3)\n    if energy < req_energy\n    then \n        local coolDownDuration_Energy, coolDownExpirationTime_Energy = cFunction_GetEnergyCoolDowns(req_energy)\n    end      \n    \n    if coolDownStart + coolDownDuration > coolDownExpirationTime_Energy and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        windwalkerActions[\"Fist of the White Tiger\"].coolDown.duration = coolDownDuration\n        windwalkerActions[\"Fist of the White Tiger\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    elseif coolDownExpirationTime_Energy > coolDown.gcd.expirationTime \n    then        \n        --Add .5s to compensate for my tendency to press key early for spell queing\n        windwalkerActions[\"Fist of the White Tiger\"].coolDown.duration = coolDownDuration_Energy + .5\n        windwalkerActions[\"Fist of the White Tiger\"].coolDown.expirationTime = coolDownExpirationTime_Energy + .5    \n    end    \n    \n    --priority\n    windwalkerActions[\"Fist of the White Tiger\"].priority  = nil\n    local chi = UnitPower(\"player\",12)\n    if chi < 3\n    then        \n        windwalkerActions[\"Fist of the White Tiger\"].priority = 1\n    end\n    \n    return isAuraHighestPriority(\"Fist of the White Tiger\", windwalkerActions)\n    \nend",
+						["custom"] = "function()\n    \n    --coolDown\n    myActions[\"Fist of the White Tiger\"].coolDown.duration = 0\n    myActions[\"Fist of the White Tiger\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Fist of the White Tiger\")\n    \n    local coolDownExpirationTime_Energy = 0\n    local req_energy = 40\n    local energy = UnitPower(\"player\",3)\n    if energy < req_energy\n    then \n        local coolDownDuration_Energy, coolDownExpirationTime_Energy = cFunction_GetEnergyCoolDowns(req_energy)\n    end      \n    \n    if coolDownStart + coolDownDuration > coolDownExpirationTime_Energy and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Fist of the White Tiger\"].coolDown.duration = coolDownDuration\n        myActions[\"Fist of the White Tiger\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    elseif coolDownExpirationTime_Energy > coolDown.gcd.expirationTime \n    then        \n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Fist of the White Tiger\"].coolDown.duration = coolDownDuration_Energy + .5\n        myActions[\"Fist of the White Tiger\"].coolDown.expirationTime = coolDownExpirationTime_Energy + .5    \n    end    \n    \n    --priority\n    myActions[\"Fist of the White Tiger\"].priority  = nil\n    local chi = UnitPower(\"player\",12)\n    if chi < 3\n    then        \n        myActions[\"Fist of the White Tiger\"].priority = 1\n    end\n    \n    return isAuraHighestPriority(\"Fist of the White Tiger\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -60969,7 +60979,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        windwalkerActions[\"Fist of the White Tiger\"].inRange = true\n    else\n        windwalkerActions[\"Fist of the White Tiger\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        windwalkerActions[\"Fist of the White Tiger\"].show = true\n    else\n        windwalkerActions[\"Fist of the White Tiger\"].show = false\n    end\n    \n    return windwalkerActions[\"Fist of the White Tiger\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Fist of the White Tiger\"].inRange = true\n    else\n        myActions[\"Fist of the White Tiger\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Fist of the White Tiger\"].show = true\n    else\n        myActions[\"Fist of the White Tiger\"].show = false\n    end\n    \n    return myActions[\"Fist of the White Tiger\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -61175,7 +61185,7 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
 						["unit"] = "player",
-						["customDuration"] = "function() \n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(retActions[\"Judgment\"].coolDown.duration, retActions[\"Judgment\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function() \n    \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(myActions[\"Judgment\"].coolDown.duration, myActions[\"Judgment\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
@@ -61198,13 +61208,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["unevent"] = "auto",
 						["custom_type"] = "event",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["event"] = "Action Usable",
 						["events"] = "cEvent_ValidTarget",
-						["realSpellName"] = "Wake of Ashes",
-						["use_spellName"] = true,
+						["event"] = "Action Usable",
 						["spellIds"] = {
 						},
+						["realSpellName"] = "Wake of Ashes",
+						["use_spellName"] = true,
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["debuffType"] = "HELPFUL",
 						["subeventSuffix"] = "_CAST_START",
 						["names"] = {
@@ -61220,7 +61230,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    retActions[\"Judgment\"].coolDown.duration = 0\n    retActions[\"Judgment\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Judgment\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        retActions[\"Judgment\"].coolDown.duration = coolDownDuration\n        retActions[\"Judgment\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    retActions[\"Judgment\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 4\n    then    \n        retActions[\"Judgment\"].priority = 4                                      \n    end \n    \n    return isAuraHighestPriority(\"Judgment\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Judgment\"].coolDown.duration = 0\n    myActions[\"Judgment\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Judgment\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Judgment\"].coolDown.duration = coolDownDuration\n        myActions[\"Judgment\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority    \n    myActions[\"Judgment\"].priority = nil\n    \n    if UnitPower(\"player\",9) <= 4\n    then    \n        myActions[\"Judgment\"].priority = 4                                      \n    end \n    \n    return isAuraHighestPriority(\"Judgment\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -61249,7 +61259,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        retActions[\"Judgment\"].inRange = true\n    else\n        retActions[\"Judgment\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Judgment\"].show = true\n    else\n        retActions[\"Judgment\"].show = false\n    end\n    \n    return retActions[\"Judgment\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[4] then\n        myActions[\"Judgment\"].inRange = true\n    else\n        myActions[\"Judgment\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Judgment\"].show = true\n    else\n        myActions[\"Judgment\"].show = false\n    end\n    \n    return myActions[\"Judgment\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -61388,7 +61398,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Judgment\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Judgment\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -61442,7 +61452,7 @@ WeakAurasSaved = {
 		["Flame Shock"] = {
 			["iconSource"] = 0,
 			["parent"] = "Enhancment Action Bar",
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Flame Shock\", enhancementActions)\nend\n",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Flame Shock\", myActions)\nend\n",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -61456,7 +61466,7 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["event"] = "Health",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(enhancementActions[\"Flame Shock\"].coolDown.duration, \n        enhancementActions[\"Flame Shock\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Flame Shock\"].coolDown.duration, \n        myActions[\"Flame Shock\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -61488,7 +61498,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    enhancementActions[\"Flame Shock\"].coolDown.duration = 0\n    enhancementActions[\"Flame Shock\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Flame Shock\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Flame Shock\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Flame Shock\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    enhancementActions[\"Flame Shock\"].priority = nil    \n    if unitsInMelee.count <= 1 and enhancementData.flameShock.target.missing == 1             \n    then\n        enhancementActions[\"Flame Shock\"].priority = 4\n    elseif unitsInMelee.count > 1 and enhancementData.flameShock.target.missing == 1\n    then\n        enhancementActions[\"Flame Shock\"].priority = 7\n    end  \n    \n    return isAuraHighestPriority(\"Flame Shock\", enhancementActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Flame Shock\"].coolDown.duration = 0\n    myActions[\"Flame Shock\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Flame Shock\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Flame Shock\"].coolDown.duration = coolDownDuration\n        myActions[\"Flame Shock\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    myActions[\"Flame Shock\"].priority = nil    \n    if unitsInMelee.count <= 1 and enhancementData.flameShock.target.missing == 1             \n    then\n        myActions[\"Flame Shock\"].priority = 4\n    elseif unitsInMelee.count > 1 and enhancementData.flameShock.target.missing == 1\n    then\n        myActions[\"Flame Shock\"].priority = 7\n    end  \n    \n    return isAuraHighestPriority(\"Flame Shock\", myActions)\nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -61510,12 +61520,12 @@ WeakAurasSaved = {
 						["subeventPrefix"] = "SPELL",
 						["use_unit"] = true,
 						["debuffType"] = "HARMFUL",
-						["custom_type"] = "status",
+						["subeventSuffix"] = "_CAST_START",
 						["custom_hide"] = "timed",
 						["custom"] = "function()\n    -- If multiple targets should i switch targets to (re)apply missing/expiring\n    if enhancementData ~=nil and enhancementData.flameShock.missing + enhancementData.flameShock.expiring  > 0 \n    and enhancementData.flameShock.target.missing + enhancementData.flameShock.target.expiring == 0 then\n        return true\n    end\n    \n    return false\nend",
 						["type"] = "custom",
 						["use_debuffClass"] = false,
-						["subeventSuffix"] = "_CAST_START",
+						["unevent"] = "auto",
 						["auraspellids"] = {
 							"155722", -- [1]
 						},
@@ -61529,7 +61539,7 @@ WeakAurasSaved = {
 						["spellIds"] = {
 							1822, -- [1]
 						},
-						["unevent"] = "auto",
+						["custom_type"] = "status",
 						["check"] = "update",
 						["combineMatches"] = "showLowest",
 						["matchesShowOn"] = "showOnMissing",
@@ -61562,7 +61572,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)       \n    \n    if t[5] then\n        enhancementActions[\"Flame Shock\"].inRange = true\n    else\n        enhancementActions[\"Flame Shock\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Flame Shock\"].show = true\n    else\n        enhancementActions[\"Flame Shock\"].show = false\n    end    \n    return enhancementActions[\"Flame Shock\"].show\nend\n\n\n",
+				["customTriggerLogic"] = "function(t)       \n    \n    if t[5] then\n        myActions[\"Flame Shock\"].inRange = true\n    else\n        myActions[\"Flame Shock\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Flame Shock\"].show = true\n    else\n        myActions[\"Flame Shock\"].show = false\n    end    \n    return myActions[\"Flame Shock\"].show\nend\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -61724,15 +61734,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_FlameShock = true",
+					["custom"] = "myActions_FlameShock = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Flame Shock\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }          \n}\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Flame Shock\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 9,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }          \n}\n\n\n",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Flame Shock\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Flame Shock\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 			},
 			["cooldown"] = true,
@@ -61831,11 +61841,10 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["duration"] = "1",
 						["subeventSuffix"] = "_CAST_START",
-						["names"] = {
-						},
+						["subeventPrefix"] = "SPELL",
 						["use_absorbMode"] = true,
 						["event"] = "Health",
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 						["unevent"] = "auto",
 						["custom"] = "function()    \n    \n    --Min Enemey Health to make dot worthwhile, uses player health to simplify scaling\n    local playerMaxHealth = UnitHealthMax(\"player\")                      --Example 15000\n    local healthTreshhold_Rip_1cp = playerMaxHealth / 4                  --0.25     3750\n    local healthTreshhold_Rip_2cp = playerMaxHealth / 3                  --0.33     5000\n    local healthTreshhold_Rip_3cp = playerMaxHealth / 2                  --0.50     7500    \n    local healthTreshhold_Rip_5cp = playerMaxHealth / 1                  --1.00    15000\n    local healthTreshhold_Rake = playerMaxHealth / 6                     --0.167    2500\n    local healthTreshhold_MoonFire = playerMaxHealth / 6                     --0.167    2500    \n    local healthTreshhold_Trash = playerMaxHealth / 6                    --0.167    2550 \n    if GetNumSubgroupMembers() > 0\n    then\n        healthTreshhold_Rip_1cp = healthTreshhold_Rip_1cp * 4            --        15000\n        healthTreshhold_Rip_2cp = healthTreshhold_Rip_2cp * 4            --        20000\n        healthTreshhold_Rip_4cp = healthTreshhold_Rip_3cp * 4            --        30000        \n        healthTreshhold_Rip_4cp = healthTreshhold_Rip_5cp * 4            --        60000                \n        healthTreshhold_Rake = healthTreshhold_Rake * 4                  --        10000\n        healthTreshhold_MoonFire = healthTreshhold_MoonFire * 4                  --        10000        \n        healthTreshhold_Trash = healthTreshhold_Trash * 4                --        10000\n    end \n    \n    local cp = UnitPower(\"player\",4) \n    \n    --Rip\n    local countRip_Missing = 0\n    local countRip_Expiring = 0\n    local countRip_Skip = 0\n    local targetRip_Missing = 0\n    local targetRip_Expiring = 0\n    local unitsRip = {}\n    --Use different number of combo ponts based on target health if two targets require one extra combo point for 1 or 2 cp heath amounts\n    local rip_extra_cp = 0\n    if unitsInMelee.count >= 2 then rip_extra_cp = 1 end        \n    \n    --Rake\n    local countRake_Missing = 0\n    local countRake_Expiring = 0\n    local targetRake_Missing = 0\n    local targetRake_Expiring = 0\n    \n    --Moon Fire\n    local countMoonFire_Missing = 0\n    local countMoonFire_Expiring = 0\n    local targetMoonFire_Missing = 0\n    local targetMoonFire_Expiring = 0    \n    \n    --Trash\n    local countTrash_Missing = 0   \n    local countTrash_Expiring = 0\n    local targetTrash_Missing = 0\n    local targetTrash_Expiring = 0     \n    \n    --pandemic\n    local rake_duration = 15\n    local trash_duration = 15\n    local moonFire_duration = 16\n    local rip_duration = 24\n    --Assume use of primal wrath if more than 2 targets\n    if unitsInMelee.count > 2  and attackMode ~= \"Focus\"then rip_duration = 12 end\n    \n    if cFunction_HasTalent(\"Veinripper\")\n    then\n        rake_duration = rake_duration * 1.25\n        trash_duration = trash_duration * 1.25\n        rip_duration = rip_duration * 1.25        \n    end\n    \n    if cFunction_HasTalent(\"Circle of Life and Death\")\n    then\n        rake_duration = rake_duration * .75\n        trash_duration = trash_duration * .75\n        rip_duration = rip_duration * .75 \n        moonFire_duration = moonFire_duration * .75\n    end\n    \n    local rake_pandemic = rake_duration *.3\n    local trash_pandemic = trash_duration *.3\n    local moonFire_pandemic = moonFire_duration *.3\n    local rip_pandemic = rip_duration *.3\n    \n    local checkTarget = function(unit)\n        local target = false\n        if UnitExists(\"target\") and UnitGUID(\"target\") == UnitGUID(unit)\n        then\n            target = true\n        end                \n        local health = UnitHealth(unit)\n        \n        --Rip--\n        do            \n            --Cal number of cp to use for rip, the less health the less _ needed for hip and thus less cp\n            local cp_to_use = 99\n            if health >= healthTreshhold_Rip_5cp then\n                cp_to_use = 5\n            elseif health < healthTreshhold_Rip_5cp and health >= healthTreshhold_Rip_3cp then\n                cp_to_use = 3\n            elseif health < healthTreshhold_Rip_3cp and health >= healthTreshhold_Rip_2cp then\n                cp_to_use = 2 + rip_extra_cp               \n            elseif health < healthTreshhold_Rip_2cp and health >= healthTreshhold_Rip_1cp then\n                cp_to_use = 1 + rip_extra_cp            \n            end\n            \n            local name, _, _, _, duration, expirationTime, _, canStealOrPurge, _, spellId, _, _, is_, _, _ = AuraUtil.FindAuraByName(\"Rip\", unit, \"HARMFUL|PLAYER\")\n            if not name and cp >= cp_to_use\n            then                \n                countRip_Missing = countRip_Missing + 1                           \n                if target then targetRip_Missing = 1 end\n                \n            elseif expirationTime ~= nil\n            then\n                unitsRip[UnitGUID(unit)] = expirationTime                \n                if expirationTime - GetTime() <= rip_pandemic and cp >= cp_to_use then                    \n                    countRip_Expiring = countRip_Expiring + 1                                           \n                    if target then targetRip_Expiring = 1 end\n                else\n                    countRip_Skip = countRip_Skip + 1\n                end                                                \n            else\n                countRip_Skip = countRip_Skip + 1\n            end        \n        end               \n        \n        --Rake--\n        if health >= healthTreshhold_Rake\n        then\n            do                       \n                local i = 1\n                local found = false\n                local name, duration, expirationTime, spellId             \n                \n                repeat\n                    name, _, _, _, duration, expirationTime, _, _, _, spellId, _, _, _, _, _ = UnitAura(unit,i, \"HARMFUL|PLAYER\")         \n                    found = (spellId == 155722)\n                    i = i + 1\n                until found or i == 100 or not name\n                \n                if not found\n                then\n                    \n                    countRake_Missing = countRake_Missing + 1                                \n                    if target then targetRake_Missing = 1 end                               \n                    \n                elseif expirationTime - GetTime() <= rake_pandemic\n                then\n                    \n                    countRake_Expiring = countRake_Expiring + 1 \n                    if target then targetRake_Expiring = 1 end\n                    \n                end                    \n            end\n        end       \n        \n        --MoonFire--                    \n        do                            \n            local name, _, _, _, duration, expirationTime, _, _, _, _, _, _, _, _, _ = AuraUtil.FindAuraByName(\"Moonfire\", unit, \"HARMFUL\")\n            if not name\n            then                            \n                if health >= healthTreshhold_MoonFire\n                then\n                    countMoonFire_Missing = countMoonFire_Missing + 1\n                    if target then targetMoonFire_Missing = 1 end  \n                end\n                \n            elseif expirationTime ~= nil and expirationTime - GetTime() <= moonFire_pandemic\n            then                            \n                if health >= healthTreshhold_Trash\n                then\n                    countMoonFire_Expiring = countMoonFire_Expiring + 1\n                    if target then targetMoonFire_Expiring = 1 end\n                end \n                \n            end                                         \n        end          \n        \n        --Trash--                    \n        do                            \n            local name, icon, _, _, duration, expirationTime, _, _, _, _, _, _, _, _, _ = AuraUtil.FindAuraByName(\"Thrash\", unit, \"HARMFUL\")\n            if not name\n            then                            \n                if health >= healthTreshhold_Trash\n                then\n                    countTrash_Missing = countTrash_Missing + 1\n                    if target then targetTrash_Missing = 1 end\n                end\n                \n            elseif expirationTime ~= nil and expirationTime - GetTime() <= trash_pandemic\n            then                            \n                if health >= healthTreshhold_Trash\n                then\n                    countTrash_Expiring = countTrash_Expiring + 1\n                    if target then targetTrash_Expiring = 1 end\n                end \n                \n            end                                         \n        end\n    end    \n    \n    --Always check target and then scan for others\n    if UnitExists(\"target\") and UnitCanAttack(\"player\", \"target\") and not UnitIsDead(\"target\")     \n    --and select(4,UnitDetailedThreatSituation(\"player\", \"target\")) ~= nil    \n    then\n        checkTarget(\"target\")\n    end\n    \n    --Use Targets identified in unitsInMelee aura instead of repeating code here\n    for unit,_ in pairs(unitsInMelee.units) do\n        if UnitGUID(\"target\") ~= UnitGUID(unit)\n        then            \n            checkTarget(unit)\n        end\n    end    \n    \n    --Rip\n    feralData.rip.found = countRip_Found\n    feralData.rip.missing = countRip_Missing   \n    feralData.rip.expiring = countRip_Expiring\n    feralData.rip.skip = countRip_Skip\n    feralData.rip.target.missing = targetRip_Missing\n    feralData.rip.target.expiring = targetRip_Expiring\n    \n    \n    local targetRip_Shortest = 0\n    --Who's rip will expire first when there are multiple target\n    if unitsInMelee.count ~= nil and unitsInMelee.count >= 2 and unitsInMelee.count == countRip_Expiring + countRip_Skip\n    then\n        --print(\"Begin\")\n        local unit\n        local expire\n        for k,v in pairs(unitsRip) do\n            --print(k..\" \"..v)\n            if unit == nil\n            then\n                unit = k\n                expire = v                \n            elseif v < expire\n            then\n                unit = k\n                expire = v\n            elseif v == expire\n            then\n                unit = nil\n                expire = nill                \n            end    \n        end\n        if unit ~= nil and unit == UnitGUID(\"target\") \n        then\n            targetRip_Shortest = 1\n        else\n            targetRip_Shortest = 0\n        end        \n    end    \n    feralData.rip.target.shortest = targetRip_Shortest\n    \n    --Rake\n    feralData.rake.missing = countRake_Missing   \n    feralData.rake.expiring = countRake_Expiring\n    feralData.rake.target.missing = targetRake_Missing\n    feralData.rake.target.expiring = targetRake_Expiring\n    \n    --MoonFire\n    feralData.moonfire.missing = countMoonFire_Missing   \n    feralData.moonfire.expiring = countMoonFire_Expiring\n    feralData.moonfire.target.missing = targetMoonFire_Missing\n    feralData.moonfire.target.expiring = targetMoonFire_Expiring    \n    \n    --Trash\n    feralData.trash.missing = countTrash_Missing        \n    feralData.trash.expiring = countTrash_Expiring\n    feralData.trash.target.missing = targetTrash_Missing\n    feralData.trash.target.expiring = targetTrash_Expiring     \n    \n    return true\n    \nend",
 						["spellIds"] = {
@@ -61843,7 +61852,8 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["check"] = "update",
 						["use_unit"] = true,
-						["unit"] = "player",
+						["names"] = {
+						},
 						["debuffType"] = "HELPFUL",
 					},
 					["untrigger"] = {
@@ -62020,14 +62030,14 @@ WeakAurasSaved = {
 						["matchesShowOn"] = "showOnMissing",
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["spellName"] = 108271,
+						["buffShowOn"] = "showOnMissing",
 						["group_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["group_countOperator"] = "==",
 						["useName"] = true,
-						["custom_hide"] = "timed",
+						["spellName"] = 108271,
 						["unevent"] = "auto",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -62040,7 +62050,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
+						["custom_hide"] = "timed",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
@@ -62243,13 +62253,20 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "PhmUx1(TxZS",
-			["selfPoint"] = "CENTER",
+			["stickyDuration"] = false,
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["stickyDuration"] = false,
+			["internalVersion"] = 59,
 			["cooldown"] = true,
 			["displayIcon"] = 538565,
-			["internalVersion"] = 59,
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
+			},
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -62268,7 +62285,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Enhancment CD Bar",
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 				{
 					["check"] = {
@@ -62304,14 +62321,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
+			["parent"] = "Enhancment CD Bar",
 		},
 		["Enhancment CD Bar"] = {
 			["arcLength"] = 360,
@@ -62465,18 +62475,18 @@ WeakAurasSaved = {
 						},
 						["use_genericShowOn"] = true,
 						["useGroup_count"] = false,
-						["group_countOperator"] = "==",
+						["custom_hide"] = "timed",
 						["ownOnly"] = true,
 						["genericShowOn"] = "showOnCooldown",
 						["subeventPrefix"] = "SPELL",
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["buffShowOn"] = "showOnMissing",
 						["group_count"] = "0",
-						["custom_hide"] = "timed",
-						["useName"] = true,
 						["spellName"] = 61336,
+						["useName"] = true,
+						["debuffType"] = "HELPFUL",
 						["match_countOperator"] = "==",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -62655,15 +62665,6 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
-			["authorOptions"] = {
-			},
-			["regionType"] = "icon",
 			["actions"] = {
 				["start"] = {
 				},
@@ -62672,6 +62673,10 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
+			["authorOptions"] = {
+			},
+			["regionType"] = "icon",
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -62699,7 +62704,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["xOffset"] = 0,
+			["useTooltip"] = false,
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -62731,17 +62736,21 @@ WeakAurasSaved = {
 			},
 			["uid"] = "OOkV6KlQax(",
 			["inverse"] = true,
-			["desaturate"] = false,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["displayIcon"] = 236169,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useTooltip"] = false,
+			["desaturate"] = false,
 		},
 		["BT Shred"] = {
-			["authorOptions"] = {
-			},
+			["xOffset"] = 0,
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["actions"] = {
@@ -62937,10 +62946,11 @@ WeakAurasSaved = {
 			["frameStrata"] = 1,
 			["width"] = 60,
 			["id"] = "BT Shred",
-			["parent"] = "Feral Bloodtalon Tracker",
+			["authorOptions"] = {
+			},
 			["alpha"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["xOffset"] = 0,
+			["parent"] = "Feral Bloodtalon Tracker",
 			["uid"] = "rYwurJwBJXs",
 			["selfPoint"] = "CENTER",
 			["color"] = {
@@ -63209,15 +63219,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_FerociousBite = true",
+					["custom"] = "myActions_FerociousBite = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Ferocious Bite\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Ferocious Bite\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 5,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_FerociousBite = false",
+					["custom"] = "myActions_FerociousBite = false",
 				},
 			},
 			["triggers"] = {
@@ -63227,18 +63237,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["custom_type"] = "status",
-						["names"] = {
-						},
+						["subeventPrefix"] = "SPELL",
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()      \n    return cFunction_SpellReadyTime(feralActions[\"Ferocious Bite\"].coolDown.duration, feralActions[\"Ferocious Bite\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()      \n    return cFunction_SpellReadyTime(myActions[\"Ferocious Bite\"].coolDown.duration, myActions[\"Ferocious Bite\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["unit"] = "player",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -63268,7 +63278,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["unit"] = "player",
 						["subeventPrefix"] = "SPELL",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    \n    --coolDown        \n    feralActions[\"Feral Thrash\"].coolDown.duration = 0\n    feralActions[\"Feral Thrash\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 50\n    \n    -- Energy Pool when i have bloodtalons and not berserking\n    if not Berserk and cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 80        \n    end     \n    \n    if UnitPower(\"player\",3) < req_energy\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end\n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Feral Thrash\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Feral Thrash\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end          \n    \n    --priority  \n    --Use Apex Predator's Craving Right Away\n    if select(1,AuraUtil.FindAuraByName(\"Apex Predator's Craving\", \"player\", \"HELPFUL|PLAYER\")) \n    then\n        feralActions[\"Ferocious Bite\"].priority = 1\n    else\n        -- If Primal Wrath talent taken only bite on two or less targets or attackmode is focus\n        local primalWrath = cFunction_HasTalent(\"Primal Wrath\")\n        if \n        (\n            (primalWrath and unitsInMelee.count <= 2) \n            or not primalWrath\n            or attackMode == \"Focus\"\n        )    \n        and UnitPower(\"player\",4)  == 5 \n        and GetShapeshiftForm() == 2\n        then\n            feralActions[\"Ferocious Bite\"].priority = 5\n        else\n            feralActions[\"Ferocious Bite\"].priority = nil\n        end  \n    end\n    \n    return isAuraHighestPriority(\"Ferocious Bite\", feralActions)  \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    \n    --coolDown        \n    myActions[\"Feral Thrash\"].coolDown.duration = 0\n    myActions[\"Feral Thrash\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 50\n    \n    -- Energy Pool when i have bloodtalons and not berserking\n    if not Berserk and cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 80        \n    end     \n    \n    if UnitPower(\"player\",3) < req_energy\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end\n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Feral Thrash\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Feral Thrash\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end          \n    \n    --priority  \n    --Use Apex Predator's Craving Right Away\n    if select(1,AuraUtil.FindAuraByName(\"Apex Predator's Craving\", \"player\", \"HELPFUL|PLAYER\")) \n    then\n        myActions[\"Ferocious Bite\"].priority = 1\n    else\n        -- If Primal Wrath talent taken only bite on two or less targets or attackmode is focus\n        local primalWrath = cFunction_HasTalent(\"Primal Wrath\")\n        if \n        (\n            (primalWrath and unitsInMelee.count <= 2) \n            or not primalWrath\n            or attackMode == \"Focus\"\n        )    \n        and UnitPower(\"player\",4)  == 5 \n        and GetShapeshiftForm() == 2\n        then\n            myActions[\"Ferocious Bite\"].priority = 5\n        else\n            myActions[\"Ferocious Bite\"].priority = nil\n        end  \n    end\n    \n    return isAuraHighestPriority(\"Ferocious Bite\", myActions)  \nend\n\n\n",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -63320,16 +63330,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["range"] = "8",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "8",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -63338,7 +63348,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        feralActions[\"Ferocious Bite\"].inRange = true\n    else\n        feralActions[\"Ferocious Bite\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Ferocious Bite\"].show = true\n    else\n        feralActions[\"Ferocious Bite\"].show = false\n    end    \n    return feralActions[\"Ferocious Bite\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        myActions[\"Ferocious Bite\"].inRange = true\n    else\n        myActions[\"Ferocious Bite\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Ferocious Bite\"].show = true\n    else\n        myActions[\"Ferocious Bite\"].show = false\n    end    \n    return myActions[\"Ferocious Bite\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -63577,22 +63587,22 @@ WeakAurasSaved = {
 						},
 						["duration"] = "1",
 						["matchesShowOn"] = "showOnMissing",
-						["use_unit"] = true,
 						["unit"] = "player",
+						["subeventPrefix"] = "SPELL",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["group_count"] = "0",
-						["match_countOperator"] = "==",
-						["useName"] = true,
 						["group_countOperator"] = "==",
-						["subeventSuffix"] = "_CAST_START",
+						["group_count"] = "0",
+						["use_targetRequired"] = false,
+						["useName"] = true,
+						["custom_hide"] = "timed",
+						["match_countOperator"] = "==",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
-						["use_targetRequired"] = false,
+						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 						["event"] = "Global Cooldown",
@@ -63601,10 +63611,10 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["ownOnly"] = true,
 						["combineMatches"] = "showLowest",
-						["subeventPrefix"] = "SPELL",
+						["use_unit"] = true,
 						["useGroup_count"] = false,
 					},
 					["untrigger"] = {
@@ -64468,7 +64478,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Enhancment Health R\"] = {\n    [\"priority\"] = 99,\n    [\"onCoolDown\"] = true,\n    [\"expirationTime\"] = 9999999999999999,\n    [\"inRange\"] = true     \n}",
 				},
 			},
 		},
@@ -64489,18 +64499,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["duration"] = "1",
 						["custom_type"] = "status",
-						["use_unit"] = true,
-						["use_absorbMode"] = true,
-						["event"] = "BigWigs Timer",
 						["names"] = {
 						},
+						["use_absorbMode"] = true,
+						["event"] = "BigWigs Timer",
+						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return coolDown.channel.duration, coolDown.channel.expirationTime\n    else\n        return coolDown.cast.duration, coolDown.cast.expirationTime\n    end\nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["unit"] = "player",
 						["check"] = "update",
-						["subeventPrefix"] = "SPELL",
+						["use_unit"] = true,
 						["subeventSuffix"] = "_CAST_START",
 						["debuffType"] = "HELPFUL",
 					},
@@ -64524,7 +64534,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --CoolDown and Casting\n    if coolDown.channel.name ~= nil and coolDown.channel.name == \"Mind Sear\"\n    then\n        shadowActions[\"Mind Sear\"].casting.active = true\n        shadowActions[\"Mind Sear\"].casting.expirationTime = coolDown.channel.expirationTime\n        shadowActions[\"Mind Sear\"].coolDown.duration = coolDown.channel.duration\n        shadowActions[\"Mind Sear\"].coolDown.expirationTime = coolDown.channel.expirationTime\n    else\n        shadowActions[\"Mind Sear\"].casting.active = false\n        shadowActions[\"Mind Sear\"].casting.expirationTime = 0\n        shadowActions[\"Mind Sear\"].casting.duration = 0\n        shadowActions[\"Mind Sear\"].coolDown.duration = 0\n        shadowActions[\"Mind Sear\"].coolDown.expirationTime = 0\n    end \n    \n    \n    --Priority\n    shadowActions[\"Mind Sear\"].priority = nil\n    \n    if unitsInRange.count >= 3 and attackMode ~= \"Focus\"\n    then\n        \n        local power = UnitPower(\"player\",13)\n        local mindDevourer = select(1,AuraUtil.FindAuraByName(\"Mind Devourer\", \"player\", \"HELPFUL|PLAYER\"))  \n        \n        if power == 100 or mindDevourer ~= nil\n        then\n            --If max power or we have a mindDevourer proc\n            shadowActions[\"Mind Sear\"].priority = 6\n            --elseif power >= 75\n            --then \n            --shadowActions[\"Mind Sear\"].priority = 12\n        end                                \n    end\n    return isAuraHighestPriority(\"Mind Sear\", shadowActions)\nend\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --CoolDown and Casting\n    if coolDown.channel.name ~= nil and coolDown.channel.name == \"Mind Sear\"\n    then\n        myActions[\"Mind Sear\"].casting.active = true\n        myActions[\"Mind Sear\"].casting.expirationTime = coolDown.channel.expirationTime\n        myActions[\"Mind Sear\"].coolDown.duration = coolDown.channel.duration\n        myActions[\"Mind Sear\"].coolDown.expirationTime = coolDown.channel.expirationTime\n    else\n        myActions[\"Mind Sear\"].casting.active = false\n        myActions[\"Mind Sear\"].casting.expirationTime = 0\n        myActions[\"Mind Sear\"].casting.duration = 0\n        myActions[\"Mind Sear\"].coolDown.duration = 0\n        myActions[\"Mind Sear\"].coolDown.expirationTime = 0\n    end \n    \n    \n    --Priority\n    myActions[\"Mind Sear\"].priority = nil\n    \n    if unitsInRange.count >= 3 and attackMode ~= \"Focus\"\n    then\n        \n        local power = UnitPower(\"player\",13)\n        local mindDevourer = select(1,AuraUtil.FindAuraByName(\"Mind Devourer\", \"player\", \"HELPFUL|PLAYER\"))  \n        \n        if power == 100 or mindDevourer ~= nil\n        then\n            --If max power or we have a mindDevourer proc\n            myActions[\"Mind Sear\"].priority = 6\n            --elseif power >= 75\n            --then \n            --myActions[\"Mind Sear\"].priority = 12\n        end                                \n    end\n    return isAuraHighestPriority(\"Mind Sear\", myActions)\nend\n\n\n\n",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -64558,7 +64568,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)\n    \n    if t[4]\n    then\n        shadowActions[\"Mind Sear\"].inRange = true  \n    else\n        shadowActions[\"Mind Sear\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Mind Sear\"].show = true\n    else\n        shadowActions[\"Mind Sear\"].show = false\n    end\n    \n    return shadowActions[\"Mind Sear\"].show\n    \nend\n\n\n",
+				["customTriggerLogic"] = "function(t)\n    \n    if t[4]\n    then\n        myActions[\"Mind Sear\"].inRange = true  \n    else\n        myActions[\"Mind Sear\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Mind Sear\"].show = true\n    else\n        myActions[\"Mind Sear\"].show = false\n    end\n    \n    return myActions[\"Mind Sear\"].show\n    \nend\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -64725,15 +64735,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_DevouringPlaque = true",
+					["custom"] = "myActions_DevouringPlaque = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_DevouringPlaque = false",
+					["custom"] = "myActions_DevouringPlaque = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Mind Sear\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Mind Sear\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["xOffset"] = 0,
@@ -64854,7 +64864,7 @@ WeakAurasSaved = {
 					},
 				},
 			},
-			["stagger"] = 0,
+			["fullCircle"] = true,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -64864,7 +64874,7 @@ WeakAurasSaved = {
 			["authorOptions"] = {
 			},
 			["animate"] = false,
-			["selfPoint"] = "CENTER",
+			["parent"] = "Windwalker",
 			["scale"] = 1,
 			["yOffset"] = -125,
 			["border"] = false,
@@ -64872,6 +64882,21 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
+			["selfPoint"] = "CENTER",
+			["rowSpace"] = 1,
+			["constantFactor"] = "RADIUS",
+			["internalVersion"] = 59,
+			["borderOffset"] = 4,
+			["limit"] = 5,
+			["gridWidth"] = 5,
+			["id"] = "Windwalker Action Bar",
+			["gridType"] = "RD",
+			["frameStrata"] = 1,
+			["anchorFrameType"] = "SCREEN",
+			["config"] = {
+			},
+			["uid"] = "c)FBBCCU9iK",
+			["grow"] = "HORIZONTAL",
 			["animation"] = {
 				["start"] = {
 					["type"] = "none",
@@ -64892,27 +64917,12 @@ WeakAurasSaved = {
 					["easeType"] = "none",
 				},
 			},
-			["grow"] = "HORIZONTAL",
-			["constantFactor"] = "RADIUS",
-			["internalVersion"] = 59,
-			["borderOffset"] = 4,
-			["limit"] = 5,
-			["gridWidth"] = 5,
-			["id"] = "Windwalker Action Bar",
-			["gridType"] = "RD",
-			["frameStrata"] = 1,
-			["anchorFrameType"] = "SCREEN",
-			["config"] = {
-			},
-			["uid"] = "c)FBBCCU9iK",
-			["fullCircle"] = true,
-			["rowSpace"] = 1,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 			},
-			["parent"] = "Windwalker",
+			["stagger"] = 0,
 		},
 		["Shred"] = {
 			["iconSource"] = 0,
@@ -64927,7 +64937,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Shred\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 15,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Shred\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 15,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -64939,18 +64949,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["unevent"] = "auto",
 						["subeventSuffix"] = "_CAST_START",
-						["unit"] = "player",
+						["use_unit"] = true,
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["use_unit"] = true,
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Shred\"].coolDown.duration, feralActions[\"Shred\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["names"] = {
+						},
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Shred\"].coolDown.duration, myActions[\"Shred\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -64989,7 +64999,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["unit"] = "player",
 						["subeventPrefix"] = "SPELL",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown        \n    feralActions[\"Shred\"].coolDown.duration = 0\n    feralActions[\"Shred\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 40\n    -- Energy Pool when i have bloodtalons and not berserking\n    if not Berserk and cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 75        \n    end \n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end        \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        feralActions[\"Shred\"].coolDown.duration = coolDownDuration + .5\n        feralActions[\"Shred\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end        \n    \n    --priority    \n    if UnitPower(\"player\",4) <= 4    \n    and \n    (\n        -- Only if one target\n        unitsInMelee.count <= 1 \n        -- Brutal Slash Tallent\n        or select(4,GetTalentInfo(6,2,1))\n        -- Alway use during Berserk;\n        or Berserk ~= nil\n        -- Always use when attck Mode is Focus\n        or attackMode == \"Focus\"\n    )\n    and GetShapeshiftForm() == 2\n    then\n        if Berserk ~= nil\n        then\n            feralActions[\"Shred\"].priority = 7\n        else\n            feralActions[\"Shred\"].priority = 15\n        end        \n    else\n        --feralActions[\"Shred\"].priority = nil\n    end\n    return isAuraHighestPriority(\"Shred\", feralActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    local Berserk = select(1,AuraUtil.FindAuraByName(\"Berserk\", \"player\", \"HELPFUL|PLAYER\"))  \n    local ClearCast = select(1,AuraUtil.FindAuraByName(\"Clearcasting\", \"player\", \"HELPFUL|PLAYER\"))\n    \n    --coolDown        \n    myActions[\"Shred\"].coolDown.duration = 0\n    myActions[\"Shred\"].coolDown.expirationTime = 0 \n    \n    local coolDownDuration, coolDownExpirationTime\n    local req_energy = 40\n    -- Energy Pool when i have bloodtalons and not berserking\n    if not Berserk and cFunction_HasTalent(\"Bloodtalons\")\n    then\n        req_energy = 75        \n    end \n    \n    if UnitPower(\"player\",3) < req_energy and not ClearCast\n    then \n        coolDownDuration, coolDownExpirationTime = cFunction_GetEnergyCoolDowns(req_energy)\n    else\n        coolDownDuration = 0\n        coolDownExpirationTime = 0\n    end        \n    \n    if coolDownExpirationTime > coolDown.gcd.expirationTime \n    then\n        --Add .5s to compensate for my tendency to press key early for spell queing\n        myActions[\"Shred\"].coolDown.duration = coolDownDuration + .5\n        myActions[\"Shred\"].coolDown.expirationTime = coolDownExpirationTime + .5        \n    end        \n    \n    --priority    \n    if UnitPower(\"player\",4) <= 4    \n    and \n    (\n        -- Only if one target\n        unitsInMelee.count <= 1 \n        -- Brutal Slash Tallent\n        or select(4,GetTalentInfo(6,2,1))\n        -- Alway use during Berserk;\n        or Berserk ~= nil\n        -- Always use when attck Mode is Focus\n        or attackMode == \"Focus\"\n    )\n    and GetShapeshiftForm() == 2\n    then\n        if Berserk ~= nil\n        then\n            myActions[\"Shred\"].priority = 7\n        else\n            myActions[\"Shred\"].priority = 15\n        end        \n    else\n        --myActions[\"Shred\"].priority = nil\n    end\n    return isAuraHighestPriority(\"Shred\", myActions)\nend",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -65005,16 +65015,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["genericShowOn"] = "showOnCooldown",
-						["use_genericShowOn"] = true,
 						["range"] = "5",
+						["use_genericShowOn"] = true,
+						["event"] = "Range Check",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["event"] = "Range Check",
+						["genericShowOn"] = "showOnCooldown",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -65023,7 +65033,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Shred\"].inRange = true\n    else\n        feralActions[\"Shred\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Shred\"].show = true\n    else\n        feralActions[\"Shred\"].show = false\n    end    \n    return feralActions[\"Shred\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Shred\"].inRange = true\n    else\n        myActions[\"Shred\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Shred\"].show = true\n    else\n        myActions[\"Shred\"].show = false\n    end    \n    return myActions[\"Shred\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -65509,14 +65519,14 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["custom_hide"] = "timed",
+						["debuffType"] = "HELPFUL",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
+						["custom_hide"] = "timed",
 						["match_count"] = "0",
-						["debuffType"] = "HELPFUL",
+						["spellName"] = 1022,
 						["subeventSuffix"] = "_CAST_START",
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -65529,7 +65539,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["spellName"] = 1022,
+						["buffShowOn"] = "showOnMissing",
 						["unit"] = "player",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -65713,10 +65723,6 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["authorOptions"] = {
-			},
-			["internalVersion"] = 59,
-			["regionType"] = "icon",
 			["actions"] = {
 				["start"] = {
 				},
@@ -65725,6 +65731,9 @@ WeakAurasSaved = {
 				["init"] = {
 				},
 			},
+			["internalVersion"] = 59,
+			["regionType"] = "icon",
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -65757,7 +65766,12 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["xOffset"] = 0,
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -65789,18 +65803,14 @@ WeakAurasSaved = {
 			},
 			["uid"] = "Kc97dQ5BNQ0",
 			["inverse"] = true,
-			["desaturate"] = false,
+			["authorOptions"] = {
+			},
 			["displayIcon"] = 135964,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["desaturate"] = false,
 		},
 		["Combustion"] = {
 			["iconSource"] = 0,
@@ -65836,11 +65846,11 @@ WeakAurasSaved = {
 						["ownOnly"] = true,
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["custom_hide"] = "timed",
-						["group_count"] = "0",
 						["spellName"] = 190319,
+						["group_count"] = "0",
+						["group_countOperator"] = "==",
 						["type"] = "spell",
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -65853,8 +65863,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
 						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["useGroup_count"] = false,
@@ -66055,18 +66065,13 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "bw(NFy07ruT",
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Fire CD Bar",
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["parent"] = "Fire CD Bar",
+			["stickyDuration"] = false,
 			["cooldown"] = true,
 			["displayIcon"] = 135824,
-			["stickyDuration"] = false,
+			["icon"] = true,
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -66081,7 +66086,12 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["conditions"] = {
 				{
 					["check"] = {
@@ -66117,7 +66127,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["icon"] = true,
+			["selfPoint"] = "CENTER",
 		},
 		["Halo"] = {
 			["iconSource"] = 0,
@@ -66135,7 +66145,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(shadowActions[\"Halo\"].coolDown.duration, \n            shadowActions[\"Halo\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(shadowActions[\"Halo\"].coolDown.duration, \n            shadowActions[\"Halo\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
+						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(myActions[\"Halo\"].coolDown.duration, \n            myActions[\"Halo\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(myActions[\"Halo\"].coolDown.duration, \n            myActions[\"Halo\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
 						["names"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
@@ -66160,10 +66170,10 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["event"] = "Conditions",
 						["unevent"] = "auto",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["duration"] = "1",
 						["names"] = {
 						},
@@ -66183,7 +66193,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["custom_type"] = "status",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    shadowActions[\"Halo\"].coolDown.duration = 0\n    shadowActions[\"Halo\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Halo\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        shadowActions[\"Halo\"].coolDown.duration = coolDownDuration\n        shadowActions[\"Halo\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Halo\"\n    then\n        shadowActions[\"Halo\"].casting.active = true\n        shadowActions[\"Halo\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        shadowActions[\"Halo\"].casting.active = false\n        shadowActions[\"Halo\"].casting.expirationTime = nil\n    end     \n    \n    --Priority\n    shadowActions[\"Halo\"].priority = nil\n    \n    if not shadowActions[\"Halo\"].casting.active\n    then        \n        \n        shadowActions[\"Halo\"].priority = 19    \n    end        \n    \n    return isAuraHighestPriority(\"Halo\", shadowActions)\nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Halo\"].coolDown.duration = 0\n    myActions[\"Halo\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Halo\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Halo\"].coolDown.duration = coolDownDuration\n        myActions[\"Halo\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Halo\"\n    then\n        myActions[\"Halo\"].casting.active = true\n        myActions[\"Halo\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        myActions[\"Halo\"].casting.active = false\n        myActions[\"Halo\"].casting.expirationTime = nil\n    end     \n    \n    --Priority\n    myActions[\"Halo\"].priority = nil\n    \n    if not myActions[\"Halo\"].casting.active\n    then        \n        \n        myActions[\"Halo\"].priority = 19    \n    end        \n    \n    return isAuraHighestPriority(\"Halo\", myActions)\nend\n\n\n",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -66213,7 +66223,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        shadowActions[\"Halo\"].inRange = true  \n    else\n        shadowActions[\"Halo\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Halo\"].show = true\n    else\n        shadowActions[\"Halo\"].show = false\n    end\n    \n    return shadowActions[\"Halo\"].show\nend",
+				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        myActions[\"Halo\"].inRange = true  \n    else\n        myActions[\"Halo\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Halo\"].show = true\n    else\n        myActions[\"Halo\"].show = false\n    end\n    \n    return myActions[\"Halo\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -66371,30 +66381,30 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "N4(mBWsipN0",
-			["stickyDuration"] = false,
+			["useTooltip"] = false,
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = true",
+					["custom"] = "myActions_ShadowWordDeath = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Halo\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Halo\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 16,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = false",
+					["custom"] = "myActions_ShadowWordDeath = false",
 				},
 			},
 			["regionType"] = "icon",
-			["useTooltip"] = false,
+			["authorOptions"] = {
+			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
 			["displayIcon"] = 632353,
-			["authorOptions"] = {
-			},
+			["selfPoint"] = "CENTER",
 			["alpha"] = 1,
 			["width"] = 50,
 			["cooldownTextDisabled"] = false,
@@ -66413,7 +66423,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["xOffset"] = 0,
+			["stickyDuration"] = false,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -66430,7 +66440,7 @@ WeakAurasSaved = {
 				}, -- [1]
 			},
 			["cooldown"] = true,
-			["selfPoint"] = "CENTER",
+			["xOffset"] = 0,
 		},
 		["Void Eruption CD"] = {
 			["iconSource"] = 0,
@@ -66466,11 +66476,11 @@ WeakAurasSaved = {
 						["useGroup_count"] = false,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["group_countOperator"] = "==",
-						["match_count"] = "0",
 						["custom_hide"] = "timed",
+						["match_count"] = "0",
+						["buffShowOn"] = "showOnMissing",
 						["subeventSuffix"] = "_CAST_START",
-						["spellName"] = 228260,
+						["group_countOperator"] = "==",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -66483,8 +66493,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["buffShowOn"] = "showOnMissing",
 						["debuffType"] = "HELPFUL",
+						["spellName"] = 228260,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["matchesShowOn"] = "showOnMissing",
@@ -66735,10 +66745,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["icon"] = true,
+			["xOffset"] = 0,
 			["stickyDuration"] = false,
 			["regionType"] = "icon",
-			["xOffset"] = 0,
+			["useTooltip"] = false,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -66776,7 +66786,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["useTooltip"] = false,
+			["selfPoint"] = "CENTER",
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -66794,14 +66804,14 @@ WeakAurasSaved = {
 			},
 			["uid"] = "LCzSUy6Lcws",
 			["inverse"] = true,
-			["authorOptions"] = {
-			},
+			["icon"] = true,
 			["displayIcon"] = 1386548,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["authorOptions"] = {
+			},
 		},
 		["header_deathcount"] = {
 			["sparkWidth"] = 10,
@@ -67234,15 +67244,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = true",
+					["custom"] = "myActions_ShadowWordDeath = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_ShadowWordDeath = false",
+					["custom"] = "myActions_ShadowWordDeath = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not survivalActions then\n    survivalActions = {}\nend\n\nsurvivalActions[\"Kill Shot\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Kill Shot\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 4,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -67252,7 +67262,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(survivalActions[\"Kill Shot\"].coolDown.duration, survivalActions[\"Kill Shot\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Kill Shot\"].coolDown.duration, myActions[\"Kill Shot\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["names"] = {
 						},
 						["spellIds"] = {
@@ -67278,11 +67288,11 @@ WeakAurasSaved = {
 						["event"] = "Conditions",
 						["unevent"] = "auto",
 						["unit"] = "player",
-						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["use_absorbMode"] = true,
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["use_absorbMode"] = true,
+						["events"] = "cEvent_ValidTarget",
 						["custom_type"] = "event",
 						["names"] = {
 						},
@@ -67300,7 +67310,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["use_unit"] = true,
-						["custom"] = "function()\n    --coolDown        \n    survivalActions[\"Kill Shot\"].coolDown.duration = 0\n    survivalActions[\"Kill Shot\"].coolDown.expirationTime = 0 \n    \n    local req_energy = 10  \n    local coolDownDuration_Focus = 0 \n    local coolDownExpirationTime_Focus = 0\n    local energy = UnitPower(\"player\",2)\n    if energy < req_energy\n    then \n        coolDownDuration_Focus, coolDownExpirationTime_Focus = cFunction_GetEnergyCoolDowns(req_energy)        \n    end      \n    \n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Kill Shot\")\n    local coolDownExpirationTime = coolDownStart + coolDownDuration\n    if coolDownExpirationTime > coolDownExpirationTime_Focus and coolDownExpirationTime > coolDown.gcd.expirationTime\n    then\n        survivalActions[\"Kill Shot\"].coolDown.duration = coolDownDuration\n        survivalActions[\"Kill Shot\"].coolDown.expirationTime = coolDownExpirationTime\n    elseif coolDownExpirationTime_Focus > coolDown.gcd.expirationTime\n    then\n        survivalActions[\"Kill Shot\"].coolDown.duration = coolDownDuration_Focus\n        survivalActions[\"Kill Shot\"].coolDown.expirationTime = coolDownExpirationTime_Focus\n    end\n    \n    --Priority\n    survivalActions[\"Kill Shot\"].priority = nil\n    if (survivalData.execute.target == 1\n        or \n        (unitsInRange.count <= 5 and survivalData.execute.count >= 1))\n    then        \n        --If i'm alone then i want to prioritize execute over most everything \n        if GetNumSubgroupMembers() == 0\n        then\n            survivalActions[\"Kill Shot\"].priority = 0\n        else\n            survivalActions[\"Kill Shot\"].priority = 4\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Kill Shot\", survivalActions)\nend",
+						["custom"] = "function()\n    --coolDown        \n    myActions[\"Kill Shot\"].coolDown.duration = 0\n    myActions[\"Kill Shot\"].coolDown.expirationTime = 0 \n    \n    local req_energy = 10  \n    local coolDownDuration_Focus = 0 \n    local coolDownExpirationTime_Focus = 0\n    local energy = UnitPower(\"player\",2)\n    if energy < req_energy\n    then \n        coolDownDuration_Focus, coolDownExpirationTime_Focus = cFunction_GetEnergyCoolDowns(req_energy)        \n    end      \n    \n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Kill Shot\")\n    local coolDownExpirationTime = coolDownStart + coolDownDuration\n    if coolDownExpirationTime > coolDownExpirationTime_Focus and coolDownExpirationTime > coolDown.gcd.expirationTime\n    then\n        myActions[\"Kill Shot\"].coolDown.duration = coolDownDuration\n        myActions[\"Kill Shot\"].coolDown.expirationTime = coolDownExpirationTime\n    elseif coolDownExpirationTime_Focus > coolDown.gcd.expirationTime\n    then\n        myActions[\"Kill Shot\"].coolDown.duration = coolDownDuration_Focus\n        myActions[\"Kill Shot\"].coolDown.expirationTime = coolDownExpirationTime_Focus\n    end\n    \n    --Priority\n    myActions[\"Kill Shot\"].priority = nil\n    if (survivalData.execute.target == 1\n        or \n        (unitsInRange.count <= 5 and survivalData.execute.count >= 1))\n    then        \n        --If i'm alone then i want to prioritize execute over most everything \n        if GetNumSubgroupMembers() == 0\n        then\n            myActions[\"Kill Shot\"].priority = 0\n        else\n            myActions[\"Kill Shot\"].priority = 4\n        end        \n    end    \n    \n    return isAuraHighestPriority(\"Kill Shot\", myActions)\nend",
 						["unit"] = "player",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -67342,7 +67352,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        survivalActions[\"Kill Shot\"].inRange = true\n    else\n        survivalActions[\"Kill Shot\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        survivalActions[\"Kill Shot\"].show = true\n    else\n        survivalActions[\"Kill Shot\"].show = false\n    end    \n    return survivalActions[\"Kill Shot\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[5] then\n        myActions[\"Kill Shot\"].inRange = true\n    else\n        myActions[\"Kill Shot\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Kill Shot\"].show = true\n    else\n        myActions[\"Kill Shot\"].show = false\n    end    \n    return myActions[\"Kill Shot\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -67483,7 +67493,7 @@ WeakAurasSaved = {
 					},
 				},
 				["use_class_and_spec"] = true,
-				["faction"] = {
+				["pvptalent"] = {
 					["multi"] = {
 					},
 				},
@@ -67492,18 +67502,18 @@ WeakAurasSaved = {
 					["multi"] = {
 					},
 				},
-				["use_vehicleUi"] = false,
-				["pvptalent"] = {
+				["faction"] = {
 					["multi"] = {
 					},
 				},
+				["use_vehicleUi"] = false,
 			},
 			["config"] = {
 			},
-			["parent"] = "Survival Action Bar",
+			["xOffset"] = 0,
 			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
-			["xOffset"] = 0,
+			["icon"] = true,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -67536,7 +67546,7 @@ WeakAurasSaved = {
 					},
 				}, -- [2]
 			},
-			["icon"] = true,
+			["stickyDuration"] = false,
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -67549,15 +67559,15 @@ WeakAurasSaved = {
 			["useTooltip"] = false,
 			["uid"] = "JxE3k(J28WW",
 			["inverse"] = true,
+			["parent"] = "Survival Action Bar",
+			["displayIcon"] = 236174,
+			["cooldown"] = true,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
-			["displayIcon"] = 236174,
-			["cooldown"] = true,
-			["stickyDuration"] = false,
 		},
 		["block_animapower"] = {
 			["iconSource"] = -1,
@@ -68080,7 +68090,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Enhancement",
+			["useLimit"] = false,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -68089,7 +68099,7 @@ WeakAurasSaved = {
 			},
 			["rowSpace"] = 1,
 			["animate"] = false,
-			["rotation"] = 0,
+			["gridType"] = "RD",
 			["scale"] = 1,
 			["borderColor"] = {
 				0, -- [1]
@@ -68102,8 +68112,8 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["radius"] = 200,
-			["groupIcon"] = 237581,
+			["rotation"] = 0,
+			["grow"] = "DOWN",
 			["constantFactor"] = "RADIUS",
 			["borderInset"] = 0,
 			["borderOffset"] = 16,
@@ -68116,15 +68126,15 @@ WeakAurasSaved = {
 			["authorOptions"] = {
 			},
 			["uid"] = "WHqf8RelDYu",
-			["useLimit"] = false,
-			["grow"] = "DOWN",
+			["groupIcon"] = 237581,
+			["radius"] = 200,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["gridType"] = "RD",
+			["parent"] = "Enhancement",
 		},
 		["Healing Surge"] = {
 			["iconSource"] = 0,
@@ -68375,15 +68385,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_LightningBolt = true",
+					["custom"] = "myActions_LightningBolt = true",
 				},
 				["init"] = {
 					["do_custom"] = false,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Healing Surge\"] = {\n    [\"priority\"] = 0,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true           \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Healing Surge\"] = {\n    [\"priority\"] = 0,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = true           \n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Lightning Bolt/Chain Lighting\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 			},
 			["authorOptions"] = {
@@ -68432,15 +68442,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidBolt = true",
+					["custom"] = "myActions_VoidBolt = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not fireActions then\n    fireActions = {}\nend\n\nfireActions[\"Dragon's Breath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Dragon's Breath\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 3,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}\n\n\n\n",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_VoidBolt = false",
+					["custom"] = "myActions_VoidBolt = false",
 				},
 			},
 			["triggers"] = {
@@ -68479,7 +68489,7 @@ WeakAurasSaved = {
 						["debuffType"] = "HELPFUL",
 						["unit"] = "player",
 						["matchesShowOn"] = "showOnActive",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(fireActions[\"Dragon's Breath\"].coolDown.duration, fireActions[\"Dragon's Breath\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n\n",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Dragon's Breath\"].coolDown.duration, myActions[\"Dragon's Breath\"].coolDown.expirationTime, \"cast_gcd\")              \nend\n\n\n\n\n\n",
 						["use_spellName"] = true,
 						["custom"] = "function()\n    return true\nend",
 						["use_targetRequired"] = false,
@@ -68529,7 +68539,7 @@ WeakAurasSaved = {
 						["use_genericShowOn"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    fireActions[\"Dragon's Breath\"].coolDown.duration = 0\n    fireActions[\"Dragon's Breath\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Dragon's Breath\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        fireActions[\"Dragon's Breath\"].coolDown.duration = coolDownDuration\n        fireActions[\"Dragon's Breath\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    fireActions[\"Dragon's Breath\"].priority = nil    \n    \n    if unitsInMelee.count ~= nil and unitsInMelee.count >= 3\n    and attackMode ~= \"Focus\"\n    then                        \n        fireActions[\"Dragon's Breath\"].priority = 3\n    end    \n    \n    return isAuraHighestPriority(\"Dragon's Breath\", fireActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Dragon's Breath\"].coolDown.duration = 0\n    myActions[\"Dragon's Breath\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Dragon's Breath\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Dragon's Breath\"].coolDown.duration = coolDownDuration\n        myActions[\"Dragon's Breath\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --Priority\n    myActions[\"Dragon's Breath\"].priority = nil    \n    \n    if unitsInMelee.count ~= nil and unitsInMelee.count >= 3\n    and attackMode ~= \"Focus\"\n    then                        \n        myActions[\"Dragon's Breath\"].priority = 3\n    end    \n    \n    return isAuraHighestPriority(\"Dragon's Breath\", myActions)\nend",
 						["subeventPrefix"] = "",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -68559,7 +68569,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        fireActions[\"Dragon's Breath\"].inRange = true  \n    else\n        fireActions[\"Dragon's Breath\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        fireActions[\"Dragon's Breath\"].show = true\n    else\n        fireActions[\"Dragon's Breath\"].show = false\n    end\n    \n    return fireActions[\"Dragon's Breath\"].show\nend\n\n\n\n\n",
+				["customTriggerLogic"] = "function(t)         \n    \n    if t[4]\n    then\n        myActions[\"Dragon's Breath\"].inRange = true  \n    else\n        myActions[\"Dragon's Breath\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Dragon's Breath\"].show = true\n    else\n        myActions[\"Dragon's Breath\"].show = false\n    end\n    \n    return myActions[\"Dragon's Breath\"].show\nend\n\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -69164,7 +69174,7 @@ WeakAurasSaved = {
 		["Lava Burst"] = {
 			["iconSource"] = 0,
 			["xOffset"] = 0,
-			["customText"] = "function()\n    return isAuraHighestPriority(\"Flame Shock\", enhancementActions)\nend\n",
+			["customText"] = "function()\n    return isAuraHighestPriority(\"Flame Shock\", myActions)\nend\n",
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["cooldownSwipe"] = true,
@@ -69173,15 +69183,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions_FlameShock = true",
+					["custom"] = "myActions_FlameShock = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "enhancementActions[\"Flame Shock\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
+					["custom"] = "myActions[\"Flame Shock\"] = {\n    [\"priority\"] = nil,\n    [\"onCoolDown\"] = false,\n    [\"expirationTime\"] = nil,\n    [\"inRange\"] = nil           \n}",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not enhancementActions then\n    enhancementActions = {}\nend\n\nenhancementActions[\"Lava Burst\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }          \n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Lava Burst\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 10,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }          \n}",
 				},
 			},
 			["triggers"] = {
@@ -69191,7 +69201,7 @@ WeakAurasSaved = {
 						["custom_type"] = "status",
 						["event"] = "Health",
 						["unit"] = "player",
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(enhancementActions[\"Lava Burst\"].coolDown.duration, \n        enhancementActions[\"Lava Burst\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Lava Burst\"].coolDown.duration, \n        myActions[\"Lava Burst\"].coolDown.expirationTime, \"cast_gcd\")              \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["spellIds"] = {
 						},
@@ -69223,7 +69233,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    enhancementActions[\"Lava Burst\"].coolDown.duration = 0\n    enhancementActions[\"Lava Burst\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Lava Burst\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        enhancementActions[\"Lava Burst\"].coolDown.duration = coolDownDuration\n        enhancementActions[\"Lava Burst\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    enhancementActions[\"Lava Burst\"].priority = nil \n    local maelstromWeapon_Stacks = select(3,AuraUtil.FindAuraByName(\"Maelstrom Weapon\", \"player\", \"HELPFUL|PLAYER\"))\n    if maelstromWeapon_Stacks ~= nil\n    then\n        if unitsInMelee.count == 1 \n        then\n            if maelstromWeapon_Stacks ~= nil and maelstromWeapon_Stacks == 10 \n            and not select(1,AuraUtil.FindAuraByName(\"Molten Weapon\", \"player\", \"HELPFUL|PLAYER\"))\n            then \n                enhancementActions[\"Lava Burst\"].priority = 5\n            elseif maelstromWeapon_Stacks == 10 \n            then\n                enhancementActions[\"Lava Burst\"].priority = 9\n            elseif maelstromWeapon_Stacks >= 5 \n            then\n                enhancementActions[\"Lava Burst\"].priority = 13\n            end            \n        end    \n    end\n    \n    return isAuraHighestPriority(\"Lava Burst\", enhancementActions)\nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Lava Burst\"].coolDown.duration = 0\n    myActions[\"Lava Burst\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Lava Burst\")\n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Lava Burst\"].coolDown.duration = coolDownDuration\n        myActions[\"Lava Burst\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    myActions[\"Lava Burst\"].priority = nil \n    local maelstromWeapon_Stacks = select(3,AuraUtil.FindAuraByName(\"Maelstrom Weapon\", \"player\", \"HELPFUL|PLAYER\"))\n    if maelstromWeapon_Stacks ~= nil\n    then\n        if unitsInMelee.count == 1 \n        then\n            if maelstromWeapon_Stacks ~= nil and maelstromWeapon_Stacks == 10 \n            and not select(1,AuraUtil.FindAuraByName(\"Molten Weapon\", \"player\", \"HELPFUL|PLAYER\"))\n            then \n                myActions[\"Lava Burst\"].priority = 5\n            elseif maelstromWeapon_Stacks == 10 \n            then\n                myActions[\"Lava Burst\"].priority = 9\n            elseif maelstromWeapon_Stacks >= 5 \n            then\n                myActions[\"Lava Burst\"].priority = 13\n            end            \n        end    \n    end\n    \n    return isAuraHighestPriority(\"Lava Burst\", myActions)\nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -69257,7 +69267,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)       \n    \n    if t[5] then\n        enhancementActions[\"Lava Burst\"].inRange = true\n    else\n        enhancementActions[\"Lava Burst\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        enhancementActions[\"Lava Burst\"].show = true\n    else\n        enhancementActions[\"Lava Burst\"].show = false\n    end    \n    return enhancementActions[\"Lava Burst\"].show\nend\n\n\n",
+				["customTriggerLogic"] = "function(t)       \n    \n    if t[5] then\n        myActions[\"Lava Burst\"].inRange = true\n    else\n        myActions[\"Lava Burst\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Lava Burst\"].show = true\n    else\n        myActions[\"Lava Burst\"].show = false\n    end    \n    return myActions[\"Lava Burst\"].show\nend\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -69487,7 +69497,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Divine Storm\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Divine Storm\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -69527,13 +69537,13 @@ WeakAurasSaved = {
 						["custom_hide"] = "custom",
 						["subeventSuffix"] = "_CAST_START",
 						["unevent"] = "auto",
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["event"] = "Action Usable",
 						["spellIds"] = {
 						},
+						["event"] = "Action Usable",
+						["events"] = "cEvent_ValidTarget",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["debuffType"] = "HELPFUL",
 						["custom_type"] = "event",
 						["subeventPrefix"] = "SPELL",
@@ -69549,7 +69559,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    retActions[\"Divine Storm\"].priority = nil\n    \n    if unitsInMelee.count > 1 \n    then\n        if UnitPower(\"player\",9) == 5 or select(1,AuraUtil.FindAuraByName(\"Divine Purpose\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            retActions[\"Divine Storm\"].priority = 0\n        elseif UnitPower(\"player\",9) >= 3\n        then\n            retActions[\"Divine Storm\"].priority = 7            \n        end\n    elseif select(1,AuraUtil.FindAuraByName(\"Empyrean Power\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n    then\n        retActions[\"Divine Storm\"].priority = -1\n    end    \n    \n    return isAuraHighestPriority(\"Divine Storm\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    myActions[\"Divine Storm\"].priority = nil\n    \n    if unitsInMelee.count > 1 \n    then\n        if UnitPower(\"player\",9) == 5 or select(1,AuraUtil.FindAuraByName(\"Divine Purpose\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            myActions[\"Divine Storm\"].priority = 0\n        elseif UnitPower(\"player\",9) >= 3\n        then\n            myActions[\"Divine Storm\"].priority = 7            \n        end\n    elseif select(1,AuraUtil.FindAuraByName(\"Empyrean Power\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n    then\n        myActions[\"Divine Storm\"].priority = -1\n    end    \n    \n    return isAuraHighestPriority(\"Divine Storm\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -69578,7 +69588,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)\n    \n    if t[4] then\n        retActions[\"Divine Storm\"].inRange = true\n    else\n        retActions[\"Divine Storm\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Divine Storm\"].show = true\n    else\n        retActions[\"Divine Storm\"].show = false\n    end\n    \n    return retActions[\"Divine Storm\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)\n    \n    if t[4] then\n        myActions[\"Divine Storm\"].inRange = true\n    else\n        myActions[\"Divine Storm\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Divine Storm\"].show = true\n    else\n        myActions[\"Divine Storm\"].show = false\n    end\n    \n    return myActions[\"Divine Storm\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -69886,7 +69896,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Retribution",
+			["radius"] = 200,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -69895,7 +69905,7 @@ WeakAurasSaved = {
 			},
 			["fullCircle"] = true,
 			["animate"] = false,
-			["useLimit"] = false,
+			["rotation"] = 0,
 			["scale"] = 1,
 			["selfPoint"] = "TOP",
 			["border"] = false,
@@ -69903,8 +69913,8 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["rowSpace"] = 1,
-			["xOffset"] = 0,
+			["useLimit"] = false,
+			["gridType"] = "RD",
 			["constantFactor"] = "RADIUS",
 			["borderInset"] = 0,
 			["borderOffset"] = 16,
@@ -69917,15 +69927,15 @@ WeakAurasSaved = {
 			["yOffset"] = -152,
 			["config"] = {
 			},
-			["radius"] = 200,
-			["gridType"] = "RD",
+			["xOffset"] = 0,
+			["rowSpace"] = 1,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["rotation"] = 0,
+			["parent"] = "Retribution",
 		},
 		["Chaos Nova"] = {
 			["iconSource"] = 0,
@@ -69950,10 +69960,10 @@ WeakAurasSaved = {
 						},
 						["matchesShowOn"] = "showOnMissing",
 						["useGroup_count"] = false,
-						["unit"] = "player",
+						["use_unit"] = true,
 						["use_genericShowOn"] = true,
 						["genericShowOn"] = "showOnCooldown",
-						["use_unit"] = true,
+						["subeventPrefix"] = "SPELL",
 						["group_countOperator"] = "==",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
@@ -69977,7 +69987,7 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["ownOnly"] = true,
@@ -70172,13 +70182,20 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "C1tdftBSUlw",
-			["selfPoint"] = "CENTER",
+			["desaturate"] = false,
 			["internalVersion"] = 59,
 			["regionType"] = "icon",
-			["desaturate"] = false,
+			["authorOptions"] = {
+			},
 			["cooldown"] = true,
 			["displayIcon"] = 135795,
-			["authorOptions"] = {
+			["actions"] = {
+				["start"] = {
+				},
+				["init"] = {
+				},
+				["finish"] = {
+				},
 			},
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
@@ -70193,7 +70210,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Havoc CD Bar",
+			["selfPoint"] = "CENTER",
 			["conditions"] = {
 				{
 					["check"] = {
@@ -70229,14 +70246,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["init"] = {
-				},
-				["finish"] = {
-				},
-			},
+			["parent"] = "Havoc CD Bar",
 		},
 		["Raging Blow"] = {
 			["iconSource"] = 0,
@@ -70259,18 +70269,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["use_absorbMode"] = true,
 						["custom_type"] = "status",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(furyActions[\"Raging Blow\"].coolDown.duration, furyActions[\"Raging Blow\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()        \n    if cFunction_SpellReadyTime == nil then return false end    \n    \n    return cFunction_SpellReadyTime(myActions[\"Raging Blow\"].coolDown.duration, myActions[\"Raging Blow\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["unevent"] = "auto",
 						["debuffType"] = "HELPFUL",
 					},
@@ -70294,7 +70304,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()    \n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    furyActions[\"Raging Blow\"].coolDown.duration = 0\n    furyActions[\"Raging Blow\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Raging Blow\")\n    furyActions[\"Raging Blow\"].charges = currentCharges\n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000 \n    then\n        furyActions[\"Raging Blow\"].coolDown.duration = coolDownDuration\n        furyActions[\"Raging Blow\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    furyActions[\"Raging Blow\"].priority = 5\n    \n    --TODO add charge logic at level 42\n    \n    \n    return isAuraHighestPriority(\"Raging Blow\", furyActions)\n    \nend",
+						["custom"] = "function()    \n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Raging Blow\"].coolDown.duration = 0\n    myActions[\"Raging Blow\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Raging Blow\")\n    myActions[\"Raging Blow\"].charges = currentCharges\n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000 \n    then\n        myActions[\"Raging Blow\"].coolDown.duration = coolDownDuration\n        myActions[\"Raging Blow\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority \n    myActions[\"Raging Blow\"].priority = 5\n    \n    --TODO add charge logic at level 42\n    \n    \n    return isAuraHighestPriority(\"Raging Blow\", myActions)\n    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -70310,16 +70320,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["use_track"] = true,
 						["unevent"] = "auto",
-						["range"] = "8",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["unit"] = "target",
 						["use_range"] = true,
 						["duration"] = "1",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "8",
 						["range_operator"] = "<=",
 						["debuffType"] = "HELPFUL",
 					},
@@ -70328,7 +70338,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        furyActions[\"Raging Blow\"].inRange = true\n    else\n        furyActions[\"Raging Blow\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        furyActions[\"Raging Blow\"].show = true\n    else\n        furyActions[\"Raging Blow\"].show = false\n    end    \n    return furyActions[\"Raging Blow\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Raging Blow\"].inRange = true\n    else\n        myActions[\"Raging Blow\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Raging Blow\"].show = true\n    else\n        myActions[\"Raging Blow\"].show = false\n    end    \n    return myActions[\"Raging Blow\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -70475,7 +70485,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not furyActions then\n    furyActions = {}\nend\n\nfuryActions[\"Raging Blow\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Raging Blow\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 7,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["desaturate"] = false,
@@ -70517,7 +70527,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Feral Bear Swipe\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 104,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Feral Bear Swipe\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 104,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 				},
@@ -70529,18 +70539,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["custom_type"] = "status",
 						["subeventSuffix"] = "_CAST_START",
-						["names"] = {
-						},
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Feral Bear Swipe\"].coolDown.duration, feralActions[\"Feral Bear Swipe\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["use_unit"] = true,
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Feral Bear Swipe\"].coolDown.duration, myActions[\"Feral Bear Swipe\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend",
 						["spellIds"] = {
 						},
 						["subeventPrefix"] = "SPELL",
 						["check"] = "update",
-						["use_unit"] = true,
+						["names"] = {
+						},
 						["duration"] = "1",
 						["debuffType"] = "HELPFUL",
 					},
@@ -70564,7 +70574,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    if GetShapeshiftForm() == 1\n    then\n        feralActions[\"Feral Bear Swipe\"].priority = 104\n    else\n        feralActions[\"Feral Bear Swipe\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Feral Bear Swipe\", feralActions)    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --priority \n    if GetShapeshiftForm() == 1\n    then\n        myActions[\"Feral Bear Swipe\"].priority = 104\n    else\n        myActions[\"Feral Bear Swipe\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Feral Bear Swipe\", myActions)    \nend",
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
 						["custom_type"] = "status",
@@ -70580,16 +70590,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["range"] = "8",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "8",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -70598,7 +70608,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        feralActions[\"Feral Bear Swipe\"].inRange = true\n    else\n        feralActions[\"Feral Bear Swipe\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Feral Bear Swipe\"].show = true\n    else\n        feralActions[\"Feral Bear Swipe\"].show = false\n    end    \n    return feralActions[\"Feral Bear Swipe\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[4] then\n        myActions[\"Feral Bear Swipe\"].inRange = true\n    else\n        myActions[\"Feral Bear Swipe\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Feral Bear Swipe\"].show = true\n    else\n        myActions[\"Feral Bear Swipe\"].show = false\n    end    \n    return myActions[\"Feral Bear Swipe\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -70813,13 +70823,13 @@ WeakAurasSaved = {
 						["group_count"] = "0",
 						["custom_hide"] = "timed",
 						["match_count"] = "0",
-						["unevent"] = "auto",
+						["use_targetRequired"] = false,
 						["type"] = "spell",
 						["buffShowOn"] = "showOnMissing",
-						["subeventSuffix"] = "_CAST_START",
+						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
-						["use_targetRequired"] = false,
+						["subeventSuffix"] = "_CAST_START",
 						["match_countOperator"] = "==",
 						["group_countOperator"] = "==",
 						["event"] = "Global Cooldown",
@@ -71106,7 +71116,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["names"] = {
 						},
-						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(shadowActions[\"Mind Blast\"].coolDown.duration, \n            shadowActions[\"Mind Blast\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(shadowActions[\"Mind Blast\"].coolDown.duration, \n            shadowActions[\"Mind Blast\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
+						["customDuration"] = "function()\n    if coolDown.channel.name ~= nil and (coolDown.channel.name == \"Mind Sear\" or coolDown.channel.name == \"Mind Flay: Insanity\")\n    then\n        return cFunction_SpellReadyTime(myActions[\"Mind Blast\"].coolDown.duration, \n            myActions[\"Mind Blast\"].coolDown.expirationTime, \"cast_channel_gcd\") \n    else\n        return cFunction_SpellReadyTime(myActions[\"Mind Blast\"].coolDown.duration, \n            myActions[\"Mind Blast\"].coolDown.expirationTime, \"cast_gcd\") \n    end\nend",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
@@ -71130,10 +71140,10 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["event"] = "Conditions",
 						["custom_hide"] = "custom",
-						["spellIds"] = {
-						},
 						["events"] = "cEvent_ValidTarget",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
+						["spellIds"] = {
+						},
 						["duration"] = "1",
 						["names"] = {
 						},
@@ -71153,7 +71163,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["subeventPrefix"] = "SPELL",
 						["subeventSuffix"] = "_CAST_START",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    shadowActions[\"Mind Blast\"].coolDown.duration = 0\n    shadowActions[\"Mind Blast\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Mind Blast\")   \n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        shadowActions[\"Mind Blast\"].coolDown.duration = coolDownDuration\n        shadowActions[\"Mind Blast\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end \n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Mind Blast\"\n    then\n        shadowActions[\"Mind Blast\"].casting.active = true\n        shadowActions[\"Mind Blast\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        shadowActions[\"Mind Blast\"].casting.active = false\n        shadowActions[\"Mind Blast\"].casting.expirationTime = nil\n    end \n    \n    --priority    \n    shadowActions[\"Mind Blast\"].priority = 14    \n    if (currentCharges >= 2 or select(1,AuraUtil.FindAuraByName(\"Shadowy Insight\", \"player\", \"HELPFUL|PLAYER\")))\n    --and not shadowActions[\"Mind Blast\"].casting.active        \n    then                                    \n        shadowActions[\"Mind Blast\"].priority = 8            \n    elseif currentCharges == 1 and not shadowActions[\"Mind Blast\"].casting.active\n    then\n        if unitsInRange.count <= 2\n        then \n            shadowActions[\"Mind Blast\"].priority = 14\n        else\n            shadowActions[\"Mind Blast\"].priority = 11\n        end        \n    elseif shadowActions[\"Mind Blast\"].casting.active\n    then        \n        shadowActions[\"Mind Blast\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Mind Blast\", shadowActions)\nend\n\n\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --coolDown\n    myActions[\"Mind Blast\"].coolDown.duration = 0\n    myActions[\"Mind Blast\"].coolDown.expirationTime = 0     \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Mind Blast\")   \n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000\n    then\n        myActions[\"Mind Blast\"].coolDown.duration = coolDownDuration\n        myActions[\"Mind Blast\"].coolDown.expirationTime = coolDownStart + coolDownDuration      \n    end \n    \n    --Casting\n    if coolDown.cast.name ~= nil and coolDown.cast.name == \"Mind Blast\"\n    then\n        myActions[\"Mind Blast\"].casting.active = true\n        myActions[\"Mind Blast\"].casting.expirationTime = coolDown.cast.expirationTime        \n    else\n        myActions[\"Mind Blast\"].casting.active = false\n        myActions[\"Mind Blast\"].casting.expirationTime = nil\n    end \n    \n    --priority    \n    myActions[\"Mind Blast\"].priority = 14    \n    if (currentCharges >= 2 or select(1,AuraUtil.FindAuraByName(\"Shadowy Insight\", \"player\", \"HELPFUL|PLAYER\")))\n    --and not myActions[\"Mind Blast\"].casting.active        \n    then                                    \n        myActions[\"Mind Blast\"].priority = 8            \n    elseif currentCharges == 1 and not myActions[\"Mind Blast\"].casting.active\n    then\n        if unitsInRange.count <= 2\n        then \n            myActions[\"Mind Blast\"].priority = 14\n        else\n            myActions[\"Mind Blast\"].priority = 11\n        end        \n    elseif myActions[\"Mind Blast\"].casting.active\n    then        \n        myActions[\"Mind Blast\"].priority = nil\n    end    \n    \n    return isAuraHighestPriority(\"Mind Blast\", myActions)\nend\n\n\n\n\n",
 						["duration"] = "1",
 						["check"] = "update",
 						["unevent"] = "auto",
@@ -71183,7 +71193,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)         \n    if t[4]\n    then\n        shadowActions[\"Mind Blast\"].inRange = true  \n    else\n        shadowActions[\"Mind Blast\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        shadowActions[\"Mind Blast\"].show = true\n    else\n        shadowActions[\"Mind Blast\"].show = false\n    end\n    \n    return shadowActions[\"Mind Blast\"].show\nend\n\n\n\n",
+				["customTriggerLogic"] = "function(t)         \n    if t[4]\n    then\n        myActions[\"Mind Blast\"].inRange = true  \n    else\n        myActions[\"Mind Blast\"].inRange = false\n    end        \n    \n    if t[2] and t[3]\n    then\n        myActions[\"Mind Blast\"].show = true\n    else\n        myActions[\"Mind Blast\"].show = false\n    end\n    \n    return myActions[\"Mind Blast\"].show\nend\n\n\n\n",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -71320,26 +71330,31 @@ WeakAurasSaved = {
 				["zoneIds"] = "",
 			},
 			["uid"] = "9nTIjQciPkd",
-			["xOffset"] = 0,
+			["parent"] = "Shadow Action Bar",
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = true",
+					["custom"] = "myActions_MindBlast = true",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not shadowActions then\n    shadowActions = {}\nend\n\nshadowActions[\"Mind Blast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 15,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Mind Blast\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 15,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "shadowActions_MindBlast = false",
+					["custom"] = "myActions_MindBlast = false",
 				},
 			},
 			["regionType"] = "icon",
-			["parent"] = "Shadow Action Bar",
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["displayIcon"] = 136224,
-			["selfPoint"] = "CENTER",
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["zoom"] = 0.28,
 			["width"] = 50,
 			["cooldownTextDisabled"] = false,
@@ -71353,7 +71368,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["stickyDuration"] = false,
+			["xOffset"] = 0,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -71373,12 +71388,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["stickyDuration"] = false,
 		},
 		["Unit Strength"] = {
 			["outline"] = "OUTLINE",
@@ -71410,8 +71420,8 @@ WeakAurasSaved = {
 						["use_unit"] = true,
 						["unit"] = "player",
 						["use_absorbMode"] = true,
-						["debuffType"] = "HELPFUL",
 						["spellName"] = 0,
+						["custom_hide"] = "timed",
 						["subeventPrefix"] = "SPELL",
 						["type"] = "unit",
 						["custom"] = "function()\n    if UnitCanAttack(\"player\", \"target\")\n    then\n        local classification = UnitClassification(\"target\");\n        local type = nil\n        local name, realm = UnitName(\"target\")\n        if UnitLevel(\"target\") == -1 then type = \"Tough\"\n        elseif string.match(name, \"Totem\") or string.match(name, \"totem\") then type = \"Weak\"            \n        elseif classification == \"worldboss\" then type = \"Tough\"\n        elseif classification == \"rareelite\" then type = \"Tough\"\n        elseif classification == \"elite\" then type = \"Tough\"\n        elseif classification == \"rare\" then type = \"Tough\"\n        elseif UnitIsQuestBoss(\"target\") then type = \"Tough\"\n        elseif classification == \"normal\" then type = \"Normal\"\n        elseif classification == \"trivial\" then type = \"Weak\"\n        elseif classification == \"minus\" then type = \"Weak\"            \n        else type = \"Unknown\"\n        end\n        targetType = type\n        targetBoss = true\n    end  \n    return true\nend",
@@ -71427,7 +71437,7 @@ WeakAurasSaved = {
 						},
 						["subeventSuffix"] = "_CAST_START",
 						["check"] = "update",
-						["custom_hide"] = "timed",
+						["debuffType"] = "HELPFUL",
 						["use_track"] = true,
 						["use_genericShowOn"] = true,
 					},
@@ -71629,16 +71639,16 @@ WeakAurasSaved = {
 						["use_absorbMode"] = true,
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
-						["unit"] = "player",
+						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()\n    \n    if coolDown == nil then return false end\n    \n    return coolDown.cast_gcd.duration, coolDown.cast_gcd.expirationTime \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
 						["use_unit"] = true,
 						["check"] = "update",
+						["unit"] = "player",
 						["names"] = {
 						},
-						["subeventPrefix"] = "SPELL",
 						["debuffType"] = "HELPFUL",
 					},
 					["untrigger"] = {
@@ -71897,14 +71907,14 @@ WeakAurasSaved = {
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
-						["debuffType"] = "HELPFUL",
+						["spellName"] = 198103,
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["match_count"] = "0",
-						["spellName"] = 198103,
+						["custom_hide"] = "timed",
 						["type"] = "spell",
-						["group_countOperator"] = "==",
+						["buffShowOn"] = "showOnMissing",
 						["unevent"] = "auto",
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -71917,7 +71927,7 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["custom_hide"] = "timed",
+						["group_countOperator"] = "==",
 						["use_unit"] = true,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
@@ -72118,18 +72128,18 @@ WeakAurasSaved = {
 				},
 			},
 			["uid"] = "wN8tEpnEV4C",
-			["useTooltip"] = false,
+			["desaturate"] = false,
 			["xOffset"] = 0,
 			["regionType"] = "icon",
-			["desaturate"] = false,
-			["cooldown"] = true,
-			["displayIcon"] = 136024,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["cooldown"] = true,
+			["displayIcon"] = 136024,
+			["selfPoint"] = "CENTER",
 			["cooldownTextDisabled"] = false,
 			["width"] = 45,
 			["zoom"] = 0.28,
@@ -72150,7 +72160,7 @@ WeakAurasSaved = {
 			["config"] = {
 			},
 			["inverse"] = true,
-			["parent"] = "Enhancment CD Bar",
+			["useTooltip"] = false,
 			["conditions"] = {
 				{
 					["check"] = {
@@ -72186,7 +72196,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["parent"] = "Enhancment CD Bar",
 		},
 		["Survival Actions Old"] = {
 			["backdropColor"] = {
@@ -72207,8 +72217,7 @@ WeakAurasSaved = {
 				"Raptor Strike Old", -- [9]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["borderEdge"] = "Square Full White",
 			["border"] = false,
 			["yOffset"] = -140,
@@ -72222,7 +72231,7 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["scale"] = 1,
+			["xOffset"] = 0,
 			["actions"] = {
 				["start"] = {
 				},
@@ -72251,7 +72260,8 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["internalVersion"] = 59,
-			["xOffset"] = 0,
+			["authorOptions"] = {
+			},
 			["animation"] = {
 				["start"] = {
 					["duration_type"] = "seconds",
@@ -72350,11 +72360,11 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["group_count"] = "0",
 						["group_countOperator"] = "==",
+						["group_count"] = "0",
+						["debuffType"] = "HELPFUL",
 						["use_targetRequired"] = false,
-						["spellName"] = 186265,
+						["buffShowOn"] = "showOnMissing",
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -72367,8 +72377,8 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
 						["custom_hide"] = "timed",
+						["spellName"] = 186265,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["useGroup_count"] = false,
@@ -72569,11 +72579,11 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["useTooltip"] = false,
+			["parent"] = "Survival CD Bar",
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["parent"] = "Survival CD Bar",
+			["icon"] = true,
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -72606,7 +72616,7 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["icon"] = true,
+			["selfPoint"] = "CENTER",
 			["alpha"] = 1,
 			["anchorFrameType"] = "SCREEN",
 			["zoom"] = 0.28,
@@ -72619,13 +72629,13 @@ WeakAurasSaved = {
 			["xOffset"] = 0,
 			["uid"] = "LYvF1ojuDU4",
 			["inverse"] = true,
-			["desaturate"] = false,
+			["useTooltip"] = false,
 			["displayIcon"] = 132199,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["desaturate"] = false,
 		},
 		["Feral Action Bar"] = {
 			["grow"] = "HORIZONTAL",
@@ -72796,20 +72806,18 @@ WeakAurasSaved = {
 						["auranames"] = {
 							"Lightning Shield", -- [1]
 						},
-						["names"] = {
-							"Lightning Shield", -- [1]
-						},
+						["use_unit"] = true,
 						["ownOnly"] = true,
 						["genericShowOn"] = "showOnCooldown",
-						["use_unit"] = true,
+						["subeventPrefix"] = "SPELL",
 						["useGroup_count"] = false,
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["custom_hide"] = "timed",
-						["group_count"] = "0",
 						["group_countOperator"] = "==",
+						["group_count"] = "0",
+						["spellName"] = 47585,
 						["use_targetRequired"] = false,
-						["debuffType"] = "HELPFUL",
+						["custom_hide"] = "timed",
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -72822,11 +72830,13 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["spellName"] = 47585,
 						["buffShowOn"] = "showOnMissing",
+						["debuffType"] = "HELPFUL",
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
-						["subeventPrefix"] = "SPELL",
+						["names"] = {
+							"Lightning Shield", -- [1]
+						},
 					},
 					["untrigger"] = {
 						["spellName"] = 193786,
@@ -73062,15 +73072,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["xOffset"] = 0,
 			["desaturate"] = false,
 			["regionType"] = "icon",
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -73103,7 +73108,14 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["selfPoint"] = "CENTER",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -73116,20 +73128,18 @@ WeakAurasSaved = {
 			["internalVersion"] = 59,
 			["uid"] = "FmRMSW01W9M",
 			["inverse"] = true,
-			["authorOptions"] = {
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
 			},
 			["displayIcon"] = 237563,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
+			["authorOptions"] = {
 			},
 		},
 		["Chaos Strike"] = {
@@ -73632,38 +73642,38 @@ WeakAurasSaved = {
 				["use_vehicleUi"] = false,
 				["zoneIds"] = "",
 			},
-			["xOffset"] = 0,
-			["regionType"] = "icon",
-			["conditions"] = {
-			},
-			["icon"] = true,
 			["color"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["regionType"] = "icon",
+			["conditions"] = {
+			},
+			["xOffset"] = 0,
+			["parent"] = "Survival Actions Old",
 			["cooldown"] = true,
 			["cooldownTextDisabled"] = false,
 			["config"] = {
 			},
 			["zoom"] = 0.28,
 			["auto"] = false,
-			["frameStrata"] = 2,
+			["alpha"] = 1,
 			["id"] = "Raptor Strike Old",
 			["width"] = 50,
-			["alpha"] = 1,
-			["anchorFrameType"] = "SCREEN",
 			["useCooldownModRate"] = true,
+			["anchorFrameType"] = "SCREEN",
+			["frameStrata"] = 2,
 			["uid"] = "13LPN9yuXpo",
 			["inverse"] = true,
-			["parent"] = "Survival Actions Old",
+			["selfPoint"] = "CENTER",
 			["displayIcon"] = 1376044,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
 		},
 		["Global"] = {
 			["outline"] = "OUTLINE",
@@ -73916,7 +73926,7 @@ WeakAurasSaved = {
 				},
 				["zoneIds"] = "",
 			},
-			["parent"] = "Frost Knight",
+			["radius"] = 200,
 			["backdropColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -73925,7 +73935,7 @@ WeakAurasSaved = {
 			},
 			["fullCircle"] = true,
 			["animate"] = false,
-			["yOffset"] = -152,
+			["useLimit"] = false,
 			["scale"] = 1,
 			["space"] = 2,
 			["border"] = false,
@@ -73933,8 +73943,8 @@ WeakAurasSaved = {
 			["regionType"] = "dynamicgroup",
 			["borderSize"] = 2,
 			["sort"] = "none",
-			["rotation"] = 0,
-			["selfPoint"] = "TOP",
+			["yOffset"] = -152,
+			["gridType"] = "RD",
 			["constantFactor"] = "RADIUS",
 			["borderInset"] = 0,
 			["borderOffset"] = 16,
@@ -73948,18 +73958,23 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["radius"] = 200,
-			["gridType"] = "RD",
+			["selfPoint"] = "TOP",
+			["rotation"] = 0,
 			["conditions"] = {
 			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["useLimit"] = false,
+			["parent"] = "Frost Knight",
 		},
 		["BT Moon Fire"] = {
-			["parent"] = "Feral Bloodtalon Tracker",
+			["color"] = {
+				0.984313725490196, -- [1]
+				0.0509803921568627, -- [2]
+				0, -- [3]
+				1, -- [4]
+			},
 			["yOffset"] = 0,
 			["anchorPoint"] = "CENTER",
 			["actions"] = {
@@ -74155,15 +74170,10 @@ WeakAurasSaved = {
 			["discrete_rotation"] = 0,
 			["frameStrata"] = 1,
 			["id"] = "BT Moon Fire",
-			["authorOptions"] = {
-			},
+			["parent"] = "Feral Bloodtalon Tracker",
 			["alpha"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["color"] = {
-				0.984313725490196, -- [1]
-				0.0509803921568627, -- [2]
-				0, -- [3]
-				1, -- [4]
+			["authorOptions"] = {
 			},
 			["config"] = {
 			},
@@ -74211,7 +74221,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not survivalActions then\n    survivalActions = {}\nend\n\nsurvivalActions[\"Wildfire Bomb\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0,\n        [\"remaining\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Wildfire Bomb\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 6,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0,\n        [\"remaining\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -74225,7 +74235,7 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
 						["use_unit"] = true,
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(survivalActions[\"Wildfire Bomb\"].coolDown.duration, survivalActions[\"Wildfire Bomb\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Wildfire Bomb\"].coolDown.duration, myActions[\"Wildfire Bomb\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -74255,11 +74265,11 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
+						["events"] = "cEvent_ValidTarget",
+						["debuffType"] = "HELPFUL",
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["events"] = "cEvent_ValidTarget",
 						["unevent"] = "auto",
 						["custom_hide"] = "custom",
 					},
@@ -74271,7 +74281,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    --coolDown\n    survivalActions[\"Wildfire Bomb\"].coolDown.duration = 0\n    survivalActions[\"Wildfire Bomb\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Wildfire Bomb\")\n    survivalActions[\"Wildfire Bomb\"].charges = currentCharges\n    survivalActions[\"Wildfire Bomb\"].coolDown.remaining = coolDownStart + coolDownDuration - GetTime()\n    \n    \n    if coolDownStart < 4290000 \n    then \n        local remaining = coolDownStart + coolDownDuration - GetTime()\n        if maxCharges - currentCharges > 1 then remaining = 99 end\n        survivalActions[\"Wildfire Bomb\"].coolDown.remaining = remaining\n    else\n        survivalActions[\"Wildfire Bomb\"].coolDown.remaining = 0\n    end\n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000 \n    then\n        survivalActions[\"Wildfire Bomb\"].coolDown.duration = coolDownDuration\n        survivalActions[\"Wildfire Bomb\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    survivalActions[\"Wildfire Bomb\"].priority = nil\n    local bombtravel_State = WeakAuras.GetTriggerStateForTrigger(\"Wildfire Bomb\", 4)\n    \n    --Look for any kind of bomb dot\n    local i = 1\n    local bomb_dot_found = false\n    local name            \n    \n    repeat\n        name = select(1,UnitAura(\"target\",i, \"HARMFUL|PLAYER\"))\n        bomb_dot_found = name == \"Wildfire Bomb\" or name == \"Shrapnel Bomb\" or name == \"Pheromone Bomb\" or name == \"Volatile Bomb\"\n        i = i + 1\n    until bomb_dot_found or i == 100 or not name    \n    \n    if not bomb_dot_found and bombtravel_State[\"\"] == nil --or (bombtravel_State[\"\"] ~= nil and not bombtravel_State[\"\"].show\n    then        \n        survivalActions[\"Wildfire Bomb\"].priority = 6\n    end    \n    \n    return isAuraHighestPriority(\"Wildfire Bomb\", survivalActions)\n    \nend",
+						["custom"] = "function()\n    \n    --coolDown\n    myActions[\"Wildfire Bomb\"].coolDown.duration = 0\n    myActions[\"Wildfire Bomb\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local currentCharges, maxCharges, coolDownStart, coolDownDuration, chargeModRate = GetSpellCharges(\"Wildfire Bomb\")\n    myActions[\"Wildfire Bomb\"].charges = currentCharges\n    myActions[\"Wildfire Bomb\"].coolDown.remaining = coolDownStart + coolDownDuration - GetTime()\n    \n    \n    if coolDownStart < 4290000 \n    then \n        local remaining = coolDownStart + coolDownDuration - GetTime()\n        if maxCharges - currentCharges > 1 then remaining = 99 end\n        myActions[\"Wildfire Bomb\"].coolDown.remaining = remaining\n    else\n        myActions[\"Wildfire Bomb\"].coolDown.remaining = 0\n    end\n    \n    --If cool down is going to recover before gcd does count as full charges\n    if currentCharges < maxCharges and coolDownStart + coolDownDuration <= coolDown.gcd.expirationTime\n    then\n        currentCharges  = currentCharges + 1 \n    end\n    \n    if currentCharges == 0 and coolDownStart + coolDownDuration > coolDown.gcd.expirationTime and coolDownStart < 4290000 \n    then\n        myActions[\"Wildfire Bomb\"].coolDown.duration = coolDownDuration\n        myActions[\"Wildfire Bomb\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    myActions[\"Wildfire Bomb\"].priority = nil\n    local bombtravel_State = WeakAuras.GetTriggerStateForTrigger(\"Wildfire Bomb\", 4)\n    \n    --Look for any kind of bomb dot\n    local i = 1\n    local bomb_dot_found = false\n    local name            \n    \n    repeat\n        name = select(1,UnitAura(\"target\",i, \"HARMFUL|PLAYER\"))\n        bomb_dot_found = name == \"Wildfire Bomb\" or name == \"Shrapnel Bomb\" or name == \"Pheromone Bomb\" or name == \"Volatile Bomb\"\n        i = i + 1\n    until bomb_dot_found or i == 100 or not name    \n    \n    if not bomb_dot_found and bombtravel_State[\"\"] == nil --or (bombtravel_State[\"\"] ~= nil and not bombtravel_State[\"\"].show\n    then        \n        myActions[\"Wildfire Bomb\"].priority = 6\n    end    \n    \n    return isAuraHighestPriority(\"Wildfire Bomb\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -74315,7 +74325,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        survivalActions[\"Wildfire Bomb\"].inRange = true\n    else\n        survivalActions[\"Wildfire Bomb\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        survivalActions[\"Wildfire Bomb\"].show = true\n    else\n        survivalActions[\"Wildfire Bomb\"].show = false\n    end\n    \n    return survivalActions[\"Wildfire Bomb\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        myActions[\"Wildfire Bomb\"].inRange = true\n    else\n        myActions[\"Wildfire Bomb\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Wildfire Bomb\"].show = true\n    else\n        myActions[\"Wildfire Bomb\"].show = false\n    end\n    \n    return myActions[\"Wildfire Bomb\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -74513,7 +74523,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not retActions then\n    retActions = {}\nend\n\nretActions[\"Templar's Verdict\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Templar's Verdict\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,   \n    [\"inRange\"] = nil,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = nil\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -74557,11 +74567,11 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
-						["events"] = "cEvent_ValidTarget",
+						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["debuffType"] = "HELPFUL",
+						["events"] = "cEvent_ValidTarget",
 						["spellIds"] = {
 						},
-						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
 						["unevent"] = "auto",
 						["custom_hide"] = "custom",
 					},
@@ -74573,7 +74583,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    retActions[\"Templar's Verdict\"].priority = nil\n    \n    if unitsInMelee.count <= 1 \n    then\n        if UnitPower(\"player\",9) == 5 or select(1,AuraUtil.FindAuraByName(\"Divine Purpose\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            retActions[\"Templar's Verdict\"].priority = 0\n        elseif UnitPower(\"player\",9) >= 3\n        then\n            retActions[\"Templar's Verdict\"].priority = 7            \n        end\n    end    \n    \n    return isAuraHighestPriority(\"Templar's Verdict\", retActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    myActions[\"Templar's Verdict\"].priority = nil\n    \n    if unitsInMelee.count <= 1 \n    then\n        if UnitPower(\"player\",9) == 5 or select(1,AuraUtil.FindAuraByName(\"Divine Purpose\", \"player\", \"HELPFUL|PLAYER\")) ~= nil\n        then\n            myActions[\"Templar's Verdict\"].priority = 0\n        elseif UnitPower(\"player\",9) >= 3\n        then\n            myActions[\"Templar's Verdict\"].priority = 7            \n        end\n    end    \n    \n    return isAuraHighestPriority(\"Templar's Verdict\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -74602,7 +74612,7 @@ WeakAurasSaved = {
 					},
 				}, -- [4]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)\n    \n    if t[4] then\n        retActions[\"Templar's Verdict\"].inRange = true\n    else\n        retActions[\"Templar's Verdict\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        retActions[\"Templar's Verdict\"].show = true\n    else\n        retActions[\"Templar's Verdict\"].show = false\n    end\n    \n    return retActions[\"Templar's Verdict\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)\n    \n    if t[4] then\n        myActions[\"Templar's Verdict\"].inRange = true\n    else\n        myActions[\"Templar's Verdict\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Templar's Verdict\"].show = true\n    else\n        myActions[\"Templar's Verdict\"].show = false\n    end\n    \n    return myActions[\"Templar's Verdict\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -74796,26 +74806,26 @@ WeakAurasSaved = {
 			["triggers"] = {
 				{
 					["trigger"] = {
-						["use_unit"] = true,
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
+						["subeventPrefix"] = "SPELL",
 						["matchesShowOn"] = "showOnMissing",
 						["auranames"] = {
 							"Lightning Shield", -- [1]
 						},
-						["buffShowOn"] = "showOnMissing",
+						["group_countOperator"] = "==",
 						["ownOnly"] = true,
 						["genericShowOn"] = "showOnCooldown",
 						["unit"] = "player",
-						["custom_hide"] = "timed",
+						["buffShowOn"] = "showOnMissing",
 						["use_tooltip"] = false,
 						["group_count"] = "0",
-						["spellName"] = 2825,
+						["custom_hide"] = "timed",
 						["match_count"] = "0",
-						["group_countOperator"] = "==",
-						["use_targetRequired"] = false,
 						["debuffType"] = "HELPFUL",
+						["use_targetRequired"] = false,
+						["spellName"] = 2825,
 						["subeventSuffix"] = "_CAST_START",
 						["type"] = "spell",
 						["use_debuffClass"] = false,
@@ -74829,7 +74839,7 @@ WeakAurasSaved = {
 						["spellIds"] = {
 						},
 						["duration"] = "1",
-						["subeventPrefix"] = "SPELL",
+						["use_unit"] = true,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
 						["useGroup_count"] = false,
@@ -75029,15 +75039,10 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["parent"] = "Enhancment CD Bar",
 			["desaturate"] = false,
 			["regionType"] = "icon",
-			["parent"] = "Enhancment CD Bar",
+			["selfPoint"] = "CENTER",
 			["cooldown"] = true,
 			["conditions"] = {
 				{
@@ -75070,7 +75075,14 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["selfPoint"] = "CENTER",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
 			["zoom"] = 0.28,
 			["anchorFrameType"] = "SCREEN",
 			["cooldownTextDisabled"] = false,
@@ -75083,20 +75095,18 @@ WeakAurasSaved = {
 			["useTooltip"] = false,
 			["uid"] = "FBzA5NUmBC3",
 			["inverse"] = true,
-			["authorOptions"] = {
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
 			},
 			["displayIcon"] = 136012,
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
+			["authorOptions"] = {
 			},
 		},
 		["Hailstorm"] = {
@@ -75108,7 +75118,14 @@ WeakAurasSaved = {
 			["sparkRotation"] = 0,
 			["sparkRotationMode"] = "AUTO",
 			["zoom"] = 0,
-			["icon"] = false,
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
 			["triggers"] = {
 				{
 					["trigger"] = {
@@ -75116,18 +75133,18 @@ WeakAurasSaved = {
 						["type"] = "custom",
 						["custom_type"] = "status",
 						["subeventSuffix"] = "_CAST_START",
-						["unit"] = "player",
-						["duration"] = "1",
-						["event"] = "Health",
 						["names"] = {
 						},
+						["duration"] = "1",
+						["event"] = "Health",
+						["subeventPrefix"] = "SPELL",
 						["customDuration"] = "function()\n    \n    local stacksState = WeakAuras.GetTriggerStateForTrigger(\"Hailstorm\", 3)\n    if stacksState[\"\"] ~= nil then  \n        s = stacksState[\"\"].stacks\n        if not s then\n            s = 0\n        end\n        return s,10, function() return s,10 end\n    end\nend\n\n\n",
 						["spellIds"] = {
 						},
 						["custom"] = "function()\n    return true\nend",
 						["use_unit"] = true,
 						["check"] = "update",
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 						["use_absorbMode"] = true,
 						["debuffType"] = "HELPFUL",
 					},
@@ -75195,7 +75212,26 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["internalVersion"] = 59,
-			["selfPoint"] = "CENTER",
+			["animation"] = {
+				["start"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["main"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+				["finish"] = {
+					["type"] = "none",
+					["duration_type"] = "seconds",
+					["easeStrength"] = 3,
+					["easeType"] = "none",
+				},
+			},
 			["backdropInFront"] = false,
 			["authorOptions"] = {
 			},
@@ -75206,8 +75242,8 @@ WeakAurasSaved = {
 				1, -- [4]
 			},
 			["stickyDuration"] = false,
-			["customTextUpdate"] = "update",
-			["desaturate"] = false,
+			["icon"] = false,
+			["iconSource"] = -1,
 			["sparkOffsetY"] = 0,
 			["subRegions"] = {
 				{
@@ -75333,12 +75369,7 @@ WeakAurasSaved = {
 				}, -- [6]
 			},
 			["height"] = 15,
-			["backgroundColor"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.5, -- [4]
-			},
+			["sparkOffsetX"] = 0,
 			["load"] = {
 				["ingroup"] = {
 					["multi"] = {
@@ -75408,27 +75439,8 @@ WeakAurasSaved = {
 			},
 			["sparkBlendMode"] = "ADD",
 			["useAdjustededMax"] = false,
-			["fontFlags"] = "OUTLINE",
-			["animation"] = {
-				["start"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["main"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-				["finish"] = {
-					["type"] = "none",
-					["duration_type"] = "seconds",
-					["easeStrength"] = 3,
-					["easeType"] = "none",
-				},
-			},
+			["xOffset"] = 0,
+			["customTextUpdate"] = "update",
 			["uid"] = "XOy7MtsRh5C",
 			["config"] = {
 			},
@@ -75450,19 +75462,17 @@ WeakAurasSaved = {
 			["auto"] = true,
 			["sparkTexture"] = "Interface\\CastingBar\\UI-CastingBar-Spark",
 			["spark"] = false,
-			["sparkOffsetX"] = 0,
+			["fontFlags"] = "OUTLINE",
 			["id"] = "Hailstorm",
-			["iconSource"] = -1,
+			["backgroundColor"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.5, -- [4]
+			},
 			["frameStrata"] = 1,
 			["anchorFrameType"] = "SCREEN",
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
-			},
+			["desaturate"] = false,
 			["sparkColor"] = {
 				1, -- [1]
 				1, -- [2]
@@ -75478,7 +75488,7 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["xOffset"] = 0,
+			["selfPoint"] = "CENTER",
 		},
 		["Feral Duid"] = {
 			["backdropColor"] = {
@@ -75495,7 +75505,7 @@ WeakAurasSaved = {
 				"Feral Functions", -- [5]
 			},
 			["borderBackdrop"] = "Blizzard Tooltip",
-			["scale"] = 1,
+			["xOffset"] = 0,
 			["yOffset"] = 0,
 			["border"] = false,
 			["borderEdge"] = "Square Full White",
@@ -75527,7 +75537,8 @@ WeakAurasSaved = {
 				0, -- [3]
 				1, -- [4]
 			},
-			["xOffset"] = 0,
+			["authorOptions"] = {
+			},
 			["actions"] = {
 				["start"] = {
 				},
@@ -75556,8 +75567,7 @@ WeakAurasSaved = {
 			},
 			["regionType"] = "group",
 			["internalVersion"] = 59,
-			["authorOptions"] = {
-			},
+			["scale"] = 1,
 			["selfPoint"] = "CENTER",
 			["id"] = "Feral Duid",
 			["groupIcon"] = 132115,
@@ -75877,20 +75887,20 @@ WeakAurasSaved = {
 						["auranames"] = {
 							"Lightning Shield", -- [1]
 						},
-						["unit"] = "player",
-						["ownOnly"] = true,
-						["genericShowOn"] = "showOnCooldown",
 						["names"] = {
 							"Lightning Shield", -- [1]
 						},
+						["ownOnly"] = true,
+						["genericShowOn"] = "showOnCooldown",
+						["subeventPrefix"] = "SPELL",
 						["duration"] = "1",
 						["use_tooltip"] = false,
 						["match_count"] = "0",
-						["buffShowOn"] = "showOnMissing",
-						["group_count"] = "0",
 						["custom_hide"] = "timed",
+						["group_count"] = "0",
+						["group_countOperator"] = "==",
 						["subeventSuffix"] = "_CAST_START",
-						["spellName"] = 34433,
+						["buffShowOn"] = "showOnMissing",
 						["use_targetRequired"] = false,
 						["useName"] = true,
 						["use_debuffClass"] = false,
@@ -75903,11 +75913,11 @@ WeakAurasSaved = {
 						["use_spellName"] = true,
 						["spellIds"] = {
 						},
-						["group_countOperator"] = "==",
 						["debuffType"] = "HELPFUL",
+						["spellName"] = 34433,
 						["combineMatches"] = "showLowest",
 						["use_track"] = true,
-						["subeventPrefix"] = "SPELL",
+						["unit"] = "player",
 					},
 					["untrigger"] = {
 						["spellName"] = 193786,
@@ -76142,11 +76152,18 @@ WeakAurasSaved = {
 			},
 			["config"] = {
 			},
-			["selfPoint"] = "CENTER",
+			["parent"] = "Shadow CD Bar",
 			["authorOptions"] = {
 			},
 			["regionType"] = "icon",
-			["parent"] = "Shadow CD Bar",
+			["actions"] = {
+				["start"] = {
+				},
+				["finish"] = {
+				},
+				["init"] = {
+				},
+			},
 			["information"] = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
@@ -76182,13 +76199,11 @@ WeakAurasSaved = {
 					},
 				}, -- [1]
 			},
-			["actions"] = {
-				["start"] = {
-				},
-				["finish"] = {
-				},
-				["init"] = {
-				},
+			["color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
 			},
 			["useTooltip"] = false,
 			["anchorFrameType"] = "SCREEN",
@@ -76202,15 +76217,10 @@ WeakAurasSaved = {
 			["zoom"] = 0.28,
 			["uid"] = "wDlnyhN2aWU",
 			["inverse"] = true,
-			["desaturate"] = false,
+			["selfPoint"] = "CENTER",
 			["displayIcon"] = 136199,
 			["cooldown"] = true,
-			["color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["desaturate"] = false,
 		},
 		["Bloodtalons"] = {
 			["iconSource"] = -1,
@@ -76232,7 +76242,7 @@ WeakAurasSaved = {
 						["event"] = "Health",
 						["names"] = {
 						},
-						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(feralActions[\"Bloodtalons\"].coolDown.duration, feralActions[\"Bloodtalons\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
+						["customDuration"] = "function()        \n    return cFunction_SpellReadyTime(myActions[\"Bloodtalons\"].coolDown.duration, myActions[\"Bloodtalons\"].coolDown.expirationTime, \"cast_channel_gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n",
 						["spellIds"] = {
 						},
@@ -76272,7 +76282,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --priority \n    local trashUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 4)\n    local rakeUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 5)\n    local shredUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 6)\n    local swipeUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 7)   \n    local brutalSlashUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 8)\n    local moonFireUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 9)\n    \n    feralActions[\"Bloodtalons\"].priority = nil\n    if select(1,AuraUtil.FindAuraByName(\"Bloodtalons\", \"player\", \"HELPFUL|PLAYER\")) == nil\n    and GetShapeshiftForm() == 2\n    then\n        --Trash first if multi targerts\n        if unitsInMelee.count >= 3 and feralData.trash.missing + feralData.trash.expiring >= 3 and attackMode ~= \"Focus\"\n        then\n            --Trash first if multi target\n            aura_env.icon = 451161\n            feralActions[\"Bloodtalons\"].priority = 8 \n        elseif cFunction_HasTalent(\"Brutal Slash\") and unitsInMelee.count >= 2 and attackMode ~= \"Focus\" \n        and IsUsableSpell(\"Brutal Slash\") and not brutalSlashUsed_State[\"\"] and select(1,GetSpellCharges(\"Brutal Slash\")) > 0        \n        then\n            -- Brutal Slash if multi target        \n            aura_env.icon = 132141\n            feralActions[\"Bloodtalons\"].priority = 8 \n        elseif not cFunction_HasTalent(\"Brutal Slash\") and unitsInMelee.count >= 2 and attackMode ~= \"Focus\" \n        and IsUsableSpell(\"Swipe\") and not swipeUsed_State[\"\"]\n        then\n            --Swipe if multi target\n            aura_env.icon = 134296\n            feralActions[\"Bloodtalons\"].priority = 8\n        elseif unitsInMelee.count >= 3 and feralData.trash.target.missing + feralData.trash.target.expiring >= 1 \n        and IsUsableSpell(\"Thrash\") and not trashUsed_State[\"\"]\n        then\n            --Thrash if target needs it in multi target dispite other targets needs\n            aura_env.icon = 451161\n            feralActions[\"Bloodtalons\"].priority = 8                \n        elseif feralData.rake.target.missing + feralData.rake.target.expiring >= 1 and not rakeUsed_State[\"\"]\n        then\n            --Rake if target needs it\n            aura_env.icon = 132122\n            feralActions[\"Bloodtalons\"].priority = 8\n        elseif cFunction_HasTalent(\"Lunar Inspiration\") and feralData.moonfire.target.missing + feralData.moonfire.target.expiring >= 1 \n        and not moonFireUsed_State[\"\"]\n        then\n            --Moonfire if target needs it\n            aura_env.icon = 136096\n            feralActions[\"Bloodtalons\"].priority = 8            \n        elseif cFunction_HasTalent(\"Brutal Slash\") and IsUsableSpell(\"Brutal Slash\") and not brutalSlashUsed_State[\"\"] \n        and select(1,GetSpellCharges(\"Brutal Slash\")) > 0        \n        then\n            -- Brutal Slash on single targert        \n            aura_env.icon = 132141\n            feralActions[\"Bloodtalons\"].priority = 8             \n        elseif unitsInMelee.count ~= nil and unitsInMelee.count <= 1        \n        and IsUsableSpell(\"Shred\") and not shredUsed_State[\"\"]\n        then\n            --Shred if on single targert        \n            aura_env.icon = 136231\n            feralActions[\"Bloodtalons\"].priority = 8\n        elseif not cFunction_HasTalent(\"Brutal Slash\") and IsUsableSpell(\"Swipe\") and not swipeUsed_State[\"\"]\n        then\n            --Swipe if any number of targets\n            aura_env.icon = 134296\n            feralActions[\"Bloodtalons\"].priority = 8\n        elseif IsUsableSpell(\"Thrash\") and not trashUsed_State[\"\"]\n        then\n            --Thrash least impactful dot so its ok if duration is cliped \n            --Also do it here cause next few rules require finding off targets to apply dots\n            aura_env.icon = 451161\n            feralActions[\"Bloodtalons\"].priority = 8            \n        elseif feralData.rake.missing + feralData.rake.expiring >= 1 and not rakeUsed_State[\"\"]\n        then\n            --Rake if another target needs it(Good Luck finding it in time)\n            aura_env.icon = 132122\n            feralActions[\"Bloodtalons\"].priority = 8\n        elseif cFunction_HasTalent(\"Lunar Inspiration\") and feralData.moonfire.missing + feralData.moonfire.expiring >= 1 \n        and not moonFireUsed_State[\"\"]\n        then\n            --Moonfire if another target needs it(Good Luck finding it in time)\n            aura_env.icon = 136096\n            feralActions[\"Bloodtalons\"].priority = 8                         \n        elseif unitsInMelee.count ~= nil and unitsInMelee.count > 1\n        and IsUsableSpell(\"Shred\") and not shredUsed_State[\"\"]\n        then\n            --Shred if absolutly needed in multi target\n            aura_env.icon = 136231\n            feralActions[\"Bloodtalons\"].priority = 8\n        elseif IsUsableSpell(\"Rake\") and not rakeUsed_State[\"\"]\n        then\n            --Rake if absolutly needed as last measure\n            aura_env.icon = 132122\n            feralActions[\"Bloodtalons\"].priority = 8            \n        end\n    end\n    \n    return isAuraHighestPriority(\"Bloodtalons\", feralActions)     \nend\n\n\n",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end    \n    \n    --priority \n    local trashUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 4)\n    local rakeUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 5)\n    local shredUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 6)\n    local swipeUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 7)   \n    local brutalSlashUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 8)\n    local moonFireUsed_State = WeakAuras.GetTriggerStateForTrigger(\"Bloodtalons\", 9)\n    \n    myActions[\"Bloodtalons\"].priority = nil\n    if select(1,AuraUtil.FindAuraByName(\"Bloodtalons\", \"player\", \"HELPFUL|PLAYER\")) == nil\n    and GetShapeshiftForm() == 2\n    then\n        --Trash first if multi targerts\n        if unitsInMelee.count >= 3 and feralData.trash.missing + feralData.trash.expiring >= 3 and attackMode ~= \"Focus\"\n        then\n            --Trash first if multi target\n            aura_env.icon = 451161\n            myActions[\"Bloodtalons\"].priority = 8 \n        elseif cFunction_HasTalent(\"Brutal Slash\") and unitsInMelee.count >= 2 and attackMode ~= \"Focus\" \n        and IsUsableSpell(\"Brutal Slash\") and not brutalSlashUsed_State[\"\"] and select(1,GetSpellCharges(\"Brutal Slash\")) > 0        \n        then\n            -- Brutal Slash if multi target        \n            aura_env.icon = 132141\n            myActions[\"Bloodtalons\"].priority = 8 \n        elseif not cFunction_HasTalent(\"Brutal Slash\") and unitsInMelee.count >= 2 and attackMode ~= \"Focus\" \n        and IsUsableSpell(\"Swipe\") and not swipeUsed_State[\"\"]\n        then\n            --Swipe if multi target\n            aura_env.icon = 134296\n            myActions[\"Bloodtalons\"].priority = 8\n        elseif unitsInMelee.count >= 3 and feralData.trash.target.missing + feralData.trash.target.expiring >= 1 \n        and IsUsableSpell(\"Thrash\") and not trashUsed_State[\"\"]\n        then\n            --Thrash if target needs it in multi target dispite other targets needs\n            aura_env.icon = 451161\n            myActions[\"Bloodtalons\"].priority = 8                \n        elseif feralData.rake.target.missing + feralData.rake.target.expiring >= 1 and not rakeUsed_State[\"\"]\n        then\n            --Rake if target needs it\n            aura_env.icon = 132122\n            myActions[\"Bloodtalons\"].priority = 8\n        elseif cFunction_HasTalent(\"Lunar Inspiration\") and feralData.moonfire.target.missing + feralData.moonfire.target.expiring >= 1 \n        and not moonFireUsed_State[\"\"]\n        then\n            --Moonfire if target needs it\n            aura_env.icon = 136096\n            myActions[\"Bloodtalons\"].priority = 8            \n        elseif cFunction_HasTalent(\"Brutal Slash\") and IsUsableSpell(\"Brutal Slash\") and not brutalSlashUsed_State[\"\"] \n        and select(1,GetSpellCharges(\"Brutal Slash\")) > 0        \n        then\n            -- Brutal Slash on single targert        \n            aura_env.icon = 132141\n            myActions[\"Bloodtalons\"].priority = 8             \n        elseif unitsInMelee.count ~= nil and unitsInMelee.count <= 1        \n        and IsUsableSpell(\"Shred\") and not shredUsed_State[\"\"]\n        then\n            --Shred if on single targert        \n            aura_env.icon = 136231\n            myActions[\"Bloodtalons\"].priority = 8\n        elseif not cFunction_HasTalent(\"Brutal Slash\") and IsUsableSpell(\"Swipe\") and not swipeUsed_State[\"\"]\n        then\n            --Swipe if any number of targets\n            aura_env.icon = 134296\n            myActions[\"Bloodtalons\"].priority = 8\n        elseif IsUsableSpell(\"Thrash\") and not trashUsed_State[\"\"]\n        then\n            --Thrash least impactful dot so its ok if duration is cliped \n            --Also do it here cause next few rules require finding off targets to apply dots\n            aura_env.icon = 451161\n            myActions[\"Bloodtalons\"].priority = 8            \n        elseif feralData.rake.missing + feralData.rake.expiring >= 1 and not rakeUsed_State[\"\"]\n        then\n            --Rake if another target needs it(Good Luck finding it in time)\n            aura_env.icon = 132122\n            myActions[\"Bloodtalons\"].priority = 8\n        elseif cFunction_HasTalent(\"Lunar Inspiration\") and feralData.moonfire.missing + feralData.moonfire.expiring >= 1 \n        and not moonFireUsed_State[\"\"]\n        then\n            --Moonfire if another target needs it(Good Luck finding it in time)\n            aura_env.icon = 136096\n            myActions[\"Bloodtalons\"].priority = 8                         \n        elseif unitsInMelee.count ~= nil and unitsInMelee.count > 1\n        and IsUsableSpell(\"Shred\") and not shredUsed_State[\"\"]\n        then\n            --Shred if absolutly needed in multi target\n            aura_env.icon = 136231\n            myActions[\"Bloodtalons\"].priority = 8\n        elseif IsUsableSpell(\"Rake\") and not rakeUsed_State[\"\"]\n        then\n            --Rake if absolutly needed as last measure\n            aura_env.icon = 132122\n            myActions[\"Bloodtalons\"].priority = 8            \n        end\n    end\n    \n    return isAuraHighestPriority(\"Bloodtalons\", myActions)     \nend\n\n\n",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["debuffType"] = "HELPFUL",
@@ -76419,16 +76429,16 @@ WeakAurasSaved = {
 						["type"] = "unit",
 						["range_operator"] = "<=",
 						["unevent"] = "auto",
-						["range"] = "8",
-						["use_genericShowOn"] = true,
 						["event"] = "Range Check",
+						["use_genericShowOn"] = true,
+						["genericShowOn"] = "showOnCooldown",
 						["use_unit"] = true,
 						["realSpellName"] = 0,
 						["use_spellName"] = true,
 						["duration"] = "1",
 						["use_range"] = true,
 						["unit"] = "target",
-						["genericShowOn"] = "showOnCooldown",
+						["range"] = "8",
 						["use_track"] = true,
 						["spellName"] = 0,
 					},
@@ -76437,7 +76447,7 @@ WeakAurasSaved = {
 					},
 				}, -- [12]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)        \n    if t[10] then\n        feralActions[\"Bloodtalons\"].inRange = true\n    else\n        feralActions[\"Bloodtalons\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        feralActions[\"Bloodtalons\"].show = true\n    else\n        feralActions[\"Bloodtalons\"].show = false\n    end    \n    return feralActions[\"Bloodtalons\"].show\nend",
+				["customTriggerLogic"] = "function(t)        \n    if t[10] then\n        myActions[\"Bloodtalons\"].inRange = true\n    else\n        myActions[\"Bloodtalons\"].inRange = false\n    end\n    \n    if t[2] and t[3]\n    then\n        myActions[\"Bloodtalons\"].show = true\n    else\n        myActions[\"Bloodtalons\"].show = false\n    end    \n    return myActions[\"Bloodtalons\"].show\nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -76638,15 +76648,15 @@ WeakAurasSaved = {
 			["actions"] = {
 				["start"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Bloodtalons = true",
+					["custom"] = "myActions_Bloodtalons = true",
 				},
 				["finish"] = {
 					["do_custom"] = false,
-					["custom"] = "feralActions_Bloodtalons = false",
+					["custom"] = "myActions_Bloodtalons = false",
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not feralActions then\n    feralActions = {}\nend\n\nferalActions[\"Bloodtalons\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Bloodtalons\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = nil,\n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["displayIcon"] = 1033474,
@@ -77086,27 +77096,26 @@ WeakAurasSaved = {
 				["use_vehicleUi"] = false,
 				["zoneIds"] = "",
 			},
-			["icon"] = true,
+			["selfPoint"] = "CENTER",
 			["regionType"] = "icon",
 			["displayIcon"] = 132176,
-			["authorOptions"] = {
-			},
-			["selfPoint"] = "CENTER",
+			["icon"] = true,
+			["xOffset"] = 0,
 			["cooldown"] = true,
 			["cooldownTextDisabled"] = false,
 			["uid"] = "9Fj)6(Jpmpn",
 			["zoom"] = 0.28,
 			["auto"] = false,
-			["alpha"] = 1,
+			["frameStrata"] = 6,
 			["id"] = "Kill Command old",
 			["anchorFrameType"] = "SCREEN",
-			["frameStrata"] = 6,
-			["width"] = 50,
 			["useCooldownModRate"] = true,
+			["width"] = 50,
+			["alpha"] = 1,
 			["config"] = {
 			},
 			["inverse"] = true,
-			["xOffset"] = 0,
+			["parent"] = "Survival Actions Old",
 			["conditions"] = {
 				{
 					["check"] = {
@@ -77126,7 +77135,8 @@ WeakAurasSaved = {
 				["forceEvents"] = true,
 				["ignoreOptionsEventErrors"] = true,
 			},
-			["parent"] = "Survival Actions Old",
+			["authorOptions"] = {
+			},
 		},
 		["Flanking Strike"] = {
 			["iconSource"] = 0,
@@ -77144,7 +77154,7 @@ WeakAurasSaved = {
 				},
 				["init"] = {
 					["do_custom"] = true,
-					["custom"] = "if not survivalActions then\n    survivalActions = {}\nend\n\nsurvivalActions[\"Flanking Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
+					["custom"] = "if not myActions then\n    myActions = {}\nend\n\nmyActions[\"Flanking Strike\"] = {\n    [\"show\"] = false,\n    [\"priority\"] = 8,   \n    [\"inRange\"] = false,\n    [\"coolDown\"] = {\n        [\"duration\"] = 0,\n        [\"expirationTime\"] = 0\n    },\n    [\"casting\"] = {\n        [\"active\"] = false,\n        [\"expirationTime\"] = 0\n    }\n}",
 				},
 			},
 			["triggers"] = {
@@ -77158,7 +77168,7 @@ WeakAurasSaved = {
 						["duration"] = "1",
 						["event"] = "Global Cooldown",
 						["use_unit"] = true,
-						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(survivalActions[\"Flanking Strike\"].coolDown.duration, survivalActions[\"Flanking Strike\"].coolDown.expirationTime, \"gcd\")              \nend",
+						["customDuration"] = "function()    \n    return cFunction_SpellReadyTime(myActions[\"Flanking Strike\"].coolDown.duration, myActions[\"Flanking Strike\"].coolDown.expirationTime, \"gcd\")              \nend",
 						["custom"] = "function()\n    return true\nend\n\n\n\n\n",
 						["spellIds"] = {
 						},
@@ -77188,11 +77198,11 @@ WeakAurasSaved = {
 						["subeventSuffix"] = "_CAST_START",
 						["realSpellName"] = "Wake of Ashes",
 						["use_spellName"] = true,
+						["events"] = "cEvent_ValidTarget",
+						["debuffType"] = "HELPFUL",
 						["spellIds"] = {
 						},
-						["debuffType"] = "HELPFUL",
 						["custom"] = "function(event, show)  \n    if show then return true end\nend\n\n\n\n\n",
-						["events"] = "cEvent_ValidTarget",
 						["unevent"] = "auto",
 						["custom_hide"] = "custom",
 					},
@@ -77204,7 +77214,7 @@ WeakAurasSaved = {
 				{
 					["trigger"] = {
 						["type"] = "custom",
-						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    survivalActions[\"Flanking Strike\"].coolDown.duration = 0\n    survivalActions[\"Flanking Strike\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Flanking Strike\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        survivalActions[\"Flanking Strike\"].coolDown.duration = coolDownDuration\n        survivalActions[\"Flanking Strike\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    survivalActions[\"Flanking Strike\"].priority = nil\n    local focus = UnitPower(\"player\",2)    \n    if focus <= 65\n    then        \n        survivalActions[\"Flanking Strike\"].priority = 5            \n    end\n    \n    return isAuraHighestPriority(\"Flanking Strike\", survivalActions)\n    \nend",
+						["custom"] = "function()\n    \n    if isAuraHighestPriority == nil then return false end\n    \n    --coolDown\n    myActions[\"Flanking Strike\"].coolDown.duration = 0\n    myActions[\"Flanking Strike\"].coolDown.expirationTime = 0 \n    \n    local coolDownExpirationTime = 0\n    local coolDownStart, coolDownDuration, coolDownEnabled, coolDownModRate = GetSpellCooldown(\"Flanking Strike\")\n    \n    if coolDownStart + coolDownDuration > coolDown.gcd.expirationTime \n    then\n        myActions[\"Flanking Strike\"].coolDown.duration = coolDownDuration\n        myActions[\"Flanking Strike\"].coolDown.expirationTime = coolDownStart + coolDownDuration        \n    end\n    \n    --priority\n    myActions[\"Flanking Strike\"].priority = nil\n    local focus = UnitPower(\"player\",2)    \n    if focus <= 65\n    then        \n        myActions[\"Flanking Strike\"].priority = 5            \n    end\n    \n    return isAuraHighestPriority(\"Flanking Strike\", myActions)\n    \nend",
 						["custom_type"] = "status",
 						["check"] = "update",
 						["unit"] = "player",
@@ -77246,7 +77256,7 @@ WeakAurasSaved = {
 					},
 				}, -- [5]
 				["disjunctive"] = "custom",
-				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        survivalActions[\"Flanking Strike\"].inRange = true\n    else\n        survivalActions[\"Flanking Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        survivalActions[\"Flanking Strike\"].show = true\n    else\n        survivalActions[\"Flanking Strike\"].show = false\n    end\n    \n    return survivalActions[\"Flanking Strike\"].show\n    \nend",
+				["customTriggerLogic"] = "function(t)    \n    \n    if t[5] then\n        myActions[\"Flanking Strike\"].inRange = true\n    else\n        myActions[\"Flanking Strike\"].inRange = false\n    end\n    \n    if t[2] and t[3] \n    then\n        myActions[\"Flanking Strike\"].show = true\n    else\n        myActions[\"Flanking Strike\"].show = false\n    end\n    \n    return myActions[\"Flanking Strike\"].show\n    \nend",
 				["activeTriggerMode"] = 1,
 			},
 			["internalVersion"] = 59,
@@ -77463,16 +77473,6 @@ WeakAurasSaved = {
 			["parent"] = "Survival Action Bar",
 		},
 	},
-	["lastArchiveClear"] = 1586636639,
-	["minimap"] = {
-		["hide"] = true,
-	},
-	["lastUpgrade"] = 1667851113,
-	["dbVersion"] = 59,
-	["clearOldHistory"] = 30,
-	["registered"] = {
-	},
-	["login_squelch_time"] = 10,
 	["frame"] = {
 		["xOffset"] = 0.5357666015625,
 		["yOffset"] = -24,
